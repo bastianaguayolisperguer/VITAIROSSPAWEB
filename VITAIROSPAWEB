@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>VITAIROS SpA – Ingeniería de Vanguardia: IA & 3D</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050505;--text:#f8fafc;--muted:#94a3b8;--cyan:#14b8a6;--violet:#a855f7;--glass:rgba(255,255,255,0.03);--border:rgba(255,255,255,0.08);--glow-c:rgba(20,184,166,0.4);--glow-v:rgba(168,85,247,0.4)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;position:relative}
+body::before,body::after{content:'';position:fixed;width:800px;height:800px;border-radius:50%;filter:blur(120px);opacity:.15;pointer-events:none;z-index:0}
+body::before{background:var(--cyan);top:-300px;left:-200px}
+body::after{background:var(--violet);bottom:-400px;right:-300px}
+.container{max-width:1200px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+@keyframes fadeIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.9)}}
+@keyframes flow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,5,5,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:80px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);font-weight:800;font-size:20px;letter-spacing:-.5px}
+.brand-logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--cyan),var(--violet));display:grid;place-items:center;font-size:24px;font-weight:900;color:#fff;box-shadow:0 0 24px var(--glow-c)}
+.menu{display:flex;gap:24px;align-items:center}
+.menu a{color:var(--muted);text-decoration:none;font-weight:500;font-size:15px;letter-spacing:.3px;transition:color .3s}
+.menu a:hover{color:var(--cyan)}
+.cta-primary{padding:12px 28px;background:linear-gradient(90deg,var(--cyan),var(--violet));background-size:200% 100%;border:none;border-radius:12px;color:#ffffff;font-weight:900;font-size:16px;cursor:pointer;text-decoration:none;display:inline-block;animation:flow 3s ease infinite;box-shadow:0 4px 20px rgba(20,184,166,.3);transition:transform .2s,box-shadow .2s;text-shadow:0 2px 4px rgba(0,0,0,.45)}.cta-secondary{padding:12px 28px;background:var(--glass);border:1px solid var(--border);border-radius:12px;color:var(--text);font-weight:600;font-size:15px;cursor:pointer;text-decoration:none;display:inline-block;backdrop-filter:blur(10px);transition:all .3s}
+.cta-secondary:hover{border-color:var(--cyan);background:rgba(20,184,166,.1)}
+
+.hero{padding:200px 0 120px;position:relative}
+.hero-content{max-width:900px;margin:0 auto;text-align:center}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;background:var(--glass);border:1px solid var(--border);border-radius:999px;font-size:13px;font-weight:600;color:var(--cyan);margin-bottom:32px;backdrop-filter:blur(10px)}
+.badge-dot{width:8px;height:8px;background:var(--cyan);border-radius:50%;box-shadow:0 0 10px var(--glow-c);animation:pulse 2s ease infinite}
+h1{font-size:clamp(36px,6vw,68px);font-weight:800;line-height:1.15;letter-spacing:-2px;margin:0 0 28px}
+.gradient-text{background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-lead{font-size:clamp(18px,2.5vw,22px);color:var(--muted);line-height:1.8;margin-bottom:40px;font-weight:300;letter-spacing:.5px}
+.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
+.trust-line{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--muted);font-size:14px;font-weight:300}
+
+.stats{padding:80px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:48px;text-align:center}
+.stat-item{padding:24px;background:var(--glass);border:1px solid var(--border);border-radius:16px;backdrop-filter:blur(10px)}
+.stat-num{display:block;font-size:42px;font-weight:800;background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;letter-spacing:-1px}
+.stat-label{color:var(--muted);font-size:14px;font-weight:300;letter-spacing:.5px}
+
+section{padding:140px 0;position:relative}
+.section-header{text-align:center;max-width:800px;margin:0 auto 80px}
+.section-title{font-size:clamp(32px,5vw,48px);font-weight:800;letter-spacing:-1.5px;margin-bottom:20px;line-height:1.2}
+.section-lead{font-size:18px;color:var(--muted);font-weight:300;letter-spacing:.3px;line-height:1.8}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.service-card{position:relative;padding:40px 32px;background:var(--glass);border:1px solid var(--border);border-radius:20px;backdrop-filter:blur(20px);transition:all .4s ease;overflow:hidden}
+.service-card::before{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,var(--cyan),var(--violet));border-radius:20px;opacity:0;z-index:-1;transition:opacity .4s}
+.service-card:hover::before{opacity:1;box-shadow:0 0 40px var(--glow-c),0 0 60px var(--glow-v)}
+.service-card:hover{transform:translateY(-8px);background:rgba(255,255,255,.05)}
+.service-icon{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,var(--cyan),var(--violet));display:grid;place-items:center;font-size:32px;margin-bottom:24px;box-shadow:0 8px 24px rgba(20,184,166,.3)}
+.service-card h3{font-size:22px;font-weight:700;margin-bottom:12px;letter-spacing:-.5px}
+.service-card p{color:var(--muted);font-size:15px;font-weight:300;line-height:1.7}
+
+.lab-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,200px);gap:24px}
+.lab-item{position:relative;background:var(--glass);border:1px solid var(--border);border-radius:24px;padding:32px;backdrop-filter:blur(20px);overflow:hidden;transition:all .4s;display:flex;flex-direction:column;justify-content:flex-end}
+.lab-item::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent,rgba(20,184,166,.1));opacity:0;transition:opacity .4s}
+.lab-item:hover::before{opacity:1}
+.lab-item:hover{transform:scale(1.02);border-color:var(--cyan);box-shadow:0 0 40px var(--glow-c)}
+.lab-item:nth-child(1){grid-column:span 2;grid-row:span 2}
+.lab-item:nth-child(2){grid-column:span 2;grid-row:span 1}
+.lab-item:nth-child(3){grid-column:span 2;grid-row:span 2}
+.lab-item:nth-child(4){grid-column:span 2;grid-row:span 1}
+.lab-icon{font-size:48px;margin-bottom:16px;filter:drop-shadow(0 0 20px var(--glow-c))}
+.lab-item h3{font-size:24px;font-weight:700;margin-bottom:8px;letter-spacing:-.5px}
+.lab-item p{color:var(--muted);font-size:14px;font-weight:300;line-height:1.6}
+
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;position:relative}
+.process-grid::before{content:'';position:absolute;top:32px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--cyan),var(--violet));opacity:.3}
+.process-step{position:relative;text-align:center;padding:32px 24px;background:var(--glass);border:1px solid var(--border);border-radius:20px;backdrop-filter:blur(20px);transition:all .3s}
+.process-step:hover{transform:translateY(-8px);border-color:var(--cyan);box-shadow:0 0 30px var(--glow-c)}
+.process-num{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--violet));color:#fff;font-size:24px;font-weight:900;display:grid;place-items:center;margin:0 auto 20px;box-shadow:0 8px 24px var(--glow-c);position:relative;z-index:2}
+.process-step h4{font-size:20px;font-weight:700;margin-bottom:12px;letter-spacing:-.3px}
+.process-step p{color:var(--muted);font-size:14px;font-weight:300;line-height:1.6}
+
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1100px;margin:0 auto}
+.pricing-card{position:relative;padding:48px 40px;background:var(--glass);border:1px solid var(--border);border-radius:24px;backdrop-filter:blur(20px);text-align:center;transition:all .4s}
+.pricing-card.featured{background:rgba(20,184,166,.05);border:2px solid var(--cyan);transform:scale(1.05);box-shadow:0 0 60px var(--glow-c)}
+.pricing-card:hover{transform:translateY(-8px) scale(1.02);border-color:var(--cyan)}
+.pricing-name{font-size:14px;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+.pricing-amount{font-size:52px;font-weight:800;margin-bottom:12px;letter-spacing:-2px}
+.pricing-amount small{font-size:24px;font-weight:600;color:var(--muted)}
+.pricing-desc{color:var(--muted);font-size:15px;margin-bottom:32px;font-weight:300}
+.pricing-features{list-style:none;margin-bottom:32px;text-align:left}
+.pricing-features li{padding:12px 0;display:flex;align-items:center;gap:12px;font-size:15px;font-weight:300;border-bottom:1px solid var(--border)}
+.pricing-features li:last-child{border:none}
+
+.contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:start}
+.form-card{padding:48px;background:var(--glass);border:1px solid var(--border);border-radius:24px;backdrop-filter:blur(20px)}
+.form-group{margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+label{display:block;margin-bottom:8px;font-size:14px;font-weight:600;color:var(--muted);letter-spacing:.3px}
+input,select,textarea{width:100%;padding:14px 18px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:12px;color:var(--text);font-family:'Outfit',sans-serif;font-size:15px;outline:none;transition:all .3s}
+input:focus,select:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(20,184,166,.1);background:rgba(255,255,255,.04)}
+textarea{min-height:140px;resize:vertical}
+.info-card{padding:40px;background:var(--glass);border:1px solid var(--border);border-radius:24px;backdrop-filter:blur(20px)}
+.info-card h3{font-size:24px;margin-bottom:24px;letter-spacing:-.5px}
+.info-list{list-style:none;margin-bottom:24px}
+.info-list li{padding:14px 0;display:flex;align-items:flex-start;gap:12px;border-bottom:1px solid var(--border);font-size:14px;font-weight:300;line-height:1.6}
+.info-list li:last-child{border:none}
+.contact-note{padding:20px;background:rgba(20,184,166,.1);border:1px solid var(--cyan);border-radius:12px;font-size:14px;color:var(--cyan);font-weight:300}
+
+.thanks-message{display:none;margin-top:24px;padding:20px;background:rgba(20,184,166,.1);border:1px solid var(--cyan);border-radius:16px;color:var(--text)}
+.thanks-message strong{color:var(--cyan)}
+
+footer{padding:60px 0;border-top:1px solid var(--border);margin-top:140px}
+.footer-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.footer-brand{display:flex;align-items:center;gap:14px}
+.footer-text{font-size:14px;color:var(--muted);font-weight:300}
+
+@media (max-width:768px){
+.menu a.hide-mobile{display:none}
+.nav{height:70px}
+.container{padding:0 20px}
+.hero{padding:140px 0 80px}
+.hero-ctas{flex-direction:column;align-items:center}
+.cta-primary,.cta-secondary{width:100%;max-width:300px}
+.stats-grid{grid-template-columns:repeat(2,1fr);gap:20px}
+.stat-num{font-size:32px}
+.services-grid{grid-template-columns:1fr}
+.lab-grid{grid-template-columns:1fr;grid-template-rows:auto}
+.lab-item:nth-child(1),.lab-item:nth-child(2),.lab-item:nth-child(3),.lab-item:nth-child(4){grid-column:span 1;grid-row:span 1;min-height:220px}
+.process-grid{grid-template-columns:1fr}
+.process-grid::before{display:none}
+.pricing-grid{grid-template-columns:1fr}
+.pricing-card.featured{transform:scale(1)}
+.contact-grid{grid-template-columns:1fr}
+.form-row{grid-template-columns:1fr}
+.form-card{padding:32px 24px}
+footer{padding:40px 0}
+.footer-content{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container nav">
+<a href="#inicio" class="brand">
+<div class="brand-logo">V</div>
+<span>VITAIROS</span>
+</a>
+<nav class="menu">
+<a href="#servicios">Servicios</a>
+<a href="#laboratorio" class="hide-mobile">Laboratorio</a>
+<a href="#proceso" class="hide-mobile">Proceso</a>
+<a href="#precios">Precios</a>
+<a href="#contacto" class="cta-primary">Agenda consulta</a>
+</nav>
+</div>
+</header>
+
+<main id="inicio" class="hero">
+<div class="container hero-content">
+<div class="badge">
+<span class="badge-dot"></span>
+Estudio de Innovación Tecnológica
+</div>
+<h1><span class="gradient-text">Convertimos tu idea en un producto tecnológico</span>: que funciona, escala y vende</h1>
+<p class="hero-lead">Arquitectura solida, diseño de vanguardia y precisión de ingeniería. Transformamos ideas ambiciosas en productos de alto valor listos para escalar.</p>
+<div class="hero-ctas">
+<a href="#contacto" class="cta-primary">Agendar consulta gratuita</a>
+<a href="#laboratorio" class="cta-secondary">Ver laboratorio</a>
+</div>
+<div class="trust-line">
+<span>✓</span>
+<span>Respuesta en 24h • Arquitectura enterprise • Soporte incluido</span>
+</div>
+</div>
+</main>
+
+<div class="stats">
+<div class="container">
+<div class="stats-grid">
+<div class="stat-item"><span class="stat-num">+10 años</span><span class="stat-label">Experiencia en producto</span></div>
+<div class="stat-item"><span class="stat-num">2 sem</span><span class="stat-label">Por sprint</span></div>
+<div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">de entregas a tiempo</span></div>
+<div class="stat-item"><span class="stat-num">24h</span><span class="stat-label">Respuesta garantizada</span></div>
+</div>
+</div>
+</div>
+
+<section id="servicios">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Todo lo que tu producto necesita.</h2>
+<p class="section-lead">Un solo equipo para cada parte de tu sueño.</p>
+</div>
+<div class="services-grid">
+<div class="service-card">
+<div class="service-icon">📱</div>
+<h3>Apps iOS & Android</h3>
+<p>Aplicaciones nativas rápidas, escalables y listas para miles de usuarios desde el día 1.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">🤖</div>
+<h3>IA a tu medida</h3>
+<p>Automatizaciones, chatbots y modelos entrenados con tus datos — sin complejidades innecesarias.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">🌐</div>
+<h3>Web & Plataformas SaaS</h3>
+<p>Tu producto web con arquitectura sólida, APIs y listo para crecer sin límites.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">🎨</div>
+<h3>Diseño UX/UI & Consultorias</h3>
+<p>Interfaces que enamoran y convierten — Te acompañamos desde el prototipo hasta el producto final.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">🔗</div>
+<h3>Integraciones Enterprise</h3>
+<p>Conectamos tu producto con cualquier herramienta, CRM, pago o sistema que ya uses.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">🖨️</div>
+<h3>Ingeniería 3D & Fabricación</h3>
+<p>Modelado CAD, simulación FEA, renders fotorrealistas e impresión 3D para prototipos reales.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="laboratorio">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Laboratorio de Proyectos</h2>
+<p class="section-lead">Casos de innovación tecnológica con impacto medible</p>
+</div>
+<div class="lab-grid">
+<div class="lab-item">
+<div class="lab-icon">🧠</div>
+<h3>Modelos de Lenguaje Personalizados</h3>
+<p>Fine-tuning de LLMs para dominios específicos. Reducción de costos operativos en 60% vs APIs comerciales.</p>
+</div>
+<div class="lab-item">
+<div class="lab-icon">📊</div>
+<h3>Analytics & BI en Tiempo Real</h3>
+<p>Dashboards predictivos con ML que anticipan tendencias y optimizan decisiones de negocio.</p>
+</div>
+<div class="lab-item">
+<div class="lab-icon">🏗️</div>
+<h3>Renders de Ingeniería 3D</h3>
+<p>Gemelos digitales y simulaciones FEA para validación de diseños antes de fabricación física.</p>
+</div>
+<div class="lab-item">
+<div class="lab-icon">⚡</div>
+<h3>Apps de Alto Rendimiento</h3>
+<p>Arquitecturas optimizadas que procesan millones de eventos/día con latencia sub-100ms.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="proceso">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Así construimos tu producto.</h2>
+<p class="section-lead">Sabes exactamente qué pasa cada semana.</p>
+</div>
+<div class="process-grid">
+<div class="process-step">
+<div class="process-num">01</div>
+<h4>Descubrimiento</h4>
+<p>Entendemos tu idea, tu mercado y lo que necesita tu producto para funcionar de verdad.</p>
+</div>
+<div class="process-step">
+<div class="process-num">02</div>
+<h4>Diseño & Arquitectura</h4>
+<p>Definimos cómo se ve y cómo funciona — sin sorpresas técnicas en el camino.</p>
+</div>
+<div class="process-step">
+<div class="process-num">03</div>
+<h4>Desarrollo</h4>
+<p>Construimos en sprints de 2 semanas con entregas reales que puedes ver y tocar.</p>
+</div>
+<div class="process-step">
+<div class="process-num">04</div>
+<h4>Lanzamiento</h4>
+<p>Tu producto en producción, estable, monitoreado y con soporte incluido.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="precios">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Inversión transparente</h2>
+<p class="section-lead">Paquetes escalables o cotización personalizada para tu proyecto</p>
+</div>
+<div class="pricing-grid">
+<div class="pricing-card">
+<p class="pricing-name">STARTER</p>
+<h3 class="pricing-amount"> <small></small></h3>
+<p class="pricing-desc">MVP funcional para validación</p>
+<ul class="pricing-features">
+<li><span>✓</span> App o web core</li>
+<li><span>✓</span> Diseño UX básico</li>
+<li><span>✓</span> 4 semanas dev</li>
+<li><span>✓</span> 15 días soporte</li>
+</ul>
+<a href="#contacto" class="cta-secondary" style="width:100%">Consultar</a>
+</div>
+<div class="pricing-card featured">
+<p class="pricing-name">PROFESSIONAL</p>
+<h3 class="pricing-amount"> <small></small></h3>
+<p class="pricing-desc">Producto completo enterprise</p>
+<ul class="pricing-features">
+<li><span>✓</span> Arquitectura escalable</li>
+<li><span>✓</span> Design system completo</li>
+<li><span>✓</span> 8-10 semanas dev</li>
+<li><span>✓</span> Integraciones incluidas</li>
+<li><span>✓</span> 30 días soporte</li>
+</ul>
+<a href="#contacto" class="cta-primary" style="width:100%">Más elegido</a>
+</div>
+<div class="pricing-card">
+<p class="pricing-name">ENTERPRISE</p>
+<h3 class="pricing-amount"></h3>
+<p class="pricing-desc">Solución a medida con IA</p>
+<ul class="pricing-features">
+<li><span>✓</span> Plataforma multi-canal</li>
+<li><span>✓</span> IA & automatización</li>
+<li><span>✓</span> DevOps & monitoring</li>
+<li><span>✓</span> Soporte extendido</li>
+<li><span>✓</span> Capacitación equipo</li>
+</ul>
+<a href="#contacto" class="cta-secondary" style="width:100%">Cotizar</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contacto">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Inicia tu proyecto</h2>
+<p class="section-lead">Agenda una consulta técnica gratuita de 30 minutos</p>
+</div>
+<div class="contact-grid">
+<div class="form-card">
+<form action="https://formsubmit.co/bastianaguayolisperguer@gmail.com" method="POST">
+<input type="hidden" name="_subject" value="Nueva consulta VITAIROS">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="box">
+<input type="hidden" name="_next" value="https://www.vitairos.com/?sent=1#gracias">
+<input type="hidden" name="_autoresponse" value="¡Gracias por escribir a VITAIROS! Recibimos tu solicitud y te responderemos pronto.">
+<input type="text" name="_honey" style="display:none">
+
+<div class="form-row">
+<div class="form-group">
+<label for="nombre">Nombre completo</label>
+<input id="nombre" name="nombre" required autocomplete="name" placeholder="Bastian Lisperguer"/>
+</div>
+<div class="form-group">
+<label for="email">Email</label>
+<input id="email" name="email" type="email" required autocomplete="email" placeholder="Vitairos@empresa.cl"/>
+</div>
+</div>
+
+<div class="form-row">
+<div class="form-group">
+<label for="telefono">Teléfono (opcional)</label>
+<input id="telefono" name="telefono" inputmode="tel" placeholder="+56 9 1234 5678"/>
+</div>
+<div class="form-group">
+<label for="servicio">Tipo de proyecto</label>
+<select id="servicio" name="servicio" required>
+<option value="" disabled selected>Selecciona</option>
+<option>App móvil (iOS/Android)</option>
+<option>Plataforma web / SaaS</option>
+<option>IA / Machine Learning</option>
+<option>Diseño 3D / Ingeniería</option>
+<option>Consultoría técnica</option>
+<option>Otro</option>
+</select>
+</div>
+</div>
+
+<div class="form-group">
+<label for="mensaje">Descripción del proyecto</label>
+<textarea id="mensaje" name="mensaje" required placeholder="¿Qué problema técnico necesitas resolver? ¿Tienes deadline? ¿Presupuesto estimado?"></textarea>
+</div>
+
+<button class="cta-primary" type="submit" style="width:100%">Enviar solicitud →</button>
+</form>
+
+<div id="gracias" class="thanks-message">
+<strong>¡Gracias!</strong> Recibimos tu solicitud y te responderemos a la brevedad.
+</div>
+</div>
+
+<div class="info-card">
+<h3>¿Por qué VITAIROS?</h3>
+<ul class="info-list">
+<li><span>✓</span> <strong>Arquitectura de primera:</strong> Código limpio, escalable y mantenible desde el día 1</li>
+<li><span>✓</span> <strong>Entregas ágiles:</strong> Demos funcionales semanales con visibilidad total del avance</li>
+<li><span>✓</span> <strong>Diseño & performance:</strong> Experiencias cuidadas, veloces y orientadas a conversión</li>
+<li><span>✓</span> <strong>Soporte real:</strong> Acompañamiento técnico y continuidad post-lanzamiento</li>
+</ul>
+<div class="contact-note">
+También puedes escribirnos a <strong>@Vitarios</strong> mientras activamos contacto@vitairos.com
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container footer-content">
+<div class="footer-brand">
+<div class="brand-logo">V</div>
+<div>
+<strong>VITAIROS</strong><br>
+<span class="footer-text">Ingeniería • IA • 3D • Software</span>
+</div>
+</div>
+<p class="footer-text">© <span id="year"></span> VITAIROS SpA. Todos los derechos reservados.</p>
+</div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const params = new URLSearchParams(window.location.search);
+if (params.get('sent') === '1') {
+  const gracias = document.getElementById('gracias');
+  if (gracias) {
+    gracias.style.display = 'block';
+    gracias.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+</script>
+
+</body>
+</html>
