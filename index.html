@@ -2,14 +2,79 @@
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
-<title>VITAIROS SpA – Ingeniería de Vanguardia: IA & 3D</title>
+<title>VITAIROS SpA – Software, IA y Productos Digitales | Chile & LATAM</title>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+<!-- SEO & Open Graph -->
+<meta name="description" content="VITAIROS — Estudio especializado en productos digitales, IA aplicada e ingeniería avanzada para startups y empresas en Chile y LATAM. Lanzamos rápido, construimos para escalar."/>
+<meta name="keywords" content="desarrollo software Chile, IA para empresas, apps móviles Chile, plataforma SaaS, MVP startup, ingeniería 3D, VITAIROS, software a medida LATAM"/>
+<meta property="og:title" content="VITAIROS – Software, IA y Productos Digitales para Empresas"/>
+<meta property="og:description" content="Diseñamos y construimos productos digitales, IA aplicada e ingeniería avanzada. Lanzamos rápido, construimos para escalar. Consulta técnica gratuita de 30 minutos."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.vitairos.com"/>
+<meta property="og:image" content="https://www.vitairos.com/og-preview.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="VITAIROS – Software, IA y Productos Digitales"/>
+<meta name="twitter:description" content="Estudio de software para startups y empresas. Lanzamos rápido, construimos para escalar."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://www.vitairos.com"/>
+
+<meta name="theme-color" content="#050505"/>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="apple-mobile-web-app-title" content="VITAIROS">
+<meta name="application-name" content="VITAIROS">
+<meta name="msapplication-TileColor" content="#050505">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.vitairos.com/#organization",
+      "name": "VITAIROS SpA",
+      "url": "https://www.vitairos.com/",
+      "logo": "https://www.vitairos.com/android-chrome-512x512.png",
+      "image": "https://www.vitairos.com/android-chrome-512x512.png",
+      "email": "contacto@vitairos.com",
+      "description": "Empresa de desarrollo de software, productos digitales e inteligencia artificial para startups y empresas en Chile y LATAM.",
+      "areaServed": ["Chile", "Latinoamérica"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.vitairos.com/#website",
+      "url": "https://www.vitairos.com/",
+      "name": "VITAIROS",
+      "publisher": {"@id": "https://www.vitairos.com/#organization"},
+      "inLanguage": "es"
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#050505;--text:#f8fafc;--muted:#94a3b8;--cyan:#14b8a6;--violet:#a855f7;--glass:rgba(255,255,255,0.03);--border:rgba(255,255,255,0.08);--glow-c:rgba(20,184,166,0.4);--glow-v:rgba(168,85,247,0.4)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;position:relative}
+
+img,canvas{max-width:100%;height:auto}
+a,button,input,select,textarea{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+body.menu-open{overflow:hidden}
+section{content-visibility:auto;contain-intrinsic-size:800px}
+.hero-banner,#servicios,#casos,#proceso,#nosotros,#trabaja,#faq,#contacto,footer,header,.mobile-menu,.modal-overlay{content-visibility:visible;contain-intrinsic-size:auto}
+.cases-grid,.trust-grid{display:grid}
+.not-fit-box{display:flex}
+@media(max-width:900px){.cases-grid{grid-template-columns:1fr!important}.trust-grid{grid-template-columns:repeat(2,1fr)!important}.not-fit-box{flex-direction:column}}
+@media(max-width:560px){.trust-grid{grid-template-columns:1fr!important}.hb-stat{width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.hb-scan::after,.hb-sphere-wrap,.hb-node{animation:none!important}}
+
 .container{max-width:1200px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
 @keyframes fadeIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.9)}}
@@ -33,55 +98,29 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,5,5,.85
 .cta-secondary{padding:12px 28px;background:var(--glass);border:1px solid var(--border);border-radius:12px;color:var(--text);font-weight:600;font-size:15px;cursor:pointer;text-decoration:none;display:inline-block;backdrop-filter:blur(10px);transition:all .3s}
 .cta-secondary:hover{border-color:var(--cyan);background:rgba(20,184,166,.1)}
 
+/* ✅ MEJORA 2: Hamburger Menu */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:transparent;z-index:200}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:80px;left:0;right:0;background:rgba(5,5,5,.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:24px 32px;flex-direction:column;gap:20px;z-index:99}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--muted);text-decoration:none;font-weight:500;font-size:17px;transition:color .3s;padding:8px 0;border-bottom:1px solid var(--border)}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:hover{color:var(--cyan)}
+.mobile-menu .cta-primary{text-align:center;margin-top:8px}
+
 /* ─── HERO BANNER ─── */
-.hero-banner{
-  position:relative;
-  width:100%;
-  height:100vh;
-  min-height:600px;
-  max-height:780px;
-  overflow:hidden;
-  background:var(--bg);
-  margin-top:80px; /* offset for fixed header */
-}
-
-/* Background photo layer */
-.hb-photo{
-  position:absolute;inset:0;
-  background-image:url('header1920x600adaptativo-web-movil__1_.png');
-  background-size:cover;
-  background-position:center;
-  opacity:.18;
-  filter:saturate(.35) contrast(1.1);
-}
-
-/* Gradient overlay — heavier on left so text is readable */
-.hb-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(
-    105deg,
-    #050505 0%,
-    rgba(5,5,5,.96) 35%,
-    rgba(5,5,5,.70) 60%,
-    rgba(5,5,5,.15) 100%
-  );
-}
-
-/* Ambient glow orbs */
+.hero-banner{position:relative;width:100%;height:100vh;min-height:600px;max-height:780px;overflow:hidden;background:var(--bg);margin-top:80px}
+.hb-photo{position:absolute;inset:0;background-image:url('header1920x600adaptativo-web-movil__1_.png');background-size:cover;background-position:center;opacity:.18;filter:saturate(.35) contrast(1.1)}
+.hb-overlay{position:absolute;inset:0;background:linear-gradient(105deg,#050505 0%,rgba(5,5,5,.96) 35%,rgba(5,5,5,.70) 60%,rgba(5,5,5,.15) 100%)}
 .hb-glow-tl{position:absolute;width:700px;height:700px;top:-280px;left:-180px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,.22) 0%,transparent 70%);filter:blur(60px);pointer-events:none}
 .hb-glow-br{position:absolute;width:600px;height:600px;bottom:-260px;right:160px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,.18) 0%,transparent 70%);filter:blur(80px);pointer-events:none}
-
-/* Subtle grid */
 .hb-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(20,184,166,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(20,184,166,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
-
-/* Diagonal separator line */
 .hb-divider{position:absolute;top:0;bottom:0;left:52%;width:1px;background:linear-gradient(180deg,transparent,rgba(20,184,166,.12) 30%,rgba(168,85,247,.12) 70%,transparent);pointer-events:none}
-
-/* Scan line */
 .hb-scan{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .hb-scan::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:.4;animation:scan 6s linear infinite}
-
-/* Floating circuit nodes */
 .hb-nodes{position:absolute;inset:0;pointer-events:none}
 .hb-node{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--glow-c);animation:nodeFloat 4s ease-in-out infinite}
 .hb-node::after{content:'';position:absolute;top:50%;left:50%;width:22px;height:22px;border:1px solid rgba(20,184,166,.25);border-radius:50%;transform:translate(-50%,-50%)}
@@ -91,10 +130,15 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,5,5,.85
 .hb-node:nth-child(3){top:38%;left:77%;animation-delay:1.7s}
 .hb-node:nth-child(4){top:58%;left:87%;animation-delay:2.5s;background:var(--violet);box-shadow:0 0 14px var(--glow-v)}
 .hb-node:nth-child(5){top:24%;left:90%;animation-delay:1.2s}
+.hb-sphere-wrap{position:absolute;right:3%;top:50%;transform:translateY(-50%);width:340px;height:340px;pointer-events:none}
+.hb-sphere-glow{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,.1) 0%,transparent 70%);filter:blur(24px)}
+.hb-sphere-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:1;opacity:0;transition:opacity .3s ease}
+.hb-sphere-wrap.fallback-only #vitairos-geo{display:none}
+.hb-sphere-wrap.fallback-only .hb-sphere-fallback{opacity:.95}
+.hb-sphere-wrap.canvas-ready .hb-sphere-fallback{opacity:0}
+.hb-sphere-wrap.show-fallback .hb-sphere-fallback{opacity:.85}
+@supports (-webkit-touch-callout:none){.hb-sphere-wrap.show-fallback .hb-sphere-fallback{opacity:.92}}
 
-/* ── Wireframe sphere ── */
-.hb-sphere-wrap{position:absolute;right:7%;top:50%;transform:translateY(-50%);width:300px;height:300px;pointer-events:none}
-.hb-sphere-glow{position:absolute;inset:-50px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,.07) 0%,transparent 70%);filter:blur(20px)}
 .hb-sphere{width:100%;height:100%;position:relative;animation:rotateSphere 20s linear infinite}
 .hb-ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(20,184,166,.22)}
 .hb-ring:nth-child(2){transform:rotateY(30deg)}
@@ -109,9 +153,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,5,5,.85
 .hb-ring-h:nth-child(11){transform:rotateX(120deg)}
 .hb-ring-h:nth-child(12){transform:rotateX(150deg)}
 .hb-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:16px;height:16px;border-radius:50%;background:radial-gradient(circle,#fff 0%,var(--cyan) 60%,transparent 100%);box-shadow:0 0 28px var(--glow-c),0 0 56px var(--glow-c)}
-
-/* ── Main content ── */
-.hb-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 80px;max-width:760px}
+.hb-content{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;justify-content:center;padding:80px 80px 80px;max-width:760px}
 .hb-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 20px;background:rgba(20,184,166,.07);border:1px solid rgba(20,184,166,.3);border-radius:999px;font-size:12px;font-weight:600;color:var(--cyan);letter-spacing:2px;text-transform:uppercase;margin-bottom:28px;width:fit-content;animation:fadeSlide .8s ease both}
 .hb-dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--glow-c);animation:pulse 2s ease infinite}
 .hb-h1{font-size:clamp(34px,4.2vw,60px);font-weight:900;line-height:1.1;letter-spacing:-2px;color:#f8fafc;margin-bottom:20px;animation:fadeSlide .8s ease .12s both}
@@ -121,8 +163,6 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,5,5,.85
 .hb-pill{padding:6px 16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:999px;font-size:12px;font-weight:500;color:rgba(248,250,252,.7);letter-spacing:.3px;backdrop-filter:blur(8px)}
 .hb-pill.hi{background:rgba(20,184,166,.1);border-color:rgba(20,184,166,.35);color:var(--cyan)}
 .hb-ctas{display:flex;gap:14px;flex-wrap:wrap;animation:fadeSlide .8s ease .48s both}
-
-/* ── Bottom stats strip ── */
 .hb-stats{position:absolute;bottom:0;left:0;right:0;height:64px;background:rgba(255,255,255,.018);border-top:1px solid rgba(255,255,255,.07);backdrop-filter:blur(10px);display:flex;align-items:center;padding:0 80px;animation:fadeSlide .8s ease .6s both}
 .hb-stat{display:flex;align-items:center;gap:14px;padding:0 36px;border-right:1px solid rgba(255,255,255,.07)}
 .hb-stat:first-child{padding-left:0}
@@ -130,23 +170,26 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,5,5,.85
 .hb-snum{font-size:22px;font-weight:800;letter-spacing:-1px;background:linear-gradient(120deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hb-slbl{font-size:11px;font-weight:300;color:rgba(148,163,184,.8);letter-spacing:.4px;line-height:1.4;max-width:90px}
 
-/* ─── REST OF SITE ─── */
+/* ─── AMBIENT GLOWS ─── */
 body::before,body::after{content:'';position:fixed;width:800px;height:800px;border-radius:50%;filter:blur(120px);opacity:.12;pointer-events:none;z-index:0}
 body::before{background:var(--cyan);top:-300px;left:-200px}
 body::after{background:var(--violet);bottom:-400px;right:-300px}
 
+/* ─── STATS STRIP ─── */
 .stats{padding:80px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:48px;text-align:center}
 .stat-item{padding:24px;background:var(--glass);border:1px solid var(--border);border-radius:16px;backdrop-filter:blur(10px)}
 .stat-num{display:block;font-size:42px;font-weight:800;background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;letter-spacing:-1px}
 .stat-label{color:var(--muted);font-size:14px;font-weight:300;letter-spacing:.5px}
 
+/* ─── SECTIONS BASE ─── */
 section{padding:140px 0;position:relative}
 .section-header{text-align:center;max-width:800px;margin:0 auto 80px}
 .section-title{font-size:clamp(32px,5vw,48px);font-weight:800;letter-spacing:-1.5px;margin-bottom:20px;line-height:1.2}
 .section-lead{font-size:18px;color:var(--muted);font-weight:300;letter-spacing:.3px;line-height:1.8}
 .gradient-text{background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
+/* ─── SERVICES ─── */
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
 .service-card{position:relative;padding:40px 32px;background:var(--glass);border:1px solid var(--border);border-radius:20px;backdrop-filter:blur(20px);transition:all .4s ease;overflow:hidden}
 .service-card::before{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,var(--cyan),var(--violet));border-radius:20px;opacity:0;z-index:-1;transition:opacity .4s}
@@ -156,6 +199,7 @@ section{padding:140px 0;position:relative}
 .service-card h3{font-size:22px;font-weight:700;margin-bottom:12px;letter-spacing:-.5px}
 .service-card p{color:var(--muted);font-size:15px;font-weight:300;line-height:1.7}
 
+/* ─── LAB ─── */
 .lab-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,200px);gap:24px}
 .lab-item{position:relative;background:var(--glass);border:1px solid var(--border);border-radius:24px;padding:32px;backdrop-filter:blur(20px);overflow:hidden;transition:all .4s;display:flex;flex-direction:column;justify-content:flex-end}
 .lab-item::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent,rgba(20,184,166,.1));opacity:0;transition:opacity .4s}
@@ -169,6 +213,7 @@ section{padding:140px 0;position:relative}
 .lab-item h3{font-size:24px;font-weight:700;margin-bottom:8px;letter-spacing:-.5px}
 .lab-item p{color:var(--muted);font-size:14px;font-weight:300;line-height:1.6}
 
+/* ─── PROCESS ─── */
 .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;position:relative}
 .process-grid::before{content:'';position:absolute;top:32px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--cyan),var(--violet));opacity:.3}
 .process-step{position:relative;text-align:center;padding:32px 24px;background:var(--glass);border:1px solid var(--border);border-radius:20px;backdrop-filter:blur(20px);transition:all .3s}
@@ -177,18 +222,143 @@ section{padding:140px 0;position:relative}
 .process-step h4{font-size:20px;font-weight:700;margin-bottom:12px;letter-spacing:-.3px}
 .process-step p{color:var(--muted);font-size:14px;font-weight:300;line-height:1.6}
 
+/* ─── MISIÓN & VISIÓN + EQUIPO ─── */
+#nosotros{padding:120px 0;border-top:1px solid var(--border)}
+
+/* Misión & Visión */
+.mv-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:80px}
+.mv-card{
+  position:relative;padding:52px 48px;
+  border-radius:28px;overflow:hidden;
+}
+.mv-card-mision{
+  background:linear-gradient(135deg,rgba(20,184,166,.06) 0%,rgba(20,184,166,.02) 100%);
+  border:1px solid rgba(20,184,166,.25);
+}
+.mv-card-vision{
+  background:linear-gradient(135deg,rgba(168,85,247,.06) 0%,rgba(168,85,247,.02) 100%);
+  border:1px solid rgba(168,85,247,.25);
+}
+.mv-card::before{
+  content:'';position:absolute;
+  width:200px;height:200px;border-radius:50%;
+  filter:blur(60px);pointer-events:none;
+  top:-60px;right:-60px;opacity:.35;
+}
+.mv-card-mision::before{background:var(--cyan)}
+.mv-card-vision::before{background:var(--violet)}
+.mv-icon{
+  width:56px;height:56px;border-radius:16px;
+  display:grid;place-items:center;font-size:28px;
+  margin-bottom:24px;
+}
+.mv-icon-cyan{background:linear-gradient(135deg,rgba(20,184,166,.2),rgba(20,184,166,.05));border:1px solid rgba(20,184,166,.3)}
+.mv-icon-violet{background:linear-gradient(135deg,rgba(168,85,247,.2),rgba(168,85,247,.05));border:1px solid rgba(168,85,247,.3)}
+.mv-label{
+  font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:14px;
+}
+.mv-label-cyan{color:var(--cyan)}
+.mv-label-violet{color:var(--violet)}
+.mv-card h3{font-size:clamp(22px,2.5vw,30px);font-weight:800;letter-spacing:-1px;margin-bottom:18px;line-height:1.2}
+.mv-card p{font-size:16px;font-weight:300;color:rgba(148,163,184,.9);line-height:1.8}
+.mv-card strong{color:var(--text);font-weight:600}
+
+/* Valores */
+.mv-valores{margin-bottom:80px}
+.mv-valores-title{font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:32px}
+.mv-valores-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.mv-valor{
+  padding:28px 24px;text-align:center;
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:20px;backdrop-filter:blur(10px);
+  transition:all .3s;
+}
+.mv-valor:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 0 24px var(--glow-c)}
+.mv-valor-icon{font-size:32px;margin-bottom:12px;display:block}
+.mv-valor h4{font-size:15px;font-weight:700;margin-bottom:6px;letter-spacing:-.3px}
+.mv-valor p{font-size:13px;font-weight:300;color:var(--muted);line-height:1.5}
+
+/* Equipo simple */
+.team-divider{border:none;border-top:1px solid var(--border);margin-bottom:64px}
+.team-simple-title{text-align:center;margin-bottom:40px}
+.team-simple-title h3{font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-1px;margin-bottom:10px}
+.team-simple-title p{font-size:16px;font-weight:300;color:var(--muted)}
+.team-cards{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.team-card{
+  display:flex;align-items:center;gap:20px;
+  padding:28px 32px;
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:20px;backdrop-filter:blur(20px);
+  transition:all .3s;min-width:300px;
+}
+.team-card:hover{border-color:var(--cyan);box-shadow:0 0 30px var(--glow-c);transform:translateY(-4px)}
+.team-avatar{
+  width:60px;height:60px;flex-shrink:0;border-radius:50%;
+  background:linear-gradient(135deg,var(--cyan),var(--violet));
+  display:grid;place-items:center;font-size:24px;
+  box-shadow:0 0 20px var(--glow-c);
+}
+.team-info{}
+.team-name{font-size:17px;font-weight:700;letter-spacing:-.3px;margin-bottom:2px}
+.team-role-tag{font-size:12px;font-weight:600;color:var(--cyan);letter-spacing:.5px;margin-bottom:4px}
+.team-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.5}
+
+/* ─── MODAL (Privacidad & Términos) ─── */
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,.75);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;padding:24px;
+}
+.modal-overlay.open{display:flex}
+.modal-box{
+  position:relative;width:100%;max-width:680px;max-height:80vh;
+  background:#0d0d10;border:1px solid var(--border);
+  border-radius:24px;overflow:hidden;
+  display:flex;flex-direction:column;
+  box-shadow:0 0 80px rgba(20,184,166,.1),0 40px 100px rgba(0,0,0,.8);
+}
+.modal-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:24px 32px;border-bottom:1px solid var(--border);
+  flex-shrink:0;
+}
+.modal-head h2{font-size:20px;font-weight:800;letter-spacing:-.5px}
+.modal-close{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--glass);border:1px solid var(--border);
+  color:var(--muted);font-size:18px;cursor:pointer;
+  display:grid;place-items:center;transition:all .3s;
+}
+.modal-close:hover{border-color:var(--cyan);color:var(--cyan)}
+.modal-body{
+  padding:32px;overflow-y:auto;
+  font-size:14px;font-weight:300;color:var(--muted);line-height:1.9;
+}
+.modal-body h3{font-size:16px;font-weight:700;color:var(--text);margin:24px 0 8px}
+.modal-body h3:first-child{margin-top:0}
+.modal-body p{margin-bottom:14px}
+.modal-body ul{margin:0 0 14px 20px}
+.modal-body ul li{margin-bottom:6px}
+@keyframes modalIn{from{opacity:0;transform:scale(.96) translateY(16px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-overlay.open .modal-box{animation:modalIn .25s ease both}
+
+/* ─── PRICING ─── */
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1100px;margin:0 auto}
 .pricing-card{position:relative;padding:48px 40px;background:var(--glass);border:1px solid var(--border);border-radius:24px;backdrop-filter:blur(20px);text-align:center;transition:all .4s}
 .pricing-card.featured{background:rgba(20,184,166,.05);border:2px solid var(--cyan);transform:scale(1.05);box-shadow:0 0 60px var(--glow-c)}
 .pricing-card:hover{transform:translateY(-8px) scale(1.02);border-color:var(--cyan)}
+.pricing-card.featured:hover{transform:translateY(-8px) scale(1.07)}
 .pricing-name{font-size:14px;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
-.pricing-amount{font-size:52px;font-weight:800;margin-bottom:12px;letter-spacing:-2px}
-.pricing-amount small{font-size:24px;font-weight:600;color:var(--muted)}
+/* ✅ MEJORA 6: Precios no vacíos */
+.pricing-amount{font-size:38px;font-weight:800;margin-bottom:6px;letter-spacing:-1px;color:var(--text)}
+.pricing-from{font-size:12px;font-weight:400;color:var(--muted);margin-bottom:12px;letter-spacing:.5px;text-transform:uppercase}
 .pricing-desc{color:var(--muted);font-size:15px;margin-bottom:32px;font-weight:300}
 .pricing-features{list-style:none;margin-bottom:32px;text-align:left}
 .pricing-features li{padding:12px 0;display:flex;align-items:center;gap:12px;font-size:15px;font-weight:300;border-bottom:1px solid var(--border)}
 .pricing-features li:last-child{border:none}
 
+/* ─── CONTACTO ─── */
 .contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:start}
 .form-card{padding:48px;background:var(--glass);border:1px solid var(--border);border-radius:24px;backdrop-filter:blur(20px)}
 .form-group{margin-bottom:24px}
@@ -197,23 +367,129 @@ label{display:block;margin-bottom:8px;font-size:14px;font-weight:600;color:var(-
 input,select,textarea{width:100%;padding:14px 18px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:12px;color:var(--text);font-family:'Outfit',sans-serif;font-size:15px;outline:none;transition:all .3s}
 input:focus,select:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(20,184,166,.1);background:rgba(255,255,255,.04)}
 textarea{min-height:140px;resize:vertical}
+select option{background:#0d0d0d;color:var(--text)}
+/* ✅ MEJORA: Separador visual en select */
+select option.opt-divider{color:var(--muted);font-style:italic;pointer-events:none}
 .info-card{padding:40px;background:var(--glass);border:1px solid var(--border);border-radius:24px;backdrop-filter:blur(20px)}
 .info-card h3{font-size:24px;margin-bottom:24px;letter-spacing:-.5px}
 .info-list{list-style:none;margin-bottom:24px}
 .info-list li{padding:14px 0;display:flex;align-items:flex-start;gap:12px;border-bottom:1px solid var(--border);font-size:14px;font-weight:300;line-height:1.6}
 .info-list li:last-child{border:none}
 .contact-note{padding:20px;background:rgba(20,184,166,.1);border:1px solid var(--cyan);border-radius:12px;font-size:14px;color:var(--cyan);font-weight:300}
+.contact-note a{color:var(--cyan)}
 .thanks-message{display:none;margin-top:24px;padding:20px;background:rgba(20,184,166,.1);border:1px solid var(--cyan);border-radius:16px;color:var(--text)}
 .thanks-message strong{color:var(--cyan)}
 
-footer{padding:60px 0;border-top:1px solid var(--border);margin-top:140px}
-.footer-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
-.footer-brand{display:flex;align-items:center;gap:14px}
-.footer-text{font-size:14px;color:var(--muted);font-weight:300}
+/* ✅ MEJORA 3 & 4: TRABAJA CON NOSOTROS ─── */
+#trabaja{padding:120px 0;border-top:1px solid var(--border)}
+.jobs-header{text-align:center;max-width:700px;margin:0 auto 64px}
+.jobs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;max-width:900px;margin:0 auto;width:100%}
+.job-card{
+  position:relative;padding:40px 36px;
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:24px;backdrop-filter:blur(20px);
+  transition:all .4s;overflow:hidden;
+}
+.job-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(20,184,166,.05),rgba(168,85,247,.05));
+  opacity:0;transition:opacity .4s;
+  pointer-events:none;
+}
+.job-card:hover::after{opacity:1}
+.job-card:hover{transform:translateY(-6px);border-color:var(--cyan);box-shadow:0 0 40px var(--glow-c)}
+.job-emoji{font-size:44px;margin-bottom:20px;display:block;filter:drop-shadow(0 0 16px var(--glow-c))}
+.job-card h3{font-size:22px;font-weight:800;margin-bottom:8px;letter-spacing:-.5px}
+.job-card .job-type{font-size:12px;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+.job-card p{color:var(--muted);font-size:15px;font-weight:300;line-height:1.7;margin-bottom:24px}
+.job-perks{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.job-perk{padding:4px 12px;background:rgba(20,184,166,.07);border:1px solid rgba(20,184,166,.2);border-radius:999px;font-size:12px;font-weight:500;color:rgba(20,184,166,.85)}
+.job-card .cta-secondary{display:block;text-align:center;font-size:14px;padding:12px 24px}
+.job-card button.cta-secondary{width:100%;cursor:pointer;min-height:48px}
+.jobs-open-role{
+  max-width:900px;margin:20px auto 0;
+  padding:24px 36px;
+  background:rgba(168,85,247,.04);
+  border:1px dashed rgba(168,85,247,.3);
+  border-radius:16px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  flex-wrap:wrap;
+}
+.jobs-open-role p{font-size:15px;font-weight:300;color:var(--muted)}
+.jobs-open-role strong{color:var(--text)}
+
+/* ─── FAQ nativo con details/summary ─── */
+#faq{padding:120px 0;border-top:1px solid var(--border)}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--glass);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .3s}
+.faq-item[open]{border-color:rgba(20,184,166,.35);background:rgba(20,184,166,.02)}
+.faq-item summary{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 28px;
+  color:var(--text);font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;
+  cursor:pointer;list-style:none;gap:16px;
+  -webkit-user-select:none;user-select:none;
+  transition:color .3s;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::marker{display:none}
+.faq-item summary:hover{color:var(--cyan)}
+.faq-item summary:active{color:var(--cyan)}
+.faq-icon{
+  flex-shrink:0;width:28px;height:28px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.12);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;color:var(--muted);
+  transition:all .3s;background:rgba(255,255,255,.03);
+}
+.faq-item[open] .faq-icon{
+  background:rgba(20,184,166,.12);
+  border-color:var(--cyan);color:var(--cyan);
+  transform:rotate(45deg);
+}
+.faq-body{
+  padding:0 28px 22px;
+  color:var(--muted);font-size:15px;font-weight:300;line-height:1.8;
+  border-top:1px solid rgba(255,255,255,.05);
+  padding-top:16px;
+}
+
+/* ✅ MEJORA 7: FOOTER MEJORADO ─── */
+footer{padding:80px 0 40px;border-top:1px solid var(--border);margin-top:60px}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:60px}
+.footer-brand-col{}
+.footer-brand{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.footer-desc{font-size:14px;color:var(--muted);font-weight:300;line-height:1.7;max-width:260px;margin-bottom:24px}
+.footer-social{display:flex;gap:10px}
+.footer-social a{
+  width:36px;height:36px;border-radius:8px;
+  background:var(--glass);border:1px solid var(--border);
+  display:grid;place-items:center;font-size:16px;
+  text-decoration:none;transition:all .3s;color:var(--muted);
+}
+.footer-social a:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(20,184,166,.08)}
+.footer-col h4{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col ul li a{font-size:14px;font-weight:300;color:rgba(148,163,184,.7);text-decoration:none;transition:color .3s}
+.footer-col ul li a:hover{color:var(--cyan)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding-top:28px;border-top:1px solid var(--border)}
+.footer-bottom-text{font-size:13px;color:rgba(100,116,139,.7);font-weight:300}
+.footer-legal{display:flex;gap:20px}
+.footer-legal a{font-size:13px;color:rgba(100,116,139,.7);text-decoration:none;font-weight:300;transition:color .3s}
+.footer-legal a:hover{color:var(--muted)}
 
 /* ─── RESPONSIVE ─── */
+
+@media(max-width:900px){
+  .jobs-grid{grid-template-columns:1fr;max-width:560px;gap:18px}
+  .job-card{padding:28px 22px}
+}
+
 @media(max-width:768px){
-  .menu a.hide-mobile{display:none}
+  /* ✅ Hamburger visible */
+  .hamburger{display:flex}
+  .menu{display:none}
+
   .nav{height:70px}
   .container{padding:0 20px}
   .hero-banner{height:auto;min-height:100vh;max-height:none}
@@ -223,7 +499,15 @@ footer{padding:60px 0;border-top:1px solid var(--border);margin-top:140px}
   .hb-pills{justify-content:center}
   .hb-ctas{justify-content:center;flex-direction:column;align-items:center}
   .hb-ctas .cta-primary,.hb-ctas .cta-secondary{width:100%;max-width:300px;text-align:center}
-  .hb-sphere-wrap{display:none}
+  .hb-sphere-wrap{
+    width:190px;height:190px;
+    right:8px;
+    top:96px;
+    bottom:auto;
+    transform:none;
+    opacity:0.78;
+  }
+  #vitairos-geo{width:190px!important;height:190px!important}
   .hb-stats{position:relative;height:auto;padding:16px 24px;flex-wrap:wrap;gap:12px}
   .hb-stat{padding:12px 16px;border-right:none;border-bottom:1px solid rgba(255,255,255,.07);width:calc(50% - 6px)}
   .hb-stat:last-child{border-bottom:none}
@@ -240,8 +524,37 @@ footer{padding:60px 0;border-top:1px solid var(--border);margin-top:140px}
   .contact-grid{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .form-card{padding:32px 24px}
-  footer{padding:40px 0}
-  .footer-content{flex-direction:column;text-align:center}
+  /* Misión/Visión mobile */
+  .mv-grid{grid-template-columns:1fr}
+  .mv-valores-grid{grid-template-columns:repeat(2,1fr)}
+  .team-card{min-width:unset;width:100%}
+  /* Jobs mobile */
+  #trabaja{padding:96px 0}
+  .jobs-header{margin-bottom:40px}
+  .jobs-grid{grid-template-columns:1fr;gap:18px;max-width:100%}
+  .job-card{padding:26px 20px;border-radius:20px}
+  .job-card h3{font-size:20px;line-height:1.25;margin-bottom:10px}
+  .job-card .job-type{font-size:11px;letter-spacing:1.6px;margin-bottom:12px}
+  .job-card p{font-size:14px;line-height:1.65;margin-bottom:18px}
+  .job-emoji{font-size:36px;margin-bottom:14px}
+  .job-perks{gap:8px;margin-bottom:20px}
+  .job-perk{font-size:11px;padding:6px 10px}
+  .job-card .cta-secondary{font-size:14px;padding:13px 16px;border-radius:12px}
+  .jobs-open-role{flex-direction:column;align-items:stretch;gap:14px;padding:20px;border-radius:18px;margin-top:18px}
+  .jobs-open-role p{font-size:14px;line-height:1.65}
+  .jobs-open-role .cta-secondary{width:100%;text-align:center;white-space:normal;padding:13px 16px}
+  /* Footer mobile */
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .footer-legal{justify-content:center}
+}
+@media(max-width:480px){
+  .job-card{padding:22px 16px}
+  .job-card h3{font-size:18px;line-height:1.3}
+  .job-card p{font-size:13.5px;line-height:1.6}
+  .job-perks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .job-perk{text-align:center;justify-content:center;min-height:34px;display:flex;align-items:center}
+  .footer-top{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -254,20 +567,36 @@ footer{padding:60px 0;border-top:1px solid var(--border);margin-top:140px}
       <div class="brand-logo">V</div>
       <span>VITAIROS</span>
     </a>
+    <!-- ✅ Menú desktop -->
     <nav class="menu">
       <a href="#servicios">Servicios</a>
-      <a href="#laboratorio" class="hide-mobile">Laboratorio</a>
-      <a href="#proceso" class="hide-mobile">Proceso</a>
+      <a href="#casos">¿Para quién?</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#trabaja">Trabaja con nosotros</a>
       <a href="#precios">Precios</a>
-      <a href="#contacto" class="cta-primary">Agenda consulta</a>
+      <a href="#contacto" class="cta-primary">Consulta gratuita</a>
     </nav>
+    <!-- ✅ MEJORA 2: Hamburger mobile -->
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-controls="mobileMenu" aria-expanded="false" type="button">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
+<!-- ✅ Menú mobile desplegable -->
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil">
+  <a href="#servicios" onclick="closeMenu()">Servicios</a>
+  <a href="#casos" onclick="closeMenu()">¿Para quién trabajamos?</a>
+  <a href="#proceso" onclick="closeMenu()">Proceso</a>
+  <a href="#nosotros" onclick="closeMenu()">Nosotros</a>
+  <a href="#trabaja" onclick="closeMenu()">Trabaja con nosotros</a>
+  <a href="#precios" onclick="closeMenu()">Precios</a>
+  <a href="#contacto" class="cta-primary" onclick="closeMenu()">Consulta gratuita</a>
+</nav>
+
 <!-- ─── HERO BANNER ─── -->
 <section id="inicio" class="hero-banner">
-
-  <!-- Layers -->
   <div class="hb-photo"></div>
   <div class="hb-overlay"></div>
   <div class="hb-glow-tl"></div>
@@ -275,266 +604,1358 @@ footer{padding:60px 0;border-top:1px solid var(--border);margin-top:140px}
   <div class="hb-grid"></div>
   <div class="hb-divider"></div>
   <div class="hb-scan"></div>
-
-  <!-- Floating nodes -->
   <div class="hb-nodes">
-    <div class="hb-node"></div>
-    <div class="hb-node"></div>
-    <div class="hb-node"></div>
-    <div class="hb-node"></div>
-    <div class="hb-node"></div>
+    <div class="hb-node"></div><div class="hb-node"></div>
+    <div class="hb-node"></div><div class="hb-node"></div><div class="hb-node"></div>
   </div>
-
-  <!-- Wireframe sphere -->
-  <div class="hb-sphere-wrap">
+  <div class="hb-sphere-wrap show-fallback" id="hbSphereWrap">
     <div class="hb-sphere-glow"></div>
-    <div class="hb-sphere">
-      <div class="hb-ring"></div>
-      <div class="hb-ring"></div>
-      <div class="hb-ring"></div>
-      <div class="hb-ring"></div>
-      <div class="hb-ring"></div>
-      <div class="hb-ring"></div>
-      <div class="hb-ring-h"></div>
-      <div class="hb-ring-h"></div>
-      <div class="hb-ring-h"></div>
-      <div class="hb-ring-h"></div>
-      <div class="hb-ring-h"></div>
-      <div class="hb-core"></div>
-    </div>
+    <img src="/vitairos-geo-fallback.svg" alt="Visualización tecnológica VITAIROS" class="hb-sphere-fallback" id="vitairosGeoFallback" decoding="async">
+    <canvas id="vitairos-geo" width="340" height="340" style="position:relative;z-index:2"></canvas>
   </div>
-
-  <!-- Content -->
   <div class="hb-content">
-    <div class="hb-badge"><span class="hb-dot"></span>Estudio de Innovación Tecnológica</div>
-
+    <div class="hb-badge"><span class="hb-dot"></span>Estudio de Software · Chile & LATAM</div>
     <h1 class="hb-h1">
-      Convertimos tu idea en un producto tecnológico:<br>
-      <span class="grad">que funciona, escala y vende</span>
+      Diseñamos y construimos<br>
+      <span class="grad">productos digitales que escalan</span>
     </h1>
-
     <p class="hb-lead">
-      Arquitectura solida, diseño de vanguardia y precisión de ingeniería. Transformamos ideas ambiciosas en productos de alto valor listos para escalar.
+      Para startups y empresas que necesitan lanzar rápido y crecer bien. Desarrollamos software a medida, IA aplicada e ingeniería avanzada — con arquitectura sólida desde el primer sprint.
     </p>
-
     <div class="hb-pills">
-      <span class="hb-pill hi">Inteligencia Artificial</span>
-      <span class="hb-pill">Diseño 3D / CAD</span>
-      <span class="hb-pill">Software a medida</span>
-      <span class="hb-pill">Impresión 3D</span>
+      <span class="hb-pill hi">✦ Productos digitales</span>
+      <span class="hb-pill hi">✦ IA aplicada al negocio</span>
+      <span class="hb-pill hi">✦ Ingeniería avanzada</span>
     </div>
-
     <div class="hb-ctas">
-      <a href="#contacto" class="cta-primary">Agendar consulta gratuita</a>
-      <a href="#laboratorio" class="cta-secondary">Ver laboratorio</a>
+      <a href="#contacto" class="cta-primary">Agendar consulta gratuita · 30 min</a>
+      <a href="#casos" class="cta-secondary">¿Para quién trabajamos?</a>
     </div>
-
     <div style="display:flex;align-items:center;gap:12px;color:var(--muted);font-size:14px;font-weight:300;margin-top:24px;animation:fadeSlide .8s ease .6s both">
-      <span>✓</span>
-      <span>Respuesta en 24h • Arquitectura enterprise • Soporte incluido</span>
+      <span style="color:var(--cyan)">✓</span>
+      <span>Sin costo · Respuesta en 24h &nbsp;•&nbsp; NDA disponible &nbsp;•&nbsp; Sprints de 2 semanas</span>
     </div>
   </div>
-
-
-
+  <div class="hb-stats">
+    <div class="hb-stat"><span class="hb-snum">+10 años</span><span class="hb-slbl">Experiencia en producto</span></div>
+    <div class="hb-stat"><span class="hb-snum">2 sem</span><span class="hb-slbl">Por sprint ágil</span></div>
+    <div class="hb-stat"><span class="hb-snum">100%</span><span class="hb-slbl">Entregas a tiempo</span></div>
+    <div class="hb-stat"><span class="hb-snum">24h</span><span class="hb-slbl">Respuesta garantizada</span></div>
+  </div>
 </section>
 
 <!-- ─── STATS ─── -->
 <div class="stats">
-<div class="container">
-<div class="stats-grid">
-<div class="stat-item"><span class="stat-num">+10 años</span><span class="stat-label">Experiencia en producto</span></div>
-<div class="stat-item"><span class="stat-num">2 sem</span><span class="stat-label">Por sprint</span></div>
-<div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">de entregas a tiempo</span></div>
-<div class="stat-item"><span class="stat-num">24h</span><span class="stat-label">Respuesta garantizada</span></div>
-</div>
-</div>
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item"><span class="stat-num">+10 años</span><span class="stat-label">Experiencia en producto</span></div>
+      <div class="stat-item"><span class="stat-num">2 sem</span><span class="stat-label">Por sprint</span></div>
+      <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">de entregas a tiempo</span></div>
+      <div class="stat-item"><span class="stat-num">24h</span><span class="stat-label">Respuesta garantizada</span></div>
+    </div>
+  </div>
 </div>
 
 <!-- ─── SERVICIOS ─── -->
 <section id="servicios">
-<div class="container">
-<div class="section-header">
-<h2 class="section-title">Todo lo que tu producto necesita.</h2>
-<p class="section-lead">Un solo equipo para cada parte de tu sueño.</p>
-</div>
-<div class="services-grid">
-<div class="service-card"><div class="service-icon">📱</div><h3>Apps iOS & Android</h3><p>Aplicaciones nativas rápidas, escalables y listas para miles de usuarios desde el día 1.</p></div>
-<div class="service-card"><div class="service-icon">🤖</div><h3>IA a tu medida</h3><p>Automatizaciones, chatbots y modelos entrenados con tus datos — sin complejidades innecesarias.</p></div>
-<div class="service-card"><div class="service-icon">🌐</div><h3>Web & Plataformas SaaS</h3><p>Tu producto web con arquitectura sólida, APIs y listo para crecer sin límites.</p></div>
-<div class="service-card"><div class="service-icon">🎨</div><h3>Diseño UX/UI & Consultorías</h3><p>Interfaces que enamoran y convierten — Te acompañamos desde el prototipo hasta el producto final.</p></div>
-<div class="service-card"><div class="service-icon">🔗</div><h3>Integraciones Enterprise</h3><p>Conectamos tu producto con cualquier herramienta, CRM, pago o sistema que ya uses.</p></div>
-<div class="service-card"><div class="service-icon">🖨️</div><h3>Ingeniería 3D & Fabricación</h3><p>Modelado CAD, simulación FEA, renders fotorrealistas e impresión 3D para prototipos reales.</p></div>
-</div>
-</div>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Lo que hacemos <span class="gradient-text">excepcionalmente bien</span></h2>
+      <p class="section-lead">Tres pilares. Un equipo. Foco total en resultado de negocio.</p>
+    </div>
+
+    <!-- 3 pilares principales -->
+    <div class="services-grid" style="margin-bottom:48px">
+      <div class="service-card" style="border-color:rgba(20,184,166,.25);background:rgba(20,184,166,.03)">
+        <div class="service-icon">📱</div>
+        <h3>Productos Digitales</h3>
+        <p>Diseñamos y construimos apps móviles, plataformas SaaS y webs con arquitectura que soporta escala real. Desde MVP en 4 semanas hasta plataformas enterprise.</p>
+        <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:6px">
+          <span style="padding:3px 10px;background:rgba(20,184,166,.07);border:1px solid rgba(20,184,166,.2);border-radius:999px;font-size:11px;color:var(--cyan)">Apps iOS & Android</span>
+          <span style="padding:3px 10px;background:rgba(20,184,166,.07);border:1px solid rgba(20,184,166,.2);border-radius:999px;font-size:11px;color:var(--cyan)">Plataformas SaaS</span>
+          <span style="padding:3px 10px;background:rgba(20,184,166,.07);border:1px solid rgba(20,184,166,.2);border-radius:999px;font-size:11px;color:var(--cyan)">MVP & Prototipos</span>
+          <span style="padding:3px 10px;background:rgba(20,184,166,.07);border:1px solid rgba(20,184,166,.2);border-radius:999px;font-size:11px;color:var(--cyan)">UX/UI</span>
+        </div>
+      </div>
+      <div class="service-card" style="border-color:rgba(168,85,247,.25);background:rgba(168,85,247,.03)">
+        <div class="service-icon" style="background:linear-gradient(135deg,var(--violet),var(--cyan))">🤖</div>
+        <h3>IA Aplicada al Negocio</h3>
+        <p>No vendemos IA genérica. Integramos, entrenamos y desplegamos modelos que resuelven un problema real de tu empresa — con métricas claras desde el inicio.</p>
+        <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:6px">
+          <span style="padding:3px 10px;background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.2);border-radius:999px;font-size:11px;color:var(--violet)">Modelos a medida</span>
+          <span style="padding:3px 10px;background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.2);border-radius:999px;font-size:11px;color:var(--violet)">Automatización</span>
+          <span style="padding:3px 10px;background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.2);border-radius:999px;font-size:11px;color:var(--violet)">Chatbots & Agentes</span>
+          <span style="padding:3px 10px;background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.2);border-radius:999px;font-size:11px;color:var(--violet)">Analytics & BI</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏗️</div>
+        <h3>Ingeniería Avanzada</h3>
+        <p>Integraciones enterprise, arquitectura de sistemas complejos y prototipado físico 3D para empresas que necesitan más que software estándar.</p>
+        <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:6px">
+          <span style="padding:3px 10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:999px;font-size:11px;color:var(--muted)">Integraciones & APIs</span>
+          <span style="padding:3px 10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:999px;font-size:11px;color:var(--muted)">DevOps & Cloud</span>
+          <span style="padding:3px 10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:999px;font-size:11px;color:var(--muted)">CAD & Prototipado 3D</span>
+          <span style="padding:3px 10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:999px;font-size:11px;color:var(--muted)">Consultoría técnica</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stack tecnológico -->
+    <div style="padding:40px;background:linear-gradient(135deg,rgba(20,184,166,.04),rgba(168,85,247,.03));border:1px solid rgba(20,184,166,.15);border-radius:24px;backdrop-filter:blur(20px);position:relative;overflow:hidden">
+      <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,.12),transparent 70%);pointer-events:none"></div>
+      <div style="position:absolute;bottom:-40px;left:-40px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,.1),transparent 70%);pointer-events:none"></div>
+      <div style="text-align:center;margin-bottom:28px">
+        <p style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-bottom:6px">Stack tecnológico</p>
+        <p style="font-size:13px;font-weight:300;color:var(--muted)">Las herramientas que usamos — y muchas más según cada proyecto</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;position:relative;z-index:1">
+        <span style="padding:8px 18px;background:rgba(20,184,166,.08);border:1px solid rgba(20,184,166,.25);border-radius:10px;font-size:13px;font-weight:500;color:rgba(20,184,166,.9);transition:all .3s">React / Next.js</span>
+        <span style="padding:8px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13px;font-weight:500;color:rgba(248,250,252,.8)">React Native</span>
+        <span style="padding:8px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13px;font-weight:500;color:rgba(248,250,252,.8)">Node.js</span>
+        <span style="padding:8px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13px;font-weight:500;color:rgba(248,250,252,.8)">Python</span>
+        <span style="padding:8px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13px;font-weight:500;color:rgba(248,250,252,.8)">TypeScript</span>
+        <span style="padding:8px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13px;font-weight:500;color:rgba(248,250,252,.8)">PostgreSQL</span>
+        <span style="padding:8px 18px;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.25);border-radius:10px;font-size:13px;font-weight:500;color:rgba(168,85,247,.9)">OpenAI / Anthropic</span>
+        <span style="padding:8px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13px;font-weight:500;color:rgba(248,250,252,.8)">AWS / GCP</span>
+        <span style="padding:8px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13px;font-weight:500;color:rgba(248,250,252,.8)">Docker</span>
+        <span style="padding:8px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13px;font-weight:500;color:rgba(248,250,252,.8)">Figma</span>
+        <span style="padding:8px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13px;font-weight:500;color:rgba(248,250,252,.8)">Stripe / MercadoPago</span>
+        <span style="padding:8px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13px;font-weight:500;color:rgba(248,250,252,.8)">SolidWorks / CAD</span>
+        <span style="padding:8px 18px;background:linear-gradient(90deg,rgba(20,184,166,.15),rgba(168,85,247,.15));border:1px solid rgba(20,184,166,.4);border-radius:10px;font-size:13px;font-weight:700;color:var(--text);letter-spacing:.5px">+ y mucho más ✦</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ─── LABORATORIO ─── -->
-<section id="laboratorio">
-<div class="container">
-<div class="section-header">
-<h2 class="section-title">Laboratorio de Proyectos</h2>
-<p class="section-lead">Casos de innovación tecnológica con impacto medible</p>
-</div>
-<div class="lab-grid">
-<div class="lab-item"><div class="lab-icon">🧠</div><h3>Modelos de Lenguaje Personalizados</h3><p>Fine-tuning de LLMs para dominios específicos. Reducción de costos operativos en 60% vs APIs comerciales.</p></div>
-<div class="lab-item"><div class="lab-icon">📊</div><h3>Analytics & BI en Tiempo Real</h3><p>Dashboards predictivos con ML que anticipan tendencias y optimizan decisiones de negocio.</p></div>
-<div class="lab-item"><div class="lab-icon">🏗️</div><h3>Renders de Ingeniería 3D</h3><p>Gemelos digitales y simulaciones FEA para validación de diseños antes de fabricación física.</p></div>
-<div class="lab-item"><div class="lab-icon">⚡</div><h3>Apps de Alto Rendimiento</h3><p>Arquitecturas optimizadas que procesan millones de eventos/día con latencia sub-100ms.</p></div>
-</div>
-</div>
+<!-- ─── PARA QUIÉN ─── -->
+<section id="casos">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">¿Para quién es <span class="gradient-text">VITAIROS</span>?</h2>
+      <p class="section-lead">No trabajamos con todos. Trabajamos bien con quienes tienen un desafío técnico real y quieren un equipo comprometido con el resultado.</p>
+    </div>
+
+    <div class="cases-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px">
+
+      <div class="service-card" style="border-color:rgba(20,184,166,.2);text-align:left">
+        <div style="font-size:40px;margin-bottom:20px">🚀</div>
+        <h3 style="font-size:19px;margin-bottom:10px">Startups que quieren lanzar</h3>
+        <p>Tienes una idea validada o un MVP en mente, necesitas un equipo técnico para construirlo rápido sin endeudarte con una software factory grande.</p>
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
+          <p style="font-size:12px;font-weight:600;color:var(--cyan);margin-bottom:8px">Lo que resolvemos:</p>
+          <p style="font-size:13px;color:var(--muted);font-weight:300">App móvil · Plataforma web · MVP en semanas · UX/UI incluido</p>
+        </div>
+      </div>
+
+      <div class="service-card" style="border-color:rgba(168,85,247,.2);text-align:left">
+        <div style="font-size:40px;margin-bottom:20px">🏢</div>
+        <h3 style="font-size:19px;margin-bottom:10px">Pymes que quieren digitalizar</h3>
+        <p>Tu empresa funciona bien, pero procesos manuales, hojas de cálculo y falta de datos te están costando tiempo y dinero. Necesitas tecnología que se adapte a tu operación.</p>
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
+          <p style="font-size:12px;font-weight:600;color:var(--violet);margin-bottom:8px">Lo que resolvemos:</p>
+          <p style="font-size:13px;color:var(--muted);font-weight:300">Automatización · Dashboards · Integraciones · Sistemas a medida</p>
+        </div>
+      </div>
+
+      <div class="service-card" style="text-align:left">
+        <div style="font-size:40px;margin-bottom:20px">🤖</div>
+        <h3 style="font-size:19px;margin-bottom:10px">Empresas que quieren IA real</h3>
+        <p>Has visto el potencial de la IA pero no sabes cómo aplicarla a tu negocio específico sin gastar en soluciones genéricas que no resuelven nada concreto.</p>
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
+          <p style="font-size:12px;font-weight:600;color:var(--muted);margin-bottom:8px">Lo que resolvemos:</p>
+          <p style="font-size:13px;color:var(--muted);font-weight:300">Chatbots entrenados · Automatización con IA · Modelos a medida · Analytics</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Señales de confianza horizontales -->
+    <div class="trust-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px">
+      <div style="padding:24px;background:var(--glass);border:1px solid var(--border);border-radius:16px;text-align:center">
+        <div style="font-size:28px;font-weight:800;background:linear-gradient(120deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px">+10 años</div>
+        <div style="font-size:12px;color:var(--muted);font-weight:300">Experiencia técnica acumulada</div>
+      </div>
+      <div style="padding:24px;background:var(--glass);border:1px solid var(--border);border-radius:16px;text-align:center">
+        <div style="font-size:28px;font-weight:800;background:linear-gradient(120deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px">2 sem</div>
+        <div style="font-size:12px;color:var(--muted);font-weight:300">Por sprint con demo funcional</div>
+      </div>
+      <div style="padding:24px;background:var(--glass);border:1px solid var(--border);border-radius:16px;text-align:center">
+        <div style="font-size:28px;font-weight:800;background:linear-gradient(120deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px">NDA</div>
+        <div style="font-size:12px;color:var(--muted);font-weight:300">Confidencialidad desde el día 1</div>
+      </div>
+      <div style="padding:24px;background:var(--glass);border:1px solid var(--border);border-radius:16px;text-align:center">
+        <div style="font-size:28px;font-weight:800;background:linear-gradient(120deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px">LATAM</div>
+        <div style="font-size:12px;color:var(--muted);font-weight:300">Clientes en Chile, Arg, Méx, Col</div>
+      </div>
+    </div>
+
+    <!-- No fit honesto -->
+    <div class="not-fit-box" style="padding:28px 36px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:16px;display:flex;align-items:flex-start;gap:20px">
+      <span style="font-size:24px;flex-shrink:0;margin-top:2px">💬</span>
+      <div>
+        <p style="font-size:15px;font-weight:600;margin-bottom:6px;color:var(--text)">Si no somos el fit, te lo decimos directo.</p>
+        <p style="font-size:14px;font-weight:300;color:var(--muted)">En la llamada de 30 minutos evaluamos juntos si tiene sentido trabajar. Si no somos la mejor opción para tu caso, te orientamos hacia lo que sí te conviene. Sin perder tu tiempo ni el nuestro.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ─── PROCESO ─── -->
 <section id="proceso">
-<div class="container">
-<div class="section-header">
-<h2 class="section-title">Así construimos tu producto.</h2>
-<p class="section-lead">Sabes exactamente qué pasa cada semana.</p>
-</div>
-<div class="process-grid">
-<div class="process-step"><div class="process-num">01</div><h4>Descubrimiento</h4><p>Entendemos tu idea, tu mercado y lo que necesita tu producto para funcionar de verdad.</p></div>
-<div class="process-step"><div class="process-num">02</div><h4>Diseño & Arquitectura</h4><p>Definimos cómo se ve y cómo funciona — sin sorpresas técnicas en el camino.</p></div>
-<div class="process-step"><div class="process-num">03</div><h4>Desarrollo</h4><p>Construimos en sprints de 2 semanas con entregas reales que puedes ver y tocar.</p></div>
-<div class="process-step"><div class="process-num">04</div><h4>Lanzamiento</h4><p>Tu producto en producción, estable, monitoreado y con soporte incluido.</p></div>
-</div>
-</div>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Sabes exactamente <span class="gradient-text">qué pasa cada semana</span></h2>
+      <p class="section-lead">Sin cajas negras. Sin surpresas. Un proceso probado con entregables claros en cada etapa.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <h4>Descubrimiento</h4>
+        <p>Entendemos tu negocio, tu mercado y el problema real que necesita resolver el producto.</p>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+          <p style="font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Entregables</p>
+          <p style="font-size:12px;color:var(--muted);font-weight:300">Brief técnico · Definición del alcance · Propuesta formal</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <h4>Diseño & Arquitectura</h4>
+        <p>Definimos cómo se ve y cómo funciona — con wireframes, prototipos y arquitectura documentada.</p>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+          <p style="font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Entregables</p>
+          <p style="font-size:12px;color:var(--muted);font-weight:300">Prototipo Figma · Diagrama de arquitectura · Stack definido</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <h4>Desarrollo en Sprints</h4>
+        <p>Construimos en ciclos de 2 semanas. Cada sprint termina con una demo funcional que puedes ver y tocar.</p>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+          <p style="font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Entregables</p>
+          <p style="font-size:12px;color:var(--muted);font-weight:300">Demo funcional c/2 semanas · Repositorio accesible · Reporte de avance</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <h4>Lanzamiento & Soporte</h4>
+        <p>Tu producto en producción, monitoreado, estable. Con soporte técnico incluido y plan de continuidad.</p>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+          <p style="font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Entregables</p>
+          <p style="font-size:12px;color:var(--muted);font-weight:300">Deploy en producción · Documentación técnica · Soporte post-lanzamiento</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MISIÓN, VISIÓN & EQUIPO ─── -->
+<section id="nosotros">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Por qué existe <span class="gradient-text">VITAIROS</span></h2>
+      <p class="section-lead">Construimos con propósito. Cada línea de código, cada modelo 3D y cada solución de IA responde a una convicción profunda sobre el futuro de la tecnología en Latinoamérica.</p>
+    </div>
+
+    <!-- Misión & Visión -->
+    <div class="mv-grid">
+      <div class="mv-card mv-card-mision">
+        <div class="mv-icon mv-icon-cyan">🎯</div>
+        <div class="mv-label mv-label-cyan">Nuestra misión</div>
+        <h3>Hacer que la tecnología de vanguardia sea accesible</h3>
+        <p>Democratizamos el acceso a <strong>soluciones de IA, software a medida e ingeniería 3D</strong> para empresas que quieren crecer sin depender de estructuras tecnológicas costosas o inaccesibles. Somos el equipo técnico que tu empresa necesita, sin el peso de tenerlo internamente.</p>
+      </div>
+      <div class="mv-card mv-card-vision">
+        <div class="mv-icon mv-icon-violet">🔭</div>
+        <div class="mv-label mv-label-violet">Nuestra visión</div>
+        <h3>Ser el estudio tecnológico de referencia en LATAM</h3>
+        <p>Queremos que en 2030, VITAIROS sea reconocido en toda Latinoamérica como el estudio donde <strong>las ideas más ambiciosas se convierten en productos reales</strong>. Un equipo pequeño, ágil y de primer nivel que compite con las mejores consultoras del mundo — sin sus tiempos ni sus precios.</p>
+      </div>
+    </div>
+
+    <!-- Valores -->
+    <div class="mv-valores">
+      <p class="mv-valores-title">Lo que nos guía en cada proyecto</p>
+      <div class="mv-valores-grid">
+        <div class="mv-valor">
+          <span class="mv-valor-icon">⚡</span>
+          <h4>Velocidad con calidad</h4>
+          <p>Entregamos rápido sin sacrificar arquitectura. Sprints de 2 semanas con demos reales.</p>
+        </div>
+        <div class="mv-valor">
+          <span class="mv-valor-icon">🔍</span>
+          <h4>Transparencia total</h4>
+          <p>Sabes exactamente qué se construye, cuándo y por qué. Sin cajas negras.</p>
+        </div>
+        <div class="mv-valor">
+          <span class="mv-valor-icon">📐</span>
+          <h4>Precisión de ingeniería</h4>
+          <p>Código limpio, escalable y mantenible. Lo construimos como si lo fuéramos a mantener 10 años.</p>
+        </div>
+        <div class="mv-valor">
+          <span class="mv-valor-icon">🌱</span>
+          <h4>Impacto real</h4>
+          <p>No medimos el éxito en líneas de código, sino en el resultado que genera en tu negocio.</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
 </section>
 
 <!-- ─── PRECIOS ─── -->
 <section id="precios">
-<div class="container">
-<div class="section-header">
-<h2 class="section-title">Inversión transparente</h2>
-<p class="section-lead">Paquetes escalables o cotización personalizada para tu proyecto</p>
-</div>
-<div class="pricing-grid">
-<div class="pricing-card">
-<p class="pricing-name">STARTER</p>
-<h3 class="pricing-amount"><small></small></h3>
-<p class="pricing-desc">MVP funcional para validación</p>
-<ul class="pricing-features">
-<li><span>✓</span> App o web core</li>
-<li><span>✓</span> Diseño UX básico</li>
-<li><span>✓</span> 4 semanas dev</li>
-<li><span>✓</span> 15 días soporte</li>
-</ul>
-<a href="#contacto" class="cta-secondary" style="width:100%">Consultar</a>
-</div>
-<div class="pricing-card featured">
-<p class="pricing-name">PROFESSIONAL</p>
-<h3 class="pricing-amount"><small></small></h3>
-<p class="pricing-desc">Producto completo enterprise</p>
-<ul class="pricing-features">
-<li><span>✓</span> Arquitectura escalable</li>
-<li><span>✓</span> Design system completo</li>
-<li><span>✓</span> 8-10 semanas dev</li>
-<li><span>✓</span> Integraciones incluidas</li>
-<li><span>✓</span> 30 días soporte</li>
-</ul>
-<a href="#contacto" class="cta-primary" style="width:100%">Más elegido</a>
-</div>
-<div class="pricing-card">
-<p class="pricing-name">ENTERPRISE</p>
-<h3 class="pricing-amount"></h3>
-<p class="pricing-desc">Solución a medida con IA</p>
-<ul class="pricing-features">
-<li><span>✓</span> Plataforma multi-canal</li>
-<li><span>✓</span> IA & automatización</li>
-<li><span>✓</span> DevOps & monitoring</li>
-<li><span>✓</span> Soporte extendido</li>
-<li><span>✓</span> Capacitación equipo</li>
-</ul>
-<a href="#contacto" class="cta-secondary" style="width:100%">Cotizar</a>
-</div>
-</div>
-</div>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Empezamos <span class="gradient-text">sin riesgo</span></h2>
+      <p class="section-lead">No cotizamos a ciegas. Primero entendemos tu proyecto — después te damos un número real. Sin sorpresas.</p>
+    </div>
+
+    <!-- Primer paso destacado -->
+    <div style="max-width:720px;margin:0 auto 56px;padding:48px;background:linear-gradient(135deg,rgba(20,184,166,.07),rgba(168,85,247,.04));border:1px solid rgba(20,184,166,.3);border-radius:28px;text-align:center;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,.15),transparent 70%);pointer-events:none"></div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:16px">El primer paso</div>
+      <h3 style="font-size:clamp(24px,3vw,34px);font-weight:900;letter-spacing:-1px;margin-bottom:16px">Diagnóstico técnico gratuito</h3>
+      <p style="font-size:16px;font-weight:300;color:rgba(148,163,184,.9);line-height:1.8;max-width:500px;margin:0 auto 32px">30 minutos con un ingeniero real. Analizamos tu desafío, evaluamos viabilidad técnica y si hay fit, recibes una propuesta con alcance y costo real en 48 horas.</p>
+      <div style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-bottom:32px">
+        <div style="text-align:center">
+          <div style="font-size:22px;font-weight:800;color:var(--cyan)">$0</div>
+          <div style="font-size:12px;color:var(--muted)">Costo de la llamada</div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:22px;font-weight:800;color:var(--cyan)">30 min</div>
+          <div style="font-size:12px;color:var(--muted)">Duración</div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:22px;font-weight:800;color:var(--cyan)">48h</div>
+          <div style="font-size:12px;color:var(--muted)">Propuesta por escrito</div>
+        </div>
+      </div>
+      <a href="#contacto" class="cta-primary" style="display:inline-block;font-size:16px;padding:14px 36px" onclick="openModal('proyecto');return false">Agendar diagnóstico gratuito →</a>
+    </div>
+
+    <!-- 3 niveles de proyecto sin precios fijos -->
+    <div style="margin-bottom:20px;text-align:center">
+      <p style="font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">¿Qué tipo de proyecto tienes?</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <p class="pricing-name">PROYECTO ACOTADO</p>
+        <div style="font-size:32px;margin:12px 0 4px">🎯</div>
+        <div class="pricing-from" style="margin-bottom:16px">MVP · Prototipo · Feature específico</div>
+        <p class="pricing-desc">Ideal si tienes claro qué quieres construir y necesitas ejecutarlo rápido con un equipo técnico confiable.</p>
+        <ul class="pricing-features">
+          <li><span>✓</span> Alcance definido desde el inicio</li>
+          <li><span>✓</span> Entrega en 3 a 6 semanas</li>
+          <li><span>✓</span> Una iteración incluida</li>
+          <li><span>✓</span> Código 100% propiedad del cliente</li>
+        </ul>
+        <button onclick="openModal('proyecto')" class="cta-secondary" style="width:100%;display:block;text-align:center;cursor:pointer">Conversemos →</button>
+      </div>
+
+      <div class="pricing-card featured">
+        <p class="pricing-name">PRODUCTO COMPLETO</p>
+        <div style="font-size:32px;margin:12px 0 4px">🚀</div>
+        <div class="pricing-from" style="margin-bottom:16px">App · SaaS · Plataforma · IA integrada</div>
+        <p class="pricing-desc">Para quienes necesitan construir un producto real, escalable y listo para usuarios o clientes reales desde el lanzamiento.</p>
+        <ul class="pricing-features">
+          <li><span>✓</span> Diseño UX/UI + arquitectura</li>
+          <li><span>✓</span> Sprints de 2 semanas con demos</li>
+          <li><span>✓</span> Integraciones y DevOps incluidos</li>
+          <li><span>✓</span> Soporte post-lanzamiento</li>
+          <li><span>✓</span> Escalable desde el día 1</li>
+        </ul>
+        <button onclick="openModal('proyecto')" class="cta-primary" style="width:100%;display:block;text-align:center;cursor:pointer;border:none">Quiero esto →</button>
+      </div>
+
+      <div class="pricing-card">
+        <p class="pricing-name">CONSULTORÍA & IA</p>
+        <div style="font-size:32px;margin:12px 0 4px">🤖</div>
+        <div class="pricing-from" style="margin-bottom:16px">Automatización · Modelos · Integración</div>
+        <p class="pricing-desc">Para empresas que ya tienen operación y quieren incorporar IA, automatizar procesos o integrar sistemas que hoy no se hablan.</p>
+        <ul class="pricing-features">
+          <li><span>✓</span> Diagnóstico de oportunidades IA</li>
+          <li><span>✓</span> Prototipo funcional primero</li>
+          <li><span>✓</span> Pago por fases, sin riesgo total</li>
+          <li><span>✓</span> Capacitación al equipo</li>
+        </ul>
+        <button onclick="openModal('proyecto')" class="cta-secondary" style="width:100%;display:block;text-align:center;cursor:pointer">Explorar opciones →</button>
+      </div>
+    </div>
+
+    <p style="text-align:center;margin-top:28px;font-size:13px;color:var(--muted);font-weight:300">
+      El costo exacto depende del alcance, tecnología y plazo de cada proyecto. <strong style="color:var(--text)">La llamada de diagnóstico es siempre gratis</strong> y sin compromiso.
+    </p>
+  </div>
 </section>
 
 <!-- ─── CONTACTO ─── -->
 <section id="contacto">
-<div class="container">
-<div class="section-header">
-<h2 class="section-title">Inicia tu proyecto</h2>
-<p class="section-lead">Agenda una consulta técnica gratuita de 30 minutos</p>
-</div>
-<div class="contact-grid">
-<div class="form-card">
-<form action="https://formsubmit.co/bastianaguayolisperguer@gmail.com" method="POST">
-<input type="hidden" name="_subject" value="Nueva consulta VITAIROS">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_template" value="box">
-<input type="hidden" name="_next" value="https://www.vitairos.com/?sent=1#gracias">
-<input type="hidden" name="_autoresponse" value="¡Gracias por escribir a VITAIROS! Recibimos tu solicitud y te responderemos pronto.">
-<input type="text" name="_honey" style="display:none">
-<div class="form-row">
-<div class="form-group">
-<label for="nombre">Nombre completo</label>
-<input id="nombre" name="nombre" required autocomplete="name" placeholder="Bastian Lisperguer"/>
-</div>
-<div class="form-group">
-<label for="email">Email</label>
-<input id="email" name="email" type="email" required autocomplete="email" placeholder="Vitairos@empresa.cl"/>
-</div>
-</div>
-<div class="form-row">
-<div class="form-group">
-<label for="telefono">Teléfono (opcional)</label>
-<input id="telefono" name="telefono" inputmode="tel" placeholder="+56 9 1234 5678"/>
-</div>
-<div class="form-group">
-<label for="servicio">Tipo de proyecto</label>
-<select id="servicio" name="servicio" required>
-<option value="" disabled selected>Selecciona</option>
-<option>App móvil (iOS/Android)</option>
-<option>Plataforma web / SaaS</option>
-<option>IA / Machine Learning</option>
-<option>Diseño 3D / Ingeniería</option>
-<option>Consultoría técnica</option>
-<option>Otro</option>
-</select>
-</div>
-</div>
-<div class="form-group">
-<label for="mensaje">Descripción del proyecto</label>
-<textarea id="mensaje" name="mensaje" required placeholder="¿Qué problema técnico necesitas resolver? ¿Tienes deadline? ¿Presupuesto estimado?"></textarea>
-</div>
-<button class="cta-primary" type="submit" style="width:100%">Enviar solicitud →</button>
-</form>
-<div id="gracias" class="thanks-message">
-<strong>¡Gracias!</strong> Recibimos tu solicitud y te responderemos a la brevedad.
-</div>
-</div>
-<div class="info-card">
-<h3>¿Por qué VITAIROS?</h3>
-<ul class="info-list">
-<li><span>✓</span> <strong>Arquitectura de primera:</strong> Código limpio, escalable y mantenible desde el día 1</li>
-<li><span>✓</span> <strong>Entregas ágiles:</strong> Demos funcionales semanales con visibilidad total del avance</li>
-<li><span>✓</span> <strong>Diseño & performance:</strong> Experiencias cuidadas, veloces y orientadas a conversión</li>
-<li><span>✓</span> <strong>Soporte real:</strong> Acompañamiento técnico y continuidad post-lanzamiento</li>
-</ul>
-<div class="contact-note">
-También puedes escribirnos a <strong>@Vitarios</strong> mientras activamos <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="60030f0e140103140f201609140109120f134e030f0d">[email&#160;protected]</a>
-</div>
-</div>
-</div>
-</div>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Hablemos de <span class="gradient-text">tu proyecto</span></h2>
+      <p class="section-lead">30 minutos gratuitos con un ingeniero real. Sin ventas, sin presión — solo diagnóstico técnico honesto.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="form-card">
+        <form action="https://formsubmit.co/bastianaguayolisperguer@gmail.com" method="POST" id="mainForm">
+          <input type="hidden" name="_subject" value="Nueva consulta VITAIROS">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="box">
+          <input type="hidden" name="_next" value="https://www.vitairos.com/?sent=1#gracias">
+          <input type="hidden" name="_autoresponse" value="¡Gracias por escribir a VITAIROS! Recibimos tu solicitud y te responderemos pronto.">
+          <input type="text" name="_honey" style="display:none">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre completo</label>
+              <!-- ✅ MEJORA 11: placeholder corregido -->
+              <input id="nombre" name="nombre" required autocomplete="name" placeholder="Tu nombre completo"/>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required autocomplete="email" placeholder="tu@empresa.com"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telefono">Teléfono (opcional)</label>
+              <input id="telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="+56 9 1234 5678"/>
+            </div>
+            <div class="form-group">
+              <label for="servicio">Tipo de solicitud</label>
+              <!-- ✅ MEJORA 4: Opción "Trabaja con nosotros" en el formulario -->
+              <select id="servicio" name="servicio" required onchange="handleSelectChange(this)">
+                <option value="" disabled selected>Selecciona</option>
+                <optgroup label="Proyectos">
+                  <option>App móvil (iOS/Android)</option>
+                  <option>Plataforma web / SaaS</option>
+                  <option>IA / Machine Learning</option>
+                  <option>Diseño 3D / Ingeniería</option>
+                  <option>Consultoría técnica</option>
+                  <option>Otro proyecto</option>
+                </optgroup>
+                <optgroup label="Únete al equipo">
+                  <option value="trabajo-contador">💼 Quiero ser Contador/a</option>
+                  <option value="trabajo-ventas">🚀 Quiero ser Ejecutivo/a de Ventas</option>
+                  <option value="trabajo-otro">✦ Otra posición / Propuesta</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Descripción</label>
+            <textarea id="mensaje" name="mensaje" required placeholder="¿Qué problema técnico necesitas resolver? ¿Tienes deadline? ¿Presupuesto estimado?"></textarea>
+          </div>
+          <button class="cta-primary" type="submit" style="width:100%">Enviar solicitud →</button>
+        </form>
+        <div id="gracias" class="thanks-message">
+          <strong>¡Gracias!</strong> Recibimos tu solicitud y te responderemos a la brevedad.
+        </div>
+      </div>
+      <div class="info-card">
+        <h3>¿Qué pasa en esa llamada?</h3>
+        <ul class="info-list">
+          <li><span style="color:var(--cyan);font-weight:700;font-size:13px">01</span> <div><strong>Escuchamos tu desafío</strong> — sin formularios genéricos. Entendemos el contexto real de tu negocio.</div></li>
+          <li><span style="color:var(--cyan);font-weight:700;font-size:13px">02</span> <div><strong>Diagnóstico técnico honesto</strong> — te decimos si podemos ayudarte y cómo, o te orientamos si no somos el fit.</div></li>
+          <li><span style="color:var(--cyan);font-weight:700;font-size:13px">03</span> <div><strong>Propuesta en 48h</strong> — si hay fit, recibes alcance, stack, plazo y rango de inversión por escrito.</div></li>
+          <li><span style="color:var(--cyan);font-weight:700;font-size:13px">04</span> <div><strong>NDA disponible</strong> — firmamos confidencialidad antes de hablar de detalles sensibles de tu proyecto.</div></li>
+        </ul>
+        <div class="contact-note">
+          <strong>contacto@vitairos.com</strong><br>
+          <span style="font-size:13px;opacity:.8;margin-top:4px;display:block">LinkedIn & Instagram: <strong>@VITAIROS</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ─── FOOTER ─── -->
+<!-- ✅ MEJORA 3: TRABAJA CON NOSOTROS ─── -->
+<section id="trabaja">
+  <div class="container">
+    <div class="jobs-header section-header">
+      <h2 class="section-title">Trabaja con <span class="gradient-text">VITAIROS</span></h2>
+      <p class="section-lead">Somos un equipo pequeño con impacto grande. Buscamos personas que quieran construir el futuro tecnológico de Chile y Latinoamérica.</p>
+    </div>
+    <div class="jobs-grid">
+      <!-- Contador -->
+      <div class="job-card">
+        <span class="job-emoji">📊</span>
+        <div class="job-type">Posición abierta</div>
+        <h3>Contador/a para Empresa Tecnológica</h3>
+        <p>Buscamos un perfil analítico y con visión de negocio para llevar las finanzas de VITAIROS. Trabajo 100% remoto, con impacto directo desde el primer día.</p>
+        <div class="job-perks">
+          <span class="job-perk">💻 100% Remoto</span>
+          <span class="job-perk">📈 Empresa en crecimiento</span>
+          <span class="job-perk">🤝 Participación posible</span>
+        </div>
+        <button class="cta-secondary" onclick="openModal('job-contador')">Ver posición y postular →</button>
+      </div>
+      <!-- Ventas -->
+      <div class="job-card">
+        <span class="job-emoji">🚀</span>
+        <div class="job-type">Posición abierta</div>
+        <h3>Ejecutivo/a de Ventas — LATAM</h3>
+        <p>Vende soluciones de IA, software y diseño 3D en toda Latinoamérica. Sin fronteras geográficas, con comisión del 10% por cada venta cerrada.</p>
+        <div class="job-perks">
+          <span class="job-perk">💸 10% de comisión</span>
+          <span class="job-perk">🌎 Todo LATAM</span>
+          <span class="job-perk">📦 Capacitación incluida</span>
+        </div>
+        <button class="cta-secondary" onclick="openModal('job-ventas')">Ver posición y postular →</button>
+      </div>
+      <!-- Desarrollador -->
+      <div class="job-card">
+        <span class="job-emoji">💻</span>
+        <div class="job-type">Posición abierta</div>
+        <h3>Desarrollador/a Full Stack</h3>
+        <p>Buscamos un desarrollador apasionado por construir productos reales con código limpio. Trabajarás en proyectos de IA, SaaS y apps móviles junto al equipo core.</p>
+        <div class="job-perks">
+          <span class="job-perk">🛠 Full Stack</span>
+          <span class="job-perk">🌐 Remoto</span>
+          <span class="job-perk">⚡ Proyectos reales</span>
+          <span class="job-perk">📐 Arquitectura enterprise</span>
+        </div>
+        <button class="cta-secondary" onclick="openModal('job-dev')">Ver posición y postular →</button>
+      </div>
+      <!-- Diseñador -->
+      <div class="job-card">
+        <span class="job-emoji">🎨</span>
+        <div class="job-type">Posición abierta</div>
+        <h3>Diseñador/a UX/UI</h3>
+        <p>Buscamos un diseñador con ojo crítico y amor por los detalles para crear interfaces que enamoran. Trabajarás en productos digitales con impacto real en usuarios reales.</p>
+        <div class="job-perks">
+          <span class="job-perk">🖌 UX/UI</span>
+          <span class="job-perk">🌐 Remoto</span>
+          <span class="job-perk">✨ Design systems</span>
+          <span class="job-perk">📱 Apps & Web</span>
+        </div>
+        <button class="cta-secondary" onclick="openModal('job-diseno')">Ver posición y postular →</button>
+      </div>
+    </div>
+    <!-- Rol abierto genérico -->
+    <div class="jobs-open-role">
+      <p>¿Tienes otro perfil y crees que puedes aportar valor a VITAIROS? <strong>Siempre buscamos talento extraordinario.</strong></p>
+      <button class="cta-secondary" onclick="openModal('job-otro')">Envía tu propuesta →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section id="faq">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Preguntas <span class="gradient-text">frecuentes</span></h2>
+      <p class="section-lead">Todo lo que necesitas saber antes de dar el primer paso</p>
+    </div>
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary>
+          ¿Trabajan con NDA y confidencialidad?
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-body">Sí, absolutamente. Firmamos un acuerdo de confidencialidad (NDA) antes de cualquier conversación técnica sobre tu proyecto. Tu idea está protegida desde el primer contacto.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          ¿Cómo funcionan los pagos y los contratos?
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-body">Trabajamos con contratos por hitos (milestones). Normalmente: 30% al inicio, 40% en la entrega del primer demo funcional, y 30% al lanzamiento. Emitimos boleta o factura según corresponda y aceptamos transferencia bancaria, Mercado Pago o PayPal para clientes internacionales.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          ¿Trabajan con clientes fuera de Chile?
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-body">Sí, trabajamos con clientes en toda Latinoamérica, España y EE.UU. Nuestros procesos son 100% remotos y tenemos experiencia coordinando proyectos a través de múltiples zonas horarias.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          ¿Qué pasa con el soporte después del lanzamiento?
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-body">Todos los proyectos incluyen soporte post-lanzamiento (15 a 30 días según el plan). Después del período inicial, ofrecemos planes de mantenimiento mensual para asegurar que tu producto siga funcionando mientras crece.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          ¿Puedo ver avances durante el desarrollo?
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-body">Sí, es una de nuestras promesas principales. Trabajamos en sprints de 2 semanas y en cada cierre recibes una demo funcional del avance. Tienes visibilidad total del proceso en todo momento.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          ¿Necesito saber de tecnología para trabajar con ustedes?
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-body">Para nada. Nos adaptamos al nivel técnico de cada cliente. Si tienes una idea pero no sabes cómo llevarla a la realidad, empezamos desde ahí. Nuestro primer objetivo siempre es entender tu negocio, no al revés.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          ¿Cuánto cuesta un proyecto?
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-body">El costo depende del alcance, tecnología y plazo. Por eso ofrecemos una llamada de diagnóstico gratuita de 30 minutos: analizamos tu proyecto y en 48 horas recibes una propuesta con rango de inversión real, sin compromiso.</div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ✅ MEJORA 7: FOOTER COMPLETO ─── -->
 <footer>
-<div class="container footer-content">
-<div class="footer-brand">
-<div class="brand-logo">V</div>
-<div>
-<strong>VITAIROS</strong><br>
-<span class="footer-text">Ingeniería • IA • 3D • Software</span>
-</div>
-</div>
-<p class="footer-text">© <span id="year"></span> VITAIROS SpA. Todos los derechos reservados.</p>
-</div>
+  <div class="container">
+    <div class="footer-top">
+      <!-- Marca -->
+      <div class="footer-brand-col">
+        <div class="footer-brand">
+          <div class="brand-logo">V</div>
+          <div>
+            <strong>VITAIROS</strong><br>
+            <span class="footer-text" style="font-size:12px;color:var(--muted)">SpA · Ingeniería • IA • 3D</span>
+          </div>
+        </div>
+        <p class="footer-desc">Convertimos ideas ambiciosas en productos tecnológicos de alto valor, listos para escalar.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/vitairos" target="_blank" rel="noopener" title="LinkedIn">💼</a>
+          <a href="https://instagram.com/vitairos" target="_blank" rel="noopener" title="Instagram">📸</a>
+          <a href="/cdn-cgi/l/email-protection#24474b4a504547504b64524d50454d564b570a474b49" title="Email">✉️</a>
+        </div>
+      </div>
+      <!-- Servicios -->
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">Apps iOS & Android</a></li>
+          <li><a href="#servicios">Plataformas SaaS</a></li>
+          <li><a href="#servicios">IA a medida</a></li>
+          <li><a href="#servicios">Diseño UX/UI</a></li>
+          <li><a href="#servicios">Ingeniería 3D</a></li>
+        </ul>
+      </div>
+      <!-- Empresa -->
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#nosotros">Misión & Visión</a></li>
+          <li><a href="#casos">¿Para quién trabajamos?</a></li>
+          <li><a href="#proceso">Proceso de trabajo</a></li>
+          <li><a href="#precios">Precios</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+      <!-- Únete -->
+      <div class="footer-col">
+        <h4>Trabaja con nosotros</h4>
+        <ul>
+          <li><a href="#trabaja">Contador/a</a></li>
+          <li><a href="#trabaja">Ventas LATAM</a></li>
+          <li><a href="#trabaja">Otras posiciones</a></li>
+          <li><a href="#contacto">Contacto directo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-bottom-text">© <span id="year"></span> VITAIROS SpA. Todos los derechos reservados. · Chile 🇨🇱</p>
+      <div class="footer-legal">
+        <a href="#" onclick="openModal('privacidad');return false">Política de privacidad</a>
+        <a href="#" onclick="openModal('terminos');return false">Términos de servicio</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-document.getElementById('year').textContent = new Date().getFullYear();
-const params = new URLSearchParams(window.lo
+<!-- ─── MODAL POSTULACIÓN: CONTADOR ─── -->
+<div class="modal-overlay" id="modal-job-contador" onclick="closeModalOutside(event,'job-contador')">
+  <div class="modal-box" style="max-width:600px">
+    <div class="modal-head" style="background:rgba(20,184,166,.04);border-bottom-color:rgba(20,184,166,.2)">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:4px">📊 Posición abierta</div>
+        <h2>Contador/a para Empresa Tecnológica</h2>
+      </div>
+      <button class="modal-close" onclick="closeModal('job-contador')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+        <span style="padding:4px 12px;background:rgba(20,184,166,.08);border:1px solid rgba(20,184,166,.2);border-radius:999px;font-size:12px;color:var(--cyan)">💻 100% Remoto</span>
+        <span style="padding:4px 12px;background:rgba(20,184,166,.08);border:1px solid rgba(20,184,166,.2);border-radius:999px;font-size:12px;color:var(--cyan)">📈 Empresa en crecimiento</span>
+        <span style="padding:4px 12px;background:rgba(20,184,166,.08);border:1px solid rgba(20,184,166,.2);border-radius:999px;font-size:12px;color:var(--cyan)">🤝 Participación posible</span>
+      </div>
+      <h3>¿Qué harás?</h3>
+      <ul>
+        <li>Preparar estados financieros y flujo de caja mensual</li>
+        <li>Gestión de facturación, cobranzas y relación con el SII</li>
+        <li>Análisis de costos, presupuestos y proyecciones</li>
+        <li>Apoyar decisiones estratégicas con información financiera clara</li>
+      </ul>
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Título en Contabilidad, Auditoría o carrera afín</li>
+        <li>Experiencia en roles similares (al menos 1 año)</li>
+        <li>Manejo de Excel, SII y software contable</li>
+        <li>Proactividad y capacidad de trabajo autónomo</li>
+      </ul>
+      <h3>Postula ahora</h3>
+      <form action="https://formsubmit.co/bastianaguayolisperguer@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="📊 Postulación Contador/a — VITAIROS">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_next" value="https://www.vitairos.com/?sent=1">
+        <input type="hidden" name="puesto" value="Contador/a">
+        <input type="text" name="_honey" style="display:none">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">Nombre completo</label>
+          <input name="nombre" required placeholder="Tu nombre" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+          <div><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">Email</label>
+          <input name="email" type="email" required placeholder="tu@email.com" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+        </div>
+        <div style="margin-bottom:14px"><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">LinkedIn o portafolio (opcional)</label>
+        <input name="linkedin" placeholder="https://linkedin.com/in/tu-perfil" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+        <div style="margin-bottom:20px"><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">¿Por qué quieres unirte a VITAIROS?</label>
+        <textarea name="mensaje" required placeholder="Cuéntanos tu experiencia y motivación..." style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none;min-height:100px;resize:vertical"></textarea></div>
+        <button type="submit" class="cta-primary" style="width:100%;border:none;cursor:pointer">Enviar postulación →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ─── MODAL POSTULACIÓN: VENTAS ─── -->
+<div class="modal-overlay" id="modal-job-ventas" onclick="closeModalOutside(event,'job-ventas')">
+  <div class="modal-box" style="max-width:600px">
+    <div class="modal-head" style="background:rgba(168,85,247,.04);border-bottom-color:rgba(168,85,247,.2)">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--violet);margin-bottom:4px">🚀 Posición abierta</div>
+        <h2>Ejecutivo/a de Ventas — LATAM</h2>
+      </div>
+      <button class="modal-close" onclick="closeModal('job-ventas')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+        <span style="padding:4px 12px;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);border-radius:999px;font-size:12px;color:var(--violet)">💸 10% de comisión</span>
+        <span style="padding:4px 12px;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);border-radius:999px;font-size:12px;color:var(--violet)">🌎 Todo LATAM</span>
+        <span style="padding:4px 12px;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);border-radius:999px;font-size:12px;color:var(--violet)">📦 Capacitación incluida</span>
+        <span style="padding:4px 12px;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);border-radius:999px;font-size:12px;color:var(--violet)">📡 Sin fronteras</span>
+      </div>
+      <h3>¿Qué harás?</h3>
+      <ul>
+        <li>Promover y vender servicios de VITAIROS (IA, software, 3D) en toda LATAM</li>
+        <li>Prospectar y gestionar relaciones con clientes potenciales</li>
+        <li>Cerrar oportunidades comerciales y cumplir objetivos</li>
+        <li>Reportar avances y métricas de ventas semanalmente</li>
+      </ul>
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Experiencia en ventas deseable, pero no excluyente</li>
+        <li>Excelente comunicación escrita y verbal</li>
+        <li>Mentalidad orientada a resultados y crecimiento</li>
+        <li>Acceso a internet y disponibilidad para trabajo remoto</li>
+      </ul>
+      <h3>Postula ahora</h3>
+      <form action="https://formsubmit.co/bastianaguayolisperguer@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="🚀 Postulación Ventas LATAM — VITAIROS">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_next" value="https://www.vitairos.com/?sent=1">
+        <input type="hidden" name="puesto" value="Ejecutivo/a de Ventas LATAM">
+        <input type="text" name="_honey" style="display:none">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">Nombre completo</label>
+          <input name="nombre" required placeholder="Tu nombre" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+          <div><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">Email</label>
+          <input name="email" type="email" required placeholder="tu@email.com" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+        </div>
+        <div style="margin-bottom:14px"><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">País donde resides</label>
+        <input name="pais" placeholder="Ej: Chile, México, Argentina..." style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+        <div style="margin-bottom:20px"><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">¿Por qué quieres vender con VITAIROS?</label>
+        <textarea name="mensaje" required placeholder="Cuéntanos tu experiencia en ventas y tu motivación..." style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none;min-height:100px;resize:vertical"></textarea></div>
+        <button type="submit" class="cta-primary" style="width:100%;border:none;cursor:pointer;background:linear-gradient(90deg,var(--violet),var(--cyan))">Enviar postulación →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ─── MODAL POSTULACIÓN: OTRO ROL ─── -->
+<div class="modal-overlay" id="modal-job-otro" onclick="closeModalOutside(event,'job-otro')">
+  <div class="modal-box" style="max-width:600px">
+    <div class="modal-head">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px">✦ Propuesta abierta</div>
+        <h2>Únete al equipo VITAIROS</h2>
+      </div>
+      <button class="modal-close" onclick="closeModal('job-otro')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="margin-bottom:20px">¿Eres desarrollador/a, diseñador/a, ingeniero/a u otro perfil tech con ganas de construir el futuro tecnológico de LATAM? Cuéntanos quién eres — siempre buscamos talento extraordinario.</p>
+      <form action="https://formsubmit.co/bastianaguayolisperguer@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="✦ Propuesta de talento — VITAIROS">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_next" value="https://www.vitairos.com/?sent=1">
+        <input type="text" name="_honey" style="display:none">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">Nombre completo</label>
+          <input name="nombre" required placeholder="Tu nombre" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+          <div><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">Email</label>
+          <input name="email" type="email" required placeholder="tu@email.com" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+        </div>
+        <div style="margin-bottom:14px"><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">¿A qué te dedicas?</label>
+        <input name="rol" required placeholder="Ej: Desarrollador Full Stack, Diseñador UX, etc." style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+        <div style="margin-bottom:14px"><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">LinkedIn o portafolio</label>
+        <input name="linkedin" placeholder="https://linkedin.com/in/tu-perfil" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+        <div style="margin-bottom:20px"><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">¿Qué podrías aportar a VITAIROS?</label>
+        <textarea name="mensaje" required placeholder="Cuéntanos en qué eres extraordinario/a..." style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none;min-height:100px;resize:vertical"></textarea></div>
+        <button type="submit" class="cta-primary" style="width:100%;border:none;cursor:pointer">Enviar propuesta →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- ─── MODAL POSTULACIÓN: DESARROLLADOR ─── -->
+<div class="modal-overlay" id="modal-job-dev" onclick="closeModalOutside(event,'job-dev')">
+  <div class="modal-box" style="max-width:600px">
+    <div class="modal-head" style="background:rgba(20,184,166,.04);border-bottom-color:rgba(20,184,166,.2)">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:4px">💻 Posición abierta</div>
+        <h2>Desarrollador/a Full Stack</h2>
+      </div>
+      <button class="modal-close" onclick="closeModal('job-dev')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+        <span style="padding:4px 12px;background:rgba(20,184,166,.08);border:1px solid rgba(20,184,166,.2);border-radius:999px;font-size:12px;color:var(--cyan)">🌐 Remoto</span>
+        <span style="padding:4px 12px;background:rgba(20,184,166,.08);border:1px solid rgba(20,184,166,.2);border-radius:999px;font-size:12px;color:var(--cyan)">⚡ Proyectos reales</span>
+        <span style="padding:4px 12px;background:rgba(20,184,166,.08);border:1px solid rgba(20,184,166,.2);border-radius:999px;font-size:12px;color:var(--cyan)">📐 Arquitectura enterprise</span>
+      </div>
+      <h3>¿Qué harás?</h3>
+      <ul>
+        <li>Desarrollar features en proyectos de IA, SaaS y apps móviles para clientes reales</li>
+        <li>Escribir código limpio, escalable y documentado desde el primer día</li>
+        <li>Participar en decisiones de arquitectura y revisiones de código</li>
+        <li>Trabajar en sprints de 2 semanas con demos funcionales al cliente</li>
+      </ul>
+      <h3>Stack valorado</h3>
+      <ul>
+        <li>Frontend: React / Next.js / TypeScript</li>
+        <li>Backend: Node.js / Python / APIs REST o GraphQL</li>
+        <li>Mobile: React Native o Swift/Kotlin (deseable)</li>
+        <li>DevOps básico: GitHub Actions, Docker, cloud</li>
+      </ul>
+      <h3>Postula ahora</h3>
+      <form action="https://formsubmit.co/bastianaguayolisperguer@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="💻 Postulación Desarrollador/a Full Stack — VITAIROS">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_next" value="https://www.vitairos.com/?sent=1">
+        <input type="hidden" name="puesto" value="Desarrollador/a Full Stack">
+        <input type="text" name="_honey" style="display:none">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">Nombre completo</label>
+          <input name="nombre" required placeholder="Tu nombre" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+          <div><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">Email</label>
+          <input name="email" type="email" required placeholder="tu@email.com" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+        </div>
+        <div style="margin-bottom:14px"><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">GitHub o portafolio</label>
+        <input name="github" placeholder="https://github.com/tu-usuario" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+        <div style="margin-bottom:14px"><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">Stack principal</label>
+        <input name="stack" required placeholder="Ej: React, Node.js, Python, React Native..." style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+        <div style="margin-bottom:20px"><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">¿Por qué quieres construir en VITAIROS?</label>
+        <textarea name="mensaje" required placeholder="Cuéntanos en qué proyectos has trabajado y qué te apasiona desarrollar..." style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none;min-height:100px;resize:vertical"></textarea></div>
+        <button type="submit" class="cta-primary" style="width:100%;border:none;cursor:pointer">Enviar postulación →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ─── MODAL POSTULACIÓN: DISEÑADOR ─── -->
+<div class="modal-overlay" id="modal-job-diseno" onclick="closeModalOutside(event,'job-diseno')">
+  <div class="modal-box" style="max-width:600px">
+    <div class="modal-head" style="background:rgba(168,85,247,.04);border-bottom-color:rgba(168,85,247,.2)">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--violet);margin-bottom:4px">🎨 Posición abierta</div>
+        <h2>Diseñador/a UX/UI</h2>
+      </div>
+      <button class="modal-close" onclick="closeModal('job-diseno')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+        <span style="padding:4px 12px;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);border-radius:999px;font-size:12px;color:var(--violet)">🌐 Remoto</span>
+        <span style="padding:4px 12px;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);border-radius:999px;font-size:12px;color:var(--violet)">✨ Design systems</span>
+        <span style="padding:4px 12px;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);border-radius:999px;font-size:12px;color:var(--violet)">📱 Apps & Web</span>
+      </div>
+      <h3>¿Qué harás?</h3>
+      <ul>
+        <li>Diseñar interfaces de productos digitales reales: apps móviles, SaaS y dashboards</li>
+        <li>Crear y mantener design systems coherentes y escalables</li>
+        <li>Realizar investigación de usuarios y traducirla en decisiones de diseño</li>
+        <li>Colaborar con desarrolladores para asegurar implementación fiel del diseño</li>
+      </ul>
+      <h3>Herramientas y skills valorados</h3>
+      <ul>
+        <li>Figma (indispensable) — componentes, variables, auto-layout</li>
+        <li>Principios de UX: flujos, wireframes, prototipado y testing</li>
+        <li>Conocimientos básicos de CSS/HTML (muy valorado)</li>
+        <li>Portafolio con casos de estudio reales</li>
+      </ul>
+      <h3>Postula ahora</h3>
+      <form action="https://formsubmit.co/bastianaguayolisperguer@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="🎨 Postulación Diseñador/a UX/UI — VITAIROS">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_next" value="https://www.vitairos.com/?sent=1">
+        <input type="hidden" name="puesto" value="Diseñador/a UX/UI">
+        <input type="text" name="_honey" style="display:none">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">Nombre completo</label>
+          <input name="nombre" required placeholder="Tu nombre" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+          <div><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">Email</label>
+          <input name="email" type="email" required placeholder="tu@email.com" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+        </div>
+        <div style="margin-bottom:14px"><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">Portafolio o Behance</label>
+        <input name="portafolio" required placeholder="https://behance.net/tu-perfil o link a tu portafolio" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+        <div style="margin-bottom:14px"><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">Herramientas principales</label>
+        <input name="herramientas" required placeholder="Ej: Figma, Adobe XD, Framer..." style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none"></div>
+        <div style="margin-bottom:20px"><label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">¿Qué tipo de proyectos te apasiona diseñar?</label>
+        <textarea name="mensaje" required placeholder="Cuéntanos sobre tu proceso de diseño y los proyectos de los que te sientes más orgulloso/a..." style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none;min-height:100px;resize:vertical"></textarea></div>
+        <button type="submit" class="cta-primary" style="width:100%;border:none;cursor:pointer;background:linear-gradient(90deg,var(--violet),var(--cyan))">Enviar postulación →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ─── MODAL PROYECTO / DIAGNÓSTICO ─── -->
+<div class="modal-overlay" id="modal-proyecto" onclick="closeModalOutside(event,'proyecto')">
+  <div class="modal-box" style="max-width:620px">
+    <div class="modal-head" style="background:linear-gradient(135deg,rgba(20,184,166,.06),rgba(168,85,247,.04));border-bottom-color:rgba(20,184,166,.2)">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:4px">🎯 Diagnóstico gratuito · 30 min</div>
+        <h2>Cuéntanos tu proyecto</h2>
+      </div>
+      <button class="modal-close" onclick="closeModal('proyecto')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px">
+        <div style="flex:1;min-width:100px;padding:14px;background:rgba(20,184,166,.06);border:1px solid rgba(20,184,166,.2);border-radius:12px;text-align:center">
+          <div style="font-size:18px;font-weight:800;color:var(--cyan)">$0</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">Sin costo</div>
+        </div>
+        <div style="flex:1;min-width:100px;padding:14px;background:rgba(20,184,166,.06);border:1px solid rgba(20,184,166,.2);border-radius:12px;text-align:center">
+          <div style="font-size:18px;font-weight:800;color:var(--cyan)">30 min</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">Llamada técnica</div>
+        </div>
+        <div style="flex:1;min-width:100px;padding:14px;background:rgba(20,184,166,.06);border:1px solid rgba(20,184,166,.2);border-radius:12px;text-align:center">
+          <div style="font-size:18px;font-weight:800;color:var(--cyan)">48h</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">Propuesta escrita</div>
+        </div>
+      </div>
+      <form action="https://formsubmit.co/bastianaguayolisperguer@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="🎯 Nueva consulta de proyecto — VITAIROS">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_next" value="https://www.vitairos.com/?sent=1">
+        <input type="text" name="_honey" style="display:none">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+          <div>
+            <label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">Nombre completo</label>
+            <input name="nombre" required placeholder="Tu nombre" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none">
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">Email</label>
+            <input name="email" type="email" required placeholder="tu@empresa.com" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none">
+          </div>
+        </div>
+        <div style="margin-bottom:12px">
+          <label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">Tipo de proyecto</label>
+          <select name="tipo_proyecto" style="width:100%;padding:12px 14px;background:rgba(20,20,20,1);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none">
+            <option value="" disabled selected>¿Qué necesitas construir?</option>
+            <option>App móvil (iOS / Android)</option>
+            <option>Plataforma web / SaaS</option>
+            <option>IA / Automatización</option>
+            <option>Integración de sistemas</option>
+            <option>Ingeniería 3D / Prototipado</option>
+            <option>Consultoría técnica</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div style="margin-bottom:18px">
+          <label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px">¿Cuál es tu desafío o idea?</label>
+          <textarea name="descripcion" required placeholder="Cuéntanos brevemente qué quieres resolver. No necesitas saber de tecnología — solo descríbenos el problema o la idea." style="width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none;min-height:100px;resize:vertical"></textarea>
+        </div>
+        <button type="submit" class="cta-primary" style="width:100%;border:none;cursor:pointer;font-size:15px;padding:14px">Enviar y agendar diagnóstico →</button>
+        <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:10px;font-weight:300">Sin compromiso · Respuesta en 24h · NDA disponible</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-privacidad" onclick="closeModalOutside(event,'privacidad')">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2>Política de Privacidad</h2>
+      <button class="modal-close" onclick="closeModal('privacidad')">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3>1. Responsable del tratamiento</h3>
+      <p>VITAIROS SpA, con domicilio en Chile, es responsable del tratamiento de los datos personales recopilados a través de este sitio web (vitairos.com).</p>
+      <h3>2. Datos que recopilamos</h3>
+      <p>Recopilamos únicamente los datos que tú nos proporcionas voluntariamente a través del formulario de contacto: nombre completo, correo electrónico, número de teléfono (opcional) y descripción del proyecto.</p>
+      <h3>3. Finalidad del tratamiento</h3>
+      <p>Los datos se utilizan exclusivamente para:</p>
+      <ul>
+        <li>Responder consultas técnicas y comerciales</li>
+        <li>Agendar reuniones o llamadas de evaluación</li>
+        <li>Enviar información relevante sobre nuestros servicios</li>
+      </ul>
+      <h3>4. No cedemos datos a terceros</h3>
+      <p>VITAIROS no vende, arrienda ni comparte tus datos personales con terceros, salvo que sea estrictamente necesario para cumplir el servicio contratado (ej. servicios de email transaccional).</p>
+      <h3>5. Derechos del usuario</h3>
+      <p>Tienes derecho a acceder, rectificar, cancelar u oponerte al tratamiento de tus datos en cualquier momento, escribiéndonos a <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b5d6dadbc1d4d6c1daf5c3dcc1d4dcc7dac69bd6dad8">[email&#160;protected]</a>.</p>
+      <h3>6. Seguridad</h3>
+      <p>Implementamos medidas técnicas y organizativas razonables para proteger tus datos contra accesos no autorizados, pérdidas o alteraciones.</p>
+      <h3>7. Actualizaciones</h3>
+      <p>Esta política puede actualizarse ocasionalmente. La versión vigente siempre estará disponible en esta página.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ─── MODAL TÉRMINOS ─── -->
+<div class="modal-overlay" id="modal-terminos" onclick="closeModalOutside(event,'terminos')">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2>Términos de Servicio</h2>
+      <button class="modal-close" onclick="closeModal('terminos')">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3>1. Aceptación</h3>
+      <p>Al utilizar el sitio web de VITAIROS SpA (vitairos.com) y contratar nuestros servicios, aceptas los presentes términos y condiciones.</p>
+      <h3>2. Servicios</h3>
+      <p>VITAIROS ofrece servicios de desarrollo de software, inteligencia artificial, diseño UX/UI, ingeniería 3D y consultoría tecnológica. Los detalles, alcance y condiciones de cada proyecto se acuerdan por contrato específico.</p>
+      <h3>3. Propiedad intelectual</h3>
+      <p>Todo el código, diseño y material desarrollado como parte de un proyecto es propiedad del cliente una vez completado el pago total acordado, salvo que se estipule lo contrario en el contrato. VITAIROS puede retener el derecho de mencionar el proyecto como referencia en su portafolio.</p>
+      <h3>4. Pagos</h3>
+      <p>Los proyectos se pagan por hitos (milestones). Las condiciones específicas se detallan en cada propuesta comercial. El incumplimiento de pagos puede resultar en la suspensión del servicio.</p>
+      <h3>5. Confidencialidad</h3>
+      <p>VITAIROS se compromete a mantener confidencialidad sobre la información técnica y comercial del cliente. Se puede firmar un NDA formal a solicitud del cliente.</p>
+      <h3>6. Limitación de responsabilidad</h3>
+      <p>VITAIROS no se hace responsable por daños indirectos derivados del uso del software entregado. Nuestra responsabilidad máxima está limitada al monto total pagado por el proyecto en cuestión.</p>
+      <h3>7. Ley aplicable</h3>
+      <p>Estos términos se rigen por las leyes de la República de Chile. Cualquier disputa será resuelta ante los tribunales competentes de la ciudad de Valparaíso.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var year = document.getElementById('year');
+  if(year) year.textContent = new Date().getFullYear();
+
+  var openModals = ['job-contador','job-ventas','job-otro','job-dev','job-diseno','privacidad','terminos','proyecto'];
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function syncBodyState(){
+    var hasOpenModal = document.querySelector('.modal-overlay.open');
+    var menuOpen = mobileMenu && mobileMenu.classList.contains('open');
+    document.body.classList.toggle('menu-open', !!hasOpenModal || !!menuOpen);
+  }
+
+  window.openModal = function(id){
+    var el = document.getElementById('modal-'+id);
+    if(el){ el.classList.add('open'); syncBodyState(); }
+  };
+
+  window.closeModal = function(id){
+    var el = document.getElementById('modal-'+id);
+    if(el){ el.classList.remove('open'); syncBodyState(); }
+  };
+
+  window.closeModalOutside = function(e,id){
+    if(e.target===document.getElementById('modal-'+id)) window.closeModal(id);
+  };
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      openModals.forEach(function(id){ window.closeModal(id); });
+      closeMenu();
+    }
+  });
+
+  if(hamburger && mobileMenu){
+    hamburger.addEventListener('click', function(){
+      var isOpen = hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+      syncBodyState();
+    });
+  }
+
+  window.closeMenu = closeMenu;
+  function closeMenu(){
+    if(hamburger){
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+    if(mobileMenu) mobileMenu.classList.remove('open');
+    syncBodyState();
+  }
+
+  var params = new URLSearchParams(window.location.search);
+  if(params.get('sent') === '1'){
+    var thanks = document.getElementById('gracias');
+    if(thanks) thanks.style.display = 'block';
+  }
+
+  window.handleSelectChange = function(sel){
+    var trabajoValues = ['trabajo-contador','trabajo-ventas','trabajo-otro'];
+    var isJob = trabajoValues.indexOf(sel.value) > -1;
+    var textarea = document.getElementById('mensaje');
+    if(textarea){
+      textarea.placeholder = isJob
+        ? '¿Cuál es tu experiencia? ¿Qué podrías aportar a VITAIROS? Comparte tu LinkedIn o portafolio.'
+        : '¿Qué problema técnico necesitas resolver? ¿Tienes deadline? ¿Presupuesto estimado?';
+    }
+  };
+
+  (function(){
+    var canvas = document.getElementById('vitairos-geo');
+    var sphereWrap = document.getElementById('hbSphereWrap');
+    var fallback = document.getElementById('vitairosGeoFallback');
+    var isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if(!canvas || reduceMotion){
+      if(sphereWrap) sphereWrap.classList.add('fallback-only');
+      return;
+    }
+    var ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
+    if(!ctx){
+      if(sphereWrap) sphereWrap.classList.add('fallback-only');
+      return;
+    }
+
+    function norm(v){
+      var l = Math.sqrt(v[0]*v[0]+v[1]*v[1]+v[2]*v[2]);
+      return [v[0]/l, v[1]/l, v[2]/l];
+    }
+    function mid(a,b){ return norm([(a[0]+b[0])/2,(a[1]+b[1])/2,(a[2]+b[2])/2]); }
+
+    var phi = (1+Math.sqrt(5))/2;
+    var verts = [
+      [0,1,phi],[0,-1,phi],[0,1,-phi],[0,-1,-phi],
+      [1,phi,0],[-1,phi,0],[1,-phi,0],[-1,-phi,0],
+      [phi,0,1],[-phi,0,1],[phi,0,-1],[-phi,0,-1]
+    ].map(norm);
+    var faces = [
+      [0,1,8],[0,8,4],[0,4,5],[0,5,9],[0,9,1],
+      [1,6,8],[8,6,10],[8,10,4],[4,10,2],[4,2,5],
+      [5,2,11],[5,11,9],[9,11,7],[9,7,1],[1,7,6],
+      [3,6,7],[3,7,11],[3,11,2],[3,2,10],[3,10,6]
+    ];
+
+    function subdivide(vs,fs){
+      var nf = [], cache = {};
+      function gm(i,j){
+        var k = Math.min(i,j)+'_'+Math.max(i,j);
+        if(cache[k] !== undefined) return cache[k];
+        var idx = vs.length; vs.push(mid(vs[i],vs[j]));
+        cache[k] = idx; return idx;
+      }
+      for(var f=0; f<fs.length; f++){
+        var a=fs[f][0], b=fs[f][1], c=fs[f][2];
+        var ab=gm(a,b), bc=gm(b,c), ac=gm(a,c);
+        nf.push([a,ab,ac],[b,bc,ab],[c,ac,bc],[ab,bc,ac]);
+      }
+      return {verts:vs, faces:nf};
+    }
+
+    var geo = subdivide(verts.slice(), faces.slice());
+    geo = subdivide(geo.verts, geo.faces);
+    verts = geo.verts; faces = geo.faces;
+
+    var edgeSet = {}, edges = [];
+    for(var f=0; f<faces.length; f++){
+      var tri = faces[f];
+      [[tri[0],tri[1]],[tri[1],tri[2]],[tri[0],tri[2]]].forEach(function(p){
+        var ek = Math.min(p[0],p[1])+'_'+Math.max(p[0],p[1]);
+        if(!edgeSet[ek]){ edgeSet[ek] = 1; edges.push(p); }
+      });
+    }
+
+    var featuredNodes = new Set([0,1,4,5,8,9,12,18,24,30,38]);
+    var angleY = 0, angleX = 0.25;
+    var cssW = 340, cssH = 340;
+    var rafId = null;
+    var isVisible = true;
+    var heroVisible = true;
+    var framesDrawn = 0;
+    var fallbackTimer = null;
+    var resizeRaf = null;
+
+    function rotX(v,a){ var c=Math.cos(a), s=Math.sin(a); return [v[0],v[1]*c-v[2]*s,v[1]*s+v[2]*c]; }
+    function rotY(v,a){ var c=Math.cos(a), s=Math.sin(a); return [v[0]*c+v[2]*s,v[1],-v[0]*s+v[2]*c]; }
+
+    function setFallback(state){
+      if(!sphereWrap) return;
+      sphereWrap.classList.toggle('show-fallback', !!state);
+    }
+
+    function markCanvasReady(){
+      if(!sphereWrap) return;
+      sphereWrap.classList.add('canvas-ready');
+      sphereWrap.classList.remove('fallback-only');
+      setFallback(false);
+      if(fallbackTimer){ clearTimeout(fallbackTimer); fallbackTimer = null; }
+    }
+
+    function resize(){
+      var dpr = Math.min(window.devicePixelRatio || 1, isiOS ? 1.25 : 1.5);
+      var rect = canvas.getBoundingClientRect();
+      cssW = Math.max(Math.round(rect.width), isiOS ? 190 : 170) || 340;
+      cssH = Math.max(Math.round(rect.height), isiOS ? 190 : 170) || 340;
+      canvas.width = Math.round(cssW * dpr);
+      canvas.height = Math.round(cssH * dpr);
+      canvas.style.width = cssW + 'px';
+      canvas.style.height = cssH + 'px';
+    }
+
+    function scheduleResize(){
+      if(resizeRaf) cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(function(){
+        resize();
+        draw();
+      });
+    }
+
+    function draw(){
+      var dpr = Math.min(window.devicePixelRatio || 1, isiOS ? 1.25 : 1.5);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      ctx.clearRect(0,0,cssW,cssH);
+
+      var cx = cssW/2, cy = cssH/2, R = cssW*0.36;
+      var rot = verts.map(function(v){ return rotY(rotX(v, angleX), angleY); });
+      var prj = rot.map(function(v){ return [cx+v[0]*R, cy-v[1]*R]; });
+      var edgeList = edges.map(function(e){ return {e:e, z:(rot[e[0]][2]+rot[e[1]][2])/2}; });
+      edgeList.sort(function(a,b){ return a.z-b.z; });
+
+      for(var i=0; i<edgeList.length; i++){
+        var ii=edgeList[i].e[0], jj=edgeList[i].e[1];
+        var tz=(edgeList[i].z+1)/2;
+        if(tz<0.08) continue;
+        var alpha=0.05+tz*0.30;
+        var front=rot[ii][2]>0||rot[jj][2]>0;
+        ctx.beginPath();
+        ctx.moveTo(prj[ii][0],prj[ii][1]);
+        ctx.lineTo(prj[jj][0],prj[jj][1]);
+        ctx.strokeStyle=front?'rgba(20,184,166,'+alpha+')':'rgba(168,85,247,'+(alpha*0.5)+')';
+        ctx.lineWidth=0.8;
+        ctx.stroke();
+      }
+
+      for(var n=0; n<verts.length; n++){
+        var z=rot[n][2];
+        if(z<-0.05) continue;
+        var px=prj[n][0], py=prj[n][1];
+        var zt=(z+1)/2;
+        var isKey=n<12;
+
+        if(isKey){
+          var gs=3+zt*3;
+          var ga=ctx.createRadialGradient(px,py,0,px,py,gs*3);
+          ga.addColorStop(0,'rgba(20,184,166,'+(0.85*zt)+')');
+          ga.addColorStop(0.5,'rgba(20,184,166,'+(0.2*zt)+')');
+          ga.addColorStop(1,'rgba(20,184,166,0)');
+          ctx.beginPath(); ctx.arc(px,py,gs*3,0,Math.PI*2); ctx.fillStyle=ga; ctx.fill();
+          ctx.beginPath(); ctx.arc(px,py,gs,0,Math.PI*2); ctx.strokeStyle='rgba(20,184,166,'+(0.75*zt)+')'; ctx.lineWidth=1; ctx.stroke();
+          ctx.beginPath(); ctx.arc(px,py,gs*0.35,0,Math.PI*2); ctx.fillStyle='rgba(20,184,166,'+zt+')'; ctx.fill();
+        } else if(featuredNodes.has(n)){
+          var ms=1.8+zt;
+          ctx.beginPath(); ctx.arc(px,py,ms,0,Math.PI*2); ctx.strokeStyle='rgba(20,184,166,'+(0.4*zt)+')'; ctx.lineWidth=0.7; ctx.stroke();
+        } else if(zt>0.55){
+          ctx.beginPath(); ctx.arc(px,py,0.8,0,Math.PI*2); ctx.fillStyle='rgba(20,184,166,'+(0.2*zt)+')'; ctx.fill();
+        }
+      }
+
+      var cg=ctx.createRadialGradient(cx,cy,0,cx,cy,R*0.5);
+      cg.addColorStop(0,'rgba(20,184,166,0.025)');
+      cg.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.beginPath(); ctx.arc(cx,cy,R*0.5,0,Math.PI*2); ctx.fillStyle=cg; ctx.fill();
+      angleY += 0.004;
+      framesDrawn += 1;
+      if(framesDrawn === 2) markCanvasReady();
+    }
+
+    function tick(){
+      if(!(isVisible && heroVisible)){
+        rafId = null;
+        return;
+      }
+      draw();
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function ensureLoop(){
+      if(!rafId && isVisible && heroVisible) rafId = requestAnimationFrame(tick);
+    }
+
+    setFallback(true);
+    scheduleResize();
+    if(isiOS){
+      fallbackTimer = setTimeout(function(){
+        if(framesDrawn < 2 && sphereWrap) sphereWrap.classList.add('fallback-only');
+      }, 1600);
+    }
+
+    window.addEventListener('resize', scheduleResize, { passive:true });
+    window.addEventListener('orientationchange', function(){ setTimeout(scheduleResize, 180); }, { passive:true });
+    window.addEventListener('load', function(){ setTimeout(scheduleResize, 120); setTimeout(scheduleResize, 420); }, { once:true });
+    window.addEventListener('pageshow', function(){ setTimeout(scheduleResize, 60); }, { passive:true });
+    if('ResizeObserver' in window && sphereWrap){ new ResizeObserver(scheduleResize).observe(sphereWrap); }
+    document.addEventListener('visibilitychange', function(){
+      isVisible = !document.hidden;
+      if(isVisible) scheduleResize();
+      ensureLoop();
+    });
+
+    var heroSection = document.getElementById('inicio');
+    if('IntersectionObserver' in window && heroSection){
+      new IntersectionObserver(function(entries){
+        heroVisible = !!entries[0] && entries[0].isIntersecting;
+        ensureLoop();
+      }, { threshold: 0.05 }).observe(heroSection);
+    }
+
+    ensureLoop();
+  })();
+
+  if('IntersectionObserver' in window && !reduceMotion){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+
+    document.querySelectorAll('.service-card,.stat-item,.lab-item,.process-step,.pricing-card,.job-card,.faq-item,.mv-valor').forEach(function(el){
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity .6s ease, transform .6s ease';
+      observer.observe(el);
+    });
+  }
+})();
+</script>
+
+
+</body>
+</html>
