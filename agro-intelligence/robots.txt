@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.vitairos.com/agro-intelligence/sitemap.xml
