@@ -20,12 +20,6 @@
   if (intro && root.classList.contains("conecta-intro-enabled") && !reduceMotion.matches) {
     body.classList.add("conecta-intro-active");
 
-    try {
-      window.sessionStorage.setItem("vitairos-conecta-intro-v1", "seen");
-    } catch (error) {
-      /* The animation remains safe when storage is unavailable. */
-    }
-
     var introFallback = window.setTimeout(removeIntro, 2600);
 
     intro.addEventListener("animationend", function (event) {

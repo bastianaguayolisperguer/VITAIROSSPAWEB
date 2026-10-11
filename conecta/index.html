@@ -31,16 +31,8 @@
   <script>
     (function () {
       var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var forceIntro = new URLSearchParams(window.location.search).get("intro") === "1";
-      var introSeen = false;
 
-      try {
-        introSeen = window.sessionStorage.getItem("vitairos-conecta-intro-v1") === "seen";
-      } catch (error) {
-        introSeen = false;
-      }
-
-      if (!reducedMotion && (forceIntro || !introSeen)) {
+      if (!reducedMotion) {
         document.documentElement.classList.add("conecta-intro-enabled");
       }
     })();
@@ -60,7 +52,7 @@
         "email": "contacto@vitairos.com",
         "sameAs": [
           "https://www.linkedin.com/company/vitairos/?viewAsMember=true",
-          "https://www.instagram.com/vitairos.engineering?igsh=ZzRxcGdxeDRydnNi",
+          "https://www.instagram.com/vitairos_com/",
           "https://www.youtube.com/channel/UCL1FEzUhYJcwpV3fp3JeT_A"
         ]
       },
@@ -522,7 +514,7 @@
           <p>Convertimos ideas ambiciosas en productos tecnológicos de alto valor, listos para escalar.</p>
           <div class="social-links" aria-label="Canales oficiales de VITAIROS">
             <a href="https://www.linkedin.com/company/vitairos/?viewAsMember=true" target="_blank" rel="noopener noreferrer" aria-label="VITAIROS en LinkedIn">in</a>
-            <a href="https://www.instagram.com/vitairos.engineering?igsh=ZzRxcGdxeDRydnNi" target="_blank" rel="noopener noreferrer" aria-label="VITAIROS en Instagram">ig</a>
+            <a href="https://www.instagram.com/vitairos_com/" target="_blank" rel="noopener noreferrer" aria-label="VITAIROS en Instagram">ig</a>
             <a href="https://www.youtube.com/channel/UCL1FEzUhYJcwpV3fp3JeT_A" target="_blank" rel="noopener noreferrer" aria-label="VITAIROS en YouTube">▶</a>
           </div>
         </div>

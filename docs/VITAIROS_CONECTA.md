@@ -8,7 +8,7 @@ La implementación mantiene la identidad del sitio principal: tipografía Outfit
 
 Conecta conserva una identidad propia mediante el distintivo junto al wordmark, gradientes Pulso–Esmeralda–Neural, patrones de red, progreso de lectura, revelado progresivo y respuestas sutiles al puntero. La dirección visual es luminosa y educativa: superficies claras, formas orgánicas, tarjetas pastel y elementos flotantes reemplazan el antiguo tratamiento oscuro corporativo. La página utiliza un único tema claro para evitar cambios bruscos de contraste. Todas las animaciones respetan `prefers-reduced-motion`.
 
-La entrada de la landing construye una red de nodos, la resuelve en el isotipo oficial y presenta el distintivo Conecta en aproximadamente dos segundos. Se muestra una sola vez por sesión mediante `sessionStorage`, puede omitirse con un toque o clic y se desactiva por completo cuando el sistema solicita movimiento reducido. Para revisar la secuencia sin limpiar la sesión se puede abrir `/conecta/?intro=1`.
+La entrada de la landing construye una red de nodos, la resuelve en el isotipo oficial y presenta el distintivo Conecta en aproximadamente dos segundos. Se muestra en cada carga o actualización de la página, puede omitirse con un toque o clic y se desactiva por completo cuando el sistema solicita movimiento reducido.
 
 ## Ruta
 
