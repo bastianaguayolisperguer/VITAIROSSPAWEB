@@ -35,6 +35,8 @@ No se añadió una regla `_redirects` al repositorio porque la redirección ocur
 - `conecta/styles.css`: sistema visual educativo, responsive, foco visible y reglas de movimiento reducido.
 - `conecta/script.js`: animación inicial, menú móvil, interacciones, año del footer y carga segura de datos futuros.
 - `conecta/assets/vitairos-isotipo-transparent.png`: recorte transparente del isotipo entregado por VITAIROS, preparado para fondos claros y oscuros.
+- `conecta/assets/vitairos-isotipo-128.png`, `256.png` y `512.png`: variantes responsive optimizadas para favicon, interfaz, animación y datos estructurados.
+- `conecta/assets/vitairos-conecta-open-graph-1200x630.png`: tarjeta social horizontal para Open Graph y Twitter.
 - `data/conecta-impact.json`: fuente centralizada para métricas verificadas y aliados autorizados.
 - `docs/VITAIROS_CONECTA.md`: esta documentación.
 
@@ -134,7 +136,7 @@ La landing incluye:
 
 - title y meta description específicos;
 - canonical con slash final;
-- Open Graph y Twitter Card;
+- Open Graph 1200 × 630 y Twitter Card `summary_large_image`, con dimensiones y textos alternativos;
 - `WebPage` y `Organization` en JSON-LD;
 - idioma `es-CL`;
 - entrada propia en el sitemap.

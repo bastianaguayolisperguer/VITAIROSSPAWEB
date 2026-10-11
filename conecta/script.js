@@ -188,7 +188,6 @@
     });
     mount.appendChild(fragment);
     mount.hidden = false;
-    mount.removeAttribute("aria-hidden");
   }
 
   function renderAllies(allies) {

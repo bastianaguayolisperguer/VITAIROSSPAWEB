@@ -5,9 +5,9 @@ URL: `https://www.vitairos.com/conecta/`
 
 ## Resumen ejecutivo
 
-La página tiene una base SEO sólida y es rastreable. La evaluación heurística general es **8,1/10**; no corresponde a una puntuación de Lighthouse. El contenido está servido como HTML estático, responde `200`, tiene canonical consistente, sitemap actualizado, robots permisivo, jerarquía semántica clara y datos estructurados válidos.
+La página tiene una base SEO sólida y es rastreable. Después de aplicar las mejoras técnicas de esta auditoría, la evaluación heurística general es **9,1/10**; no corresponde a una puntuación de Lighthouse. El contenido está servido como HTML estático, responde `200`, tiene canonical consistente, sitemap actualizado, robots permisivo, jerarquía semántica clara, datos estructurados válidos y metadatos sociales completos.
 
-Las prioridades son preservar el path en la redirección del dominio sin `www`, crear una tarjeta Open Graph horizontal específica, reducir el título y corregir cinco errores de validación asociados a `aria-label` en elementos `div`.
+La optimización en código quedó aplicada. Los dos pendientes principales dependen de servicios externos al repositorio: preservar el path en la redirección del dominio sin `www` desde Cloudflare y solicitar/revisar la indexación desde Google Search Console.
 
 ## Evidencia comprobada
 
@@ -22,12 +22,13 @@ Las prioridades son preservar el path en la redirección del dominio sin `www`, 
 | Imágenes | 3 de 3 con atributo `alt` |
 | Datos estructurados | JSON-LD válido: `Organization` + `WebPage` |
 | Transferencia observada | HTML 7,9 KB; CSS 11,4 KB; JS 2,45 KB comprimidos |
-| Imagen principal | PNG transparente de 408 KB |
+| Imagen social | Open Graph de 1200 × 630 px y 118 KB |
+| Isotipo responsive | Variantes de 128, 256 y 512 px; 12,7 KB, 33,1 KB y 93,7 KB |
 | TTFB observado | 0,47 s en una comprobación puntual; no sustituye monitoreo |
 
 ## Fortalezas
 
-1. Título, meta description, canonical, Open Graph y Twitter Card presentes.
+1. Título, meta description, canonical, Open Graph completo y Twitter Card grande presentes.
 2. Un solo H1 y estructura de secciones coherente.
 3. Contenido original y sustantivo para jóvenes, personas mayores, educadores y organizaciones.
 4. Enlaces internos hacia propósito, programas, metodología, impacto y contacto.
@@ -36,7 +37,7 @@ Las prioridades son preservar el path en la redirección del dominio sin `www`, 
 7. Diseño responsive, foco visible y soporte para `prefers-reduced-motion`.
 8. Página estática con HTML, CSS y JavaScript livianos.
 
-## Prioridad alta
+## Pendientes externos de prioridad alta
 
 ### 1. Corregir redirección sin `www`
 
@@ -44,35 +45,35 @@ Las prioridades son preservar el path en la redirección del dominio sin `www`, 
 
 Impacto: enlaces externos sin `www` terminan en la portada, diluyen relevancia y pueden comportarse como redirecciones blandas.
 
-### 2. Crear tarjeta social horizontal
-
-El `og:image` actual usa el isotipo cuadrado. Conviene publicar una pieza `1200 × 630`, cambiar Twitter a `summary_large_image` y añadir `og:image:width`, `og:image:height` y `twitter:image:alt`.
-
-El kit visual incluye una propuesta Open Graph editable y exportada.
-
-### 3. Solicitar indexación
+### 2. Solicitar indexación
 
 Una consulta web por la URL o el nombre exacto no mostró todavía la página Conecta. Esto no prueba ausencia del índice, especialmente por tratarse de una publicación reciente. Verificar la URL en Google Search Console, reenviar el sitemap y solicitar indexación.
 
-## Prioridad media
+## Mejoras aplicadas en el repositorio
 
-### 4. Acortar el título
+### Título optimizado
 
-El título actual tiene 79 caracteres. Es descriptivo, pero puede truncarse. Propuesta:
+El título se redujo de 79 a 53 caracteres para disminuir el riesgo de truncamiento:
 
 `VITAIROS Conecta | Educación digital e IA responsable`
 
 La meta description tiene 155 caracteres y está bien ajustada.
 
-### 5. Corregir validación HTML/ARIA
+### Metadatos sociales completos
 
-El validador Nu HTML del W3C reportó cinco errores por `aria-label` aplicado a `div` sin un rol compatible y una advertencia por `aria-hidden` redundante junto a `hidden`. No impiden indexación, pero conviene corregirlos para mantener semántica y accesibilidad consistentes.
+Se incorporó una imagen Open Graph específica de `1200 × 630`, `summary_large_image`, dimensiones, tipo MIME y textos alternativos para Open Graph y Twitter.
 
-### 6. Optimizar el isotipo
+### Validación HTML/ARIA corregida
 
-El isotipo transparente pesa 408 KB y se usa en tamaños pequeños. Generar variantes de 128, 256 y 512 px, conservar el PNG maestro y usar `srcset` o una variante optimizada para reducir transferencia inicial.
+Se añadieron roles compatibles a las agrupaciones etiquetadas, se definieron sus elementos de lista y se eliminó el `aria-hidden` redundante junto a `hidden`. Esto resuelve los cinco errores y la advertencia detectados en la revisión inicial.
 
-### 7. Medir la animación inicial
+### Isotipo optimizado
+
+Se generaron variantes de 128, 256 y 512 px, se mantuvo el PNG maestro y se incorporaron `srcset`, tamaños explícitos, carga diferida en el footer y precarga para la animación inicial. El recurso principal de la entrada bajó de 408 KB a 33,1 KB, una reducción aproximada del 92%.
+
+## Seguimiento recomendado
+
+### Medir la animación inicial
 
 La animación aparece en cada carga por decisión de experiencia. El contenido permanece en el DOM y es rastreable, pero la capa visual puede afectar LCP percibido. Medir Core Web Vitals en Search Console y ajustar duración o estrategia si LCP supera 2,5 s.
 
@@ -100,11 +101,18 @@ Mantener `Organization` y `WebPage`. Cuando existan programas formalizados y dat
 
 ## Plan recomendado
 
-1. Corregir la redirección sin `www` preservando el path.
-2. Publicar la tarjeta Open Graph 1200 × 630 y completar metadatos sociales.
-3. Corregir los cinco errores HTML/ARIA.
-4. Optimizar tamaños del isotipo.
-5. Solicitar indexación y revisar cobertura en Search Console.
-6. Medir Core Web Vitals después del primer ciclo de tráfico.
-7. Crear páginas por público cuando exista contenido suficiente.
+1. Corregir en Cloudflare la redirección sin `www` preservando path y query string.
+2. Solicitar indexación y revisar cobertura en Search Console.
+3. Medir Core Web Vitals después del primer ciclo de tráfico.
+4. Crear páginas por público cuando exista contenido suficiente.
 
+## Estado de implementación
+
+- [x] Título optimizado.
+- [x] Tarjeta Open Graph 1200 × 630.
+- [x] Twitter Card `summary_large_image` y textos alternativos.
+- [x] Errores HTML/ARIA detectados corregidos.
+- [x] Variantes responsive del isotipo y menor transferencia inicial.
+- [ ] Redirección de host en Cloudflare con conservación de ruta.
+- [ ] Inspección de URL y solicitud de indexación en Search Console.
+- [ ] Datos de campo de Core Web Vitals.
