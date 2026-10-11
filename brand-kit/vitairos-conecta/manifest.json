@@ -1,0 +1,23 @@
+{
+  "package": "vitairos-conecta-identidad-visual",
+  "version": "1.0.0",
+  "created": "2026-10-11",
+  "owner": "VITAIROS SpA",
+  "language": "es-CL",
+  "sourcePage": "https://www.vitairos.com/conecta/",
+  "tagline": "Tecnología que abre oportunidades.",
+  "font": {
+    "family": "Outfit",
+    "license": "SIL Open Font License 1.1"
+  },
+  "formats": {
+    "instagramSquare": [1080, 1080],
+    "instagramPortrait": [1080, 1350],
+    "story": [1080, 1920],
+    "linkedin": [1200, 627],
+    "openGraph": [1200, 630]
+  },
+  "masterColors": ["#061611", "#0E3A2F", "#17A673", "#1C66B1", "#6AD7B0", "#E8F6F1"],
+  "integrity": "SHA256SUMS.txt"
+}
+

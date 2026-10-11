@@ -1,0 +1,33 @@
+{
+  "name": "VITAIROS Conecta",
+  "version": "1.0.0",
+  "colors": {
+    "abismo": "#061611",
+    "bosque": "#0E3A2F",
+    "esmeralda": "#17A673",
+    "neural": "#1C66B1",
+    "pulso": "#6AD7B0",
+    "niebla": "#E8F6F1",
+    "jovenes": "#6875E8",
+    "personasMayores": "#238F78",
+    "educadores": "#D67A35",
+    "background": "#F8FCFA",
+    "surface": "#FFFFFF",
+    "text": "#123B30",
+    "muted": "#64847B"
+  },
+  "typography": {
+    "family": "Outfit",
+    "displayWeight": 800,
+    "headingWeight": 700,
+    "bodyWeight": 400
+  },
+  "radii": {
+    "small": 14,
+    "medium": 22,
+    "large": 34
+  },
+  "tagline": "Tecnología que abre oportunidades.",
+  "principles": ["Aprender", "Explorar", "Crear con criterio"]
+}
+

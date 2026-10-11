@@ -1,0 +1,28 @@
+:root {
+  --vitairos-abismo: #061611;
+  --vitairos-bosque: #0e3a2f;
+  --vitairos-esmeralda: #17a673;
+  --vitairos-neural: #1c66b1;
+  --vitairos-pulso: #6ad7b0;
+  --vitairos-niebla: #e8f6f1;
+
+  --conecta-jovenes: #6875e8;
+  --conecta-jovenes-suave: #eef0ff;
+  --conecta-mayores: #238f78;
+  --conecta-mayores-suave: #e6f6f1;
+  --conecta-educadores: #d67a35;
+  --conecta-educadores-suave: #fff0e3;
+
+  --conecta-fondo: #f8fcfa;
+  --conecta-superficie: #ffffff;
+  --conecta-texto: #123b30;
+  --conecta-texto-suave: #64847b;
+  --conecta-gradiente: linear-gradient(90deg, #6ad7b0, #17a673 48%, #1c66b1);
+
+  --conecta-fuente: "Outfit", system-ui, sans-serif;
+  --conecta-radio-pequeno: 14px;
+  --conecta-radio: 22px;
+  --conecta-radio-grande: 34px;
+  --conecta-sombra: 0 24px 70px rgba(14, 58, 47, 0.1);
+}
+
