@@ -68,6 +68,7 @@
     ".impact-layout",
     ".support-heading",
     ".support-card",
+    ".support-form-panel",
     ".alliance-grid",
     ".final-cta-content"
   ].join(","));
@@ -126,6 +127,72 @@
 
   if (year) {
     year.textContent = String(new Date().getFullYear());
+  }
+
+  var supportForm = document.getElementById("supportForm");
+  var supportFormStatus = document.getElementById("supportFormStatus");
+  var supportFormSuccess = document.getElementById("supportFormSuccess");
+  var supportFormReset = document.getElementById("supportFormReset");
+
+  function setSupportFormPending(isPending) {
+    if (!supportForm) return;
+    var submitButton = supportForm.querySelector('button[type="submit"]');
+    supportForm.setAttribute("aria-busy", isPending ? "true" : "false");
+    supportForm.classList.toggle("is-submitting", isPending);
+    if (submitButton) submitButton.disabled = isPending;
+  }
+
+  function showSupportFormSuccess() {
+    if (!supportForm || !supportFormSuccess) return;
+    supportForm.reset();
+    supportForm.hidden = true;
+    supportFormSuccess.hidden = false;
+    supportFormSuccess.focus({ preventScroll: true });
+  }
+
+  if (supportForm) {
+    supportForm.addEventListener("submit", function (event) {
+      if (!("fetch" in window) || !supportForm.dataset.endpoint) return;
+      event.preventDefault();
+
+      if (!supportForm.reportValidity()) return;
+      if (supportFormStatus) supportFormStatus.textContent = "";
+      setSupportFormPending(true);
+
+      fetch(supportForm.dataset.endpoint, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(supportForm)
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error("No fue posible enviar el formulario");
+          return response.json();
+        })
+        .then(function (data) {
+          if (data && (data.success === false || data.success === "false")) {
+            throw new Error("El servicio no confirmó el envío");
+          }
+          showSupportFormSuccess();
+        })
+        .catch(function () {
+          if (supportFormStatus) {
+            supportFormStatus.innerHTML = 'No pudimos enviar el mensaje. Intenta nuevamente o escríbenos a <a href="mailto:contacto@vitairos.com">contacto@vitairos.com</a>.';
+          }
+        })
+        .finally(function () {
+          setSupportFormPending(false);
+        });
+    });
+  }
+
+  if (supportFormReset && supportForm && supportFormSuccess) {
+    supportFormReset.addEventListener("click", function () {
+      supportFormSuccess.hidden = true;
+      supportForm.hidden = false;
+      if (supportFormStatus) supportFormStatus.textContent = "";
+      var firstField = supportForm.querySelector("input:not([type='hidden'])");
+      if (firstField) firstField.focus({ preventScroll: true });
+    });
   }
 
   function closeMenu(restoreFocus) {

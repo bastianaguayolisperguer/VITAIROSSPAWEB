@@ -43,7 +43,7 @@
       }
     })();
   </script>
-  <link rel="stylesheet" href="./styles.css?v=20261011-access">
+  <link rel="stylesheet" href="./styles.css?v=20261011-support-form">
 
   <script type="application/ld+json">
   {
@@ -524,11 +524,107 @@
               <li>Seguimiento y evaluación del aprendizaje</li>
             </ul>
             <div class="support-actions">
-              <a class="button button--primary" href="mailto:contacto@vitairos.com?subject=Quiero%20apoyar%20VITAIROS%20Conecta&amp;body=Hola%2C%20quiero%20conocer%20las%20modalidades%20de%20aporte%20o%20donaci%C3%B3n%20para%20VITAIROS%20Conecta.">Quiero hacer una donación</a>
-              <a class="button button--secondary" href="mailto:contacto@vitairos.com?subject=Propuesta%20de%20alianza%20para%20VITAIROS%20Conecta">Proponer una alianza</a>
+              <a class="button button--primary" href="#formulario-apoyo">Quiero apoyar</a>
             </div>
             <p class="support-transparency">Cada colaboración se formaliza indicando su modalidad, destino y respaldo correspondiente.</p>
           </article>
+        </div>
+
+        <div class="support-form-panel" id="formulario-apoyo" data-reveal>
+          <div class="support-form-intro">
+            <p class="support-form-eyebrow">Conversemos</p>
+            <h3>¿Cómo te gustaría apoyar?</h3>
+            <p>Cuéntanos qué forma de colaboración te interesa. Te contactaremos para explicarte las alternativas y encontrar juntos la opción que mejor se ajuste a ti.</p>
+            <div class="support-form-reassurance">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6.5 12.5 3.2 3.2 7.8-8"/></svg>
+              <span>Enviar este formulario no implica ningún compromiso económico.</span>
+            </div>
+          </div>
+
+          <div class="support-form-area">
+            <form class="support-form" id="supportForm" action="https://formsubmit.co/contacto@vitairos.com" data-endpoint="https://formsubmit.co/ajax/contacto@vitairos.com" method="post">
+              <input type="hidden" name="_subject" value="Nuevo interés de apoyo — VITAIROS Conecta">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_url" value="https://www.vitairos.com/conecta/#formulario-apoyo">
+              <input type="hidden" name="Origen" value="Formulario VITAIROS Conecta">
+              <div class="form-honey" aria-hidden="true">
+                <label for="supportWebsite">No completar este campo</label>
+                <input id="supportWebsite" name="_honey" type="text" tabindex="-1" autocomplete="off">
+              </div>
+
+              <div class="support-form-row">
+                <div class="form-field">
+                  <label for="supportName">Nombre <span aria-hidden="true">*</span></label>
+                  <input id="supportName" name="Nombre" type="text" autocomplete="name" required>
+                </div>
+                <div class="form-field">
+                  <label for="supportEmail">Correo electrónico <span aria-hidden="true">*</span></label>
+                  <input id="supportEmail" name="email" type="email" autocomplete="email" inputmode="email" required>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="supportOrganization">Persona u organización <span class="field-optional">Opcional</span></label>
+                <input id="supportOrganization" name="Organizacion" type="text" autocomplete="organization">
+              </div>
+
+              <fieldset class="support-options">
+                <legend>Forma de apoyo <span aria-hidden="true">*</span></legend>
+                <div class="support-option-grid">
+                  <label class="support-option">
+                    <input type="radio" name="Forma_de_apoyo" value="Realizar un aporte económico" required>
+                    <span>Realizar un aporte económico</span>
+                  </label>
+                  <label class="support-option">
+                    <input type="radio" name="Forma_de_apoyo" value="Financiar un taller o comunidad">
+                    <span>Financiar un taller o comunidad</span>
+                  </label>
+                  <label class="support-option">
+                    <input type="radio" name="Forma_de_apoyo" value="Aportar equipamiento o conectividad">
+                    <span>Aportar equipamiento o conectividad</span>
+                  </label>
+                  <label class="support-option">
+                    <input type="radio" name="Forma_de_apoyo" value="Proponer una alianza">
+                    <span>Proponer una alianza</span>
+                  </label>
+                  <label class="support-option">
+                    <input type="radio" name="Forma_de_apoyo" value="Otra forma de apoyo">
+                    <span>Otra forma de apoyo</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <div class="form-field">
+                <label for="supportMessage">Mensaje <span class="field-optional">Opcional</span></label>
+                <textarea id="supportMessage" name="Mensaje" rows="4" placeholder="Si quieres, cuéntanos brevemente tu idea."></textarea>
+              </div>
+
+              <label class="support-consent">
+                <input type="checkbox" name="Consentimiento" value="Aceptado" required>
+                <span>Acepto que VITAIROS utilice estos datos únicamente para responder mi solicitud.</span>
+              </label>
+
+              <p class="support-form-privacy">El mensaje se procesa mediante <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer">FormSubmit</a> para entregarlo a VITAIROS. No solicitamos información bancaria ni datos de pago.</p>
+              <div class="support-form-submit">
+                <button class="button button--primary" type="submit">
+                  <span class="button-label">Enviar mi interés</span>
+                  <span class="button-loading" aria-hidden="true">Enviando…</span>
+                </button>
+                <p class="support-form-status" id="supportFormStatus" role="status" aria-live="polite"></p>
+              </div>
+            </form>
+
+            <div class="support-form-success" id="supportFormSuccess" tabindex="-1" hidden>
+              <div class="support-success-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48"><path d="m12 25 8 8 17-19"/></svg>
+              </div>
+              <p class="support-form-eyebrow">Mensaje enviado</p>
+              <h3>¡Gracias por querer impulsar nuevas oportunidades!</h3>
+              <p>Recibimos tu mensaje y nos comunicaremos contigo para conversar sobre la forma de apoyo que mejor se ajuste a ti.</p>
+              <button class="button button--secondary" id="supportFormReset" type="button">Enviar otra solicitud</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -610,6 +706,6 @@
     </div>
   </footer>
 
-  <script src="./script.js?v=20261011-access" defer></script>
+  <script src="./script.js?v=20261011-support-form" defer></script>
 </body>
 </html>

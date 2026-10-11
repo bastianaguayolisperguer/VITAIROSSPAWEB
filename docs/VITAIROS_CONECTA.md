@@ -64,7 +64,9 @@ No se añadió una regla `_redirects` al repositorio porque la redirección ocur
 
 La página comunica que las personas beneficiarias no pagan por participar. Esto no promete que toda implementación institucional sea gratuita: el alcance y la modalidad de cada intervención se acuerdan con la organización anfitriona.
 
-La sección `#apoyar` explica que el programa puede sostenerse con recursos de VITAIROS, alianzas, patrocinios y donaciones. Los botones de donación y alianza abren un correo dirigido a `contacto@vitairos.com`; no procesan pagos ni anuncian beneficios tributarios. Antes de habilitar un pago directo se debe definir la entidad receptora, el medio de pago, la rendición, los comprobantes y el tratamiento tributario aplicable.
+La sección `#apoyar` explica que el programa puede sostenerse con recursos de VITAIROS, alianzas, patrocinios y donaciones. El formulario `#formulario-apoyo` abre una conversación sin pedir un monto ni asumir un compromiso económico. Solicita nombre, correo, organización opcional, forma de apoyo, mensaje opcional y consentimiento de contacto. Los envíos se procesan mediante FormSubmit y llegan a `contacto@vitairos.com`; el primer envío requiere confirmar el correo institucional de activación que remite ese servicio. El formulario incluye honeypot antispam, estados accesibles de carga, éxito y error, y un correo directo como respaldo.
+
+El formulario no procesa pagos ni anuncia beneficios tributarios. Antes de habilitar un pago directo se debe definir la entidad receptora, el medio de pago, la rendición, los comprobantes y el tratamiento tributario aplicable.
 
 ## Cómo actualizar contenidos
 
