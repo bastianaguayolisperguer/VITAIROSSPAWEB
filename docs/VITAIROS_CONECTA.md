@@ -8,6 +8,8 @@ La implementación mantiene la identidad del sitio principal: tipografía Outfit
 
 Conecta conserva una identidad propia mediante el distintivo junto al wordmark, gradientes Pulso–Esmeralda–Neural, patrones de red, progreso de lectura, revelado progresivo y respuestas sutiles al puntero. La dirección visual es luminosa y educativa: superficies claras, formas orgánicas, tarjetas pastel y elementos flotantes reemplazan el antiguo tratamiento oscuro corporativo. La página utiliza un único tema claro para evitar cambios bruscos de contraste. Todas las animaciones respetan `prefers-reduced-motion`.
 
+La entrada de la landing construye una red de nodos, la resuelve en el isotipo oficial y presenta el distintivo Conecta en aproximadamente dos segundos. Se muestra una sola vez por sesión mediante `sessionStorage`, puede omitirse con un toque o clic y se desactiva por completo cuando el sistema solicita movimiento reducido. Para revisar la secuencia sin limpiar la sesión se puede abrir `/conecta/?intro=1`.
+
 ## Ruta
 
 - Producción: `https://www.vitairos.com/conecta/`
@@ -31,7 +33,7 @@ No se añadió una regla `_redirects` al repositorio porque la redirección ocur
 
 - `conecta/index.html`: contenido semántico, SEO, Open Graph, JSON-LD y estructura de la landing.
 - `conecta/styles.css`: sistema visual educativo, responsive, foco visible y reglas de movimiento reducido.
-- `conecta/script.js`: menú móvil, tema, año del footer y carga segura de datos futuros.
+- `conecta/script.js`: animación inicial, menú móvil, interacciones, año del footer y carga segura de datos futuros.
 - `conecta/assets/vitairos-isotipo-transparent.png`: recorte transparente del isotipo entregado por VITAIROS, preparado para fondos claros y oscuros.
 - `data/conecta-impact.json`: fuente centralizada para métricas verificadas y aliados autorizados.
 - `docs/VITAIROS_CONECTA.md`: esta documentación.

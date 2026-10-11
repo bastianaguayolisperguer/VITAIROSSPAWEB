@@ -28,6 +28,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var forceIntro = new URLSearchParams(window.location.search).get("intro") === "1";
+      var introSeen = false;
+
+      try {
+        introSeen = window.sessionStorage.getItem("vitairos-conecta-intro-v1") === "seen";
+      } catch (error) {
+        introSeen = false;
+      }
+
+      if (!reducedMotion && (forceIntro || !introSeen)) {
+        document.documentElement.classList.add("conecta-intro-enabled");
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="./styles.css">
 
   <script type="application/ld+json">
@@ -73,6 +90,59 @@
   </script>
 </head>
 <body>
+  <div class="conecta-intro" id="conectaIntro" aria-hidden="true">
+    <span class="conecta-intro__orb conecta-intro__orb--one"></span>
+    <span class="conecta-intro__orb conecta-intro__orb--two"></span>
+    <span class="conecta-intro__orb conecta-intro__orb--three"></span>
+
+    <div class="conecta-intro__stage">
+      <div class="conecta-intro__symbol">
+        <span class="conecta-intro__ring conecta-intro__ring--one"></span>
+        <span class="conecta-intro__ring conecta-intro__ring--two"></span>
+
+        <svg class="conecta-intro__network" viewBox="0 0 240 220" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="conectaIntroLine" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#6ad7b0"/>
+              <stop offset="52%" stop-color="#17a673"/>
+              <stop offset="100%" stop-color="#1c66b1"/>
+            </linearGradient>
+          </defs>
+          <g class="conecta-intro__paths">
+            <path style="--path-delay: .02s" pathLength="1" d="M28 28 50 36 65 64 82 98 101 136 112 169 120 202"/>
+            <path style="--path-delay: .12s" pathLength="1" d="M78 35 94 64 108 98 120 130 120 202"/>
+            <path style="--path-delay: .08s" pathLength="1" d="M212 28 190 36 175 64 158 98 139 136 128 169 120 202"/>
+            <path style="--path-delay: .18s" pathLength="1" d="M162 35 146 64 132 98 120 130"/>
+          </g>
+          <g class="conecta-intro__nodes">
+            <circle style="--node-delay: .08s" class="is-mint" cx="28" cy="28" r="9"/>
+            <circle style="--node-delay: .18s" class="is-mint" cx="50" cy="36" r="6"/>
+            <circle style="--node-delay: .28s" class="is-mint" cx="65" cy="64" r="7"/>
+            <circle style="--node-delay: .38s" class="is-green" cx="82" cy="98" r="8"/>
+            <circle style="--node-delay: .48s" class="is-green" cx="101" cy="136" r="9"/>
+            <circle style="--node-delay: .58s" class="is-blue" cx="112" cy="169" r="7"/>
+            <circle style="--node-delay: .12s" class="is-teal" cx="212" cy="28" r="9"/>
+            <circle style="--node-delay: .22s" class="is-teal" cx="190" cy="36" r="6"/>
+            <circle style="--node-delay: .32s" class="is-teal" cx="175" cy="64" r="7"/>
+            <circle style="--node-delay: .42s" class="is-blue" cx="158" cy="98" r="8"/>
+            <circle style="--node-delay: .52s" class="is-blue" cx="139" cy="136" r="9"/>
+            <circle style="--node-delay: .62s" class="is-blue" cx="128" cy="169" r="7"/>
+            <circle style="--node-delay: .6s" class="is-teal" cx="120" cy="130" r="13"/>
+            <circle style="--node-delay: .7s" class="is-blue" cx="120" cy="202" r="11"/>
+          </g>
+        </svg>
+
+        <img class="conecta-intro__official-mark" src="/conecta/assets/vitairos-isotipo-transparent.png" width="1254" height="1254" alt="">
+      </div>
+
+      <div class="conecta-intro__brand">
+        <span class="conecta-intro__vitairos">VITAIROS</span>
+        <span class="conecta-intro__program">Conecta</span>
+      </div>
+      <p class="conecta-intro__message">Aprender <span>·</span> Explorar <span>·</span> Crear</p>
+    </div>
+  </div>
+
   <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
 
   <header class="site-header" id="inicio">

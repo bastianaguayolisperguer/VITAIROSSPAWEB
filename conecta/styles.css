@@ -36,6 +36,293 @@
   --header-height: 80px;
 }
 
+.conecta-intro {
+  position: fixed;
+  z-index: 3000;
+  inset: 0;
+  display: none;
+  overflow: hidden;
+  place-items: center;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(106, 215, 176, 0.25), transparent 30%),
+    radial-gradient(circle at 82% 24%, rgba(28, 102, 177, 0.13), transparent 29%),
+    radial-gradient(circle at 72% 88%, rgba(214, 122, 53, 0.1), transparent 25%),
+    linear-gradient(145deg, #fbfffd 0%, #eef9f5 48%, #f3f8ff 100%);
+  isolation: isolate;
+  animation: conecta-intro-leave 0.52s cubic-bezier(0.55, 0, 0.3, 1) 1.48s forwards;
+}
+
+.conecta-intro-enabled .conecta-intro {
+  display: grid;
+}
+
+.conecta-intro.is-skipping {
+  animation: conecta-intro-skip 0.3s ease forwards;
+}
+
+.conecta-intro::before,
+.conecta-intro::after {
+  position: absolute;
+  z-index: -1;
+  width: min(74vw, 860px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(23, 166, 115, 0.1);
+  border-radius: 50%;
+  content: "";
+}
+
+.conecta-intro::before {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: conecta-intro-breathe 1.8s ease-out both;
+}
+
+.conecta-intro::after {
+  top: 50%;
+  left: 50%;
+  width: min(47vw, 560px);
+  border-color: rgba(28, 102, 177, 0.09);
+  transform: translate(-50%, -50%);
+  animation: conecta-intro-breathe 1.6s ease-out 0.12s both;
+}
+
+.conecta-intro__stage {
+  position: relative;
+  display: grid;
+  width: min(90vw, 560px);
+  justify-items: center;
+  text-align: center;
+}
+
+.conecta-intro__symbol {
+  position: relative;
+  display: grid;
+  width: clamp(132px, 20vw, 178px);
+  aspect-ratio: 1;
+  place-items: center;
+}
+
+.conecta-intro__network,
+.conecta-intro__official-mark {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.conecta-intro__network {
+  overflow: visible;
+  padding: 7%;
+  filter: drop-shadow(0 10px 24px rgba(23, 166, 115, 0.18));
+  animation: conecta-intro-network-resolve 0.38s ease 0.74s forwards;
+}
+
+.conecta-intro__paths path {
+  fill: none;
+  stroke: url(#conectaIntroLine);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: conecta-intro-draw 0.62s cubic-bezier(0.2, 0.78, 0.2, 1) var(--path-delay) forwards;
+}
+
+.conecta-intro__nodes circle {
+  opacity: 0;
+  transform: scale(0.2);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: conecta-intro-node 0.38s cubic-bezier(0.2, 0.9, 0.3, 1.35) var(--node-delay) forwards;
+}
+
+.conecta-intro__nodes .is-mint {
+  fill: #6ad7b0;
+}
+
+.conecta-intro__nodes .is-green {
+  fill: #17a673;
+}
+
+.conecta-intro__nodes .is-teal {
+  fill: #12b8b3;
+}
+
+.conecta-intro__nodes .is-blue {
+  fill: #1c66b1;
+}
+
+.conecta-intro__official-mark {
+  z-index: 2;
+  opacity: 0;
+  filter: drop-shadow(0 14px 24px rgba(14, 58, 47, 0.16));
+  transform: scale(0.84);
+  animation: conecta-intro-mark-in 0.48s cubic-bezier(0.16, 0.85, 0.25, 1) 0.72s forwards;
+}
+
+.conecta-intro__ring {
+  position: absolute;
+  z-index: -1;
+  inset: 10%;
+  border: 1px solid rgba(23, 166, 115, 0.18);
+  border-radius: 50%;
+  opacity: 0;
+  animation: conecta-intro-ring 0.72s ease-out 0.5s forwards;
+}
+
+.conecta-intro__ring--two {
+  border-color: rgba(28, 102, 177, 0.12);
+  animation-delay: 0.68s;
+}
+
+.conecta-intro__brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 17px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: conecta-intro-copy-in 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) 0.72s forwards;
+}
+
+.conecta-intro__vitairos {
+  color: var(--abismo);
+  font-size: clamp(1.42rem, 4vw, 2rem);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1;
+}
+
+.conecta-intro__program {
+  padding: 5px 11px 6px;
+  border: 1px solid rgba(23, 166, 115, 0.24);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.68);
+  color: #0d7a58;
+  font-size: clamp(0.84rem, 2.1vw, 1rem);
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 8px 22px rgba(14, 58, 47, 0.08);
+}
+
+.conecta-intro__message {
+  margin-top: 13px;
+  color: var(--muted-dark);
+  font-size: clamp(0.72rem, 2.1vw, 0.82rem);
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  opacity: 0;
+  text-transform: uppercase;
+  transform: translateY(7px);
+  animation: conecta-intro-copy-in 0.38s ease 0.92s forwards;
+}
+
+.conecta-intro__message span {
+  color: var(--esmeralda);
+}
+
+.conecta-intro__orb {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--pulso);
+  box-shadow: 0 0 0 7px rgba(106, 215, 176, 0.1);
+  opacity: 0;
+  animation: conecta-intro-orb 1.15s ease-out forwards;
+}
+
+.conecta-intro__orb--one {
+  top: 22%;
+  left: 17%;
+}
+
+.conecta-intro__orb--two {
+  top: 29%;
+  right: 15%;
+  background: #12b8b3;
+  animation-delay: 0.12s;
+}
+
+.conecta-intro__orb--three {
+  right: 24%;
+  bottom: 18%;
+  background: var(--neural);
+  animation-delay: 0.2s;
+}
+
+@keyframes conecta-intro-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes conecta-intro-node {
+  0% { opacity: 0; transform: scale(0.2); }
+  70% { opacity: 1; transform: scale(1.18); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes conecta-intro-network-resolve {
+  to { opacity: 0.12; transform: scale(0.94); }
+}
+
+@keyframes conecta-intro-mark-in {
+  0% { opacity: 0; transform: scale(0.84); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes conecta-intro-ring {
+  0% { opacity: 0.55; transform: scale(0.72); }
+  100% { opacity: 0; transform: scale(1.65); }
+}
+
+@keyframes conecta-intro-copy-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes conecta-intro-orb {
+  0% { opacity: 0; transform: translateY(14px) scale(0.5); }
+  32% { opacity: 0.75; }
+  100% { opacity: 0; transform: translateY(-24px) scale(1.1); }
+}
+
+@keyframes conecta-intro-breathe {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.72); }
+  45% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.12); }
+}
+
+@keyframes conecta-intro-leave {
+  0% { opacity: 1; visibility: visible; filter: blur(0); }
+  100% { opacity: 0; visibility: hidden; filter: blur(10px); pointer-events: none; }
+}
+
+@keyframes conecta-intro-skip {
+  to { opacity: 0; visibility: hidden; transform: scale(1.025); pointer-events: none; }
+}
+
+@media (max-width: 560px) {
+  .conecta-intro__brand {
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .conecta-intro__vitairos {
+    padding-left: 0.16em;
+  }
+
+  .conecta-intro__message {
+    letter-spacing: 0.09em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .conecta-intro-enabled .conecta-intro {
+    display: none;
+  }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -59,6 +346,10 @@ body {
 }
 
 body.menu-open {
+  overflow: hidden;
+}
+
+body.conecta-intro-active {
   overflow: hidden;
 }
 

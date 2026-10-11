@@ -9,6 +9,37 @@
   var year = document.getElementById("year");
   var scrollProgress = document.getElementById("scrollProgress");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var intro = document.getElementById("conectaIntro");
+
+  function removeIntro() {
+    body.classList.remove("conecta-intro-active");
+    root.classList.remove("conecta-intro-enabled");
+    if (intro && intro.parentNode) intro.parentNode.removeChild(intro);
+  }
+
+  if (intro && root.classList.contains("conecta-intro-enabled") && !reduceMotion.matches) {
+    body.classList.add("conecta-intro-active");
+
+    try {
+      window.sessionStorage.setItem("vitairos-conecta-intro-v1", "seen");
+    } catch (error) {
+      /* The animation remains safe when storage is unavailable. */
+    }
+
+    var introFallback = window.setTimeout(removeIntro, 2600);
+
+    intro.addEventListener("animationend", function (event) {
+      if (event.target !== intro || (event.animationName !== "conecta-intro-leave" && event.animationName !== "conecta-intro-skip")) return;
+      window.clearTimeout(introFallback);
+      removeIntro();
+    });
+
+    intro.addEventListener("pointerup", function () {
+      intro.classList.add("is-skipping");
+    }, { once: true });
+  } else if (intro) {
+    removeIntro();
+  }
 
   function updateScrollProgress() {
     if (!scrollProgress) return;
