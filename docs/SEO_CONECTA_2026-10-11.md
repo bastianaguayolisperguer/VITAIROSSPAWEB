@@ -18,7 +18,7 @@ La optimización en código quedó aplicada. Los dos pendientes principales depe
 | Robots | `index, follow`; rastreadores permitidos |
 | Sitemap | URL incluida con `lastmod` 2026-10-11 |
 | HTML | Estático y legible sin depender de JavaScript |
-| Encabezados | 1 H1, 9 H2 y 11 H3 |
+| Encabezados | 1 H1, 10 H2 y 13 H3 |
 | Imágenes | 3 de 3 con atributo `alt` |
 | Datos estructurados | JSON-LD válido: `Organization` + `WebPage` |
 | Transferencia observada | HTML 7,9 KB; CSS 11,4 KB; JS 2,45 KB comprimidos |
@@ -36,6 +36,7 @@ La optimización en código quedó aplicada. Los dos pendientes principales depe
 6. Datos estructurados sintácticamente válidos.
 7. Diseño responsive, foco visible y soporte para `prefers-reduced-motion`.
 8. Página estática con HTML, CSS y JavaScript livianos.
+9. Sección visible de acceso y sostenibilidad que responde dudas sobre costos, aportes y donaciones.
 
 ## Pendientes externos de prioridad alta
 
@@ -57,7 +58,7 @@ El título se redujo de 79 a 53 caracteres para disminuir el riesgo de truncamie
 
 `VITAIROS Conecta | Educación digital e IA responsable`
 
-La meta description tiene 155 caracteres y está bien ajustada.
+La meta description tiene 156 caracteres y comunica de forma explícita que la formación es gratuita para las personas participantes.
 
 ### Metadatos sociales completos
 

@@ -55,9 +55,16 @@ No se añadió una regla `_redirects` al repositorio porque la redirección ocur
 7. Estado de primeros pilotos en la Región de Valparaíso.
 8. Convocatoria para organizaciones.
 9. Enfoque de medición e impacto.
-10. Sección de alianzas preparada, pero oculta mientras no existan datos confirmados.
-11. CTA final con correo institucional.
-12. Footer oficial con los canales presentes en el sitio vigente.
+10. Acceso y sostenibilidad: gratuidad para participantes, destino de los aportes y vías para donar o proponer alianzas.
+11. Sección de alianzas preparada, pero oculta mientras no existan datos confirmados.
+12. CTA final con correo institucional.
+13. Footer oficial con los canales presentes en el sitio vigente.
+
+## Acceso, aportes y donaciones
+
+La página comunica que las personas beneficiarias no pagan por participar. Esto no promete que toda implementación institucional sea gratuita: el alcance y la modalidad de cada intervención se acuerdan con la organización anfitriona.
+
+La sección `#apoyar` explica que el programa puede sostenerse con recursos de VITAIROS, alianzas, patrocinios y donaciones. Los botones de donación y alianza abren un correo dirigido a `contacto@vitairos.com`; no procesan pagos ni anuncian beneficios tributarios. Antes de habilitar un pago directo se debe definir la entidad receptora, el medio de pago, la rendición, los comprobantes y el tratamiento tributario aplicable.
 
 ## Cómo actualizar contenidos
 
@@ -65,7 +72,7 @@ El texto visible vive en `conecta/index.html`. Mantener estas reglas al editar:
 
 - describir a Conecta como una iniciativa de VITAIROS SpA;
 - no crear un logo o isotipo alternativo;
-- reutilizar `conecta/assets/vitairos-isotipo-transparent.png` como marca visual de la iniciativa;
+- conservar `conecta/assets/vitairos-isotipo-transparent.png` como maestro y usar las variantes optimizadas de 128, 256 o 512 px en la interfaz;
 - no agregar cifras, testimonios, instituciones, alianzas o resultados sin respaldo;
 - utilizar lenguaje como “en desarrollo”, “primeros pilotos” o “procesos de validación” cuando corresponda;
 - conservar un único `h1` y la jerarquía `h2`/`h3` existente;

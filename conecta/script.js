@@ -66,6 +66,8 @@
     ".pilots-layout",
     ".organization-panel",
     ".impact-layout",
+    ".support-heading",
+    ".support-card",
     ".alliance-grid",
     ".final-cta-content"
   ].join(","));
