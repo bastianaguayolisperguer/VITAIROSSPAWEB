@@ -26,6 +26,6 @@ La fuente Outfit se sirve desde el repositorio; la homepage no depende de Google
 
 ## Validación
 
-El script `tests/homepage-smoke.mjs` revisa estructura y contenido. `tests/homepage-browser-qa.cjs` ejecuta pruebas visuales y funcionales en ocho tamaños de pantalla, valida los cuatro destinos internos y detecta errores de consola, imágenes rotas, IDs duplicados y desbordamiento horizontal.
+El script `tests/homepage-smoke.mjs` revisa estructura y contenido. `tests/homepage-browser-qa.cjs` ejecuta pruebas visuales y funcionales en nueve tamaños de pantalla, incluido el breakpoint intermedio de tablet, valida los cuatro destinos internos y detecta errores de consola, imágenes rotas, IDs duplicados y desbordamiento horizontal.
 
 Esta entrega se mantiene en modo preview. No modifica producción.

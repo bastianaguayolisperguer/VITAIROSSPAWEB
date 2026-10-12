@@ -9,6 +9,7 @@ const viewports = [
   ['1440x900', 1440, 900],
   ['1366x768', 1366, 768],
   ['1024x768', 1024, 768],
+  ['900x900', 900, 900],
   ['768x1024', 768, 1024],
   ['430x932', 430, 932],
   ['390x844', 390, 844],
@@ -163,7 +164,7 @@ async function preparePage(page) {
     failures.forEach((failure) => console.error(`- ${failure}`));
     process.exit(1);
   }
-  console.log('\nBrowser QA: OK en 8 viewports. Evidencia y Open Graph generados.');
+  console.log(`\nBrowser QA: OK en ${viewports.length} viewports. Evidencia y Open Graph generados.`);
 })().catch((error) => {
   console.error(error);
   process.exit(1);

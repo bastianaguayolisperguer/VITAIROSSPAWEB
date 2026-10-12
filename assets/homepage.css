@@ -916,8 +916,9 @@ footer{margin-top:0}
   .surface-faq .faq-list{grid-template-columns:1fr}
 }
 
-@media(max-width:768px){
+@media(max-width:900px){
   .container{padding:0 20px}
+  .brand-tag{display:none}
   section{padding:74px 0}
   .section-header{margin-bottom:40px}.section-title{font-size:clamp(30px,9vw,40px)}.section-lead{font-size:16px;line-height:1.65}
   .hero-banner{display:flex;flex-direction:column;height:auto;max-height:none;min-height:0;margin-top:70px;padding-top:0}
@@ -946,3 +947,4 @@ footer{margin-top:0}
 }
 
 @media(prefers-reduced-motion:reduce){.scroll-progress span{transition:none}.intro-loader__projects{opacity:1;transform:none}}
+@media(max-width:900px) and (prefers-reduced-motion:reduce){.orbit-project--m{transform:translateX(123px)}.orbit-project--industrial{transform:translateY(123px)}.orbit-project--agro{transform:translateX(-123px)}.orbit-project--conecta{transform:translateY(-123px)}}
