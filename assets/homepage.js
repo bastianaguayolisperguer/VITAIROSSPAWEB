@@ -326,40 +326,23 @@ var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-redu
   }
 })();
 
-  // ─── THEME TOGGLE ───
-  (function(){
-    var btn = document.getElementById('themeToggle');
-    var html = document.documentElement;
-    var saved = localStorage.getItem('vitairos-theme');
-    if(saved === 'light'){ html.classList.add('light-mode'); if(btn) btn.textContent = '☀️'; }
-    if(!btn) return;
-    btn.addEventListener('click', function(){
-      var isLight = html.classList.toggle('light-mode');
-      btn.textContent = isLight ? '☀️' : '🌙';
-      localStorage.setItem('vitairos-theme', isLight ? 'light' : 'dark');
-      // Animate toggle
-      btn.style.transform = 'rotate(360deg) scale(1.2)';
-      setTimeout(function(){ btn.style.transform = ''; }, 400);
-    });
-  })();
-
-  // ─── CURSOR GLOW ───
-  (function(){
-    var glow = document.getElementById('cursor-glow');
-    if(!glow || prefersReducedMotion || !window.matchMedia('(pointer:fine)').matches) return;
-    var glowFrame = 0;
-    var nextX = window.innerWidth/2;
-    var nextY = window.innerHeight/2;
-    document.addEventListener('pointermove', function(e){
-      nextX = e.clientX;
-      nextY = e.clientY;
-      if(glowFrame) return;
-      glowFrame = requestAnimationFrame(function(){
-        glow.style.transform = 'translate3d(' + nextX + 'px,' + nextY + 'px,0) translate(-50%,-50%)';
-        glowFrame = 0;
-      });
-    }, {passive:true});
-  })();
+(function(){
+  var progress = document.getElementById('scrollProgress');
+  if(!progress) return;
+  var progressFrame = 0;
+  function updateProgress(){
+    var maximum = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    var ratio = Math.max(0, Math.min(1, window.scrollY / maximum));
+    progress.style.transform = 'scaleX(' + ratio + ')';
+    progressFrame = 0;
+  }
+  function scheduleProgress(){
+    if(!progressFrame) progressFrame = requestAnimationFrame(updateProgress);
+  }
+  window.addEventListener('scroll', scheduleProgress, { passive:true });
+  window.addEventListener('resize', scheduleProgress, { passive:true });
+  updateProgress();
+})();
 
 (function(){
   document.body.classList.add('loader-active');
@@ -374,7 +357,7 @@ var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-redu
   }
   if(prefersReducedMotion){ hideLoader(); return; }
   window.addEventListener('load', function(){
-    setTimeout(hideLoader, 2700);
+    setTimeout(hideLoader, 1450);
   }, { once:true });
-  setTimeout(hideLoader, 3400);
+  setTimeout(hideLoader, 2200);
 })();

@@ -6,17 +6,20 @@ Esta versión evoluciona la homepage original sin sustituir su identidad. Conser
 
 ## Cambios principales
 
-- La introducción existente incorpora el mensaje “Sistemas inteligentes · impacto real” y la secuencia “Diagnosticar · Conectar · Transformar”.
-- La esfera del hero mantiene su animación y suma cuatro enlaces orbitando hacia VITAIROS M, Industrial AI, Agro Intelligence y Conecta.
+- La introducción existente se acelera y resuelve desde la red VITAIROS hacia las cuatro identidades de proyecto.
+- La esfera del hero mantiene su animación y suma cuatro marcas reales orbitando como enlaces hacia VITAIROS M, Industrial AI, Agro Intelligence y Conecta.
 - La propuesta principal pasa de promesas genéricas a capacidades concretas: IA aplicada, productos digitales, automatización, datos e integración.
 - Se eliminan precios, vacantes, cifras no verificables, palabras clave SEO visibles y modales que ya no aportaban a la nueva visión.
 - Misión, visión, proceso, formulario, preguntas frecuentes y pie de página fueron reescritos para presentar a VITAIROS como una compañía latinoamericana de sistemas inteligentes.
+- Las superficies oscuras y claras alternan de forma editorial; capacidades y proceso dejan de repetirse como una sucesión de tarjetas.
+- Se retiran el tema global y el halo de cursor para reducir ruido visual y código sin uso.
 
 ## Arquitectura
 
 - `index.html`: estructura, contenido y datos estructurados.
-- `assets/homepage.css`: diseño responsive, animaciones y modos de color.
-- `assets/homepage.js`: intro, esfera, navegación, modales, tema y revelado progresivo.
+- `assets/homepage.css`: dirección visual, diseño responsive, superficies y animaciones.
+- `assets/homepage.js`: intro, esfera, navegación, modales, progreso de lectura y revelado progresivo.
+- `assets/projects/`: marcas vectoriales extraídas de VITAIROS-M e Industrial AI; Agro y Conecta reutilizan sus activos oficiales existentes.
 - `assets/vitairos-open-graph-1200x630.png`: imagen social optimizada.
 
 La fuente Outfit se sirve desde el repositorio; la homepage no depende de Google Fonts.

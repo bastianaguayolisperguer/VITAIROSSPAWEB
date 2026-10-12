@@ -42,7 +42,7 @@ Las iniciativas comparten una visión, pero cada una conserva su página, audien
 
 ## Arquitectura de información
 
-1. **Intro breve** — red original, isotipo y secuencia Diagnosticar · Conectar · Transformar.
+1. **Intro breve** — red original, isotipo y aparición de las cuatro identidades del ecosistema.
 2. **Hero** — posición AI-first, sistema geométrico original y proyectos orbitando como enlaces.
 3. **Capacidades** — IA aplicada, software/producto, automatización, datos e integración.
 4. **Ecosistema** — cuatro iniciativas bajo una sola visión.
@@ -83,7 +83,7 @@ Todos dirigen a acciones reales dentro de la página. No se promete agenda autom
 - Paleta corporativa: Abismo, Bosque, Esmeralda, Neural, Pulso y Niebla.
 - Outfit como única tipografía corporativa, autoalojada desde el brand kit.
 - Isotipo oficial de nodos; no se crea un símbolo alternativo.
-- Hero oscuro y tecnológico; tarjetas y secciones con variación de superficie y espacio negativo.
+- Hero oscuro y tecnológico; alternancia editorial de superficies claras y oscuras para marcar cada capítulo.
 - Gradiente verde–turquesa–azul reservado para énfasis y CTA.
 - Glassmorphism moderado, líneas finas y sombras profundas.
 - La esfera geométrica y red original se conservan como activos de identidad.
@@ -93,11 +93,11 @@ La auditoría encontró Outfit en la homepage, Conecta, tokens y brand kit; Sora
 ## Movimiento e interacción
 
 - Intro breve con escape automático y sin bloqueo bajo movimiento reducido.
-- Cuatro iconos de proyecto orbitan alrededor de la esfera y son enlaces accesibles.
+- Las cuatro marcas reales de proyecto orbitan alrededor de la esfera y son enlaces accesibles.
 - La órbita se pausa al hacer hover o focus para facilitar interacción.
 - Reveal progresivo con fallback de visibilidad.
 - Hover sutil, sin tilt 3D ni efecto gaming.
-- Cursor glow actualizado por evento, no por un loop perpetuo.
+- Progreso de lectura discreto y animaciones acotadas para evitar ruido visual.
 - Menú móvil con Escape, `aria-expanded` y restauración de foco.
 
 ## Contenido congelado por sección

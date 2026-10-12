@@ -177,15 +177,18 @@
       <img src="/conecta/assets/vitairos-isotipo-128.png" alt="VITAIROS logo">
     </div>
     <div class="intro-loader__brand">VITAIROS</div>
-    <div class="intro-loader__sequence" aria-hidden="true">
-      <span>Diagnosticar</span><i></i><span>Conectar</span><i></i><span>Transformar</span>
+    <div class="intro-loader__projects" aria-hidden="true">
+      <span><img src="/assets/projects/vitairos-m.svg" alt="">M</span>
+      <span><img src="/assets/projects/industrial-ai.svg" alt="">Industrial</span>
+      <span><img src="/agro-intelligence/vitairos-logo.webp" alt="">Agro</span>
+      <span><img src="/conecta/assets/vitairos-isotipo-transparent.png" alt="">Conecta</span>
     </div>
     <div class="intro-loader__bar"></div>
   </div>
 </div>
 
 <!-- ─── HEADER ─── -->
-<div id="cursor-glow" aria-hidden="true"></div>
+<div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
 <header>
   <div class="container nav">
     <a href="#inicio" class="brand">
@@ -203,8 +206,7 @@
       <a href="#nosotros">Visión</a>
       <a href="#contacto" class="cta-primary">Conversemos</a>
     </nav>
-    <!-- ✅ MEJORA 2: Hamburger mobile -->
-    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema" title="Cambiar a modo claro/oscuro">🌙</button>
+    <!-- Menú responsive -->
     <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-controls="mobileMenu" aria-expanded="false" type="button">
       <span></span><span></span><span></span>
     </button>
@@ -244,16 +246,16 @@
     <span class="sphere-core-label" aria-hidden="true">IA</span>
     <nav class="project-orbits" aria-label="Proyectos VITAIROS">
       <a class="orbit-project orbit-project--m" href="/vitairos-m/" aria-label="Conocer VITAIROS-M" style="--orbit-delay:0s">
-        <span class="orbit-project__body"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18V6l8 9 8-9v12"/></svg><span>VITAIROS-M</span></span>
+        <span class="orbit-project__body"><img src="/assets/projects/vitairos-m.svg" alt=""><span>VITAIROS-M</span></span>
       </a>
       <a class="orbit-project orbit-project--industrial" href="/vitairos-industrial-ai/" aria-label="Conocer VITAIROS Industrial AI" style="--orbit-delay:-5s">
-        <span class="orbit-project__body"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/><path d="M4.9 7.5 3.5 5.1l1.6-1.6 2.4 1.4M16.5 4.9l2.4-1.4 1.6 1.6-1.4 2.4M19.1 16.5l1.4 2.4-1.6 1.6-2.4-1.4M7.5 19.1l-2.4 1.4-1.6-1.6 1.4-2.4"/></svg><span>Industrial AI</span></span>
+        <span class="orbit-project__body"><img src="/assets/projects/industrial-ai.svg" alt=""><span>Industrial AI</span></span>
       </a>
       <a class="orbit-project orbit-project--agro" href="/agro-intelligence/" aria-label="Conocer VITAIROS Agro Intelligence" style="--orbit-delay:-10s">
-        <span class="orbit-project__body"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 4c-7 .4-11 3.8-11 9 0 3.2 2 5.4 5 5.4 5.2 0 7.1-6.7 6-14.4Z"/><path d="M5 20c2.4-4.7 5.7-8.1 10-10"/></svg><span>Agro Intelligence</span></span>
+        <span class="orbit-project__body"><img src="/agro-intelligence/vitairos-logo.webp" alt=""><span>Agro Intelligence</span></span>
       </a>
       <a class="orbit-project orbit-project--conecta" href="/conecta/" aria-label="Conocer VITAIROS Conecta" style="--orbit-delay:-15s">
-        <span class="orbit-project__body"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="7" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="12" cy="17" r="2"/><path d="m7.7 8.1 3.1 6.8M16.3 8.1l-3.1 6.8M8 7h8"/></svg><span>Conecta</span></span>
+        <span class="orbit-project__body"><img src="/conecta/assets/vitairos-isotipo-transparent.png" alt=""><span>Conecta</span></span>
       </a>
     </nav>
   </div>
@@ -289,7 +291,7 @@
 </section>
 
 <!-- ─── SERVICIOS ─── -->
-<section id="servicios">
+<section id="servicios" class="surface-light surface-capabilities">
   <div class="container">
     <div class="section-header">
       <p class="section-kicker">Capacidades conectadas</p>
@@ -351,22 +353,22 @@
 
     <div class="project-grid">
       <a class="project-card project-card--m" href="/vitairos-m/">
-        <span class="project-card__number">01</span><span class="project-card__icon">M</span>
+        <span class="project-card__number">01 · Producto digital</span><span class="project-card__identity"><img src="/assets/projects/vitairos-m.svg" alt="Logo VITAIROS-M"></span>
         <h3>VITAIROS-M</h3><p>Producto digital e inteligencia aplicada para convertir necesidades específicas en experiencias útiles.</p>
         <span class="project-card__link">Explorar proyecto <span>↗</span></span>
       </a>
       <a class="project-card project-card--industrial" href="/vitairos-industrial-ai/">
-        <span class="project-card__number">02</span><span class="project-card__icon">I</span>
+        <span class="project-card__number">02 · Operación industrial</span><span class="project-card__identity"><img src="/assets/projects/industrial-ai.svg" alt="Logo VITAIROS Industrial AI"></span>
         <h3>Industrial AI</h3><p>Inteligencia para entornos industriales donde la precisión, la trazabilidad y la continuidad importan.</p>
         <span class="project-card__link">Explorar proyecto <span>↗</span></span>
       </a>
       <a class="project-card project-card--agro" href="/agro-intelligence/">
-        <span class="project-card__number">03</span><span class="project-card__icon">A</span>
+        <span class="project-card__number">03 · Inteligencia agrícola</span><span class="project-card__identity project-card__identity--agro"><img src="/agro-intelligence/vitairos-logo.webp" alt="Logo VITAIROS Agro Intelligence"></span>
         <h3>Agro Intelligence</h3><p>Datos e IA para observar mejor, anticipar escenarios y apoyar decisiones en contextos agrícolas.</p>
         <span class="project-card__link">Explorar proyecto <span>↗</span></span>
       </a>
       <a class="project-card project-card--conecta" href="/conecta/">
-        <span class="project-card__number">04</span><span class="project-card__icon">C</span>
+        <span class="project-card__number">04 · Impacto y acceso</span><span class="project-card__identity project-card__identity--conecta"><img src="/brand-kit/vitairos-conecta/assets/logos/vitairos-conecta-sello.png" alt="Logo VITAIROS Conecta"></span>
         <h3>VITAIROS Conecta</h3><p>Una iniciativa para acercar tecnología, aprendizaje y oportunidades a más personas y comunidades.</p>
         <span class="project-card__link">Explorar proyecto <span>↗</span></span>
       </a>
@@ -375,7 +377,7 @@
 </section>
 
 <!-- ─── PROCESO ─── -->
-<section id="proceso">
+<section id="proceso" class="surface-light surface-process">
   <div class="container">
     <div class="section-header">
       <p class="section-kicker">De oportunidad a capacidad</p>
@@ -467,7 +469,7 @@
 </section>
 
 <!-- ─── CONTACTO ─── -->
-<section id="contacto">
+<section id="contacto" class="surface-light surface-contact">
   <div class="container">
     <div class="section-header">
       <p class="section-kicker">El siguiente movimiento</p>
@@ -540,7 +542,7 @@
 </section>
 
 <!-- ─── FAQ ─── -->
-<section id="faq">
+<section id="faq" class="surface-light surface-faq">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Preguntas <span class="gradient-text">frecuentes</span></h2>

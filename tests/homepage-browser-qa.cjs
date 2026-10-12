@@ -35,8 +35,13 @@ async function preparePage(page) {
       await new Promise((resolve) => setTimeout(resolve, 20));
     }
     window.scrollTo(0, 0);
-    document.querySelectorAll('.reveal').forEach((node) => node.classList.add('is-visible'));
-    await new Promise((resolve) => setTimeout(resolve, 850));
+    document.querySelectorAll('.reveal').forEach((node) => {
+      node.classList.add('is-visible');
+      node.style.transition = 'none';
+      node.style.opacity = '1';
+      node.style.transform = 'none';
+    });
+    await new Promise((resolve) => setTimeout(resolve, 150));
   });
 }
 
@@ -55,24 +60,30 @@ async function preparePage(page) {
     const response = await page.goto(baseUrl, { waitUntil: 'networkidle' });
     await preparePage(page);
 
-    const metrics = await page.evaluate(() => ({
-      title: document.title,
-      h1: document.querySelectorAll('h1').length,
-      main: Boolean(document.querySelector('main')),
-      orbitLinks: document.querySelectorAll('.orbit-project').length,
-      overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
-      height: document.documentElement.scrollHeight,
-      visibleReveals: Array.from(document.querySelectorAll('.reveal')).every((node) => Number.parseFloat(getComputedStyle(node).opacity) > 0.99),
-      brokenImages: Array.from(document.images).filter((image) => !image.complete || image.naturalWidth === 0).map((image) => image.currentSrc || image.src),
-      duplicateIds: Array.from(document.querySelectorAll('[id]'), (node) => node.id).filter((id, index, list) => list.indexOf(id) !== index)
-    }));
+    const metrics = await page.evaluate(() => {
+      const hiddenReveals = Array.from(document.querySelectorAll('.reveal'))
+        .filter((node) => Number.parseFloat(getComputedStyle(node).opacity) <= 0.99)
+        .map((node) => `${node.tagName.toLowerCase()}.${Array.from(node.classList).join('.')} (${getComputedStyle(node).opacity})`);
+      return {
+        title: document.title,
+        h1: document.querySelectorAll('h1').length,
+        main: Boolean(document.querySelector('main')),
+        orbitLinks: document.querySelectorAll('.orbit-project').length,
+        overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        height: document.documentElement.scrollHeight,
+        visibleReveals: hiddenReveals.length === 0,
+        hiddenReveals,
+        brokenImages: Array.from(document.images).filter((image) => !image.complete || image.naturalWidth === 0).map((image) => image.currentSrc || image.src),
+        duplicateIds: Array.from(document.querySelectorAll('[id]'), (node) => node.id).filter((id, index, list) => list.indexOf(id) !== index)
+      };
+    });
 
     const status = response ? response.status() : 0;
     if (status !== 200) failures.push(`${name}: HTTP ${status}`);
     if (metrics.h1 !== 1 || !metrics.main) failures.push(`${name}: estructura semántica incompleta`);
     if (metrics.orbitLinks !== 4) failures.push(`${name}: órbita con ${metrics.orbitLinks} enlaces`);
     if (metrics.overflow > 1) failures.push(`${name}: overflow horizontal de ${metrics.overflow}px`);
-    if (!metrics.visibleReveals) failures.push(`${name}: existen reveals invisibles`);
+    if (!metrics.visibleReveals) failures.push(`${name}: reveals incompletos: ${metrics.hiddenReveals.join(', ')}`);
     if (metrics.brokenImages.length) failures.push(`${name}: imágenes rotas: ${metrics.brokenImages.join(', ')}`);
     if (metrics.duplicateIds.length) failures.push(`${name}: IDs duplicados: ${metrics.duplicateIds.join(', ')}`);
     if (consoleErrors.length) failures.push(`${name}: consola: ${consoleErrors.join(' | ')}`);
@@ -113,7 +124,7 @@ async function preparePage(page) {
   const intro = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
   const introPage = await intro.newPage();
   await introPage.goto(baseUrl, { waitUntil: 'domcontentloaded' });
-  await introPage.waitForTimeout(2250);
+  await introPage.waitForTimeout(900);
   await introPage.screenshot({ path: path.join(outputDir, 'homepage-evolution-intro.png') });
   await intro.close();
 
