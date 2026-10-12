@@ -1,0 +1,47 @@
+[
+  {
+    "date": "06 JUL 2026",
+    "dateISO": "2026-07-06",
+    "title": "Portal Minero documenta la participación de VITAIROS en el encuentro del CNP y Centro de Innovación UC",
+    "summary": "La cobertura recoge la mirada de VITAIROS sobre las barreras operativas y documentales que enfrentan las soluciones tecnológicas al ingresar a la minería.",
+    "image": "/bastian-lisperguer/assets/images/bastian-en-encuentro-del-cnp-vinculado-a-innovacion-aplicada.jpg",
+    "alt": "Bastián Lisperguer en el sexto encuentro formativo del Centro Nacional de Pilotaje",
+    "width": 1482,
+    "height": 854,
+    "imagePosition": "center",
+    "category": "Minería e innovación",
+    "link": "https://www.portalminero.com/cnp-y-centro-de-innovacion-uc-capacitaron-a-startups-de-la-mineria-en-estrategias-de-gestion-documental-carpetas-de-arranque-y-acreditacion-minera/",
+    "linkLabel": "Leer cobertura ↗",
+    "verified": true
+  },
+  {
+    "date": "2026",
+    "dateISO": "2026",
+    "title": "VITAIROS se incorpora a la Mesa Técnica del Centro Nacional Talasa",
+    "summary": "Una instancia de articulación técnica vinculada a supercómputo, infraestructura digital e inteligencia artificial aplicada en Chile.",
+    "image": "/bastian-lisperguer/assets/images/bastian-en-instancia-tecnica-vinculada-a-talasa.jpg",
+    "alt": "Sesión técnica del Centro Nacional Talasa sobre infraestructura digital e inteligencia artificial aplicada",
+    "width": 800,
+    "height": 600,
+    "imagePosition": "center",
+    "category": "Ecosistema IA",
+    "link": "https://margamargaonline.cl/innovacion-con-sello-duoc-uc-vitairos-spa-se-incorpora-a-la-mesa-tecnica-del-centro-nacional-talasa/",
+    "linkLabel": "Leer nota ↗",
+    "verified": true
+  },
+  {
+    "date": "2026",
+    "dateISO": "2026",
+    "title": "Duoc UC visibiliza el vínculo de VITAIROS con formación aplicada",
+    "summary": "La publicación institucional conecta docencia, innovación y participación de estudiantes con desafíos tecnológicos del entorno.",
+    "image": "/bastian-lisperguer/assets/images/bastian-junto-a-estudiantes-en-actividad-duoc-uc-valparaiso.jpg",
+    "alt": "Bastián Lisperguer junto a estudiantes en una actividad de Duoc UC Sede Valparaíso",
+    "width": 1600,
+    "height": 739,
+    "imagePosition": "center",
+    "category": "Formación aplicada",
+    "link": "https://www.linkedin.com/posts/duoc-uc-sede-valpara%C3%ADso_innovaciaejn-inteligenciaartificial-supercaejmputo-activity-7480249909737148416-iuXi",
+    "linkLabel": "Ver publicación ↗",
+    "verified": true
+  }
+]

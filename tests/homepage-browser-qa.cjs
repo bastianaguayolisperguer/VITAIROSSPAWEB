@@ -30,6 +30,7 @@ async function preparePage(page) {
     const loader = document.getElementById('introLoader');
     if (loader) loader.remove();
     document.body.classList.remove('loader-active');
+    document.querySelectorAll('img').forEach((image) => { image.loading = 'eager'; });
     const step = Math.max(320, Math.floor(window.innerHeight * 0.8));
     for (let position = 0; position < document.documentElement.scrollHeight; position += step) {
       window.scrollTo(0, position);
@@ -42,7 +43,17 @@ async function preparePage(page) {
       node.style.opacity = '1';
       node.style.transform = 'none';
     });
-    await new Promise((resolve) => setTimeout(resolve, 150));
+    await Promise.race([
+      Promise.all(Array.from(document.images).map((image) => {
+        if (image.complete && image.naturalWidth > 0) return Promise.resolve();
+        return new Promise((resolve) => {
+          image.addEventListener('load', resolve, { once: true });
+          image.addEventListener('error', resolve, { once: true });
+        });
+      })),
+      new Promise((resolve) => setTimeout(resolve, 3000))
+    ]);
+    await new Promise((resolve) => setTimeout(resolve, 120));
   });
 }
 
@@ -70,6 +81,9 @@ async function preparePage(page) {
         h1: document.querySelectorAll('h1').length,
         main: Boolean(document.querySelector('main')),
         orbitLinks: document.querySelectorAll('.orbit-project').length,
+        newsCards: document.querySelectorAll('.news-card').length,
+        newsHidden: document.querySelector('[data-news-section]')?.hidden ?? true,
+        careersFallback: document.getElementById('jobsList')?.textContent.includes('Actualmente no tenemos procesos abiertos.') ?? false,
         overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
         height: document.documentElement.scrollHeight,
         visibleReveals: hiddenReveals.length === 0,
@@ -83,6 +97,8 @@ async function preparePage(page) {
     if (status !== 200) failures.push(`${name}: HTTP ${status}`);
     if (metrics.h1 !== 1 || !metrics.main) failures.push(`${name}: estructura semántica incompleta`);
     if (metrics.orbitLinks !== 4) failures.push(`${name}: órbita con ${metrics.orbitLinks} enlaces`);
+    if (metrics.newsCards !== 3 || metrics.newsHidden) failures.push(`${name}: actualidad verificada no renderizada`);
+    if (!metrics.careersFallback) failures.push(`${name}: estado de vacantes no renderizado`);
     if (metrics.overflow > 1) failures.push(`${name}: overflow horizontal de ${metrics.overflow}px`);
     if (!metrics.visibleReveals) failures.push(`${name}: reveals incompletos: ${metrics.hiddenReveals.join(', ')}`);
     if (metrics.brokenImages.length) failures.push(`${name}: imágenes rotas: ${metrics.brokenImages.join(', ')}`);
@@ -122,22 +138,35 @@ async function preparePage(page) {
   if (!reducedMotionApplied) failures.push('Accesibilidad: prefers-reduced-motion no se aplicó correctamente');
   await reducedContext.close();
 
+  const repeatContext = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  const repeatPage = await repeatContext.newPage();
+  await repeatPage.goto(baseUrl, { waitUntil: 'load' });
+  await repeatPage.waitForTimeout(1600);
+  await repeatPage.reload({ waitUntil: 'domcontentloaded' });
+  const repeatedIntroSkipped = await repeatPage.evaluate(() => {
+    const loader = document.getElementById('introLoader');
+    return !document.body.classList.contains('loader-active') && (!loader || loader.classList.contains('is-hidden'));
+  });
+  if (!repeatedIntroSkipped) failures.push('Intro: la visita repetida no se omite con sessionStorage');
+  await repeatContext.close();
+
   const intro = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
   const introPage = await intro.newPage();
   await introPage.goto(baseUrl, { waitUntil: 'domcontentloaded' });
   await introPage.waitForTimeout(900);
-  await introPage.screenshot({ path: path.join(outputDir, 'homepage-evolution-intro.png') });
+  await introPage.screenshot({ path: path.join(outputDir, 'homepage-premium-intro.png') });
   await intro.close();
 
   const desktop = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
   const desktopPage = await desktop.newPage();
   await desktopPage.goto(baseUrl, { waitUntil: 'networkidle' });
   await preparePage(desktopPage);
-  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-evolution-hero.png') });
-  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-evolution-desktop-full.png'), fullPage: true });
+  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-premium-hero.png') });
+  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-premium-desktop-full.png'), fullPage: true });
   await desktopPage.locator('.skip-link').evaluate((element) => { element.style.visibility = 'hidden'; });
-  await desktopPage.locator('#servicios').screenshot({ path: path.join(outputDir, 'homepage-evolution-capabilities.png') });
-  await desktopPage.locator('#casos').screenshot({ path: path.join(outputDir, 'homepage-evolution-ecosystem.png') });
+  await desktopPage.locator('#ecosistema').screenshot({ path: path.join(outputDir, 'homepage-premium-ecosystem.png') });
+  await desktopPage.locator('#actualidad').screenshot({ path: path.join(outputDir, 'homepage-premium-news.png') });
+  await desktopPage.locator('#trabaja').screenshot({ path: path.join(outputDir, 'homepage-premium-careers.png') });
   await desktopPage.locator('.skip-link').evaluate((element) => { element.style.visibility = ''; });
   await desktop.close();
 
@@ -145,8 +174,8 @@ async function preparePage(page) {
   const mobilePage = await mobile.newPage();
   await mobilePage.goto(baseUrl, { waitUntil: 'networkidle' });
   await preparePage(mobilePage);
-  await mobilePage.screenshot({ path: path.join(outputDir, 'homepage-evolution-mobile-hero.png') });
-  await mobilePage.screenshot({ path: path.join(outputDir, 'homepage-evolution-mobile-full.png'), fullPage: true });
+  await mobilePage.screenshot({ path: path.join(outputDir, 'homepage-premium-mobile-hero.png') });
+  await mobilePage.screenshot({ path: path.join(outputDir, 'homepage-premium-mobile-full.png'), fullPage: true });
   await mobile.close();
 
   const og = await browser.newContext({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
@@ -158,7 +187,7 @@ async function preparePage(page) {
 
   await browser.close();
   console.log(JSON.stringify(results, null, 2));
-  console.log(JSON.stringify({ menuOpened, menuClosed, reducedMotionApplied, routeStatuses }, null, 2));
+  console.log(JSON.stringify({ menuOpened, menuClosed, reducedMotionApplied, repeatedIntroSkipped, routeStatuses }, null, 2));
   if (failures.length) {
     console.error('\nBrowser QA failures:');
     failures.forEach((failure) => console.error(`- ${failure}`));

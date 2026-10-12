@@ -319,7 +319,7 @@ var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-redu
   })();
 
   if('IntersectionObserver' in window && !reduceMotion){
-    var revealItems = document.querySelectorAll('.section-header,.service-card,.capabilities-loop,.project-card,.process-step,.mv-card,.mv-valor,.form-card,.info-card,.faq-item');
+    var revealItems = document.querySelectorAll('.chapter-heading,.breach-system,.value-row,.capability-rail,.method-track li,.brand-architecture,.project-card,.company-statement,.why-list article,.careers-band,.form-card,.contact-brief');
     var observer = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if(entry.isIntersecting){
@@ -349,6 +349,119 @@ var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-redu
 })();
 
 (function(){
+  function buildNewsCard(item){
+    var card = document.createElement('a');
+    card.className = 'news-card is-visible';
+    card.href = item.link;
+    card.setAttribute('data-analytics-event', 'news_click');
+    if(/^https?:\/\//.test(item.link)){
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+    }
+
+    var media = document.createElement('span');
+    media.className = 'news-card__media';
+    var image = document.createElement('img');
+    image.src = item.image;
+    image.alt = item.alt || '';
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    if(item.width) image.width = item.width;
+    if(item.height) image.height = item.height;
+    if(item.imagePosition) image.style.objectPosition = item.imagePosition;
+    media.appendChild(image);
+
+    var body = document.createElement('span');
+    body.className = 'news-card__body';
+    var meta = document.createElement('span');
+    meta.className = 'news-card__meta';
+    var category = document.createElement('span');
+    category.textContent = item.category;
+    var date = document.createElement('time');
+    date.dateTime = item.dateISO || '';
+    date.textContent = item.date;
+    meta.append(category, date);
+    var title = document.createElement('h3');
+    title.textContent = item.title;
+    var summary = document.createElement('p');
+    summary.textContent = item.summary;
+    var link = document.createElement('span');
+    link.className = 'news-card__link';
+    link.textContent = item.linkLabel || 'Leer fuente ↗';
+    body.append(meta, title, summary, link);
+    card.append(media, body);
+    return card;
+  }
+
+  var newsSection = document.querySelector('[data-news-section]');
+  var newsGrid = document.getElementById('newsGrid');
+  if(newsSection && newsGrid){
+    fetch('/data/news.json', { credentials:'same-origin' })
+      .then(function(response){ if(!response.ok) throw new Error('news'); return response.json(); })
+      .then(function(items){
+        var verified = Array.isArray(items) ? items.filter(function(item){ return item && item.verified === true; }).slice(0,3) : [];
+        if(!verified.length) return;
+        verified.forEach(function(item){ newsGrid.appendChild(buildNewsCard(item)); });
+        newsSection.hidden = false;
+      })
+      .catch(function(){ newsSection.hidden = true; });
+  }
+
+  var jobsList = document.getElementById('jobsList');
+  if(jobsList){
+    fetch('/data/jobs.json', { credentials:'same-origin' })
+      .then(function(response){ if(!response.ok) throw new Error('jobs'); return response.json(); })
+      .then(function(items){
+        var openings = Array.isArray(items) ? items.filter(function(item){ return item && item.status === 'open'; }) : [];
+        if(!openings.length) return;
+        jobsList.replaceChildren();
+        openings.forEach(function(item){
+          var opening = document.createElement('article');
+          opening.className = 'job-opening';
+          var title = document.createElement('strong');
+          title.textContent = item.title;
+          var meta = document.createElement('span');
+          meta.textContent = [item.type,item.location].filter(Boolean).join(' · ');
+          var description = document.createElement('span');
+          description.textContent = item.description;
+          var link = document.createElement('a');
+          link.href = item.link;
+          link.textContent = 'Ver oportunidad ↗';
+          link.setAttribute('data-analytics-event','careers_click');
+          opening.append(title, meta, description, link);
+          jobsList.appendChild(opening);
+        });
+      })
+      .catch(function(){ /* Keep the explicit no-openings state. */ });
+  }
+
+  function emitSemanticEvent(name, element){
+    document.dispatchEvent(new CustomEvent('vitairos:analytics', {
+      detail: {
+        event: name,
+        label: element && (element.getAttribute('data-project') || element.textContent.trim().slice(0,80))
+      }
+    }));
+  }
+
+  document.addEventListener('click', function(event){
+    var target = event.target.closest('[data-analytics-event]');
+    if(target && target.tagName !== 'FORM') emitSemanticEvent(target.getAttribute('data-analytics-event'), target);
+  });
+
+  var contactForm = document.getElementById('contactForm');
+  if(contactForm){
+    var contactStarted = false;
+    contactForm.addEventListener('focusin', function(){
+      if(contactStarted) return;
+      contactStarted = true;
+      emitSemanticEvent('contact_start', contactForm);
+    });
+    contactForm.addEventListener('submit', function(){ emitSemanticEvent('contact_submit', contactForm); });
+  }
+})();
+
+(function(){
   var progress = document.getElementById('scrollProgress');
   if(!progress) return;
   var progressFrame = 0;
@@ -367,8 +480,9 @@ var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-redu
 })();
 
 (function(){
-  document.body.classList.add('loader-active');
   var loader = document.getElementById('introLoader');
+  var introSeen = false;
+  try { introSeen = sessionStorage.getItem('vitairos_intro_seen') === '1'; } catch(error) { introSeen = false; }
   function hideLoader(){
     if(!loader) return;
     loader.classList.add('is-hidden');
@@ -377,9 +491,11 @@ var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-redu
       if(loader && loader.parentNode){ loader.parentNode.removeChild(loader); }
     }, 700);
   }
-  if(prefersReducedMotion){ hideLoader(); return; }
+  if(prefersReducedMotion || introSeen){ hideLoader(); return; }
+  document.body.classList.add('loader-active');
+  try { sessionStorage.setItem('vitairos_intro_seen', '1'); } catch(error) { /* Storage can be unavailable. */ }
   window.addEventListener('load', function(){
     setTimeout(hideLoader, 1450);
   }, { once:true });
-  setTimeout(hideLoader, 2200);
+  setTimeout(hideLoader, 1900);
 })();
