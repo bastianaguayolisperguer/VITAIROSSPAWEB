@@ -150,6 +150,9 @@ var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-redu
       });
     }
 
+    var projectLinks = sphereWrap ? Array.prototype.slice.call(sphereWrap.querySelectorAll('.orbit-project')) : [];
+    var projectVertexIndexes = [4,8,1,9];
+    var projectNodeSet = new Set(projectVertexIndexes);
     var featuredNodes = new Set([0,1,4,5,8,9,12,18,24,30,38]);
     var angleY = 0, angleX = 0.25;
     var cssW = 340, cssH = 340;
@@ -159,6 +162,7 @@ var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-redu
     var framesDrawn = 0;
     var fallbackTimer = null;
     var resizeRaf = null;
+    var spherePaused = false;
 
     function rotX(v,a){ var c=Math.cos(a), s=Math.sin(a); return [v[0],v[1]*c-v[2]*s,v[1]*s+v[2]*c]; }
     function rotY(v,a){ var c=Math.cos(a), s=Math.sin(a); return [v[0]*c+v[2]*s,v[1],-v[0]*s+v[2]*c]; }
@@ -206,6 +210,17 @@ var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-redu
       var edgeList = edges.map(function(e){ return {e:e, z:(rot[e[0]][2]+rot[e[1]][2])/2}; });
       edgeList.sort(function(a,b){ return a.z-b.z; });
 
+      for(var p=0; p<projectLinks.length; p++){
+        var projectVertex = projectVertexIndexes[p];
+        var projectDepth = (rot[projectVertex][2]+1)/2;
+        projectLinks[p].style.left = prj[projectVertex][0]+'px';
+        projectLinks[p].style.top = prj[projectVertex][1]+'px';
+        projectLinks[p].style.setProperty('--node-scale',(0.78+projectDepth*0.28).toFixed(3));
+        projectLinks[p].style.setProperty('--node-opacity',(0.48+projectDepth*0.52).toFixed(3));
+        projectLinks[p].style.zIndex = String(5+Math.round(projectDepth*10));
+        projectLinks[p].classList.toggle('is-behind',rot[projectVertex][2]<0);
+      }
+
       for(var i=0; i<edgeList.length; i++){
         var ii=edgeList[i].e[0], jj=edgeList[i].e[1];
         var tz=(edgeList[i].z+1)/2;
@@ -225,10 +240,11 @@ var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-redu
         if(z<-0.05) continue;
         var px=prj[n][0], py=prj[n][1];
         var zt=(z+1)/2;
+        var isProjectNode=projectNodeSet.has(n);
         var isKey=n<12;
 
         if(isKey){
-          var gs=3+zt*3;
+          var gs=(isProjectNode?4.5:3)+zt*3;
           var ga=ctx.createRadialGradient(px,py,0,px,py,gs*3);
           ga.addColorStop(0,'rgba(23,166,115,'+(0.85*zt)+')');
           ga.addColorStop(0.5,'rgba(23,166,115,'+(0.2*zt)+')');
@@ -248,7 +264,7 @@ var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-redu
       cg.addColorStop(0,'rgba(23,166,115,0.025)');
       cg.addColorStop(1,'rgba(0,0,0,0)');
       ctx.beginPath(); ctx.arc(cx,cy,R*0.5,0,Math.PI*2); ctx.fillStyle=cg; ctx.fill();
-      angleY += 0.004;
+      if(!spherePaused) angleY += 0.0022;
       framesDrawn += 1;
       if(framesDrawn === 2) markCanvasReady();
     }
@@ -279,6 +295,12 @@ var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-redu
     window.addEventListener('load', function(){ setTimeout(scheduleResize, 120); setTimeout(scheduleResize, 420); }, { once:true });
     window.addEventListener('pageshow', function(){ setTimeout(scheduleResize, 60); }, { passive:true });
     if('ResizeObserver' in window && sphereWrap){ new ResizeObserver(scheduleResize).observe(sphereWrap); }
+    if(sphereWrap){
+      sphereWrap.addEventListener('pointerenter', function(){ spherePaused = true; });
+      sphereWrap.addEventListener('pointerleave', function(){ spherePaused = false; });
+      sphereWrap.addEventListener('focusin', function(){ spherePaused = true; });
+      sphereWrap.addEventListener('focusout', function(){ spherePaused = false; });
+    }
     document.addEventListener('visibilitychange', function(){
       isVisible = !document.hidden;
       if(isVisible) scheduleResize();

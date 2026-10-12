@@ -1222,3 +1222,124 @@ footer{margin-top:0;padding-top:86px;border-radius:42px 42px 0 0;background:line
 @media(max-width:1080px) and (prefers-reduced-motion:reduce){.orbit-project--m{transform:translateX(141px)}.orbit-project--industrial{transform:translateY(141px)}.orbit-project--agro{transform:translateX(-141px)}.orbit-project--conecta{transform:translateY(-141px)}}
 @media(max-width:900px) and (prefers-reduced-motion:reduce){.orbit-project--m{transform:translateX(122px)}.orbit-project--industrial{transform:translateY(122px)}.orbit-project--agro{transform:translateX(-122px)}.orbit-project--conecta{transform:translateY(-122px)}}
 @media(max-width:420px) and (prefers-reduced-motion:reduce){.orbit-project--m{transform:translateX(111px)}.orbit-project--industrial{transform:translateY(111px)}.orbit-project--agro{transform:translateX(-111px)}.orbit-project--conecta{transform:translateY(-111px)}}
+
+/* ─── FIRST-LOOK CORRECTIONS · CONTINUOUS DARK SYSTEM ─── */
+body{background:#061611;color:var(--text)}
+
+/* The sphere is again the hero: project identities now occupy real network nodes. */
+.hb-sphere-wrap{isolation:isolate}
+.hb-sphere-wrap canvas,.hb-sphere-fallback{
+  position:absolute!important;inset:0;width:100%!important;height:100%!important;max-width:none;object-fit:contain;
+}
+.hb-sphere-wrap canvas{z-index:2;opacity:.92}
+.hb-sphere-wrap .hb-sphere-fallback{z-index:1}
+.sphere-core-label,.orbit-legend{display:none!important}
+.project-node-layer{position:absolute;inset:0;z-index:6;pointer-events:none}
+.project-node-layer::before,.project-node-layer::after{display:none!important}
+.project-node-layer .orbit-project{
+  position:absolute;left:50%;top:50%;width:40px;height:40px;margin:0;
+  transform:translate(-50%,-50%) scale(var(--node-scale,1));
+  transform-origin:center;opacity:var(--node-opacity,1);animation:none!important;
+  color:var(--text);text-decoration:none;pointer-events:auto;will-change:left,top,transform,opacity;
+  transition:opacity .22s ease,filter .22s ease;
+}
+.project-node-layer .orbit-project__body{
+  width:40px;height:40px;padding:7px;border-radius:50%;
+  background:rgba(5,23,18,.9);border:1px solid rgba(106,215,176,.34);
+  box-shadow:0 0 0 5px rgba(23,166,115,.055),0 9px 24px rgba(0,0,0,.32),0 0 22px rgba(23,166,115,.14);
+  backdrop-filter:blur(10px);
+}
+.project-node-layer .orbit-project__body img,
+.project-node-layer .orbit-project--agro .orbit-project__body img,
+.project-node-layer .orbit-project--conecta .orbit-project__body img{width:24px;height:24px;object-fit:contain}
+.project-node-layer .orbit-project--m .orbit-project__body{border-color:rgba(221,122,82,.7);box-shadow:0 0 0 5px rgba(221,122,82,.06),0 9px 24px rgba(0,0,0,.3)}
+.project-node-layer .orbit-project--industrial .orbit-project__body{border-color:rgba(245,222,178,.64);box-shadow:0 0 0 5px rgba(245,222,178,.05),0 9px 24px rgba(0,0,0,.3)}
+.project-node-layer .orbit-project--agro .orbit-project__body{border-color:rgba(101,227,126,.64);box-shadow:0 0 0 5px rgba(101,227,126,.05),0 9px 24px rgba(0,0,0,.3)}
+.project-node-layer .orbit-project--conecta .orbit-project__body{border-color:rgba(24,195,184,.7);box-shadow:0 0 0 5px rgba(24,195,184,.06),0 9px 24px rgba(0,0,0,.3)}
+.project-node-layer .orbit-project.is-behind{filter:saturate(.72) brightness(.82)}
+.project-node-layer .orbit-project:hover,.project-node-layer .orbit-project:focus-visible{z-index:30!important;opacity:1!important;filter:none}
+.project-node-layer .orbit-project:hover .orbit-project__body,.project-node-layer .orbit-project:focus-visible .orbit-project__body{transform:scale(1.12);background:rgba(7,31,24,.98)}
+.project-node-layer .orbit-project__body>span{top:50%;left:calc(100% + 11px);opacity:0;transform:translate(-5px,-50%)}
+.project-node-layer .orbit-project:hover .orbit-project__body>span,.project-node-layer .orbit-project:focus-visible .orbit-project__body>span{opacity:1;transform:translate(0,-50%)}
+.project-node-layer .orbit-project--m{left:69%;top:20%}.project-node-layer .orbit-project--industrial{left:81%;top:55%}.project-node-layer .orbit-project--agro{left:50%;top:76%}.project-node-layer .orbit-project--conecta{left:20%;top:55%}
+
+/* A single chromatic atmosphere replaces alternating paper and floating panels. */
+section{padding:108px 0}
+#servicios,#casos,#proceso,#nosotros,#contacto,#faq{
+  margin:0;padding:108px 0;border:0;border-radius:0;color:var(--text);box-shadow:none;
+  background-color:#061611;
+  border-top:1px solid rgba(232,246,241,.055);
+}
+#servicios{z-index:1;background:radial-gradient(circle at 10% 12%,rgba(23,166,115,.08),transparent 28%),linear-gradient(180deg,#071a15,#081d17)}
+#casos{background:radial-gradient(circle at 88% 18%,rgba(28,102,177,.09),transparent 27%),linear-gradient(180deg,#081d17,#061611)}
+#proceso{background:radial-gradient(circle at 12% 76%,rgba(23,166,115,.07),transparent 25%),linear-gradient(180deg,#061611,#071b16)}
+#nosotros{background:radial-gradient(circle at 88% 14%,rgba(28,102,177,.08),transparent 29%),linear-gradient(180deg,#071b16,#061611)}
+#contacto{background:radial-gradient(circle at 8% 14%,rgba(23,166,115,.075),transparent 26%),linear-gradient(180deg,#061611,#081d17)}
+#faq{background:linear-gradient(180deg,#081d17,#071914)}
+
+.surface-light{
+  --light-ink:#e8f6f1;--light-copy:#9bb8b0;--light-line:rgba(232,246,241,.105);
+  color:var(--text);border-color:rgba(232,246,241,.055);isolation:isolate;
+}
+.surface-light::after{background:linear-gradient(90deg,transparent,rgba(106,215,176,.025),transparent)}
+.surface-light .section-title,.surface-light h2,.surface-light h3,.surface-light h4,.surface-light strong{color:var(--text)}
+.surface-light .section-lead,.surface-light p{color:var(--muted)}
+.surface-light .section-kicker{color:var(--mint)}
+.surface-light .section-header::before{background:linear-gradient(90deg,var(--mint),var(--violet))}
+
+.dark-showcase{
+  max-width:1200px;padding:0 32px;border:0;border-radius:0;overflow:visible;
+  background:none;box-shadow:none;
+}
+.dark-showcase::after{display:none}
+.vision-showcase{padding-bottom:0}
+#casos .section-header,#nosotros .section-header{margin-bottom:54px}
+
+.surface-capabilities .services-grid,.surface-process .process-grid{border-color:var(--light-line)}
+.surface-capabilities .service-card{color:var(--text);border-color:var(--light-line)}
+.surface-capabilities .service-card h3{color:var(--text)}
+.surface-capabilities .service-card>p:not(.service-index){color:var(--muted)}
+.surface-capabilities .service-index{color:var(--mint)!important}
+.surface-capabilities .capability-tags span{background:rgba(255,255,255,.025);border-color:var(--light-line);color:var(--muted)}
+.surface-capabilities .capabilities-loop{background:rgba(255,255,255,.022);border-color:var(--light-line);box-shadow:none}
+.surface-capabilities .capabilities-loop__core{background:rgba(255,255,255,.035);border-color:rgba(106,215,176,.16);box-shadow:none}
+.surface-capabilities .capabilities-loop__core span{color:var(--muted)}
+.surface-capabilities .capabilities-loop__items span,.surface-capabilities .capabilities-loop__items span:nth-child(n){background:rgba(255,255,255,.025);border-color:var(--light-line);color:var(--muted);box-shadow:none}
+
+.surface-process .process-step{color:var(--text);border-color:var(--light-line)}
+.surface-process .process-step p{color:var(--muted)}
+.surface-process .process-step:hover{background:rgba(255,255,255,.022)!important}
+
+.surface-contact .form-card,.surface-contact .info-card,.surface-faq .faq-item{
+  color:var(--text);background:rgba(255,255,255,.028);border-color:var(--light-line);box-shadow:none;
+}
+.surface-contact label{color:var(--muted)}
+.surface-contact input,.surface-contact select,.surface-contact textarea{background:rgba(255,255,255,.025);border-color:var(--light-line);color:var(--text);color-scheme:dark}
+.surface-contact input::placeholder,.surface-contact textarea::placeholder{color:rgba(167,199,192,.58)}
+.surface-contact select option{background:#081a15!important;color:var(--text)!important}
+.surface-contact .info-list li,.surface-faq .faq-body{border-color:var(--light-line)}
+.surface-contact .contact-note{background:rgba(23,166,115,.08);border-color:rgba(106,215,176,.22)}
+.surface-contact .contact-note a{color:var(--mint)}
+.surface-faq .faq-item[open]{background:rgba(255,255,255,.042);border-color:rgba(106,215,176,.28)}
+.surface-faq .faq-item summary{color:var(--text)}
+.surface-faq .faq-icon{background:rgba(255,255,255,.025);border-color:var(--light-line);color:var(--muted)}
+.surface-faq .faq-body{color:var(--muted)}
+footer{margin:0;border-radius:0;background:#05130f;box-shadow:none}
+
+@media(max-width:900px){
+  #servicios,#casos,#proceso,#nosotros,#contacto,#faq{padding:82px 0}
+  .dark-showcase{padding:0 20px}
+  .hb-sphere-wrap{margin-bottom:38px}
+  .project-node-layer .orbit-project,.project-node-layer .orbit-project__body{width:36px;height:36px}
+  .project-node-layer .orbit-project__body{padding:6px}
+  .project-node-layer .orbit-project__body img,.project-node-layer .orbit-project--agro .orbit-project__body img,.project-node-layer .orbit-project--conecta .orbit-project__body img{width:22px;height:22px}
+}
+
+@media(max-width:420px){
+  .project-node-layer .orbit-project,.project-node-layer .orbit-project__body{width:34px;height:34px}
+  .project-node-layer .orbit-project__body img,.project-node-layer .orbit-project--agro .orbit-project__body img,.project-node-layer .orbit-project--conecta .orbit-project__body img{width:20px;height:20px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .project-node-layer .orbit-project{transform:translate(-50%,-50%) scale(1)}
+}
