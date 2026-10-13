@@ -1,6 +1,6 @@
-# SEO handoff — Homepage V3
+# SEO handoff — Homepage V3.1
 
-Fecha: 2026-10-13. Esta iteración preserva fundamentos SEO; no sustituye una auditoría SEO final.
+Fecha: 2026-10-13. Esta iteración de refinamiento visual preserva fundamentos SEO; no sustituye una auditoría SEO final.
 
 ## Qué se mantuvo
 
@@ -15,12 +15,11 @@ Fecha: 2026-10-13. Esta iteración preserva fundamentos SEO; no sustituye una au
 
 ## Qué cambió
 
-- Title se conserva; description se alinea a problema → prueba → integración.
-- OG description se simplifica a la propuesta central.
-- El contenido repetido de capacidades se reduce a una sola frase y lista discreta.
-- Actualidad presenta dos historias verificadas, cargadas desde `data/news.json`.
-- El formulario se reemplaza por un diagnóstico de cuatro pasos sin alterar la URL de home.
-- La imagen Open Graph se regenera desde el nuevo hero.
+- No cambian title, description, canonical, robots, JSON-LD ni arquitectura de headings respecto de V3.
+- Se mantienen exactamente dos historias verificadas desde `data/news.json`.
+- El diagnóstico conserva cuatro pasos; solo cambia microcopy de cierre y ayudas positivas.
+- La imagen Open Graph se regenera desde el hero V3.1.
+- Los cambios visuales de Método, Ecosistema y Evidencia no eliminan contenido indexable.
 
 ## Qué revisar después
 

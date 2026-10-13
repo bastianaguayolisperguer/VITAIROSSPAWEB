@@ -28,7 +28,7 @@ async function preparePage(page) {
       await new Promise((resolve) => setTimeout(resolve, 12));
     }
     window.scrollTo(0, 0);
-    document.querySelectorAll('.reveal').forEach((node) => {
+    document.querySelectorAll('.reveal,[data-reveal]').forEach((node) => {
       node.classList.add('is-visible'); node.style.transition = 'none'; node.style.opacity = '1'; node.style.transform = 'none';
     });
     await new Promise((resolve) => setTimeout(resolve, 180));
@@ -126,6 +126,14 @@ async function captureSection(page, selector, filename) {
   }
   await functionalContext.close();
 
+  const breakpointContext = await browser.newContext({ viewport: { width: 1100, height: 800 } });
+  const breakpointPage = await breakpointContext.newPage();
+  await breakpointPage.goto(baseUrl, { waitUntil: 'networkidle' });
+  await preparePage(breakpointPage);
+  const desktopNavAt1100 = await breakpointPage.evaluate(() => getComputedStyle(document.querySelector('.menu')).display !== 'none' && getComputedStyle(document.getElementById('hamburger')).display === 'none');
+  if (!desktopNavAt1100) failures.push('Header: la navegación desktop no aparece exactamente desde 1100 px');
+  await breakpointContext.close();
+
   const reducedContext = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' });
   const reducedPage = await reducedContext.newPage();
   await reducedPage.goto(baseUrl, { waitUntil: 'networkidle' });
@@ -142,62 +150,79 @@ async function captureSection(page, selector, filename) {
   if (!repeatedIntroSkipped) failures.push('Intro: sessionStorage no evita la repetición');
   await repeatContext.close();
 
-  const introContext = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
-  const introPage = await introContext.newPage();
-  await introPage.goto(baseUrl, { waitUntil: 'domcontentloaded' });
-  await introPage.waitForTimeout(780);
-  await introPage.screenshot({ path: path.join(outputDir, 'homepage-v3-01-intro.png') });
-  await introContext.close();
-
   const desktop = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
   const desktopPage = await desktop.newPage();
   await desktopPage.goto(baseUrl, { waitUntil: 'networkidle' });
   await preparePage(desktopPage);
-  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-v3-02-hero-desktop.png') });
-  await desktopPage.locator('.orbit-project--m').evaluate((element) => element.focus());
-  await desktopPage.waitForTimeout(180);
-  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-v3-04-sphere-interaction.png') });
-  await desktopPage.evaluate(() => window.scrollTo(0, document.getElementById('brecha').offsetTop - 260));
-  await desktopPage.waitForTimeout(240);
-  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-v3-05-hero-breach.png') });
-  await captureSection(desktopPage, '#brecha', 'homepage-v3-06-value.png');
-  await captureSection(desktopPage, '#metodo', 'homepage-v3-07-method.png');
-  await captureSection(desktopPage, '#ecosistema', 'homepage-v3-08-ecosystem.png');
+  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-v3-1-01-hero-desktop.png') });
+  await desktopPage.locator('#siteHeader').screenshot({ path: path.join(outputDir, 'homepage-v3-1-03-header-initial.png') });
+  await desktopPage.evaluate(() => window.scrollTo(0, 620));
+  await desktopPage.waitForTimeout(220);
+  await desktopPage.locator('#siteHeader').screenshot({ path: path.join(outputDir, 'homepage-v3-1-04-header-scrolled.png') });
+  await captureSection(desktopPage, '#brecha', 'homepage-v3-1-05-breach.png');
+  await desktopPage.locator('[data-value="decisions"]').focus();
+  await desktopPage.waitForTimeout(220);
+  await desktopPage.locator('.value-experience').screenshot({ path: path.join(outputDir, 'homepage-v3-1-06-breach-interaction.png') });
+  await desktopPage.evaluate(() => { const method = document.getElementById('metodo'); window.scrollTo(0, method.offsetTop - window.innerHeight * .72); });
+  await desktopPage.waitForTimeout(220);
+  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-v3-1-07-breach-method-transition.png') });
+  async function setMethodStep(step) {
+    await desktopPage.evaluate((target) => {
+      const network = document.getElementById('methodNetwork');
+      const rect = network.getBoundingClientRect();
+      const progress = target === 1 ? .14 : .64;
+      const desiredTop = window.innerHeight * .75 - rect.height * .72 * progress;
+      window.scrollTo(0, window.scrollY + rect.top - desiredTop);
+    }, step);
+    await desktopPage.waitForTimeout(260);
+  }
+  await setMethodStep(1);
+  if (await desktopPage.locator('#methodNetwork').getAttribute('data-active-step') !== '1') failures.push('Método: no se pudo fijar el estado visual del paso 01');
+  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-v3-1-08-method-active-step-01.png') });
+  await setMethodStep(3);
+  if (await desktopPage.locator('#methodNetwork').getAttribute('data-active-step') !== '3') failures.push('Método: no se pudo fijar el estado visual del paso 03');
+  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-v3-1-09-method-active-step-03.png') });
+  await desktopPage.evaluate(() => { const ecosystem = document.getElementById('ecosistema'); window.scrollTo(0, ecosystem.offsetTop - window.innerHeight * .63); });
+  await desktopPage.waitForTimeout(220);
+  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-v3-1-10-method-ecosystem-transition.png') });
+  await captureSection(desktopPage, '#ecosistema', 'homepage-v3-1-11-ecosystem.png');
   await desktopPage.hover('[data-ecosystem-item="industrial"]');
   await desktopPage.waitForTimeout(180);
-  await desktopPage.locator('.ecosystem-experience').screenshot({ path: path.join(outputDir, 'homepage-v3-09-ecosystem-hover.png') });
-  await captureSection(desktopPage, '#actualidad', 'homepage-v3-10-movement.png');
-  await captureSection(desktopPage, '#nosotros', 'homepage-v3-11-why.png');
-  await captureSection(desktopPage, '.diagnostic-card', 'homepage-v3-12-diagnostic-step-1.png');
+  await desktopPage.locator('.ecosystem-experience').screenshot({ path: path.join(outputDir, 'homepage-v3-1-12-ecosystem-hover.png') });
+  await captureSection(desktopPage, '#actualidad', 'homepage-v3-1-13-evidence.png');
+  await desktopPage.locator('.principles-grid li').first().focus();
+  await captureSection(desktopPage, '#nosotros', 'homepage-v3-1-14-why.png');
+  await captureSection(desktopPage, '.diagnostic-card', 'homepage-v3-1-15-diagnostic-step-1.png');
   await desktopPage.click('label:has(input[name="oportunidad"][value="Información o datos"])');
   await desktopPage.click('[data-step="1"] [data-next-step]');
   await desktopPage.fill('#contexto', 'La información operacional está distribuida en documentos y sistemas.');
   await desktopPage.click('[data-step="2"] [data-next-step]');
   await desktopPage.click('label:has(input[name="etapa"][value="Tengo un problema identificado"])');
+  await desktopPage.locator('.diagnostic-card').screenshot({ path: path.join(outputDir, 'homepage-v3-1-16-diagnostic-step-3.png') });
   await desktopPage.click('[data-step="3"] [data-next-step]');
   await desktopPage.fill('#nombre', 'Nombre de muestra');
   await desktopPage.fill('#empresa', 'Organización de muestra');
   await desktopPage.fill('#email', 'muestra@example.com');
-  await desktopPage.locator('.diagnostic-card').screenshot({ path: path.join(outputDir, 'homepage-v3-13-diagnostic-final.png') });
-  await desktopPage.locator('.diagnostic-intro').screenshot({ path: path.join(outputDir, 'homepage-v3-14-final-cta.png') });
+  await desktopPage.locator('.diagnostic-card').screenshot({ path: path.join(outputDir, 'homepage-v3-1-17-diagnostic-step-4.png') });
+  await captureSection(desktopPage, 'footer', 'homepage-v3-1-18-footer.png');
   await desktopPage.evaluate(() => window.scrollTo(0, 0));
   await desktopPage.waitForTimeout(180);
-  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-v3-15-desktop-full.png'), fullPage: true });
+  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-v3-1-19-desktop-full.png'), fullPage: true });
 
   await desktopPage.goto(new URL('/conecta/', baseUrl).toString(), { waitUntil: 'networkidle' });
   await preparePage(desktopPage);
-  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-v3-benchmark-conecta.png'), fullPage: true });
+  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-v3-1-benchmark-conecta.png'), fullPage: true });
   await desktopPage.goto(new URL('/vitairos-industrial-ai/', baseUrl).toString(), { waitUntil: 'networkidle' });
   await preparePage(desktopPage);
-  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-v3-benchmark-industrial-ai.png'), fullPage: true });
+  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-v3-1-benchmark-industrial-ai.png'), fullPage: true });
   await desktop.close();
 
   const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
   const mobilePage = await mobile.newPage();
   await mobilePage.goto(baseUrl, { waitUntil: 'networkidle' });
   await preparePage(mobilePage);
-  await mobilePage.screenshot({ path: path.join(outputDir, 'homepage-v3-03-hero-mobile.png') });
-  await mobilePage.screenshot({ path: path.join(outputDir, 'homepage-v3-16-mobile-full.png'), fullPage: true });
+  await mobilePage.screenshot({ path: path.join(outputDir, 'homepage-v3-1-02-hero-mobile.png') });
+  await mobilePage.screenshot({ path: path.join(outputDir, 'homepage-v3-1-20-mobile-full.png'), fullPage: true });
   await mobile.close();
 
   const og = await browser.newContext({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
@@ -209,9 +234,9 @@ async function captureSection(page, selector, filename) {
 
   await browser.close();
   console.log(JSON.stringify(results, null, 2));
-  console.log(JSON.stringify({ menuOpened, menuClosed, valueKeyboard, ecosystemTap, diagnosticEditable, reducedMotionApplied, repeatedIntroSkipped, routeStatuses }, null, 2));
+  console.log(JSON.stringify({ menuOpened, menuClosed, valueKeyboard, ecosystemTap, diagnosticEditable, desktopNavAt1100, reducedMotionApplied, repeatedIntroSkipped, routeStatuses }, null, 2));
   if (failures.length) {
     console.error('\nBrowser QA failures:'); failures.forEach((failure) => console.error(`- ${failure}`)); process.exit(1);
   }
-  console.log(`\nBrowser QA V3: OK en ${viewports.length} viewports. 16 capturas obligatorias y benchmarks generados.`);
+  console.log(`\nBrowser QA V3.1: OK en ${viewports.length} viewports. 20 capturas obligatorias y benchmarks generados.`);
 })().catch((error) => { console.error(error); process.exit(1); });

@@ -1,4 +1,4 @@
-# Decisiones finales de diseño — Homepage V3
+# Decisiones finales de diseño — Homepage V3.1
 
 ## Norte creativo
 
@@ -26,23 +26,23 @@ No hay cambio a una página blanca. La esfera acompaña el primer tramo y se des
 
 ## Método
 
-Niebla se usa una sola vez como superficie editorial contenida. Los cuatro pasos viven sobre una trayectoria irregular, no una timeline de plantilla. La línea se revela según posición de scroll; los nodos cambian de estado sin scroll-jacking.
+Niebla deja de ser una superficie editorial grande y se reserva para texto, luz y estados. Los cuatro pasos viven directamente sobre Abismo/Bosque en una trayectoria irregular. La línea se revela según posición de scroll, los nodos cambian de estado sin scroll-jacking y, al completarse, la trayectoria se expande como anticipo del Ecosistema.
 
 ## Ecosistema
 
-El patrón elegido es índice + instrumento. Cada iniciativa conserva solamente nombre, sector, una frase y CTA. El preview altera etiquetas, iluminación y orientación para representar continuidad, trazabilidad, territorio o red, manteniendo un único ADN VITAIROS.
+El patrón elegido es índice + instrumento. Cada iniciativa conserva solamente nombre, sector, una frase y CTA. El preview altera etiquetas, topología, iluminación y geometría para representar continuidad, documentos/operación/datos/trazabilidad, territorio/datos/operación/decisión o personas/aprendizaje/conexión/oportunidad, manteniendo un único ADN VITAIROS.
 
 ## Evidencia
 
-Máximo dos historias. La primera domina; la segunda actúa como contrapunto. Se retiraron fotos de calidad insuficiente y se utilizaron composiciones generativas de líneas, halos y nodos preparadas para ser sustituidas por fotografía premium futura.
+Máximo dos historias. La primera domina; la segunda actúa como contrapunto. Se retiraron fotos de calidad insuficiente. Minería utiliza documentos, operación y traza; Talasa utiliza infraestructura, nodos de cómputo, red e IA.
 
 ## Principios
 
-Los cuatro principios se presentan como una composición tipográfica de proporciones 7/5, no como cards. La frase “Tecnología útil. IA con criterio. Valor real.” funciona como cierre de capítulo.
+Los cuatro principios se presentan como una composición tipográfica de proporciones 7/5, no como cards. Hover y foco revelan una línea/nodo y atenúan los demás principios. La frase “Tecnología útil. IA con criterio. Valor real.” funciona como cierre de capítulo.
 
 ## Diagnóstico
 
-Cuatro pasos: oportunidad, contexto actual, etapa y contacto. Las respuestas se conservan y son editables. La UI utiliza radios nativos ocultos visualmente, labels reales, validación del navegador, progreso visible y controles atrás/siguiente. No se simula análisis automático.
+Cuatro pasos: oportunidad, contexto actual, etapa y contacto. Las respuestas se conservan y son editables. La UI utiliza radios nativos ocultos visualmente, labels reales, validación del navegador, progreso con cuatro nodos y controles atrás/siguiente. El textarea muestra longitud y el CTA final dice “Enviar mi caso para revisión”. No se simula análisis automático.
 
 ## Motion y performance
 

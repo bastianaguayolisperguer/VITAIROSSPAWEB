@@ -70,7 +70,7 @@
     if(event.key !== 'Escape') return;
     if(openModalName) closeModal(openModalName); else if(hamburger && hamburger.getAttribute('aria-expanded') === 'true') closeMenu(true);
   });
-  var desktopMenu = window.matchMedia('(min-width: 1101px)');
+  var desktopMenu = window.matchMedia('(min-width: 1100px)');
   function syncResponsiveMenu(event){ if(event.matches) closeMenu(false); }
   if(desktopMenu.addEventListener) desktopMenu.addEventListener('change',syncResponsiveMenu);
 
@@ -162,31 +162,31 @@
 
   /* Value stage */
   var valueData={
-    process:{signal:'Intervención / 01',title:'Simplificar antes de automatizar.',description:'Mapeamos la fricción, reducimos pasos y automatizamos solo lo que debe repetirse.',result:'Resultado posible · simplificación / automatización'},
-    information:{signal:'Intervención / 02',title:'Dar estructura al contexto.',description:'Conectamos datos y documentos para que la información conserve origen, contexto y trazabilidad.',result:'Resultado posible · estructura / contexto / trazabilidad'},
-    decisions:{signal:'Intervención / 03',title:'Hacer utilizable la información.',description:'Diseñamos una capa de apoyo que acerca la información relevante a la decisión, sin reemplazar el criterio humano.',result:'Resultado posible · mejor soporte para decidir'},
-    product:{signal:'Intervención / 04',title:'Integrar inteligencia en la experiencia.',description:'Incorporamos IA dentro de un producto digital con un propósito, un flujo y controles definidos.',result:'Resultado posible · IA integrada en una experiencia útil'}
+    process:{glyph:'→',signal:'Intervención / 01',title:'Simplificar antes de automatizar.',description:'Mapeamos la fricción, reducimos pasos y automatizamos solo lo que debe repetirse.',result:'Resultado posible · simplificación / automatización'},
+    information:{glyph:'≡',signal:'Intervención / 02',title:'Dar estructura al contexto.',description:'Conectamos datos y documentos para que la información conserve origen, contexto y trazabilidad.',result:'Resultado posible · estructura / contexto / trazabilidad'},
+    decisions:{glyph:'◇',signal:'Intervención / 03',title:'Hacer utilizable la información.',description:'Diseñamos una capa de apoyo que acerca la información relevante a la decisión, sin reemplazar el criterio humano.',result:'Resultado posible · mejor soporte para decidir'},
+    product:{glyph:'＋',signal:'Intervención / 04',title:'Integrar inteligencia en la experiencia.',description:'Incorporamos IA dentro de un producto digital con un propósito, un flujo y controles definidos.',result:'Resultado posible · IA integrada en una experiencia útil'}
   };
   var valueExperience=document.querySelector('.value-experience');
   function activateValue(key){
     if(!valueExperience||!valueData[key])return;valueExperience.dataset.valueActive=key;valueExperience.querySelectorAll('.value-option').forEach(function(button){var active=button.dataset.value===key;button.classList.toggle('is-active',active);button.setAttribute('aria-pressed',String(active));});
-    document.getElementById('valueSignal').textContent=valueData[key].signal;document.getElementById('valueTitle').textContent=valueData[key].title;document.getElementById('valueDescription').textContent=valueData[key].description;document.getElementById('valueResult').textContent=valueData[key].result;
+    document.getElementById('valueGlyph').textContent=valueData[key].glyph;document.getElementById('valueSignal').textContent=valueData[key].signal;document.getElementById('valueTitle').textContent=valueData[key].title;document.getElementById('valueDescription').textContent=valueData[key].description;document.getElementById('valueResult').textContent=valueData[key].result;
   }
   if(valueExperience)valueExperience.querySelectorAll('.value-option').forEach(function(button){['mouseenter','focus','click'].forEach(function(type){button.addEventListener(type,function(){activateValue(button.dataset.value);});});});
 
   /* Method network grows with scroll */
   (function(){
     var network=document.getElementById('methodNetwork');if(!network)return;var nodes=Array.prototype.slice.call(network.querySelectorAll('.method-node')),frame=0;
-    function update(){frame=0;var rect=network.getBoundingClientRect();var entry=window.innerHeight*.75;var progress=Math.max(0,Math.min(1,(entry-rect.top)/Math.max(rect.height*.72,1)));network.style.setProperty('--method-progress',String(progress));var activeCount=Math.max(1,Math.ceil(progress*nodes.length));nodes.forEach(function(node,index){node.classList.toggle('is-active',index<activeCount);});}
+    function update(){frame=0;var rect=network.getBoundingClientRect();var entry=window.innerHeight*.75;var progress=Math.max(0,Math.min(1,(entry-rect.top)/Math.max(rect.height*.72,1)));network.style.setProperty('--method-progress',String(progress));if(network.parentElement)network.parentElement.style.setProperty('--method-progress',String(progress));var activeCount=progress<=.02?0:Math.min(nodes.length,Math.ceil(progress*nodes.length));network.dataset.activeStep=String(activeCount);network.classList.toggle('is-complete',progress>.92);nodes.forEach(function(node,index){node.classList.toggle('is-active',index<activeCount);});}
     function schedule(){if(!frame)frame=requestAnimationFrame(update);}window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule,{passive:true});update();
   })();
 
   /* Ecosystem as one reactive instrument */
   var ecosystemData={
     m:{sector:'Salud digital',name:'VITAIROS-M',labels:['Persona','Contexto','Profesional','Continuidad'],copy:'Continuidad entre la persona y la atención profesional.'},
-    industrial:{sector:'Industria y minería',name:'Industrial AI',labels:['Documentos','Datos','Operación','Trazabilidad'],copy:'Información operacional conectada con trazabilidad.'},
-    agro:{sector:'Agricultura',name:'Agro Intelligence',labels:['Datos','Operación','Territorio','Decisión'],copy:'Datos del territorio convertidos en soporte para decidir.'},
-    conecta:{sector:'Educación',name:'VITAIROS Conecta',labels:['Personas','Conocimiento','Red','Oportunidad'],copy:'Personas y conocimiento conectados con oportunidades.'}
+    industrial:{sector:'Industria y minería',name:'Industrial AI',labels:['Documentos','Operación','Datos','Trazabilidad'],copy:'Información operacional conectada con trazabilidad.'},
+    agro:{sector:'Agricultura',name:'Agro Intelligence',labels:['Territorio','Datos','Operación','Decisión'],copy:'Datos del territorio convertidos en soporte para decidir.'},
+    conecta:{sector:'Educación',name:'VITAIROS Conecta',labels:['Personas','Aprendizaje','Conexión','Oportunidad'],copy:'Personas y conocimiento conectados con oportunidades.'}
   };
   var ecosystem=document.getElementById('ecosystemExperience');
   function activateEcosystem(key){
@@ -196,21 +196,22 @@
   if(ecosystem)ecosystem.querySelectorAll('.ecosystem-item').forEach(function(item){var button=item.querySelector('button');['mouseenter','focusin'].forEach(function(type){item.addEventListener(type,function(){activateEcosystem(item.dataset.ecosystemItem);});});button.addEventListener('click',function(){activateEcosystem(item.dataset.ecosystemItem);if(window.innerWidth<=820)document.getElementById('ecosystemPreview').scrollIntoView({behavior:prefersReducedMotion?'auto':'smooth',block:'nearest'});});});
 
   /* Evidence: only two verified stories, rendered without weak photography */
-  function buildNewsCard(item){
+  function buildNewsCard(item,index){
     var card=document.createElement('a');card.className='news-card';card.href=item.link;card.setAttribute('data-analytics-event','news_click');if(/^https?:\/\//.test(item.link)){card.target='_blank';card.rel='noopener noreferrer';}
-    var visual=document.createElement('span');visual.className='news-card__visual';visual.setAttribute('aria-hidden','true');
+    var visual=document.createElement('span');visual.className='news-card__visual '+(index===0?'news-card__visual--industrial':'news-card__visual--compute');visual.setAttribute('aria-hidden','true');for(var visualIndex=0;visualIndex<5;visualIndex+=1){var visualNode=document.createElement('i');visualNode.className='news-visual-node';visual.appendChild(visualNode);}
     var body=document.createElement('span');body.className='news-card__body';var meta=document.createElement('span');meta.className='news-card__meta';var category=document.createElement('span');category.textContent=item.category;var date=document.createElement('time');date.dateTime=item.dateISO||'';date.textContent=item.date;meta.append(category,date);
     var title=document.createElement('h3');title.textContent=item.title;var summary=document.createElement('p');summary.textContent=item.summary;var link=document.createElement('span');link.className='news-card__link';link.textContent=item.linkLabel||'Ver evidencia ↗';body.append(meta,title,summary,link);card.append(visual,body);return card;
   }
   var newsSection=document.querySelector('[data-news-section]'),newsGrid=document.getElementById('newsGrid');
-  if(newsSection&&newsGrid){fetch('/data/news.json',{credentials:'same-origin'}).then(function(response){if(!response.ok)throw new Error('news');return response.json();}).then(function(items){var verified=Array.isArray(items)?items.filter(function(item){return item&&item.verified===true&&item.link;}).slice(0,2):[];if(!verified.length)return;verified.forEach(function(item){newsGrid.appendChild(buildNewsCard(item));});newsSection.hidden=false;}).catch(function(){newsSection.hidden=true;});}
+  if(newsSection&&newsGrid){fetch('/data/news.json',{credentials:'same-origin'}).then(function(response){if(!response.ok)throw new Error('news');return response.json();}).then(function(items){var verified=Array.isArray(items)?items.filter(function(item){return item&&item.verified===true&&item.link;}).slice(0,2):[];if(!verified.length)return;verified.forEach(function(item,index){newsGrid.appendChild(buildNewsCard(item,index));});newsSection.hidden=false;}).catch(function(){newsSection.hidden=true;});}
 
   /* Guided qualification, editable and keyboard-native */
   (function(){
-    var form=document.getElementById('diagnosticForm');if(!form)return;var steps=Array.prototype.slice.call(form.querySelectorAll('.diagnostic-step'));var current=1;var label=document.getElementById('diagnosticStepLabel'),bar=document.getElementById('diagnosticProgressBar');
-    function showStep(step,moveFocus){current=Math.max(1,Math.min(steps.length,step));steps.forEach(function(fieldset,index){var active=index===current-1;fieldset.hidden=!active;fieldset.classList.toggle('is-active',active);});if(label)label.textContent='Paso '+current+' de '+steps.length;if(bar)bar.style.width=(current/steps.length*100)+'%';if(moveFocus){var legend=steps[current-1].querySelector('legend');if(legend){legend.setAttribute('tabindex','-1');legend.focus();}}}
+    var form=document.getElementById('diagnosticForm');if(!form)return;var steps=Array.prototype.slice.call(form.querySelectorAll('.diagnostic-step'));var current=1;var label=document.getElementById('diagnosticStepLabel'),bar=document.getElementById('diagnosticProgressBar'),progressNodes=Array.prototype.slice.call(document.querySelectorAll('[data-progress-node]'));
+    function showStep(step,moveFocus){current=Math.max(1,Math.min(steps.length,step));steps.forEach(function(fieldset,index){var active=index===current-1;fieldset.hidden=!active;fieldset.classList.toggle('is-active',active);});if(label)label.textContent='Paso '+current+' de '+steps.length;if(bar)bar.style.width=(current/steps.length*100)+'%';progressNodes.forEach(function(node,index){node.classList.toggle('is-complete',index<current-1);node.classList.toggle('is-active',index===current-1);});if(moveFocus){var legend=steps[current-1].querySelector('legend');if(legend){legend.setAttribute('tabindex','-1');legend.focus();}}}
     function validateCurrent(){var invalid=steps[current-1].querySelector(':invalid');if(invalid){invalid.reportValidity();invalid.focus();return false;}return true;}
     form.querySelectorAll('[data-next-step]').forEach(function(button){button.addEventListener('click',function(){if(validateCurrent())showStep(current+1,true);});});form.querySelectorAll('[data-previous-step]').forEach(function(button){button.addEventListener('click',function(){showStep(current-1,true);});});
+    var contextInput=document.getElementById('contexto'),contextFeedback=document.getElementById('contextFeedback');function updateContextFeedback(){if(contextInput&&contextFeedback){contextFeedback.textContent=contextInput.value.length+' / '+contextInput.maxLength;contextFeedback.classList.toggle('has-content',contextInput.value.length>0);}}if(contextInput){contextInput.addEventListener('input',updateContextFeedback);updateContextFeedback();}
     var started=false;form.addEventListener('focusin',function(){if(started)return;started=true;document.dispatchEvent(new CustomEvent('vitairos:analytics',{detail:{event:'diagnostic_start'}}));});form.addEventListener('submit',function(){document.dispatchEvent(new CustomEvent('vitairos:analytics',{detail:{event:'diagnostic_submit'}}));});showStep(1,false);
     var params=new URLSearchParams(window.location.search);if(params.get('sent')==='1'){form.hidden=true;var thanks=document.getElementById('gracias');if(thanks){thanks.style.display='block';setTimeout(function(){thanks.focus();},50);}}
   })();
