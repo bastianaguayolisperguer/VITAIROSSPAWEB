@@ -1,119 +1,55 @@
-# Decisiones finales de diseño — VITAIROS Home Premium
+# Decisiones finales de diseño — Homepage V3
 
-Fecha: 2026-10-13
+## Norte creativo
 
-Estado: lista para revisión en preview
+La home es una escena continua en Abismo y Bosque. La red es el lenguaje conductor: aparece en la intro, se condensa en la esfera, persiste durante la brecha, se convierte en trayectoria de método y reaparece como instrumento del ecosistema.
 
-Rama: `homepage-v2-ai-positioning`
+## Jerarquía
 
-## Principio rector
+Solo el hero y el mensaje de brecha utilizan escala dominante. Los capítulos restantes reducen tamaño, aumentan contraste editorial y reservan el gradiente para propuesta central, CTA y estados interactivos.
 
-Menos elementos, más impacto. La página debía sentirse como una marca corporativa de inteligencia artificial aplicada, no como un catálogo de servicios ni una colección de landing pages.
+## Intro + hero
 
-## Qué se eliminó
+- Duración objetivo: 1,45 s.
+- Secuencia: puntos → conexiones → isotipo oficial → VITAIROS → desvanecimiento sobre el hero ya renderizado.
+- Se muestra una vez por sesión y se omite con movimiento reducido.
+- Desktop: copy y esfera comparten el primer viewport.
+- Mobile: copy, acciones, secuencia comercial y esfera aparecen consecutivamente sin capítulos intermedios.
 
-- Pills de IA, software, automatización y datos en el hero.
-- Banda de diagnóstico, piloto, integración y escala bajo el hero.
-- Proof line adicional en el hero.
-- Paso independiente de “Diseño” en la metodología.
-- Cinco argumentos repetitivos dentro de “Quiénes somos”.
-- Panel lateral explicativo del formulario final.
-- Bloque grande de carreras dentro del recorrido principal.
-- Copy de noticia centrado en el medio externo.
-- Capas históricas de CSS que aplicaban direcciones visuales incompatibles.
+## Esfera
 
-## Qué se fusionó
+Canvas 2D sin WebGL ni dependencias. La red rota con perspectiva, responde al pointer, desacelera al interactuar, intensifica conexiones cercanas al proyecto enfocado y utiliza el SVG liviano solo como fallback. Los nodos especiales son optativos; la navegación primaria sigue en el header.
 
-- Valor y capacidades: los problemas contienen sus capacidades asociadas y comparten un rail editorial.
-- Valor y metodología: ambas secciones viven dentro de una única región clara.
-- Diseño y piloto: experiencia, arquitectura, control y señales de éxito se resuelven dentro del piloto.
-- Quiénes somos y por qué VITAIROS: un único capítulo breve de dos párrafos.
-- Carreras y footer: estado de vacantes y enlace de perfil se trasladan a navegación secundaria.
+## Transición a valor
 
-## Qué se mantuvo
+No hay cambio a una página blanca. La esfera acompaña el primer tramo y se desvanece dentro de geometría, luz y nodos. Valor utiliza un selector de cuatro contextos y un escenario común: cambiar el foco modifica copy, resultado y orientación del microdiagrama.
 
-- Promesa “Hacemos que la IA funcione dentro de tu organización”.
-- Supporting copy estratégico.
-- Intro de marca, esfera, cuatro nodos de proyectos y scroll reveals.
-- Paleta VITAIROS y firma verde → turquesa → azul.
-- Outfit local.
-- Noticias desde JSON, vacantes desde JSON y formulario existente.
-- Navegación accesible, legal, SEO, Open Graph y JSON-LD.
+## Método
 
-## Arquitectura final
+Niebla se usa una sola vez como superficie editorial contenida. Los cuatro pasos viven sobre una trayectoria irregular, no una timeline de plantilla. La línea se revela según posición de scroll; los nodos cambian de estado sin scroll-jacking.
 
-1. Hero.
-2. La brecha.
-3. Dónde generamos valor.
-4. Cómo trabajamos.
-5. Ecosistema VITAIROS.
-6. VITAIROS en movimiento.
-7. Quiénes somos.
-8. CTA final y contacto.
-9. Footer.
+## Ecosistema
 
-## Decisiones visuales
+El patrón elegido es índice + instrumento. Cada iniciativa conserva solamente nombre, sector, una frase y CTA. El preview altera etiquetas, iluminación y orientación para representar continuidad, trazabilidad, territorio o red, manteniendo un único ADN VITAIROS.
 
-### Oscuridad con progresión
+## Evidencia
 
-La página es predominantemente oscura, pero usa variaciones de Abismo y Bosque, iluminación radial, tramas de nodos y cambios de densidad. No se alternan capítulos negros y blancos de forma repetitiva.
+Máximo dos historias. La primera domina; la segunda actúa como contrapunto. Se retiraron fotos de calidad insuficiente y se utilizaron composiciones generativas de líneas, halos y nodos preparadas para ser sustituidas por fotografía premium futura.
 
-### Región clara única
+## Principios
 
-“Dónde generamos valor” y “Cómo trabajamos” comparten una sola superficie Niebla/Papel. La entrada y salida usan curvas amplias, no un degradado vertical genérico. Esto crea un cambio editorial deliberado y evita la sensación de dos páginas pegadas.
+Los cuatro principios se presentan como una composición tipográfica de proporciones 7/5, no como cards. La frase “Tecnología útil. IA con criterio. Valor real.” funciona como cierre de capítulo.
 
-### Composición antes que tarjetas
+## Diagnóstico
 
-- La brecha usa una secuencia de sistema.
-- Valor usa filas editoriales.
-- Capacidades usa una lista técnica.
-- Método usa un recorrido continuo.
-- Solo ecosistema y evidencia conservan tarjetas porque representan entidades independientes.
+Cuatro pasos: oportunidad, contexto actual, etapa y contacto. Las respuestas se conservan y son editables. La UI utiliza radios nativos ocultos visualmente, labels reales, validación del navegador, progreso visible y controles atrás/siguiente. No se simula análisis automático.
 
-### Fotografía
+## Motion y performance
 
-Solo aparecen fotografías que documentan actividades reales. No se agregaron stock ni espacios vacíos con placeholders.
-
-## Decisiones de motion
-
-- Intro de 1,45 s, omitida con `sessionStorage` y `prefers-reduced-motion`.
-- Secuencia visual: red, nodos, isotipo y wordmark.
-- Esfera fija únicamente en desktop durante hero y brecha.
-- Transformación de esfera por `transform` y `opacity`: desplazamiento leve, escala de 1 a 0,88 y fade final.
-- Sin scroll-jacking ni bloqueo de la rueda.
-- Canvas pausado fuera del tramo narrativo y cuando la pestaña no está visible.
-- Reveals de 0,75 s con retrasos máximos de 210 ms.
-- Hover reservado para CTA, proyectos y evidencia.
-
-## Decisiones de spacing
-
-- Base de 8 px.
-- Navegación: 80 px desktop, 72 px responsive.
-- Separaciones de sección principales: 88, 104, 128, 152 y 170 px según función.
-- Gaps editoriales: 16, 24, 32, 48, 72 y 112 px.
-- Headings limitados por ancho en caracteres para evitar pantallas ocupadas por una sola frase.
-- Formulario reducido a 920 px de ancho y un único panel.
-
-## Decisiones mobile
-
-- El hero deja de usar composición fija y se vuelve una columna propia.
-- La esfera aparece después del copy y los CTA, sin sticky.
-- La brecha se transforma en un recorrido vertical.
-- La metodología usa una línea vertical con cuatro nodos.
-- Proyectos y noticias pasan a una columna.
-- El formulario pasa a campos apilados.
-- El footer reorganiza marca, navegación y carreras sin ocultar contenido.
-- Se validaron 430×932, 390×844 y 360×800 sin overflow ni clipping.
-
-## Performance y accesibilidad
-
-- Animaciones basadas en `transform` y `opacity`.
-- Canvas con DPR limitado y render detenido fuera del tramo visible.
-- Tipografía local, sin Google Fonts.
-- CSS consolidado y reducido aproximadamente un 62%.
-- Focus visible, Escape, foco restaurado y estados ARIA del menú.
-- `prefers-reduced-motion` desactiva intro, sticky y animaciones.
-
-## Límite de esta iteración
-
-La implementación queda en preview local. No se realizó push, deploy, merge, modificación de `main`, DNS, Cloudflare Production ni rutas productivas.
+- Microinteracciones: 200 ms.
+- Reveals: 550 ms.
+- Cambios de escena: 650–800 ms.
+- Easing corporativo: `cubic-bezier(.22,1,.36,1)`.
+- Scroll handlers agrupados mediante `requestAnimationFrame`.
+- Canvas acotado a DPR 1.5 y detenido fuera de pantalla.
+- Sin librerías nuevas, imágenes base64 ni WebGL.

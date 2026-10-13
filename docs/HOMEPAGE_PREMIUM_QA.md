@@ -1,125 +1,73 @@
-# QA premium final de la homepage VITAIROS
+# QA de homepage premium — V3
 
 Fecha: 2026-10-13
+URL validada: `http://127.0.0.1:4173/`
+Entorno: servidor HTTP local + Microsoft Edge headless. No se ejecutó deploy.
 
-Rama: `homepage-v2-ai-positioning`
+## Resultado técnico
 
-Entorno: servidor local de preview
+- Smoke test: aprobado.
+- Browser QA: aprobado en 8 viewports.
+- HTTP de home: 200 en todos los viewports.
+- Rutas verificadas: `/vitairos-m/`, `/vitairos-industrial-ai/`, `/agro-intelligence/`, `/conecta/` → 200.
+- Overflow horizontal: 0 px en todos los tamaños.
+- Imágenes rotas: 0.
+- Errores de consola/pageerror: 0.
+- IDs duplicados: 0.
+- Un solo `h1` y landmark `main` presente.
+- Actualidad: exactamente 2 historias verificadas.
+- Diagnóstico: 4 pasos, uno visible a la vez.
 
-Producción: no modificada
+## Viewports validados
 
-## Resultado
+| Viewport | HTTP | Overflow | Altura resultante | Resultado |
+|---|---:|---:|---:|---|
+| 1920×1080 | 200 | 0 px | 8341 px | Aprobado |
+| 1440×900 | 200 | 0 px | 7969 px | Aprobado |
+| 1366×768 | 200 | 0 px | 7755 px | Aprobado |
+| 1024×768 | 200 | 0 px | 7040 px | Aprobado |
+| 768×1024 | 200 | 0 px | 9851 px | Aprobado |
+| 430×932 | 200 | 0 px | 9800 px | Aprobado |
+| 390×844 | 200 | 0 px | 9741 px | Aprobado |
+| 360×800 | 200 | 0 px | 9786 px | Aprobado |
 
-`PASS` — la prueba estática y la prueba de navegador finalizaron correctamente.
+Las alturas corresponden a la pasada final con el método SVG en red.
 
-## Pruebas ejecutadas
+## Interacciones verificadas
 
-### Smoke test
+- Menú mobile abre con `aria-expanded=true`, cierra con Escape y restaura foco.
+- Header permanece visible en desktop y se compacta después de 32 px de scroll.
+- Foco de teclado en Valor actualiza contenido, resultado y estado `aria-pressed`.
+- Tap en Ecosistema actualiza sector, nombre, cuatro conceptos y copy del preview.
+- El diagnóstico avanza, vuelve y conserva radio buttons y textarea.
+- `prefers-reduced-motion` omite intro y movimiento continuo.
+- `sessionStorage` evita repetir la intro durante la sesión.
+- El canvas se pausa cuando hero/brecha están fuera del viewport y cuando la pestaña queda oculta.
 
-Comando:
+## Evidencia visual obligatoria
 
-```text
-node tests/homepage-smoke.mjs
-```
+1. `preview/homepage-v3-01-intro.png`
+2. `preview/homepage-v3-02-hero-desktop.png`
+3. `preview/homepage-v3-03-hero-mobile.png`
+4. `preview/homepage-v3-04-sphere-interaction.png`
+5. `preview/homepage-v3-05-hero-breach.png`
+6. `preview/homepage-v3-06-value.png`
+7. `preview/homepage-v3-07-method.png`
+8. `preview/homepage-v3-08-ecosystem.png`
+9. `preview/homepage-v3-09-ecosystem-hover.png`
+10. `preview/homepage-v3-10-movement.png`
+11. `preview/homepage-v3-11-why.png`
+12. `preview/homepage-v3-12-diagnostic-step-1.png`
+13. `preview/homepage-v3-13-diagnostic-final.png`
+14. `preview/homepage-v3-14-final-cta.png`
+15. `preview/homepage-v3-15-desktop-full.png`
+16. `preview/homepage-v3-16-mobile-full.png`
 
-Resultado:
+Benchmarks auxiliares: `preview/homepage-v3-benchmark-conecta.png` y `preview/homepage-v3-benchmark-industrial-ai.png`.
 
-```text
-Homepage smoke test: OK (34435 bytes, 34 IDs, 3 noticias verificadas).
-```
+## Riesgos aún abiertos
 
-Controles cubiertos:
-
-- un único H1 y landmark `main`;
-- IDs no duplicados;
-- cuatro nodos y cuatro tarjetas de proyecto;
-- metodología de exactamente cuatro etapas;
-- hero sin pills ni estadísticas;
-- rutas internas presentes;
-- noticias, vacantes e hitos con esquema válido;
-- JSON-LD válido;
-- Outfit local, esfera y sistema premium enlazados;
-- HTML menor a 60 KB.
-
-### QA de navegador
-
-Comando:
-
-```text
-node tests/homepage-browser-qa.cjs
-```
-
-| Viewport | HTTP | Overflow | Imágenes rotas | Consola | Resultado |
-|---|---:|---:|---:|---:|---|
-| 1920×1080 | 200 | 0 px | 0 | 0 | PASS |
-| 1440×900 | 200 | 0 px | 0 | 0 | PASS |
-| 1366×768 | 200 | 0 px | 0 | 0 | PASS |
-| 1024×768 | 200 | 0 px | 0 | 0 | PASS |
-| 900×900 | 200 | 0 px | 0 | 0 | PASS auxiliar |
-| 768×1024 | 200 | 0 px | 0 | 0 | PASS |
-| 430×932 | 200 | 0 px | 0 | 0 | PASS |
-| 390×844 | 200 | 0 px | 0 | 0 | PASS |
-| 360×800 | 200 | 0 px | 0 | 0 | PASS |
-
-## Controles funcionales
-
-- Menú móvil abre, actualiza `aria-expanded` y bloquea el fondo.
-- Escape cierra el menú y restaura el foco al botón.
-- `prefers-reduced-motion` omite la intro y elimina animación de la órbita.
-- `sessionStorage` impide repetir la intro durante la misma sesión.
-- Las rutas `/vitairos-m/`, `/vitairos-industrial-ai/`, `/agro-intelligence/` y `/conecta/` responden 200.
-- Tres noticias verificadas se cargan desde `data/news.json`.
-- El estado sin vacantes se carga correctamente desde `data/jobs.json`.
-- No hay IDs duplicados ni errores de JavaScript en consola.
-- El formulario conserva campos, honeypot, mensajes de privacidad y evento semántico.
-
-## QA visual
-
-### Hero y esfera
-
-- La esfera comparte protagonismo con la promesa sin tapar el texto.
-- Los cuatro proyectos siguen siendo nodos interactivos reales.
-- En desktop la esfera permanece fija durante hero y brecha, reduce escala y desaparece antes de la región clara.
-- En móvil la esfera vuelve al flujo y aparece después del copy y los CTA.
-
-### Transiciones
-
-- Hero y brecha forman una continuidad oscura.
-- Valor y metodología comparten una única región clara.
-- La entrada y salida de esa región se resuelven con curvas orgánicas y luminancia progresiva.
-- Ecosistema, evidencia, compañía y CTA continúan en variaciones de Bosque/Abismo sin saltos blancos adicionales.
-
-### Tipografía y spacing
-
-- Headings contenidos por `clamp()` y ancho máximo en caracteres.
-- Sistema de separación basado en 8 px: 16, 24, 32, 40/48, 56/64, 72, 88/96, 104/128/152.
-- Cuerpo con contraste y largo de línea controlados.
-- En 360 px no hay clipping ni overflow horizontal.
-
-### Imágenes
-
-- Solo se muestran tres fotografías de actividad real.
-- No se añadieron fotos de stock ni placeholders.
-- Todas las imágenes cargan y conservan `alt`.
-
-## Evidencia generada
-
-1. `preview/homepage-premium-desktop-full.png`
-2. `preview/homepage-premium-mobile-full.png`
-3. `preview/homepage-premium-intro.png`
-4. `preview/homepage-premium-hero.png`
-5. `preview/homepage-premium-hero-transition.png`
-6. `preview/homepage-premium-value.png`
-7. `preview/homepage-premium-method.png`
-8. `preview/homepage-premium-ecosystem.png`
-9. `preview/homepage-premium-news.png`
-10. `preview/homepage-premium-final-cta.png`
-
-También se regeneraron `preview/homepage-premium-mobile-hero.png` y `assets/vitairos-open-graph-1200x630.png`.
-
-## Riesgos y pendientes
-
-- No se ejecutó una medición Lighthouse de red/CPU reales; la validación de performance en esta iteración se limita a arquitectura, peso, transforms/opacity y ausencia de errores.
-- El formulario depende de FormSubmit y requiere validación end-to-end únicamente cuando se autorice un entorno externo.
-- La percepción comparativa con Conecta e Industrial AI requiere aprobación humana final; no existe una métrica automatizada para “premium feel”.
-- No se realizó deploy, merge, push ni modificación de producción.
+- Revisión manual en Safari/iOS real, no emulada.
+- Validación de entrega real de FormSubmit con un correo autorizado.
+- Prueba de comprensión con compradores reales antes de producción.
+- Dirección creativa humana debe aprobar la percepción visual; pasar QA técnico no equivale a aprobación de marca.
