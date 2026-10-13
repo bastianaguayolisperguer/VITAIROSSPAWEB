@@ -1,78 +1,118 @@
-# Auditoría premium de la homepage VITAIROS
+# Auditoría premium final de la homepage VITAIROS
 
-Fecha: 2026-10-12  
-Alcance: rama preview `homepage-v2-ai-positioning`  
+Fecha: 2026-10-13
+
+Rama: `homepage-v2-ai-positioning`
+
+Alcance: preview local, sin merge ni despliegue
+
 Producción: no modificada
 
-## Resumen ejecutivo
+## Resultado ejecutivo
 
-La V2 ya resolvía deuda crítica de la homepage productiva: retiró el archivo HTML monolítico, eliminó claims sin respaldo, incorporó el ecosistema y reposicionó la marca hacia inteligencia artificial aplicada. Sin embargo, las iteraciones visuales posteriores dejaron capas de CSS con direcciones opuestas: superficies claras editoriales, paneles oscuros superpuestos y finalmente una corrección que volvió todo el sitio oscuro. El resultado era funcional, pero sin progresión y con cambios cromáticos poco naturales.
+La homepage pasó de una V2 funcional pero fragmentada a una narrativa corporativa de ocho capítulos con una sola promesa central: hacer que la inteligencia artificial funcione dentro de procesos reales.
 
-La iteración premium conserva los activos correctos —intro, isotipo, esfera, logos reales, rutas de proyecto, Outfit local, formulario y datos estructurados— y reorganiza el relato comercial alrededor de la brecha de implementación de IA.
+La intervención no agregó contenido por volumen. Eliminó elementos secundarios del hero, redujo la metodología a cuatro etapas, integró capacidades dentro de la sección de valor, comprimió “Quiénes somos” y trasladó carreras al footer. El sistema visual conserva la identidad oficial, la esfera, los proyectos, la tipografía Outfit y las fuentes de evidencia ya verificadas.
 
-## Comparación: producción original, V2 y Conecta
+## Diagnóstico de la V2 previa
 
-| Dimensión | Homepage original (`main`) | V2 previa | Conecta | Decisión premium |
-|---|---|---|---|---|
-| Posicionamiento | Estudio/software y servicios amplios | IA aplicada, aún explicada desde capacidades | Propósito educativo muy claro | IA aplicada + ingeniería digital desde un problema empresarial concreto |
-| Hero | Mucho contenido y CTAs fragmentados | Mejor foco, pero promesa menos directa | Jerarquía y CTA nítidos | Mensaje literal: “Hacemos que la IA funcione dentro de tu organización” |
-| Ritmo | Largo y denso | Alternancia primero brusca y luego oscuridad continua | Capítulos visuales distinguibles | 70/30 oscuro-claro con transiciones graduales, sin paneles flotantes |
-| Motion | Variado y costoso | Intro y esfera mejoradas | Sistema consistente y sobrio | Duraciones unificadas, intro 1,45 s, repetición evitada con `sessionStorage` |
-| Ecosistema | No era eje de navegación | Cuatro iniciativas visibles | Navegación y programas claros | Arquitectura de marca explícita + logos reales en esfera y tarjetas |
-| Evidencia | Claims y vacantes sin control suficiente | Claims riesgosos retirados | Evidencia prudente | Actualidad alimentada por JSON y solo con `verified: true` |
-| Contacto | Formularios y modales múltiples | Un formulario | Flujo simple | Nombre, empresa, email, área opcional y mensaje |
-| Responsive | Desktop comprimido | Mejorado, pero hero y color dominaban | Mobile diseñado | Timeline vertical, esfera contenida, cards a una columna y CTA apilado |
+### Problemas confirmados
 
-## Hallazgos principales
+- El hero competía con pills, estadísticas y mensajes secundarios.
+- La esfera desaparecía al terminar el hero y no acompañaba la explicación de la brecha.
+- Las transiciones claro/oscuro parecían fondos independientes pegados.
+- El CSS acumulaba varias iteraciones visuales incompatibles y más de 124 KB.
+- La metodología tenía cinco momentos, aunque el relato comercial pedía cuatro.
+- “Quiénes somos” repetía ideas ya explicadas en valor y metodología.
+- Carreras ocupaba espacio de capítulo sin vacantes abiertas.
+- La noticia principal comenzaba desde el medio externo y no desde VITAIROS.
 
-### Conservar
+### Activos que debían conservarse
 
-- Isotipo oficial y paleta corporativa.
-- Outfit como tipografía local compartida con Conecta y el brand kit.
-- Esfera geométrica de canvas y proyectos anclados a vértices reales.
-- Navegación accesible, progreso de lectura, `prefers-reduced-motion` y reveals.
-- Rutas públicas de VITAIROS-M, Industrial AI, Agro Intelligence y Conecta.
-- Separación de HTML, CSS, JavaScript, datos y assets.
+- Isotipo y logos existentes; no se reinterpretó la marca.
+- Paleta Abismo, Bosque, Esmeralda, Neural, Pulso y Niebla.
+- Outfit local, compartida con el brand kit de Conecta.
+- Esfera de canvas con cuatro proyectos como nodos reales.
+- Datos de noticias y vacantes alimentados por JSON.
+- Formulario, semántica, JSON-LD, modales legales y eventos analíticos.
+- Salvaguardas de accesibilidad y `prefers-reduced-motion`.
 
-### Corregir
+## Benchmark interno
 
-- Narrativa que comenzaba por capacidades en lugar de la brecha organizacional.
-- Falta de una sección problema → valor.
-- Método de cuatro etapas sin piloto explícito.
-- Misma atmósfera oscura durante todo el recorrido.
-- Logos de la esfera demasiado protagonistas respecto de la red.
-- Ausencia de actualidad corporativa verificable y trabajo con nosotros controlado por datos.
-- Contacto con teléfono innecesario y clasificación obligatoria demasiado temprana.
+| Dimensión | Conecta | Industrial AI | Home premium final |
+|---|---|---|---|
+| Primera impresión | Clara y humana | Especializada y cinematográfica | Corporativa, tecnológica y centrada en IA aplicada |
+| Hero | Mensaje directo | Producto y contexto sectorial | Promesa madre, dos CTA y esfera protagonista |
+| Ritmo | Capítulos luminosos | Alternancia mineral | Predominio oscuro con una única región clara editorial |
+| Motion | Sobrio | Intro y visual industrial | Intro breve, esfera persistente y reveals controlados |
+| Jerarquía | Programa específico | Vertical específica | Marca madre + capacidad central + ecosistema |
+| Evidencia | Actividad educativa | Caso sectorial | Tres señales públicas narradas desde VITAIROS |
+| Mobile | Fluido | Adaptación propia | Hero, esfera, método, proyectos y noticias reordenados |
 
-### Eliminar o no migrar
+La comparación final es cualitativa: la home no copia el lenguaje de las verticales. Toma su estándar de foco y acabado para presentarlas como expresiones de una marca madre más sólida.
 
-- Precios empaquetados, vacantes antiguas, múltiples formularios y modales laborales.
-- Métricas de clientes, entregas, países, ROI, partners o resultados sin evidencia verificable.
-- Decoración que no apoye jerarquía, interacción o storytelling.
-- Presentación de las verticales como empresas separadas.
+## Auditoría por sección
 
-## Benchmark interno: Home vs Conecta
+### 01 Hero
 
-Conecta destaca por claridad de capítulos, consistencia tipográfica, microinteracciones contenidas, navegación, responsive y sensación de producto terminado. La home corporativa adopta esos estándares sin copiar su estética educativa: usa mayor contraste, menos ilustración, una retícula más editorial y una voz B2B.
+- Aporta: posicionamiento, promesa, contexto mínimo y conversión.
+- Eliminado: pills, estadísticas y proof line.
+- Conservado: un eyebrow, un H1, un párrafo, dos CTA y una visual.
+- Decisión: la esfera ocupa el segundo foco, no un rol decorativo.
 
-Resultado esperado de esta iteración:
+### 02 La brecha
 
-- Identidad: igual o superior.
-- Ritmo: igual o superior.
-- Motion: igual.
-- Spacing: superior para contexto corporativo.
-- Claridad comercial: superior.
-- Responsive: igual.
-- Premium feel: superior.
+- Aporta: explica por qué disponibilidad no equivale a valor.
+- Composición: herramientas → datos → procesos → integración → valor.
+- Decisión: la esfera sigue presente durante este capítulo y desaparece gradualmente al terminarlo.
 
-## Tipografía
+### 03 Dónde generamos valor
 
-Se mantiene Outfit como única familia. Sora no existe en los assets actuales, mientras Outfit está autoalojada y sostiene tanto la homepage como Conecta. Introducir otra familia aumentaría peso y fragmentaría la identidad sin aportar una mejora demostrable.
+- Aporta: cuatro fricciones comprensibles para un decisor.
+- Integración: las capacidades técnicas viven como respuesta a cada problema y en un rail editorial, no en una sección adicional.
+- Decisión: filas tipográficas en lugar de tarjetas.
 
-## Restricciones respetadas
+### 04 Cómo trabajamos
 
-- Sin cambios en `main`.
-- Sin merge, push, DNS, Cloudflare ni despliegue de producción.
-- Sin CMS nuevo.
-- Sin herramientas analíticas invasivas.
-- Sin claims nuevos no verificables.
+- Aporta: una entrada comercial de bajo riesgo.
+- Reducción: cinco pasos se convirtieron en diagnóstico, piloto, implementación y escalamiento.
+- Decisión: recorrido continuo de nodos, sin tabla ni cajas horizontales pesadas.
+
+### 05 Ecosistema VITAIROS
+
+- Aporta: arquitectura de marca y acceso explícito a cuatro iniciativas.
+- Decisión: las únicas tarjetas de producto del relato; los mismos cuatro proyectos permanecen dentro de la esfera sin ser la navegación principal.
+
+### 06 VITAIROS en movimiento
+
+- Aporta: actividad real mediante tres elementos verificados.
+- Decisión: fotografías solo donde documentan participación real.
+- Copy: la primera noticia ahora comienza por la acción de VITAIROS; la fuente externa funciona como evidencia.
+
+### 07 Quiénes somos
+
+- Aporta: criterio de trabajo y convicción de marca.
+- Reducción: cinco argumentos se sustituyeron por dos párrafos y una secuencia conceptual.
+- Decisión: sin foto mediocre ni manifiesto largo.
+
+### 08 CTA final
+
+- Aporta: cierre comercial, dos rutas de acción y formulario acotado.
+- Decisión: un solo panel de formulario; se eliminó el panel lateral explicativo.
+
+### 09 Footer
+
+- Aporta: navegación secundaria, contacto, legal y carreras.
+- Decisión: el estado de vacantes se muestra de forma breve; no se inventaron posiciones.
+
+## Claims y consistencia
+
+- No se incorporaron métricas, clientes, ROI, países ni resultados no verificables.
+- No se añadieron testimonios ni capacidades nuevas.
+- Las cuatro rutas de proyecto existentes permanecen accesibles.
+- La narrativa de noticias se corrigió sin alterar su fuente de respaldo.
+- El HTML se mantiene por debajo de 60 KB y el CSS consolidado bajó de aproximadamente 124 KB a 47 KB.
+
+## Conclusión
+
+La homepage final presenta a VITAIROS como empresa de inteligencia artificial aplicada e ingeniería digital, con una promesa clara, un sistema visual propio y una arquitectura comercial más corta. La versión está lista para revisión en preview; cualquier publicación sigue pendiente de aprobación explícita.

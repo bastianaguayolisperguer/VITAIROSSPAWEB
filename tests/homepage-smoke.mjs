@@ -35,6 +35,9 @@ expect(html.includes('/assets/homepage.css') && html.includes('/assets/homepage.
 expect(!html.includes('fonts.googleapis.com'), 'La tipografía todavía depende de Google Fonts.');
 expect((html.match(/class="orbit-project(?:\s|")/g) || []).length === 4, 'La órbita debe contener cuatro proyectos.');
 expect((html.match(/class="project-card__identity(?:\s|")/g) || []).length === 4, 'Cada iniciativa debe mostrar su identidad visual.');
+expect((html.match(/<li><span>0[1-4]<\/span><div><h3>/g) || []).length === 4, 'La metodología debe contener exactamente cuatro etapas.');
+expect(!html.includes('hb-pills') && !html.includes('hb-stats'), 'El hero volvió a incorporar elementos secundarios.');
+expect((html.match(/class="company-copy"/g) || []).length === 1, 'La sección de compañía no conserva su versión editorial compacta.');
 expect(!html.includes('themeToggle') && !html.includes('cursor-glow'), 'Persisten controles visuales retirados.');
 expectedRoutes.forEach((route) => expect(html.includes(`href="${route}"`), `Falta el enlace ${route}.`));
 expectedSections.forEach((id) => expect(html.includes(`id="${id}"`), `Falta la sección #${id}.`));

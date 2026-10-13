@@ -308,18 +308,65 @@ var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-redu
     });
 
     var heroSection = document.getElementById('inicio');
+    var breachSection = document.getElementById('brecha');
     if('IntersectionObserver' in window && heroSection){
-      new IntersectionObserver(function(entries){
-        heroVisible = !!entries[0] && entries[0].isIntersecting;
+      var storyVisibility = new Map();
+      var storyObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){ storyVisibility.set(entry.target, entry.isIntersecting); });
+        heroVisible = Array.from(storyVisibility.values()).some(Boolean);
         ensureLoop();
-      }, { threshold: 0.05 }).observe(heroSection);
+      }, { threshold: 0.02 });
+      storyObserver.observe(heroSection);
+      storyVisibility.set(heroSection, true);
+      if(breachSection){ storyObserver.observe(breachSection); storyVisibility.set(breachSection, false); }
     }
 
     ensureLoop();
   })();
 
+  (function(){
+    var sphere = document.getElementById('hbSphereWrap');
+    var hero = document.getElementById('inicio');
+    var breach = document.getElementById('brecha');
+    if(!sphere || !hero || !breach) return;
+
+    var frame = 0;
+    function clamp(value, minimum, maximum){ return Math.min(maximum, Math.max(minimum, value)); }
+    function updateSphereStory(){
+      frame = 0;
+      var desktop = window.innerWidth > 960 && !reduceMotion;
+      if(!desktop){
+        sphere.classList.remove('is-story-active', 'is-story-past');
+        sphere.style.removeProperty('--sphere-shift');
+        sphere.style.removeProperty('--sphere-scale');
+        sphere.style.removeProperty('--sphere-opacity');
+        return;
+      }
+
+      var start = hero.offsetTop;
+      var end = breach.offsetTop + breach.offsetHeight;
+      var distance = Math.max(1, end - start - window.innerHeight * 0.42);
+      var progress = clamp((window.scrollY - start) / distance, 0, 1);
+      var fade = 1 - clamp((progress - 0.72) / 0.28, 0, 1);
+      sphere.style.setProperty('--sphere-shift', (-22 * progress).toFixed(1) + 'px');
+      sphere.style.setProperty('--sphere-scale', (1 - progress * 0.12).toFixed(3));
+      sphere.style.setProperty('--sphere-opacity', fade.toFixed(3));
+
+      var passedStory = window.scrollY > end - window.innerHeight * 0.32;
+      sphere.classList.toggle('is-story-active', !passedStory);
+      sphere.classList.toggle('is-story-past', passedStory);
+    }
+    function scheduleSphereStory(){
+      if(!frame) frame = requestAnimationFrame(updateSphereStory);
+    }
+    window.addEventListener('scroll', scheduleSphereStory, { passive:true });
+    window.addEventListener('resize', scheduleSphereStory, { passive:true });
+    window.addEventListener('load', scheduleSphereStory, { once:true });
+    updateSphereStory();
+  })();
+
   if('IntersectionObserver' in window && !reduceMotion){
-    var revealItems = document.querySelectorAll('.chapter-heading,.breach-system,.value-row,.capability-rail,.method-track li,.brand-architecture,.project-card,.company-statement,.why-list article,.careers-band,.form-card,.contact-brief');
+    var revealItems = document.querySelectorAll('.chapter-heading,.breach-system,.value-row,.capability-rail,.method-track li,.brand-architecture,.project-card,.company-statement,.company-copy,.footer-careers,.form-card');
     var observer = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if(entry.isIntersecting){

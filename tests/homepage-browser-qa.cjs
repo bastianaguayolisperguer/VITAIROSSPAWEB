@@ -164,9 +164,18 @@ async function preparePage(page) {
   await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-premium-hero.png') });
   await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-premium-desktop-full.png'), fullPage: true });
   await desktopPage.locator('.skip-link').evaluate((element) => { element.style.visibility = 'hidden'; });
+  await desktopPage.evaluate(() => window.scrollTo(0, document.getElementById('brecha').offsetTop + 80));
+  await desktopPage.waitForTimeout(140);
+  await desktopPage.screenshot({ path: path.join(outputDir, 'homepage-premium-hero-transition.png') });
+  await desktopPage.locator('header').evaluate((element) => { element.style.visibility = 'hidden'; });
+  await desktopPage.locator('.scroll-progress').evaluate((element) => { element.style.visibility = 'hidden'; });
+  await desktopPage.locator('#soluciones').screenshot({ path: path.join(outputDir, 'homepage-premium-value.png') });
+  await desktopPage.locator('#metodo').screenshot({ path: path.join(outputDir, 'homepage-premium-method.png') });
   await desktopPage.locator('#ecosistema').screenshot({ path: path.join(outputDir, 'homepage-premium-ecosystem.png') });
   await desktopPage.locator('#actualidad').screenshot({ path: path.join(outputDir, 'homepage-premium-news.png') });
-  await desktopPage.locator('#trabaja').screenshot({ path: path.join(outputDir, 'homepage-premium-careers.png') });
+  await desktopPage.locator('#contacto').screenshot({ path: path.join(outputDir, 'homepage-premium-final-cta.png') });
+  await desktopPage.locator('header').evaluate((element) => { element.style.visibility = ''; });
+  await desktopPage.locator('.scroll-progress').evaluate((element) => { element.style.visibility = ''; });
   await desktopPage.locator('.skip-link').evaluate((element) => { element.style.visibility = ''; });
   await desktop.close();
 
