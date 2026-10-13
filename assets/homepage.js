@@ -195,6 +195,24 @@
   }
   if(ecosystem)ecosystem.querySelectorAll('.ecosystem-item').forEach(function(item){var button=item.querySelector('button');['mouseenter','focusin'].forEach(function(type){item.addEventListener(type,function(){activateEcosystem(item.dataset.ecosystemItem);});});button.addEventListener('click',function(){activateEcosystem(item.dataset.ecosystemItem);if(window.innerWidth<=820)document.getElementById('ecosystemPreview').scrollIntoView({behavior:prefersReducedMotion?'auto':'smooth',block:'nearest'});});});
 
+  /* Ambient continuity: low-energy motion that sleeps outside the viewport */
+  (function(){
+    var networks=Array.prototype.slice.call(document.querySelectorAll('[data-ambient-network]'));if(!networks.length||prefersReducedMotion)return;
+    var finePointer=window.matchMedia('(hover:hover) and (pointer:fine)').matches;var visible=new WeakMap();var scrollFrame=0;
+    function sync(network){network.classList.toggle('is-ambient-active',Boolean(visible.get(network))&&!document.hidden);}
+    if('IntersectionObserver' in window){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){visible.set(entry.target,entry.isIntersecting);sync(entry.target);});},{threshold:.04,rootMargin:'8% 0px 8% 0px'});networks.forEach(function(network){visible.set(network,false);observer.observe(network);});}else{networks.forEach(function(network){visible.set(network,true);sync(network);});}
+    if(finePointer)networks.forEach(function(network){var section=network.parentElement;if(!section)return;section.addEventListener('pointermove',function(event){if(!visible.get(network))return;var rect=section.getBoundingClientRect();var x=((event.clientX-rect.left)/Math.max(rect.width,1)-.5)*8;var y=((event.clientY-rect.top)/Math.max(rect.height,1)-.5)*6;network.style.setProperty('--ambient-shift-x',x.toFixed(2)+'px');network.style.setProperty('--ambient-shift-y',y.toFixed(2)+'px');},{passive:true});section.addEventListener('pointerleave',function(){network.style.setProperty('--ambient-shift-x','0px');network.style.setProperty('--ambient-shift-y','0px');});});
+    function updateScrollDepth(){scrollFrame=0;networks.forEach(function(network){if(!visible.get(network)||finePointer)return;var rect=network.parentElement.getBoundingClientRect();var progress=(window.innerHeight*.5-(rect.top+rect.height*.5))/Math.max(window.innerHeight,1);network.style.setProperty('--ambient-shift-y',(Math.max(-1,Math.min(1,progress))*5).toFixed(2)+'px');});}
+    function scheduleScrollDepth(){if(!scrollFrame)scrollFrame=requestAnimationFrame(updateScrollDepth);}window.addEventListener('scroll',scheduleScrollDepth,{passive:true});window.addEventListener('resize',scheduleScrollDepth,{passive:true});document.addEventListener('visibilitychange',function(){networks.forEach(sync);});updateScrollDepth();
+  })();
+
+  /* Compact project signature below the VITAIROS principles */
+  (function(){
+    var signature=document.getElementById('ecosystemSignature');if(!signature)return;var links=Array.prototype.slice.call(signature.querySelectorAll('[data-signature-project]'));
+    function activate(link){signature.dataset.activeProject=link?link.dataset.signatureProject:'';}
+    links.forEach(function(link){link.addEventListener('pointerenter',function(){activate(link);});link.addEventListener('pointerleave',function(){activate(null);});link.addEventListener('focus',function(){activate(link);});link.addEventListener('blur',function(){activate(null);});});
+  })();
+
   /* Evidence: only two verified stories, rendered without weak photography */
   function buildNewsCard(item,index){
     var card=document.createElement('a');card.className='news-card';card.href=item.link;card.setAttribute('data-analytics-event','news_click');if(/^https?:\/\//.test(item.link)){card.target='_blank';card.rel='noopener noreferrer';}
@@ -207,9 +225,9 @@
 
   /* Guided qualification, editable and keyboard-native */
   (function(){
-    var form=document.getElementById('diagnosticForm');if(!form)return;var steps=Array.prototype.slice.call(form.querySelectorAll('.diagnostic-step'));var current=1;var label=document.getElementById('diagnosticStepLabel'),bar=document.getElementById('diagnosticProgressBar'),progressNodes=Array.prototype.slice.call(document.querySelectorAll('[data-progress-node]'));var contextInput=document.getElementById('contexto'),contextFeedback=document.getElementById('contextFeedback'),contextStep=form.querySelector('[data-step="2"]'),stageStep=form.querySelector('[data-step="3"]'),subject=document.getElementById('diagnosticSubject');
+    var form=document.getElementById('diagnosticForm');if(!form)return;var steps=Array.prototype.slice.call(form.querySelectorAll('.diagnostic-step'));var current=1;var label=document.getElementById('diagnosticStepLabel'),bar=document.getElementById('diagnosticProgressBar'),progressNodes=Array.prototype.slice.call(document.querySelectorAll('[data-progress-node]'));var contextInput=document.getElementById('contexto'),contextFeedback=document.getElementById('contextFeedback'),contextStep=form.querySelector('[data-step="2"]'),stageStep=form.querySelector('[data-step="3"]'),subject=document.getElementById('diagnosticSubject'),leadType=document.getElementById('diagnosticLeadType');
     function isCareerPath(){var selected=form.querySelector('input[name="oportunidad"]:checked');return selected&&selected.value==='Trabaja con nosotros';}
-    function syncIntent(){var career=isCareerPath();if(contextStep){contextStep.querySelector('legend').textContent=career?'¿Cómo te gustaría colaborar?':'¿Qué ocurre hoy?';contextStep.querySelector('p').textContent=career?'Cuéntanos brevemente tu interés o experiencia.':'Una descripción breve es suficiente.';}if(contextInput)contextInput.placeholder=career?'Comparte tu experiencia, área de interés o forma de colaboración.':'Describe el proceso, la decisión o el flujo que quieres mejorar.';if(stageStep)stageStep.disabled=career;if(subject)subject.value=career?'Interés laboral o de colaboración VITAIROS':'Nuevo diagnóstico de oportunidad VITAIROS';}
+    function syncIntent(){var career=isCareerPath();if(contextStep){contextStep.querySelector('legend').textContent=career?'¿Cómo te gustaría colaborar?':'¿Qué ocurre hoy?';contextStep.querySelector('p').textContent=career?'Cuéntanos brevemente tu interés o experiencia.':'Una descripción breve es suficiente.';}if(contextInput)contextInput.placeholder=career?'Comparte tu experiencia, área de interés o forma de colaboración.':'Describe el proceso, la decisión o el flujo que quieres mejorar.';if(stageStep)stageStep.disabled=career;if(subject)subject.value=career?'Interés laboral o de colaboración VITAIROS':'Nuevo diagnóstico de oportunidad VITAIROS';if(leadType)leadType.value=career?'careers':'commercial';}
     function showStep(step,moveFocus){current=Math.max(1,Math.min(steps.length,step));steps.forEach(function(fieldset,index){var active=index===current-1;fieldset.hidden=!active;fieldset.classList.toggle('is-active',active);});if(label)label.textContent='Paso '+current+' de '+steps.length;if(bar)bar.style.width=(current/steps.length*100)+'%';progressNodes.forEach(function(node,index){node.classList.toggle('is-complete',index<current-1);node.classList.toggle('is-active',index===current-1);});if(moveFocus){var legend=steps[current-1].querySelector('legend');if(legend){legend.setAttribute('tabindex','-1');legend.focus();}}}
     function validateCurrent(){var invalid=steps[current-1].querySelector(':invalid');if(invalid){invalid.reportValidity();invalid.focus();return false;}return true;}
     form.querySelectorAll('input[name="oportunidad"]').forEach(function(input){input.addEventListener('change',syncIntent);});form.querySelectorAll('[data-next-step]').forEach(function(button){button.addEventListener('click',function(){if(!validateCurrent())return;syncIntent();showStep(isCareerPath()&&current===2?4:current+1,true);});});form.querySelectorAll('[data-previous-step]').forEach(function(button){button.addEventListener('click',function(){showStep(isCareerPath()&&current===4?2:current-1,true);});});
@@ -230,11 +248,19 @@
 
   document.addEventListener('click',function(event){var target=event.target.closest('[data-analytics-event]');if(!target||target.tagName==='FORM')return;document.dispatchEvent(new CustomEvent('vitairos:analytics',{detail:{event:target.getAttribute('data-analytics-event'),label:target.getAttribute('data-project')||target.textContent.trim().slice(0,80)}}));});
 
-  /* Intro is shown once per browsing session and resolves into the already-rendered hero */
+  /* Brand signature is shown once per session and resolves into the already-rendered hero */
   (function(){
-    var loader=document.getElementById('introLoader'),seen=false;try{seen=sessionStorage.getItem('vitairos_intro_seen')==='1';}catch(error){seen=false;}
-    function hide(){if(!loader)return;loader.classList.add('is-hidden');document.body.classList.remove('loader-active');setTimeout(function(){if(loader&&loader.parentNode)loader.parentNode.removeChild(loader);},760);}
-    if(prefersReducedMotion||seen){hide();return;}document.body.classList.add('loader-active');try{sessionStorage.setItem('vitairos_intro_seen','1');}catch(error){}
-    window.addEventListener('load',function(){setTimeout(hide,1450);},{once:true});setTimeout(hide,1850);
+    var loader=document.getElementById('introLoader');
+    var enabled=document.documentElement.classList.contains('intro-enabled');
+    function hide(immediate){
+      if(!loader)return;
+      loader.classList.add('is-hidden');document.body.classList.remove('loader-active');document.documentElement.classList.remove('intro-enabled');
+      setTimeout(function(){if(loader&&loader.parentNode)loader.parentNode.removeChild(loader);},immediate?0:80);
+    }
+    if(prefersReducedMotion||!enabled){hide(true);return;}
+    document.body.classList.add('loader-active');loader.classList.add('is-running');
+    try{sessionStorage.setItem('vitairos_intro_seen','1');}catch(error){}
+    setTimeout(function(){document.body.classList.add('intro-resolving');},900);
+    setTimeout(function(){document.body.classList.remove('intro-resolving');hide(false);},1320);
   })();
 })();

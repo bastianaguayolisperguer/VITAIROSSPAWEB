@@ -38,7 +38,7 @@
         "email": "contacto@vitairos.com",
         "description": "Empresa chilena de inteligencia artificial aplicada e ingeniería digital.",
         "areaServed": ["Chile", "Latinoamérica"],
-        "sameAs": ["https://www.linkedin.com/company/vitairos/?viewAsMember=true", "https://www.instagram.com/vitairos.engineering?igsh=ZzRxcGdxeDRydnNi"]
+        "sameAs": ["https://www.linkedin.com/company/vitairos/?viewAsMember=true", "https://www.instagram.com/vitairos_com"]
       },
       {
         "@type": "WebSite",
@@ -63,31 +63,51 @@
   </script>
   <link rel="preload" href="/brand-kit/vitairos-conecta/assets/tipografia/Outfit-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="/assets/homepage.css">
+  <script>
+    (function(){
+      try{
+        var firstVisit=sessionStorage.getItem('vitairos_intro_seen')!=='1';
+        var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if(firstVisit&&!reduced)document.documentElement.classList.add('intro-enabled');
+      }catch(error){
+        if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-enabled');
+      }
+    })();
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
 
   <div class="intro-loader" id="introLoader" aria-hidden="true">
-    <div class="intro-loader__network">
-      <svg viewBox="0 0 520 220" role="presentation">
-        <g class="intro-lines">
-          <path d="M40 156L126 84L211 126L286 42L360 112L476 58"></path>
-          <path d="M126 84L176 36L286 42L326 178L476 58"></path>
-          <path d="M40 156L178 184L211 126L326 178L430 170"></path>
+    <div class="intro-loader__field">
+      <svg class="intro-loader__continuum" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" role="presentation">
+        <defs><linearGradient id="introContinuumGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#17a673"></stop><stop offset=".55" stop-color="#6ad7b0"></stop><stop offset="1" stop-color="#1c66b1"></stop></linearGradient></defs>
+        <g class="intro-continuum__links">
+          <path d="M650 447L780 350L906 430L1040 288L1182 374L1350 250"></path>
+          <path d="M650 447L820 548L906 430L1048 562L1182 374L1350 476"></path>
+          <path d="M906 430C1002 336 1112 316 1182 374C1264 442 1227 565 1100 576C984 584 918 520 906 430Z"></path>
+          <ellipse cx="1100" cy="445" rx="198" ry="132"></ellipse><ellipse cx="1100" cy="445" rx="118" ry="198" transform="rotate(68 1100 445)"></ellipse>
         </g>
-        <g class="intro-dots">
-          <circle cx="40" cy="156" r="4"></circle><circle cx="126" cy="84" r="5"></circle>
-          <circle cx="176" cy="36" r="3"></circle><circle cx="211" cy="126" r="6"></circle>
-          <circle cx="286" cy="42" r="5"></circle><circle cx="326" cy="178" r="4"></circle>
-          <circle cx="360" cy="112" r="6"></circle><circle cx="430" cy="170" r="3"></circle>
-          <circle cx="476" cy="58" r="5"></circle><circle cx="178" cy="184" r="4"></circle>
+        <g class="intro-continuum__nodes">
+          <circle cx="650" cy="447" r="4"></circle><circle cx="780" cy="350" r="5"></circle><circle cx="820" cy="548" r="4"></circle><circle cx="906" cy="430" r="7"></circle><circle cx="1040" cy="288" r="5"></circle><circle cx="1048" cy="562" r="5"></circle><circle cx="1182" cy="374" r="7"></circle><circle cx="1350" cy="250" r="4"></circle><circle cx="1350" cy="476" r="5"></circle><circle cx="1100" cy="576" r="4"></circle>
         </g>
       </svg>
     </div>
-    <div class="intro-loader__identity">
-      <img src="/conecta/assets/vitairos-isotipo-128.png" alt="">
-      <strong>VITAIROS</strong>
-      <span>Inteligencia artificial aplicada</span>
+    <div class="intro-loader__brand">
+      <svg class="intro-loader__mark" viewBox="0 0 512 512" role="presentation">
+        <defs><linearGradient id="introMarkGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#17a673"></stop><stop offset=".52" stop-color="#6ad7b0"></stop><stop offset="1" stop-color="#1c66b1"></stop></linearGradient></defs>
+        <g class="intro-mark__links">
+          <path d="M34 73L140 108L182 176L256 287L328 176L372 108L478 73"></path>
+          <path d="M34 73L88 184L142 288L197 375L256 472L314 375L370 288L424 184L478 73"></path>
+          <path d="M142 288L256 287L370 288M197 375L256 287L314 375"></path>
+        </g>
+        <g class="intro-mark__nodes">
+          <circle cx="34" cy="73" r="13"></circle><circle cx="140" cy="108" r="10"></circle><circle cx="88" cy="184" r="12"></circle><circle cx="182" cy="176" r="10"></circle><circle cx="142" cy="288" r="12"></circle><circle cx="197" cy="375" r="10"></circle><circle cx="256" cy="287" r="15"></circle><circle cx="256" cy="472" r="12"></circle><circle cx="314" cy="375" r="10"></circle><circle cx="370" cy="288" r="12"></circle><circle cx="328" cy="176" r="10"></circle><circle cx="424" cy="184" r="12"></circle><circle cx="372" cy="108" r="10"></circle><circle cx="478" cy="73" r="13"></circle>
+        </g>
+        <image class="intro-mark__official" href="/conecta/assets/vitairos-isotipo-512.png" x="0" y="0" width="512" height="512"></image>
+        <circle class="intro-mark__pulse" cx="256" cy="287" r="80"></circle>
+      </svg>
+      <div class="intro-loader__identity"><strong>VITAIROS</strong><span>IA aplicada · Ingeniería digital</span></div>
     </div>
   </div>
 
@@ -192,16 +212,32 @@
       </div>
     </section>
 
-    <section id="actualidad" class="section news-section" data-news-section hidden aria-labelledby="newsTitle"><div class="container">
+    <section id="actualidad" class="section news-section" data-news-section hidden aria-labelledby="newsTitle">
+      <div class="ambient-network ambient-network--evidence" data-ambient-network aria-hidden="true"><svg viewBox="0 0 1440 520" preserveAspectRatio="none"><g class="ambient-network__grid"><path d="M0 96H1440M0 260H1440M0 424H1440M230 0V520M720 0V520M1210 0V520"></path></g><g class="ambient-network__links"><path d="M38 392 238 272 468 330 710 188 934 246 1192 122 1404 208"></path><path d="M116 106 334 164 590 78 824 154 1088 62 1348 116"></path></g><g class="ambient-network__nodes"><circle cx="238" cy="272" r="4"></circle><circle cx="468" cy="330" r="3"></circle><circle cx="710" cy="188" r="5"></circle><circle cx="934" cy="246" r="3"></circle><circle cx="1192" cy="122" r="4"></circle><circle cx="334" cy="164" r="3"></circle><circle cx="824" cy="154" r="4"></circle><circle cx="1088" cy="62" r="3"></circle></g></svg></div>
+      <div class="container">
       <div class="section-intro section-intro--split"><div><p class="section-kicker">Evidencia</p><h2 id="newsTitle">VITAIROS en movimiento.</h2></div><div class="news-intro"><p>Iniciativas y participaciones que hacen visible una compañía en construcción.</p><a href="https://www.linkedin.com/company/vitairos/" target="_blank" rel="noopener noreferrer">Ver actualidad <span aria-hidden="true">→</span></a></div></div>
       <div class="news-grid" id="newsGrid" aria-live="polite"></div>
-    </div></section>
+      </div>
+    </section>
 
-    <section id="nosotros" class="section principles-section" aria-labelledby="principlesTitle"><div class="container">
+    <section id="nosotros" class="section principles-section" aria-labelledby="principlesTitle">
+      <div class="ambient-network ambient-network--principles" data-ambient-network aria-hidden="true"><svg viewBox="0 0 1440 620" preserveAspectRatio="none"><g class="ambient-network__grid"><path d="M0 118H1440M0 310H1440M0 502H1440M180 0V620M610 0V620M1040 0V620M1370 0V620"></path></g><g class="ambient-network__links"><path d="M44 448 228 354 452 408 674 266 888 326 1120 208 1394 286"></path><path d="M118 164 354 230 590 126 832 194 1050 90 1326 146"></path></g><g class="ambient-network__nodes"><circle cx="228" cy="354" r="4"></circle><circle cx="452" cy="408" r="3"></circle><circle cx="674" cy="266" r="5"></circle><circle cx="888" cy="326" r="3"></circle><circle cx="1120" cy="208" r="4"></circle><circle cx="354" cy="230" r="3"></circle><circle cx="832" cy="194" r="4"></circle><circle cx="1050" cy="90" r="3"></circle></g></svg></div>
+      <div class="container">
       <div class="section-intro section-intro--split"><div><p class="section-kicker">Por qué VITAIROS</p><h2 id="principlesTitle">Criterio antes que escala.</h2></div><p>No partimos con una herramienta. Construimos el siguiente paso que el problema realmente necesita.</p></div>
       <ol class="principles-grid"><li tabindex="0"><span>01</span><div><h3>Problema antes que tecnología</h3><p>No partimos eligiendo herramientas.</p></div></li><li tabindex="0"><span>02</span><div><h3>Piloto antes que gran despliegue</h3><p>Probamos valor y riesgo antes de escalar.</p></div></li><li tabindex="0"><span>03</span><div><h3>Integración antes que aislamiento</h3><p>La IA debe convivir con datos, sistemas y equipos.</p></div></li><li tabindex="0"><span>04</span><div><h3>Control antes que automatización ciega</h3><p>Trazabilidad y supervisión cuando el contexto lo requiere.</p></div></li></ol>
       <div class="about-note"><p>Tecnología útil. <strong>IA con criterio.</strong> Valor real.</p><span>Conocer VITAIROS →</span></div>
-    </div></section>
+      <div class="ecosystem-signature" id="ecosystemSignature" data-active-project="" aria-labelledby="ecosystemSignatureLabel">
+        <div class="ecosystem-signature__network" aria-hidden="true"><svg viewBox="0 0 1200 150" preserveAspectRatio="none"><path class="signature-link signature-link--m" d="M92 76 C180 24 248 24 322 76"></path><path class="signature-link signature-link--industrial" d="M322 76 C410 128 488 128 594 76"></path><path class="signature-link signature-link--agro" d="M594 76 C698 22 780 22 868 76"></path><path class="signature-link signature-link--conecta" d="M868 76 C968 126 1060 126 1140 76"></path><g><circle class="signature-node signature-node--m" cx="92" cy="76" r="4"></circle><circle class="signature-node signature-node--industrial" cx="322" cy="76" r="4"></circle><circle cx="594" cy="76" r="4"></circle><circle class="signature-node signature-node--agro" cx="868" cy="76" r="4"></circle><circle class="signature-node signature-node--conecta" cx="1140" cy="76" r="4"></circle></g></svg></div>
+        <p class="ecosystem-signature__label" id="ecosystemSignatureLabel">Explora el ecosistema</p>
+        <nav class="ecosystem-signature__projects" aria-label="Proyectos VITAIROS">
+          <a class="ecosystem-signature__project" href="/vitairos-m/" data-signature-project="m" data-analytics-event="project_click" data-project="vitairos-m"><span class="ecosystem-signature__mark"><img src="/assets/projects/vitairos-m.svg" alt=""></span><span class="ecosystem-signature__copy"><strong>VITAIROS-M</strong><small>Salud digital</small></span></a>
+          <a class="ecosystem-signature__project" href="/vitairos-industrial-ai/" data-signature-project="industrial" data-analytics-event="project_click" data-project="industrial-ai"><span class="ecosystem-signature__mark"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="signatureMarkMineral" x1="8" y1="8" x2="58" y2="58"><stop stop-color="#F5DEB2"></stop><stop offset=".48" stop-color="#DD7A52"></stop><stop offset="1" stop-color="#AAB6B7"></stop></linearGradient></defs><path d="M8 49 23 17l10 13 8-10 15 29H8Z" fill="none" stroke="url(#signatureMarkMineral)" stroke-width="3" stroke-linejoin="round"></path><path d="M19 49h25M25 34h15M32 26v21" stroke="#F5DEB2" stroke-width="2" stroke-linecap="round" opacity=".78"></path><circle cx="32" cy="26" r="3.3" fill="#DD7A52"></circle></svg></span><span class="ecosystem-signature__copy"><strong>VITAIROS Industrial AI</strong><small>Industria y minería</small></span></a>
+          <a class="ecosystem-signature__project" href="/agro-intelligence/" data-signature-project="agro" data-analytics-event="project_click" data-project="agro-intelligence"><span class="ecosystem-signature__mark"><img src="/agro-intelligence/vitairos-logo.webp" alt=""></span><span class="ecosystem-signature__copy"><strong>VITAIROS Agro Intelligence</strong><small>Agricultura</small></span></a>
+          <a class="ecosystem-signature__project" href="/conecta/" data-signature-project="conecta" data-analytics-event="project_click" data-project="conecta"><span class="ecosystem-signature__mark"><img src="/conecta/assets/vitairos-isotipo-256.png" alt=""></span><span class="ecosystem-signature__copy"><strong>VITAIROS Conecta</strong><small>Educación</small></span></a>
+        </nav>
+      </div>
+      </div>
+    </section>
 
     <section id="diagnostico" class="section diagnostic-section" aria-labelledby="diagnosticTitle">
       <span id="contacto" class="anchor-target" aria-hidden="true"></span><div class="diagnostic-network" aria-hidden="true"></div>
@@ -210,7 +246,7 @@
         <div class="diagnostic-card">
           <div class="diagnostic-progress" aria-live="polite"><span id="diagnosticStepLabel">Paso 1 de 4</span><i aria-hidden="true"><b id="diagnosticProgressBar"></b><em data-progress-node="1"></em><em data-progress-node="2"></em><em data-progress-node="3"></em><em data-progress-node="4"></em></i></div>
           <form action="https://formsubmit.co/bastianaguayolisperguer@gmail.com" method="POST" id="diagnosticForm" data-analytics-event="contact_submit">
-            <input type="hidden" id="diagnosticSubject" name="_subject" value="Nuevo diagnóstico de oportunidad VITAIROS"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="box"><input type="hidden" name="_next" value="https://www.vitairos.com/?sent=1#gracias"><input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off">
+            <input type="hidden" id="diagnosticSubject" name="_subject" value="Nuevo diagnóstico de oportunidad VITAIROS"><input type="hidden" id="diagnosticLeadType" name="lead_type" value="commercial"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="box"><input type="hidden" name="_next" value="https://www.vitairos.com/?sent=1#gracias"><input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
             <fieldset class="diagnostic-step is-active" data-step="1"><legend>¿Qué quieres mejorar?</legend><p>Elige la opción más cercana. Puedes editarla después.</p><div class="choice-grid">
               <label><input type="radio" name="oportunidad" value="Un proceso manual" required><span>Un proceso manual</span></label><label><input type="radio" name="oportunidad" value="Información o datos"><span>Información o datos</span></label><label><input type="radio" name="oportunidad" value="Uso de IA en mi organización"><span>Uso de IA en mi organización</span></label><label><input type="radio" name="oportunidad" value="Un producto digital"><span>Un producto digital</span></label><label><input type="radio" name="oportunidad" value="Integrar sistemas"><span>Integrar sistemas</span></label><label><input type="radio" name="oportunidad" value="Aún no lo tengo claro"><span>Aún no lo tengo claro</span></label><label class="choice-careers"><input type="radio" name="oportunidad" value="Trabaja con nosotros"><span>Trabaja con nosotros <small>Colaborar o postular</small></span></label>
             </div><div class="diagnostic-actions"><button class="button button--primary" type="button" data-next-step>Siguiente <span aria-hidden="true">→</span></button></div></fieldset>
@@ -227,7 +263,7 @@
   <footer><div class="container footer-grid">
     <div class="footer-identity"><a href="#inicio" class="brand"><span class="brand-logo"><img src="/conecta/assets/vitairos-isotipo-128.png" alt=""></span><span class="brand-wordmark"><strong>VITAIROS</strong><small>IA aplicada · Ingeniería digital</small></span></a><p>Hacemos que la IA funcione dentro de procesos reales.</p></div>
     <nav aria-label="Navegación del pie"><a href="#soluciones">Soluciones</a><a href="#metodo">Método</a><a href="#ecosistema">Ecosistema</a><a href="#diagnostico">Contacto</a></nav>
-    <div class="footer-contact"><a href="mailto:contacto@vitairos.com">contacto@vitairos.com</a><span>Chile · Latinoamérica</span><div><a href="https://www.linkedin.com/company/vitairos/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.instagram.com/vitairos.engineering?igsh=ZzRxcGdxeDRydnNi" target="_blank" rel="noopener noreferrer">Instagram</a></div></div>
+    <div class="footer-contact"><a href="mailto:contacto@vitairos.com">contacto@vitairos.com</a><span>Chile · Latinoamérica</span><div><a href="https://www.linkedin.com/company/vitairos/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.instagram.com/vitairos_com" target="_blank" rel="noopener noreferrer">Instagram</a></div></div>
     <div class="footer-meta"><p>© <span id="year"></span> VITAIROS SpA</p><div><button type="button" data-modal-open="privacidad">Privacidad</button><button type="button" data-modal-open="terminos">Términos</button><a id="trabaja" href="#diagnostico" data-diagnostic-careers>Trabaja con nosotros</a></div></div>
   </div></footer>
 
