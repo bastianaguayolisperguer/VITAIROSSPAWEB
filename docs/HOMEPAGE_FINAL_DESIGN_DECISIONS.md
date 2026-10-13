@@ -1,4 +1,4 @@
-# Decisiones finales de diseño — Homepage V3.1
+# Decisiones finales de diseño — Homepage V3.2
 
 ## Norte creativo
 
@@ -7,6 +7,8 @@ La home es una escena continua en Abismo y Bosque. La red es el lenguaje conduct
 ## Jerarquía
 
 Solo el hero y el mensaje de brecha utilizan escala dominante. Los capítulos restantes reducen tamaño, aumentan contraste editorial y reservan el gradiente para propuesta central, CTA y estados interactivos.
+
+Las etiquetas de capítulo son textuales y no muestran numeración. La secuencia numérica se reserva para componentes donde comunica estado o estructura funcional.
 
 ## Intro + hero
 
@@ -34,7 +36,7 @@ El patrón elegido es índice + instrumento. Cada iniciativa conserva solamente 
 
 ## Evidencia
 
-Máximo dos historias. La primera domina; la segunda actúa como contrapunto. Se retiraron fotos de calidad insuficiente. Minería utiliza documentos, operación y traza; Talasa utiliza infraestructura, nodos de cómputo, red e IA.
+Máximo dos historias. La primera domina; la segunda actúa como contrapunto. Media y copy ocupan filas independientes para evitar colisiones. Se retiraron fotos de calidad insuficiente. Minería utiliza documentos, operación y traza; Talasa utiliza infraestructura, nodos de cómputo, red e IA.
 
 ## Principios
 
@@ -42,7 +44,7 @@ Los cuatro principios se presentan como una composición tipográfica de proporc
 
 ## Diagnóstico
 
-Cuatro pasos: oportunidad, contexto actual, etapa y contacto. Las respuestas se conservan y son editables. La UI utiliza radios nativos ocultos visualmente, labels reales, validación del navegador, progreso con cuatro nodos y controles atrás/siguiente. El textarea muestra longitud y el CTA final dice “Enviar mi caso para revisión”. No se simula análisis automático.
+Cuatro pasos: oportunidad, contexto actual, etapa y contacto. Las respuestas se conservan y son editables. “Trabaja con nosotros” se integra como intención secundaria y usa una rama corta que omite la etapa comercial. La UI utiliza radios nativos ocultos visualmente, labels reales, validación del navegador, progreso con cuatro nodos y controles atrás/siguiente. El textarea muestra longitud y el CTA final dice “Enviar mi caso para revisión”. No se simula análisis automático.
 
 ## Motion y performance
 

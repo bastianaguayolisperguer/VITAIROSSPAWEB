@@ -1,4 +1,4 @@
-# SEO handoff — Homepage V3.1
+# SEO handoff — Homepage V3.2
 
 Fecha: 2026-10-13. Esta iteración de refinamiento visual preserva fundamentos SEO; no sustituye una auditoría SEO final.
 
@@ -17,7 +17,8 @@ Fecha: 2026-10-13. Esta iteración de refinamiento visual preserva fundamentos S
 
 - No cambian title, description, canonical, robots, JSON-LD ni arquitectura de headings respecto de V3.
 - Se mantienen exactamente dos historias verificadas desde `data/news.json`.
-- El diagnóstico conserva cuatro pasos; solo cambia microcopy de cierre y ayudas positivas.
+- El diagnóstico conserva cuatro pasos y suma “Trabaja con nosotros” como intención secundaria.
+- Las etiquetas visibles de capítulo pierden numeración, sin cambiar la jerarquía semántica de headings.
 - La imagen Open Graph se regenera desde el hero V3.1.
 - Los cambios visuales de Método, Ecosistema y Evidencia no eliminan contenido indexable.
 

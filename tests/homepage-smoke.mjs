@@ -28,9 +28,12 @@ expect((html.match(/class="orbit-project(?:\s|")/g) || []).length === 4, 'La esf
 expect((html.match(/data-ecosystem-item=/g) || []).length === 4, 'El ecosistema debe contener cuatro iniciativas.');
 expect((html.match(/class="method-node"/g) || []).length === 4, 'La metodología debe contener exactamente cuatro etapas.');
 expect((html.match(/class="diagnostic-step/g) || []).length === 4, 'El diagnóstico debe contener cuatro pasos.');
-expect((html.match(/name="oportunidad"/g) || []).length === 6, 'El paso 1 debe conservar seis opciones.');
+expect((html.match(/name="oportunidad"/g) || []).length === 7, 'El paso 1 debe contener seis oportunidades y la opción laboral.');
 expect((html.match(/name="etapa"/g) || []).length === 5, 'El paso 3 debe conservar cinco estados.');
 expect(html.includes('Enviar mi caso para revisión') && html.includes('Revisaremos el contexto antes de responderte.'), 'Falta el cierre honesto del diagnóstico.');
+expect(html.includes('value="Trabaja con nosotros"') && html.includes('data-diagnostic-careers'), 'Trabaja con nosotros no está integrado en el diagnóstico.');
+expect(!/página en preparación/i.test(html), 'Persiste el placeholder “Página en preparación”.');
+expect(!/<p class="section-kicker">\d+\s*\//.test(html), 'Las etiquetas de capítulo todavía usan numeración de presentación.');
 expect(html.includes('Revisión humana del contexto') && html.includes('Alcance proporcional al problema') && html.includes('Contexto antes de proponer'), 'Faltan los compromisos positivos del diagnóstico.');
 expect((html.match(/data-progress-node=/g) || []).length === 4, 'El progreso del diagnóstico debe contener cuatro nodos.');
 expect(html.includes('id="telefono"') && html.includes('(opcional)'), 'El teléfono debe existir solo como campo opcional.');
@@ -44,18 +47,20 @@ expect(!jsonLd?.['@graph']?.some((item) => item['@type'] === 'FAQPage'), 'Existe
 expect(Array.isArray(news) && news.length > 0 && news.every((item) => item.verified === true && item.link), 'news.json contiene entradas sin verificación o fuente.');
 expect(css.includes('@font-face') && css.includes('project-node-layer') && css.includes('VITAIROS HOME V3'), 'Faltan tipografía local, esfera o sistema visual V3.');
 expect(css.includes('V3.1 / one continuous dark scene') && css.includes('.method-network.is-complete+.method-release'), 'Falta la continuidad cromática o la expansión de metodología V3.1.');
+expect(css.includes('V3.2 / pre-production closing refinements') && css.includes('.choice-careers') && css.includes('grid-template-rows:minmax(270px,1fr) auto'), 'Faltan refinamientos V3.2 de formulario o evidencia.');
 expect(css.includes('@media (max-width:1099px)') && js.includes("matchMedia('(min-width: 1100px)')"), 'El breakpoint desktop de 1100 px no está alineado.');
 expect(css.includes('@media (prefers-reduced-motion:reduce)'), 'Falta la salvaguarda CSS de movimiento reducido.');
 expect(js.includes('prefersReducedMotion') && js.includes('vitairos_intro_seen') && js.includes('revealVisibleItems'), 'Faltan salvaguardas de movimiento, intro o reveals.');
 expect(js.includes("fetch('/data/news.json'") && js.includes('.slice(0,2)'), 'Actualidad no está limitada a dos historias verificadas.');
 expect(js.includes('activateValue') && js.includes('activateEcosystem') && js.includes('showStep'), 'Faltan interacciones principales de la V3.');
+expect(js.includes('isCareerPath') && js.includes("current===2?4"), 'La rama ligera de Trabaja con nosotros no está implementada.');
 expect(js.includes("labels:['Documentos','Operación','Datos','Trazabilidad']") && js.includes("labels:['Personas','Aprendizaje','Conexión','Oportunidad']"), 'Las microvisualizaciones del ecosistema no conservan su semántica propia.');
 expect(statSync(resolve(root, 'index.html')).size < 60000, 'El HTML supera 60 KB.');
 
 if (failures.length) {
-  console.error('Homepage V3.1 smoke test failures:');
+  console.error('Homepage V3.2 smoke test failures:');
   failures.forEach((failure) => console.error(`- ${failure}`));
   process.exit(1);
 }
 
-console.log(`Homepage V3.1 smoke test: OK (${statSync(resolve(root, 'index.html')).size} bytes, ${ids.length} IDs, ${news.length} noticias verificadas).`);
+console.log(`Homepage V3.2 smoke test: OK (${statSync(resolve(root, 'index.html')).size} bytes, ${ids.length} IDs, ${news.length} noticias verificadas).`);
