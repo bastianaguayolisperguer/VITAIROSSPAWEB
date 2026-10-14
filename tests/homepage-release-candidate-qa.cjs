@@ -73,7 +73,7 @@ async function fillContact(page, suffix) {
   if (commercialConsentDefault || commercialBlocked.payload || commercialBlocked.visibleStep !== '4' || commercialBlocked.focused !== 'privacyConsent' || commercialBlocked.valid) failures.push('Commercial no bloquea y enfoca el consentimiento pendiente');
   const policyButton = commercial.locator('#privacyConsentPolicy');
   await policyButton.press('Enter');
-  await commercial.waitForTimeout(50);
+  await commercial.waitForFunction(() => document.activeElement?.getAttribute('data-modal-close') === 'privacidad', undefined, { timeout: 1000 });
   const privacyOpen = await commercial.evaluate(() => ({ open: document.getElementById('modal-privacidad').classList.contains('open'), hidden: document.getElementById('modal-privacidad').getAttribute('aria-hidden'), focused: document.activeElement?.getAttribute('data-modal-close'), focusedTag: document.activeElement?.tagName, focusedId: document.activeElement?.id }));
   await commercial.keyboard.press('Shift+Tab');
   const focusWrappedBackward = await commercial.evaluate(() => document.activeElement?.getAttribute('href') === 'mailto:contacto@vitairos.com');
