@@ -1,0 +1,3 @@
+# Repository metadata is not a public website asset.
+.git
+.git/**
