@@ -42,12 +42,53 @@ async function fillContact(page, suffix) {
   await commercial.locator('[data-step="3"] [data-next-step]').click();
   await fillContact(commercial, 'Commercial');
   await interceptPayload(commercial);
+  const consentContract = await commercial.evaluate(() => {
+    const input = document.getElementById('privacyConsent');
+    const normalize = (value) => value.replace(/\s+/g, ' ').trim();
+    const labelText = input.getAttribute('aria-labelledby').split(' ').map((id) => document.getElementById(id)?.textContent || '').join(' ');
+    return {
+      name: input.name,
+      value: input.value,
+      required: input.required,
+      checkedAttribute: input.hasAttribute('checked'),
+      labelText: normalize(labelText),
+      labelTargets: [...document.querySelectorAll('label[for="privacyConsent"]')].every((label) => label.htmlFor === input.id),
+      infoText: normalize(document.querySelector('.privacy-consent > p').textContent),
+      version: document.querySelector('input[name="privacy_version"]')?.value,
+      modalText: normalize(document.querySelector('#modal-privacidad .modal-body').textContent)
+    };
+  });
+  const exactConsentText = 'He leído la Política de Privacidad y autorizo a VITAIROS SpA a tratar mis datos personales para gestionar y responder mi solicitud, postulación o interés de colaboración.';
+  const exactInfoText = 'Los datos serán utilizados para gestionar esta solicitud. El formulario es procesado mediante FormSubmit. Puedes contactarnos en contacto@vitairos.com.';
+  if (consentContract.name !== 'privacy_consent' || consentContract.value !== 'yes' || !consentContract.required || consentContract.checkedAttribute || consentContract.labelText !== exactConsentText || !consentContract.labelTargets || consentContract.infoText !== exactInfoText || consentContract.version !== '2026-10') failures.push('Contrato explícito de consentimiento incompleto');
+  for (const privacyTerm of ['Responsable:', 'VITAIROS SpA', 'Datos tratados:', 'Finalidad:', 'FormSubmit', 'marketing', 'Conservación:', 'Derechos y contacto:', 'contacto@vitairos.com']) if (!consentContract.modalText.includes(privacyTerm)) failures.push(`Política de Privacidad sin ${privacyTerm}`);
+  const commercialConsentDefault = await commercial.locator('#privacyConsent').isChecked();
+  await commercial.locator('#diagnosticForm button[type="submit"]').click();
+  const commercialBlocked = await commercial.evaluate(() => ({
+    payload: window.__diagnosticPayload,
+    visibleStep: document.querySelector('.diagnostic-step:not([hidden])')?.dataset.step,
+    focused: document.activeElement?.id,
+    valid: document.getElementById('diagnosticForm').checkValidity()
+  }));
+  if (commercialConsentDefault || commercialBlocked.payload || commercialBlocked.visibleStep !== '4' || commercialBlocked.focused !== 'privacyConsent' || commercialBlocked.valid) failures.push('Commercial no bloquea y enfoca el consentimiento pendiente');
+  const policyButton = commercial.locator('#privacyConsentPolicy');
+  await policyButton.press('Enter');
+  await commercial.waitForTimeout(50);
+  const privacyOpen = await commercial.evaluate(() => ({ open: document.getElementById('modal-privacidad').classList.contains('open'), hidden: document.getElementById('modal-privacidad').getAttribute('aria-hidden'), focused: document.activeElement?.getAttribute('data-modal-close'), focusedTag: document.activeElement?.tagName, focusedId: document.activeElement?.id }));
+  await commercial.keyboard.press('Shift+Tab');
+  const focusWrappedBackward = await commercial.evaluate(() => document.activeElement?.getAttribute('href') === 'mailto:contacto@vitairos.com');
+  await commercial.keyboard.press('Tab');
+  const focusWrappedForward = await commercial.evaluate(() => document.activeElement?.getAttribute('data-modal-close') === 'privacidad');
+  await commercial.keyboard.press('Escape');
+  const privacyClosed = await commercial.evaluate(() => ({ hidden: document.getElementById('modal-privacidad').getAttribute('aria-hidden'), restored: document.activeElement?.id === 'privacyConsentPolicy' }));
+  if (!privacyOpen.open || privacyOpen.hidden !== 'false' || privacyOpen.focused !== 'privacidad' || !focusWrappedBackward || !focusWrappedForward || privacyClosed.hidden !== 'true' || !privacyClosed.restored) failures.push('Política de Privacidad no conserva apertura, focus trap, Escape o focus restore');
+  await commercial.locator('#privacyConsent').check();
   await commercial.locator('#diagnosticForm button[type="submit"]').click();
   const commercialPayload = await commercial.evaluate(() => window.__diagnosticPayload);
   const commercialExpected = {
     lead_type: 'commercial', oportunidad: 'Un proceso manual', etapa: 'Explorando', nombre: 'QA Commercial',
     empresa: 'VITAIROS QA Commercial', email: 'qa.commercial@example.com', telefono: '+56 9 1111 2222',
-    _subject: 'Nuevo diagnóstico de oportunidad VITAIROS'
+    privacy_consent: 'yes', privacy_version: '2026-10', _subject: 'Nuevo diagnóstico de oportunidad VITAIROS'
   };
   for (const [key, value] of Object.entries(commercialExpected)) if (commercialPayload?.[key] !== value) failures.push(`Commercial payload ${key}: ${commercialPayload?.[key]}`);
   if (!commercialPayload?.contexto?.includes('oportunidad comercial')) failures.push('Commercial payload contexto ausente');
@@ -62,12 +103,17 @@ async function fillContact(page, suffix) {
   if (!careerStep.step3Hidden || careerStep.step4Hidden) failures.push('Careers no omite inequívocamente la etapa comercial');
   await fillContact(careers, 'Careers');
   await interceptPayload(careers);
+  const careersConsentDefault = await careers.locator('#privacyConsent').isChecked();
+  await careers.locator('#diagnosticForm button[type="submit"]').click();
+  const careersBlocked = await careers.evaluate(() => ({ payload: window.__diagnosticPayload, visibleStep: document.querySelector('.diagnostic-step:not([hidden])')?.dataset.step, focused: document.activeElement?.id, valid: document.getElementById('diagnosticForm').checkValidity() }));
+  if (careersConsentDefault || careersBlocked.payload || careersBlocked.visibleStep !== '4' || careersBlocked.focused !== 'privacyConsent' || careersBlocked.valid) failures.push('Careers no bloquea y enfoca el consentimiento pendiente');
+  await careers.locator('#privacyConsent').check();
   await careers.locator('#diagnosticForm button[type="submit"]').click();
   const careersPayload = await careers.evaluate(() => window.__diagnosticPayload);
   const careersExpected = {
     lead_type: 'careers', oportunidad: 'Trabaja con nosotros', nombre: 'QA Careers',
     empresa: 'VITAIROS QA Careers', email: 'qa.careers@example.com', telefono: '+56 9 1111 2222',
-    _subject: 'Interés laboral o de colaboración VITAIROS'
+    privacy_consent: 'yes', privacy_version: '2026-10', _subject: 'Interés laboral o de colaboración VITAIROS'
   };
   for (const [key, value] of Object.entries(careersExpected)) if (careersPayload?.[key] !== value) failures.push(`Careers payload ${key}: ${careersPayload?.[key]}`);
   if ('etapa' in (careersPayload || {})) failures.push('Careers payload incluye etapa comercial');
@@ -130,7 +176,7 @@ async function fillContact(page, suffix) {
   }
 
   await browser.close();
-  const result = { commercialPayload, careersPayload, careerStep, invalidState, successState, audit, routeStatuses, failures };
+  const result = { consentContract, commercialBlocked, commercialPayload, privacyOpen, privacyClosed, focusWrappedBackward, focusWrappedForward, careersBlocked, careersPayload, careerStep, invalidState, successState, audit, routeStatuses, failures };
   console.log(JSON.stringify(result, null, 2));
   process.exitCode = failures.length ? 1 : 0;
 })().catch((error) => { console.error(error); process.exit(1); });

@@ -57,7 +57,7 @@
       modal.setAttribute('aria-hidden','false');
       document.body.classList.add('modal-open');
       var close = modal.querySelector('[data-modal-close]');
-      if(close) close.focus();
+      if(close) window.requestAnimationFrame(function(){window.requestAnimationFrame(function(){close.focus({preventScroll:true});});});
     });
   });
   document.querySelectorAll('[data-modal-close]').forEach(function(button){
@@ -67,6 +67,12 @@
     modal.addEventListener('click',function(event){ if(event.target === modal) closeModal(modal.id.replace('modal-','')); });
   });
   document.addEventListener('keydown',function(event){
+    if(event.key === 'Tab' && openModalName){
+      var openModal = document.getElementById('modal-'+openModalName);
+      var focusable = openModal ? Array.prototype.slice.call(openModal.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),textarea:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])')).filter(function(item){return item.offsetParent!==null;}) : [];
+      if(focusable.length){var first=focusable[0],last=focusable[focusable.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}
+      return;
+    }
     if(event.key !== 'Escape') return;
     if(openModalName) closeModal(openModalName); else if(hamburger && hamburger.getAttribute('aria-expanded') === 'true') closeMenu(true);
   });
