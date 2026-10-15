@@ -17,19 +17,6 @@
     });
   }
 
-  function positionIntroBrand() {
-    if (!intro) return;
-    var introBrand = intro.querySelector(".site-intro__brand");
-    var headerBrand = document.querySelector(".brand img");
-    if (!introBrand || !headerBrand) return;
-    var target = headerBrand.getBoundingClientRect();
-    var originY = window.innerHeight * (window.innerWidth <= 760 ? 0.48 : 0.5);
-    var scale = target.width / Math.max(1, introBrand.offsetWidth);
-    intro.style.setProperty("--intro-brand-x", (target.left + target.width / 2 - window.innerWidth / 2) + "px");
-    intro.style.setProperty("--intro-brand-y", (target.top + target.height / 2 - originY) + "px");
-    intro.style.setProperty("--intro-brand-scale", Math.max(0.42, Math.min(0.72, scale)).toFixed(3));
-  }
-
   function finishIntro() {
     document.documentElement.classList.remove("intro-pending");
     document.body.classList.remove("intro-active");
@@ -45,9 +32,8 @@
 
   if (introPending && intro && !reducedMotion) {
     document.body.classList.add("intro-active");
-    positionIntroBrand();
     try { sessionStorage.setItem("vitairosMIntroSeen", "1"); } catch (error) {}
-    window.setTimeout(finishIntro, 1700);
+    window.setTimeout(finishIntro, 1920);
   } else {
     finishIntro();
   }
