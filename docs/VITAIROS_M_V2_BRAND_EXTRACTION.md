@@ -1,5 +1,7 @@
 # VITAIROS-M V2 — Brand extraction y dirección de diseño
 
+> Documento de origen visual. En V2.2, la propietaria autorizó formalmente el recorte determinista del pendón como activo web oficial `assets/vitairos-m-logo.png`.
+
 Fecha de análisis: 2026-10-14
 
 Rama de trabajo: `vertical-v2/vitairos-m`
@@ -28,7 +30,7 @@ Reglas de uso:
 - no redibujar, vectorizar ni reinterpretar el logo;
 - no cambiar color, proporción ni espaciado;
 - para la implementación local se permite únicamente un recorte determinista de los píxeles originales del pendón, sin IA ni reconstrucción;
-- el recorte debe conservar isotipo, wordmark y descriptor completos. Si no resulta suficientemente nítido, debe tratarse como asset provisional y no publicarse hasta recibir el archivo oficial.
+- el recorte debe conservar isotipo, wordmark y descriptor completos; V2.2 autorizó el recorte existente como activo web oficial.
 
 ## Primary colors
 
@@ -69,7 +71,7 @@ Los valores se estimaron mediante muestreo de píxeles del pendón. Las pequeña
 - Titulares: 700–820, tracking levemente negativo, líneas compactas.
 - Cuerpo: 380–470, tracking neutro, interlineado generoso.
 - Etiquetas: mayúsculas, tracking amplio, peso 650–750.
-- El wordmark no se recompone tipográficamente: siempre se muestra desde el asset oficial/provisional exacto.
+- El wordmark no se recompone tipográficamente: siempre se muestra desde el activo oficial exacto.
 
 ## Shapes
 
@@ -239,6 +241,6 @@ El `Continuity Loop` usa seis nodos: Persona, Contexto, Síntesis consentida, Pr
 - formulario: interés en validación, colaboración o conversación institucional;
 - no usar “comienza tu terapia”, “habla con IA” ni “obtén diagnóstico”.
 
-## Asset risk
+## Asset provenance
 
-El único logo VITAIROS-M disponible está rasterizado dentro del pendón. La implementación puede avanzar localmente con un recorte exacto y reversible para validar diseño, pero la recomendación de salida a producción es sustituirlo por el SVG/PNG oficial de alta resolución antes de publicar.
+El logo VITAIROS-M se obtuvo del pendón oficial aprobado por la propietaria mediante un recorte determinista, sin IA, redibujo, vectorización, corrección de color ni modificación geométrica. V2.2 formalizó ese recorte como el activo web oficial.

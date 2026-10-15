@@ -108,7 +108,7 @@ La adaptación web introduce una jerarquía editorial más extensa, interacción
 
 ## Riesgos y decisiones pendientes
 
-- El logo actual es un recorte exacto del pendón y debe considerarse provisional. Antes de producción conviene reemplazarlo por el archivo oficial SVG o PNG de alta resolución, sin alterar proporciones ni color.
+- Nota histórica: V2.2 autorizó formalmente el recorte exacto del pendón como activo web oficial; dejó de ser un bloqueo de producción.
 - FormSubmit mantiene el endpoint existente. Antes de publicar se debe confirmar responsable, correo receptor y texto legal definitivo.
 - Las capacidades señaladas como `Visión de producto` no deben promocionarse como disponibles hasta su validación funcional, clínica y legal.
 - No se ejecutó despliegue, merge a `main` ni cambio de producción.

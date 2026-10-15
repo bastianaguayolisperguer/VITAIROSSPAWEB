@@ -1,5 +1,7 @@
 # VITAIROS-M V2.1 — Final brand / product polish
 
+> Informe histórico. V2.2 resolvió la autorización del logo derivado y el destinatario corporativo; el estado vigente se documenta en `VITAIROS_M_V2_2_RELEASE_READY.md`.
+
 Fecha: 2026-10-14
 
 Rama: `vertical-v2/vitairos-m`
@@ -53,19 +55,11 @@ Se conservaron los cuatro límites:
 
 ## Form recipient
 
-El endpoint continúa sin cambios:
-
-`https://formsubmit.co/bastianaguayolisperguer@gmail.com`
-
-Estado: **PENDING OWNER CONFIRMATION**.
-
-No se realizó un envío real. Antes de producción debe confirmarse si el receptor autorizado será `contacto@vitairos.com` u otra cuenta corporativa.
+Estado histórico de V2.1: pendiente de confirmación. Resuelto en V2.2 con el destinatario corporativo `contacto@vitairos.com`.
 
 ## Logo status
 
-Se conserva `assets/vitairos-m-logo-reference.png` exclusivamente para validación.
-
-**BLOCKER FOR PRODUCTION: OFFICIAL LOGO ASSET REQUIRED**
+El recorte derivado fue autorizado formalmente en V2.2 y pasó a llamarse `assets/vitairos-m-logo.png`.
 
 No se vectorizó, redibujó, reconstruyó ni mejoró mediante IA.
 
@@ -118,8 +112,6 @@ Se regeneraron únicamente las 11 evidencias solicitadas en `preview/vitairos-m-
 
 ## Production blockers
 
-1. **BLOCKER FOR PRODUCTION: OFFICIAL LOGO ASSET REQUIRED.**
-2. **PENDING OWNER CONFIRMATION:** destinatario autorizado de FormSubmit.
-3. Revisión humana final de marca, producto y textos legales.
+Los dos bloqueos técnicos registrados en V2.1 —activo de logo y destinatario de FormSubmit— quedaron resueltos en V2.2. Permanece la revisión humana final de marca, producto y textos legales.
 
 No se realizó merge, deploy ni modificación de `main`, homepage u otras verticales.

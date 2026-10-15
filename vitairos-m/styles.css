@@ -924,7 +924,7 @@ button {
 }
 
 .loop-center > span { color: var(--m-accent-text); font-size: 0.62rem; font-weight: 760; letter-spacing: 0.16em; text-transform: uppercase; }
-.loop-center img { width: 245px; margin: 18px auto 12px; }
+.loop-center img { width: 245px; height: auto; margin: 18px auto 12px; }
 .loop-center p { margin: 0; color: var(--m-text-secondary); font-size: 0.82rem; }
 
 .loop-node {
@@ -1198,7 +1198,7 @@ button {
 /* Footer */
 .site-footer { background: white; }
 .footer-main { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(60px, 9vw, 140px); padding-block: 72px 55px; border-bottom: 1px solid rgba(0,14,46,0.08); }
-.footer-brand img { width: 245px; }
+.footer-brand img { width: 245px; height: auto; }
 .footer-brand p { max-width: 350px; margin: 19px 0 0; color: var(--m-text-secondary); font-size: 0.86rem; }
 .footer-help { display: grid; gap: 13px; }
 .footer-label { margin: 0 0 4px !important; color: var(--m-accent-text) !important; font-size: 0.66rem !important; font-weight: 760; letter-spacing: 0.14em; text-transform: uppercase; }
