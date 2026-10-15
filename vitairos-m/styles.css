@@ -301,21 +301,13 @@ button {
 }
 
 .mobile-menu nav a {
-  display: grid;
+  display: flex;
   min-height: 72px;
-  grid-template-columns: 42px 1fr;
   align-items: center;
   border-bottom: 1px solid rgba(0, 14, 46, 0.09);
   font-size: clamp(1.45rem, 7vw, 2rem);
   font-weight: 570;
   letter-spacing: -0.035em;
-}
-
-.mobile-menu nav span {
-  color: var(--m-accent-text);
-  font-size: 0.68rem;
-  font-weight: 720;
-  letter-spacing: 0.12em;
 }
 
 .mobile-parent {
@@ -774,14 +766,11 @@ button {
 .hero-principles > div {
   display: grid;
   min-height: 112px;
-  grid-template-columns: 40px 1fr;
   align-content: center;
-  column-gap: 10px;
   padding: 22px clamp(20px, 2.4vw, 34px);
 }
 
 .hero-principles > div + div { border-left: 1px solid rgba(0, 14, 46, 0.08); }
-.hero-principles span { grid-row: 1 / 3; color: var(--m-accent-text); font-size: 0.68rem; font-weight: 760; letter-spacing: 0.1em; }
 .hero-principles strong { font-size: 0.98rem; font-weight: 650; }
 .hero-principles small { margin-top: 5px; color: var(--m-text-secondary); font-size: 0.76rem; }
 
@@ -997,9 +986,7 @@ button {
   position: relative;
   display: grid;
   min-height: 110px;
-  grid-template-columns: 48px 1fr;
   align-content: center;
-  column-gap: 10px;
   padding: 24px 32px;
   background: #fbfdfe;
   text-align: left;
@@ -1011,7 +998,6 @@ button {
 .perspective-tabs button::after { position: absolute; right: 0; bottom: 0; left: 0; height: 3px; background: var(--m-gradient); content: ""; transform: scaleX(0); transition: transform 0.35s var(--m-ease); }
 .perspective-tabs button[aria-selected="true"] { background: white; }
 .perspective-tabs button[aria-selected="true"]::after { transform: scaleX(1); }
-.perspective-tabs button > span { grid-row: 1 / 3; color: var(--m-accent-text); font-size: 0.68rem; font-weight: 760; letter-spacing: 0.11em; }
 .perspective-tabs strong { font-size: 1.22rem; font-weight: 660; }
 .perspective-tabs small { margin-top: 4px; color: var(--m-text-secondary); font-size: 0.75rem; }
 
@@ -1023,14 +1009,12 @@ button {
 
 .perspective-panel[hidden] { display: none; }
 .perspective-copy { padding: clamp(48px, 6.5vw, 88px); }
-.vision-badge { display: inline-flex; min-height: 30px; align-items: center; padding: 0 12px; border-radius: 999px; background: var(--m-mint-soft); color: #206c5c; font-size: 0.63rem; font-weight: 740; letter-spacing: 0.11em; text-transform: uppercase; }
-.perspective-copy > h3 { max-width: 13ch; margin: 26px 0 19px; font-size: clamp(2.25rem, 4vw, 4rem); font-weight: 670; letter-spacing: -0.06em; line-height: 0.98; }
+.perspective-copy > h3 { max-width: 13ch; margin: 0 0 19px; font-size: clamp(2.25rem, 4vw, 4rem); font-weight: 670; letter-spacing: -0.06em; line-height: 0.98; }
 .perspective-copy > p { max-width: 610px; margin: 0; color: var(--m-text-secondary); font-size: 1rem; line-height: 1.65; }
 
 .capability-list { display: grid; gap: 0; margin: 38px 0 0; padding: 0; list-style: none; }
-.capability-list li { display: grid; min-height: 78px; grid-template-columns: 45px 1fr; align-items: center; border-top: 1px solid rgba(0,14,46,0.08); }
+.capability-list li { display: grid; min-height: 78px; align-items: center; border-top: 1px solid rgba(0,14,46,0.08); }
 .capability-list li:last-child { border-bottom: 1px solid rgba(0,14,46,0.08); }
-.capability-list > li > span { color: var(--m-accent-text); font-size: 0.65rem; font-weight: 760; letter-spacing: 0.1em; }
 .capability-list div { display: grid; gap: 4px; }
 .capability-list strong { font-size: 0.92rem; }
 .capability-list small { color: var(--m-text-secondary); font-size: 0.76rem; }
@@ -1131,8 +1115,7 @@ button {
 .criteria-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(225,243,254,0.12); border-left: 1px solid rgba(225,243,254,0.12); }
 .criteria-grid article { min-height: 250px; padding: clamp(28px, 4vw, 46px); border-right: 1px solid rgba(225,243,254,0.12); border-bottom: 1px solid rgba(225,243,254,0.12); background: rgba(255,255,255,0.016); transition: background 0.25s ease; }
 .criteria-grid article:hover { background: rgba(0,185,211,0.055); }
-.criteria-grid span { color: var(--m-accent-cyan); font-size: 0.66rem; font-weight: 760; letter-spacing: 0.12em; }
-.criteria-grid h3 { margin: 55px 0 14px; font-size: clamp(1.25rem, 2vw, 1.7rem); font-weight: 590; letter-spacing: -0.035em; }
+.criteria-grid h3 { margin: 0 0 14px; font-size: clamp(1.25rem, 2vw, 1.7rem); font-weight: 590; letter-spacing: -0.035em; }
 .criteria-grid p { margin: 0; color: #9db8c4; font-size: 0.86rem; line-height: 1.6; }
 
 /* State */
@@ -1333,7 +1316,6 @@ button {
   .perspective-visual { min-height: 500px; padding: 28px 20px; }
   .criteria-grid, .state-columns, .ecosystem-grid { grid-template-columns: 1fr; }
   .criteria-grid article { min-height: 220px; }
-  .criteria-grid h3 { margin-top: 38px; }
   .state-card { min-height: 0; }
   .ecosystem-heading { align-items: start; flex-direction: column; }
   .ecosystem-grid > a { min-height: 230px; }

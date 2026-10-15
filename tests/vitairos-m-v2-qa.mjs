@@ -60,7 +60,28 @@ async function validateViewport(width, height) {
     }).map((control) => control.id || control.name || control.tagName),
     emptyLinks: Array.from(document.querySelectorAll("a")).filter((link) => !link.getAttribute("href")).length,
     invalidButtons: Array.from(document.querySelectorAll("button")).filter((button) => !button.getAttribute("type")).length,
-    hiddenLeaks: Array.from(document.querySelectorAll("[hidden]")).filter((element) => getComputedStyle(element).display !== "none").map((element) => element.id || element.className || element.tagName)
+    hiddenLeaks: Array.from(document.querySelectorAll("[hidden]")).filter((element) => getComputedStyle(element).display !== "none").map((element) => element.id || element.className || element.tagName),
+    duplicateIds: (() => {
+      const ids = Array.from(document.querySelectorAll("[id]")).map((element) => element.id);
+      return Array.from(new Set(ids.filter((id, index) => ids.indexOf(id) !== index)));
+    })(),
+    missingAriaReferences: (() => {
+      const references = Array.from(document.querySelectorAll("[aria-controls], [aria-labelledby], [aria-describedby]")).flatMap((element) => {
+        return ["aria-controls", "aria-labelledby", "aria-describedby"].flatMap((attribute) => (element.getAttribute(attribute) || "").split(/\s+/).filter(Boolean));
+      });
+      return Array.from(new Set(references.filter((id) => !document.getElementById(id))));
+    })(),
+    brokenImages: Array.from(document.images).filter((image) => image.complete && image.naturalWidth === 0).map((image) => image.getAttribute("src")),
+    missingAreas: ["#inicio", "#continuidad", "#experiencia", "#seguridad", "#estado", "#conversemos", ".site-footer"].filter((selector) => !document.querySelector(selector)),
+    editorialNumbers: Array.from(document.querySelectorAll(".section-kicker")).map((element) => element.textContent.trim()).filter((text) => /^\d{2}\s*·/.test(text)),
+    form: {
+      action: document.querySelector("#contactForm")?.getAttribute("action"),
+      consentRequired: document.querySelector("#privacyConsent")?.required,
+      consentChecked: document.querySelector("#privacyConsent")?.checked,
+      privacyVersion: document.querySelector('input[name="privacy_version"]')?.value,
+      privacyDialog: Boolean(document.querySelector("#modal-privacidad")),
+      termsDialog: Boolean(document.querySelector("#modal-terminos"))
+    }
   }));
 
   if (metrics.scrollWidth > metrics.clientWidth) failures.push(`Overflow horizontal ${width}x${height}: ${metrics.scrollWidth}px > ${metrics.clientWidth}px`);
@@ -69,6 +90,15 @@ async function validateViewport(width, height) {
   if (metrics.emptyLinks) failures.push(`Enlaces sin href ${width}x${height}: ${metrics.emptyLinks}`);
   if (metrics.invalidButtons) failures.push(`Botones sin type ${width}x${height}: ${metrics.invalidButtons}`);
   if (metrics.hiddenLeaks.length) failures.push(`Elementos hidden visibles ${width}x${height}: ${metrics.hiddenLeaks.join(", ")}`);
+  if (metrics.duplicateIds.length) failures.push(`IDs duplicados ${width}x${height}: ${metrics.duplicateIds.join(", ")}`);
+  if (metrics.missingAriaReferences.length) failures.push(`Referencias ARIA inexistentes ${width}x${height}: ${metrics.missingAriaReferences.join(", ")}`);
+  if (metrics.brokenImages.length) failures.push(`Imágenes rotas ${width}x${height}: ${metrics.brokenImages.join(", ")}`);
+  if (metrics.missingAreas.length) failures.push(`Áreas faltantes ${width}x${height}: ${metrics.missingAreas.join(", ")}`);
+  if (metrics.editorialNumbers.length) failures.push(`Numeración editorial visible ${width}x${height}: ${metrics.editorialNumbers.join(", ")}`);
+  if (metrics.form.action !== "https://formsubmit.co/bastianaguayolisperguer@gmail.com") failures.push(`Endpoint de formulario alterado ${width}x${height}`);
+  if (!metrics.form.consentRequired || metrics.form.consentChecked) failures.push(`Consentimiento inválido ${width}x${height}`);
+  if (metrics.form.privacyVersion !== "2026-10") failures.push(`Versión de privacidad inválida ${width}x${height}`);
+  if (!metrics.form.privacyDialog || !metrics.form.termsDialog) failures.push(`Diálogos legales faltantes ${width}x${height}`);
   if (errors.length) failures.push(`Consola ${width}x${height}: ${errors.join(" | ")}`);
   if (failedRequests.length) failures.push(`Requests fallidas ${width}x${height}: ${failedRequests.join(" | ")}`);
 
@@ -87,16 +117,19 @@ for (const [width, height] of [[1920,1080],[1440,900],[1366,768],[1024,768],[768
   await page.addStyleTag({ content: "[data-reveal]{opacity:1!important;transform:none!important}.loop-node{opacity:1!important}.loop-node--person,.loop-node--professional{transform:translateX(-50%)!important}.loop-path--draw{stroke-dashoffset:0!important}@media(max-width:1040px){.loop-node,.loop-node--person,.loop-node--professional{transform:none!important}}" });
   await page.screenshot({ path: path.join(outputDir, "03-full-desktop.png"), fullPage: true });
   await page.addStyleTag({ content: ".site-header,.skip-link,.reading-progress{display:none!important}" });
-  await (await settleSection(page, "#brecha")).screenshot({ path: path.join(outputDir, "05-problema-continuidad.png") });
-  await (await settleSection(page, "#continuidad")).screenshot({ path: path.join(outputDir, "05b-continuidad.png") });
-  await (await settleSection(page, "#experiencia")).screenshot({ path: path.join(outputDir, "06-experiencia-persona.png") });
+  await (await settleSection(page, "#continuidad")).screenshot({ path: path.join(outputDir, "05-continuity-loop.png") });
+  await (await settleSection(page, "#experiencia")).screenshot({ path: path.join(outputDir, "06-persona.png") });
   await page.getByRole("tab", { name: /Profesional/ }).click();
   if (await page.getByRole("tab", { name: /Profesional/ }).getAttribute("aria-selected") !== "true") failures.push("El tab Profesional no se activó");
-  await page.waitForTimeout(250);
-  await page.locator("#experiencia").screenshot({ path: path.join(outputDir, "07-experiencia-profesional.png") });
-  await (await settleSection(page, "#seguridad")).screenshot({ path: path.join(outputDir, "08-seguridad-limites.png") });
-  await (await settleSection(page, "#ecosistema")).screenshot({ path: path.join(outputDir, "09-ecosistema-cierre.png") });
-  await (await settleSection(page, "#conversemos")).screenshot({ path: path.join(outputDir, "10-cta.png") });
+  await page.evaluate(() => window.scrollTo(0, window.scrollY));
+  await page.waitForTimeout(500);
+  const professionalWidth = await page.evaluate(() => ({ client: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth, x: window.scrollX }));
+  if (professionalWidth.scroll > professionalWidth.client || professionalWidth.x !== 0) failures.push(`Panel Profesional desplazado: ${JSON.stringify(professionalWidth)}`);
+  await page.locator("#experiencia").screenshot({ path: path.join(outputDir, "07-profesional.png") });
+  await (await settleSection(page, "#seguridad")).screenshot({ path: path.join(outputDir, "08-seguridad.png") });
+  await (await settleSection(page, "#estado")).screenshot({ path: path.join(outputDir, "09-estado.png") });
+  await (await settleSection(page, "#ecosistema")).screenshot({ path: path.join(outputDir, "10-ecosistema.png") });
+  await (await settleSection(page, "#conversemos")).screenshot({ path: path.join(outputDir, "11-contacto.png") });
 
   await page.getByRole("button", { name: "Política de Privacidad" }).click();
   const privacy = page.locator("#modal-privacidad");
@@ -115,7 +148,8 @@ for (const [width, height] of [[1920,1080],[1440,900],[1366,768],[1024,768],[768
   await page.locator(".menu-toggle").click();
   if (await page.locator(".menu-toggle").getAttribute("aria-expanded") !== "true") failures.push("El menú móvil no se abrió");
   await page.waitForTimeout(400);
-  await page.screenshot({ path: path.join(outputDir, "11-navigation.png") });
+  const mobileEntries = await page.locator("#mobileMenu nav a").allTextContents();
+  if (mobileEntries.some((entry) => /^\s*\d/.test(entry))) failures.push("El menú móvil conserva numeración editorial");
   await page.keyboard.press("Escape");
   if (await page.locator(".menu-toggle").getAttribute("aria-expanded") !== "false") failures.push("Escape no cerró el menú móvil");
   await page.close();
@@ -125,7 +159,6 @@ for (const [width, height] of [[1920,1080],[1440,900],[1366,768],[1024,768],[768
   const { page } = await openPage({ width: 1440, height: 900 }, "reduce");
   const hiddenReveals = await page.locator("[data-reveal]:not(.is-visible)").count();
   if (hiddenReveals) failures.push(`Reduced motion dejó ${hiddenReveals} elementos ocultos`);
-  await page.screenshot({ path: path.join(outputDir, "12-reduced-motion.png") });
   await page.close();
 }
 

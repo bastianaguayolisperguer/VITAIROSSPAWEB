@@ -1,5 +1,7 @@
 # VITAIROS-M V2 — Informe de implementación y QA
 
+> Informe histórico de la entrega V2. La evidencia y el estado vigentes están documentados en `VITAIROS_M_V2_1_POLISH.md`.
+
 Fecha: 2026-10-14
 
 Rama: `vertical-v2/vitairos-m`
