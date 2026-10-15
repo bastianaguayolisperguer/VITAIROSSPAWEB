@@ -1,1900 +1,335 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-CL">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Salud Mental Digital y Continuidad de Atención | VITAIROS-M</title>
-<meta name="description" content="VITAIROS-M explora tecnología para salud mental digital: orientación inicial, agendamiento y continuidad de atención con IA responsable y apoyo profesional." />
-<meta name="theme-color" content="#081D16" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VITAIROS-M | Continuidad en salud mental digital</title>
+  <meta name="description" content="VITAIROS-M explora una capa digital de continuidad entre la persona y la atención profesional, con contexto, consentimiento y criterio humano.">
+  <meta name="theme-color" content="#fefefe">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://www.vitairos.com/vitairos-m/">
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23F3C4AB%22/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2255%25%22%20stop-color%3D%22%23DD7A52%22/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23F09B72%22/%3E%0A%20%20%20%20%3C/linearGradient%3E%0A%20%20%20%20%3CradialGradient%20id%3D%22bg%22%20cx%3D%2250%25%22%20cy%3D%2245%25%22%20r%3D%2260%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23143027%22/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23081D16%22/%3E%0A%20%20%20%20%3C/radialGradient%3E%0A%20%20%3C/defs%3E%0A%20%20%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22url%28%23bg%29%22/%3E%0A%20%20%3Cg%20fill%3D%22none%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M32%2014c-3-4-9-5-14-3-5%202-8%206-9%2011-4%202-6%206-6%2010%200%205%204%2010%209%2011%202%206%207%2010%2013%2010%205%200%209-2%2012-6%202-4%202-8%200-11%202-3%202-8%201-12-1-4-3-7-6-10Z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M32%2014c3-4%209-5%2014-3%205%202%208%206%209%2011%204%202%206%206%206%2010%200%205-4%2010-9%2011-2%206-7%2010-13%2010-5%200-9-2-12-6-2-4-2-8%200-11-2-3-2-8-1-12%201-4%203-7%206-10Z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M32%2018c-1%204-1%208%200%2013%201%204%201%208%200%2013%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16%2024c5-2%2010-1%2013%204%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M13%2034c6-2%2011%200%2014%205%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18%2044c4-1%208%200%2011%204%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M48%2024c-5-2-10-1-13%204%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M51%2034c-6-2-11%200-14%205%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M46%2044c-4-1-8%200-11%204%22/%3E%0A%20%20%3C/g%3E%0A%3C/svg%3E" />
-<link rel="shortcut icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23F3C4AB%22/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2255%25%22%20stop-color%3D%22%23DD7A52%22/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23F09B72%22/%3E%0A%20%20%20%20%3C/linearGradient%3E%0A%20%20%20%20%3CradialGradient%20id%3D%22bg%22%20cx%3D%2250%25%22%20cy%3D%2245%25%22%20r%3D%2260%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23143027%22/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23081D16%22/%3E%0A%20%20%20%20%3C/radialGradient%3E%0A%20%20%3C/defs%3E%0A%20%20%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22url%28%23bg%29%22/%3E%0A%20%20%3Cg%20fill%3D%22none%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M32%2014c-3-4-9-5-14-3-5%202-8%206-9%2011-4%202-6%206-6%2010%200%205%204%2010%209%2011%202%206%207%2010%2013%2010%205%200%209-2%2012-6%202-4%202-8%200-11%202-3%202-8%201-12-1-4-3-7-6-10Z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M32%2014c3-4%209-5%2014-3%205%202%208%206%209%2011%204%202%206%206%206%2010%200%205-4%2010-9%2011-2%206-7%2010-13%2010-5%200-9-2-12-6-2-4-2-8%200-11-2-3-2-8-1-12%201-4%203-7%206-10Z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M32%2018c-1%204-1%208%200%2013%201%204%201%208%200%2013%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16%2024c5-2%2010-1%2013%204%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M13%2034c6-2%2011%200%2014%205%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18%2044c4-1%208%200%2011%204%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M48%2024c-5-2-10-1-13%204%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M51%2034c-6-2-11%200-14%205%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M46%2044c-4-1-8%200-11%204%22/%3E%0A%20%20%3C/g%3E%0A%3C/svg%3E" />
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="VITAIROS">
+  <meta property="og:title" content="VITAIROS-M | Continuidad en salud mental digital">
+  <meta property="og:description" content="La vida no ocurre solo en la sesión. Una propuesta de continuidad entre la persona y la atención profesional.">
+  <meta property="og:url" content="https://www.vitairos.com/vitairos-m/">
+  <meta property="og:image" content="https://www.vitairos.com/vitairos-m/assets/vitairos-m-open-graph-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="VITAIROS-M, continuidad en salud mental digital">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VITAIROS-M | Continuidad en salud mental digital">
+  <meta name="twitter:description" content="La vida no ocurre solo en la sesión. Una propuesta de continuidad entre la persona y la atención profesional.">
+  <meta name="twitter:image" content="https://www.vitairos.com/vitairos-m/assets/vitairos-m-open-graph-1200x630.png">
 
-<link rel="canonical" href="https://www.vitairos.com/vitairos-m/" />
-<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-<meta property="og:locale" content="es_CL" />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="VITAIROS" />
-<meta property="og:title" content="Salud Mental Digital y Continuidad de Atención | VITAIROS-M" />
-<meta property="og:description" content="Orientación inicial, agendamiento y continuidad de atención con IA responsable y apoyo profesional." />
-<meta property="og:url" content="https://www.vitairos.com/vitairos-m/" />
-<meta property="og:image" content="https://www.vitairos.com/assets/vitairos-open-graph-1200x630.png" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Salud Mental Digital y Continuidad de Atención | VITAIROS-M" />
-<meta name="twitter:description" content="Orientación inicial, agendamiento y continuidad de atención con IA responsable y apoyo profesional." />
-<meta name="twitter:image" content="https://www.vitairos.com/assets/vitairos-open-graph-1200x630.png" />
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
-
-<style>
-  :root{
-    --noche:#081D16;
-    --noche-2:#16332A;
-    --niebla:#E8EFE9;
-    --hueso:#FBF7F1;
-    --amanecer:#DD7A52;
-    --amanecer-rgb:221,122,82;
-    --tinta:#14201A;
-    --linea:rgba(20,32,26,0.12);
-    --linea-clara:rgba(251,247,241,0.16);
-
-    --font-display:'Space Grotesk', system-ui, sans-serif;
-    --font-body:'Source Serif 4', Georgia, 'Times New Roman', serif;
-    --font-mono:'IBM Plex Mono','SF Mono', monospace;
-  }
-
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:var(--font-body);
-    font-size:1.05rem;
-    line-height:1.7;
-    color:var(--tinta);
-    background:var(--hueso);
-    -webkit-font-smoothing:antialiased;
-  }
-  img,svg{display:block;max-width:100%;}
-  a{color:inherit;}
-  :focus-visible{outline:2px solid var(--amanecer);outline-offset:3px;}
-
-  .container{max-width:1120px;margin:0 auto;padding:0 24px;}
-
-  .eyebrow{
-    font-family:var(--font-mono);
-    font-size:.74rem;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-    opacity:.6;
-    display:inline-block;
-    margin-bottom:18px;
-  }
-
-  h1,h2,h3{
-    font-family:var(--font-display);
-    font-weight:600;
-    line-height:1.15;
-    letter-spacing:-0.01em;
-  }
-
-  .svg-label{
-    font-family:var(--font-mono);
-    font-size:11px;
-    letter-spacing:.08em;
-    fill:currentColor;
-  }
-
-  /* ---------- layout / sections ---------- */
-  .section{padding:clamp(56px,9vw,112px) 0;}
-  .section--noche{background:var(--noche);color:var(--hueso);}
-  .section--noche-2{background:var(--noche-2);color:var(--hueso);}
-  .section--niebla{background:var(--niebla);color:var(--tinta);}
-  .section--hueso{background:var(--hueso);color:var(--tinta);}
-
-  .section__title{
-    font-size:clamp(1.6rem,3.6vw,2.4rem);
-    max-width:18ch;
-    margin-bottom:18px;
-  }
-  .section__lead{
-    max-width:46ch;
-    font-size:1.08rem;
-    opacity:.88;
-  }
-
-  /* ---------- reveal on scroll ---------- */
-  [data-reveal]{
-    opacity:0;
-    transform:translateY(18px);
-    transition:opacity .7s ease, transform .7s ease;
-  }
-  [data-reveal].is-visible{opacity:1;transform:translateY(0);}
-  @media (prefers-reduced-motion:reduce){
-    [data-reveal]{opacity:1;transform:none;transition:none;}
-  }
-
-  /* ---------- buttons ---------- */
-  .btn{
-    font-family:var(--font-mono);
-    font-size:.82rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    text-decoration:none;
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:14px 26px;
-    border-radius:2px;
-    border:1px solid transparent;
-    cursor:pointer;
-    transition:transform .2s ease, opacity .2s ease, background .2s ease;
-  }
-  .btn:hover{transform:translateY(-2px);}
-  .btn--primary{background:var(--amanecer);color:var(--tinta);}
-  .btn--primary:hover{opacity:.92;}
-  .btn--ghost{background:transparent;border-color:currentColor;color:inherit;}
-  .btn--ghost:hover{background:rgba(251,247,241,.08);}
-
-  /* ---------- nav ---------- */
-  .nav{background:var(--noche);color:var(--hueso);}
-  /* ---------- header logo fix ---------- */
-  .nav .container{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-    padding-top:24px;
-    padding-bottom:0;
-  }
-
-  .nav__brand{
-    display:inline-flex;
-    align-items:center;
-    gap:12px;
-    font-family:var(--font-display);
-    font-weight:700;
-    font-size:1.05rem;
-    line-height:1;
-    white-space:nowrap;
-  }
-
-  .nav__brand-mark-wrap{
-    width:42px;
-    height:42px;
-    flex:0 0 42px;
-    display:grid;
-    place-items:center;
-    border-radius:14px;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
-      radial-gradient(circle at 35% 30%, rgba(221,122,82,.14), transparent 55%);
-    border:1px solid rgba(251,247,241,.09);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.04),
-      0 16px 28px -24px rgba(0,0,0,.55);
-  }
-
-  .nav__brand-mark{
-    width:24px;
-    height:24px;
-    display:block;
-    filter:drop-shadow(0 0 8px rgba(221,122,82,.12));
-  }
-
-  .nav__brand-text{
-    display:inline-flex;
-    align-items:baseline;
-    gap:2px;
-    letter-spacing:-0.02em;
-  }
-
-  .nav__brand-text b{
-    color:var(--amanecer);
-  }
-
-  @media (max-width: 640px){
-    .nav .container{
-      padding-top:18px;
-      gap:12px;
-      align-items:center;
-      flex-wrap:nowrap;
-    }
-    .nav__brand{
-      gap:10px;
-      font-size:.98rem;
-    }
-    .nav__brand-mark-wrap{
-      width:38px;
-      height:38px;
-      flex-basis:38px;
-      border-radius:12px;
-    }
-    .nav__brand-mark{
-      width:22px;
-      height:22px;
-    }
-    .nav__link{
-      font-size:.7rem;
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "VITAIROS-M — Salud mental digital",
+    "description": "Propuesta de continuidad digital entre la persona y la atención profesional.",
+    "url": "https://www.vitairos.com/vitairos-m/",
+    "inLanguage": "es-CL",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "VITAIROS",
+      "url": "https://www.vitairos.com/"
+    },
+    "about": [
+      {"@type": "Thing", "name": "Salud mental digital"},
+      {"@type": "Thing", "name": "Continuidad de atención"},
+      {"@type": "Thing", "name": "Tecnología para psicólogos"}
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "VITAIROS SpA",
+      "url": "https://www.vitairos.com/"
     }
   }
-  .nav__link{
-    font-family:var(--font-mono);font-size:.78rem;letter-spacing:.05em;
-    text-decoration:none;border-bottom:1px solid var(--linea-clara);
-    padding-bottom:3px;transition:border-color .2s,opacity .2s;
-    white-space:nowrap;
-  }
-  .nav__link:hover{border-color:var(--amanecer);}
+  </script>
 
-  /* ---------- hero ---------- */
-  .hero{background:var(--noche);color:var(--hueso);overflow:hidden;}
-  .hero__content{padding-top:64px;}
-  .hero__title{
-    font-size:clamp(2.1rem,5.4vw,3.7rem);
-    max-width:15ch;
-    margin-bottom:26px;
-  }
-  .hero__subtitle{
-    font-family:var(--font-body);font-style:italic;
-    font-size:clamp(1.05rem,1.8vw,1.3rem);
-    max-width:48ch;opacity:.92;margin-bottom:34px;
-  }
-  .hero__actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:22px;}
-  .hero__note{font-family:var(--font-mono);font-size:.78rem;opacity:.6;letter-spacing:.02em;}
-  .hero__art{width:100%;height:auto;margin-top:56px;}
-
-  .waypoint-halo{
-    transform-box:fill-box;transform-origin:center;
-    animation:pulso 3.2s ease-in-out infinite;
-  }
-  @keyframes pulso{
-    0%,100%{opacity:.3;transform:scale(1);}
-    50%{opacity:.9;transform:scale(1.7);}
-  }
-  @media (prefers-reduced-motion:reduce){
-    .waypoint-halo{animation:none;opacity:.5;}
-  }
-
-  /* ---------- problema ---------- */
-  .problema__grid{
-    display:grid;gap:48px;margin-top:44px;align-items:center;
-    grid-template-columns:1fr;
-  }
-  .problema__text p + p{margin-top:18px;}
-  .problema__art{max-width:420px;}
-
-  /* ---------- modulos ---------- */
-  .modulos__grid{
-    display:grid;gap:24px;margin-top:48px;
-    grid-template-columns:1fr;
-  }
-  .modulo{
-    background:var(--hueso);border:1px solid var(--linea);
-    border-radius:3px;padding:30px 26px;
-    transition:transform .25s ease, box-shadow .25s ease;
-  }
-  .modulo:hover{transform:translateY(-4px);box-shadow:0 14px 30px -18px rgba(8,29,22,.35);}
-  .modulo__num{
-    font-family:var(--font-mono);font-size:.85rem;letter-spacing:.12em;
-    color:var(--amanecer);margin-bottom:16px;
-  }
-  .modulo__title{font-size:1.18rem;margin-bottom:10px;}
-  .modulo__text{font-size:.96rem;opacity:.82;}
-
-  /* ---------- enfoque ---------- */
-  .enfoque__inner{max-width:60ch;}
-  .enfoque__inner .section__title{max-width:none;}
-  .hl{color:var(--amanecer);}
-
-  /* ---------- audiencia ---------- */
-  .audiencia__grid{
-    display:grid;gap:24px;margin-top:44px;
-    grid-template-columns:1fr;
-  }
-  .audiencia-card{
-    background:var(--niebla);border-radius:3px;
-    padding:34px 28px;
-  }
-  .audiencia-card__tag{
-    font-family:var(--font-mono);font-size:.74rem;letter-spacing:.18em;
-    text-transform:uppercase;opacity:.55;margin-bottom:14px;display:block;
-  }
-  .audiencia-card__title{font-size:1.3rem;margin-bottom:10px;}
-  .audiencia-card__text{opacity:.85;}
-
-  /* ---------- estado ---------- */
-  .estado__inner{max-width:64ch;}
-
-  /* ---------- contacto ---------- */
-  .contacto__grid{
-    display:grid;gap:48px;
-    grid-template-columns:1fr;
-  }
-  .contacto__text{max-width:46ch;}
-  .form-card{
-    background:var(--hueso);color:var(--tinta);
-    border-radius:4px;padding:32px;
-  }
-  .field{margin-bottom:18px;}
-  .field label{
-    display:block;font-family:var(--font-mono);font-size:.74rem;
-    letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:8px;
-  }
-  .field input,
-  .field select,
-  .field textarea{
-    width:100%;font-family:var(--font-body);font-size:1rem;
-    color:var(--tinta);background:transparent;
-    border:none;border-bottom:1px solid var(--linea);
-    padding:10px 2px;transition:border-color .2s;
-  }
-  .field input:focus,
-  .field select:focus,
-  .field textarea:focus{border-color:var(--amanecer);}
-  .field textarea{resize:vertical;min-height:78px;}
-  .field-row{display:grid;gap:18px;grid-template-columns:1fr;}
-  @media (min-width:560px){.field-row{grid-template-columns:1fr 1fr;}}
-
-  .form-success{
-    display:none;background:var(--hueso);color:var(--tinta);
-    border-radius:4px;padding:32px;
-  }
-  .form-success.is-visible{display:block;}
-  .form-success__title{font-size:1.3rem;margin-bottom:10px;}
-
-  /* ---------- footer ---------- */
-  .footer{background:var(--noche);color:var(--hueso);}
-  .footer__top{
-    display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;
-    padding-bottom:36px;border-bottom:1px solid var(--linea-clara);margin-bottom:28px;
-  }
-  .footer__brand{font-family:var(--font-display);font-weight:700;font-size:1.2rem;margin-bottom:10px;}
-  .footer__brand b{color:var(--amanecer);}
-  .footer__tagline{max-width:34ch;opacity:.8;font-style:italic;}
-  .footer__col-title{
-    font-family:var(--font-mono);font-size:.74rem;letter-spacing:.18em;
-    text-transform:uppercase;opacity:.55;margin-bottom:12px;
-  }
-  .footer__crisis{
-    font-size:.92rem;line-height:1.6;max-width:48ch;opacity:.85;margin-bottom:8px;
-  }
-  .footer__crisis strong{color:var(--amanecer);}
-  .footer__legal{font-size:.85rem;opacity:.55;max-width:60ch;}
-  .footer__bottom{
-    display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
-    font-family:var(--font-mono);font-size:.74rem;opacity:.5;margin-top:28px;
-  }
-
-  /* ---------- responsive: desktop layout ---------- */
-  @media (min-width:860px){
-    .problema__grid{grid-template-columns:1.1fr .9fr;}
-    .modulos__grid{grid-template-columns:repeat(2,1fr);}
-    .audiencia__grid{grid-template-columns:repeat(2,1fr);}
-    .contacto__grid{grid-template-columns:1fr 1.2fr;align-items:flex-start;}
-  }
-  @media (min-width:1100px){
-    .modulos__grid{grid-template-columns:repeat(4,1fr);}
-  }
-
-  /* ---------- stronger visual supports per section ---------- */
-  .progress-line{
-    position:fixed;top:0;left:0;height:3px;width:0%;
-    z-index:9999;background:linear-gradient(90deg,var(--amanecer),#F2C6AA);
-    box-shadow:0 0 20px rgba(var(--amanecer-rgb),.28);
-    transition:width .08s linear;
-  }
-  .section{position:relative;overflow:clip;}
-  .section::after{
-    content:"";position:absolute;left:24px;right:24px;bottom:0;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(20,32,26,.10),transparent);
-  }
-  .section--noche::after,.section--noche-2::after{
-    background:linear-gradient(90deg,transparent,rgba(251,247,241,.10),transparent);
-  }
-  .section__title::after,.hero__title::after{
-    content:"";display:block;width:90px;height:2px;margin-top:16px;border-radius:999px;
-    background:linear-gradient(90deg,var(--amanecer), rgba(var(--amanecer-rgb),0));
-    box-shadow:0 0 16px rgba(var(--amanecer-rgb),.18);
-  }
-  .hero__title::after{margin-top:20px;}
-  .section__lead,.hero__subtitle,.problema__text p,.modulo__text,.audiencia-card__text{
-    text-wrap:pretty;
-  }
-
-  [data-reveal-soft]{
-    opacity:0;transform:translateY(24px) scale(.985);filter:blur(5px);
-    transition:opacity .8s ease, transform .8s ease, filter .8s ease;
-  }
-  [data-reveal-soft].is-visible{opacity:1;transform:translateY(0) scale(1);filter:none;}
-  .delay-1{transition-delay:.06s}.delay-2{transition-delay:.12s}.delay-3{transition-delay:.18s}.delay-4{transition-delay:.24s}
-
-  .visual-card{
-    border:1px solid var(--linea);
-    border-radius:4px;
-    background:rgba(251,247,241,.65);
-    padding:18px 16px;
-    box-shadow:0 10px 24px -22px rgba(8,29,22,.28);
-  }
-  .section--noche .visual-card,.section--noche-2 .visual-card{
-    background:rgba(251,247,241,.04);
-    border-color:rgba(251,247,241,.12);
-    box-shadow:none;
-  }
-  .visual-title{
-    font-family:var(--font-mono);
-    font-size:.72rem;
-    letter-spacing:.16em;
-    text-transform:uppercase;
-    opacity:.58;
-    margin-bottom:12px;
-  }
-
-  /* Problem supports */
-  .pain-strip{
-    display:grid;gap:14px;
-    grid-template-columns:repeat(3,1fr);
-    margin-top:28px;
-  }
-  .pain-item{
-    padding:16px 14px;border:1px solid var(--linea);border-radius:4px;background:rgba(255,255,255,.42);
-    transition:transform .25s ease, box-shadow .25s ease;
-  }
-  .pain-item:hover{transform:translateY(-3px);box-shadow:0 12px 24px -20px rgba(8,29,22,.28);}
-  .pain-icon{
-    width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
-    margin-bottom:10px;
-    background:rgba(var(--amanecer-rgb),.12);color:var(--amanecer);
-    font-family:var(--font-display);font-weight:700;font-size:1rem;
-  }
-  .pain-label{
-    font-family:var(--font-display);font-size:1rem;line-height:1.2;margin-bottom:6px;
-  }
-  .pain-copy{font-size:.92rem;line-height:1.5;opacity:.8;}
-
-  /* How it works visual track */
-  .modulos__grid{position:relative}
-  @media (min-width:1100px){
-    .modulos__grid::before{
-      content:"";position:absolute;left:13%;right:13%;top:22px;height:1px;
-      background:linear-gradient(90deg,rgba(20,32,26,.12),rgba(var(--amanecer-rgb),.32),rgba(20,32,26,.12));
-      z-index:0;
-    }
-  }
-  .modulo{position:relative;z-index:1}
-  .modulo__icon{
-    width:48px;height:48px;border-radius:50%;display:grid;place-items:center;margin-bottom:14px;
-    background:linear-gradient(180deg, rgba(var(--amanecer-rgb),.16), rgba(var(--amanecer-rgb),.08));
-    color:var(--amanecer);
-  }
-  .modulo__icon svg{width:22px;height:22px}
-  .modulo__hint{
-    margin-top:12px;padding-top:12px;border-top:1px dashed rgba(20,32,26,.14);
-    font-family:var(--font-mono);font-size:.69rem;letter-spacing:.08em;text-transform:uppercase;opacity:.55;
-  }
-
-  /* Enfoque visual */
-  .enfoque__grid{
-    display:grid;gap:36px;align-items:center;
-    grid-template-columns:1fr;
-    margin-top:18px;
-  }
-  .principles-viz{
-    position:relative;min-height:360px;
-    border:1px solid rgba(251,247,241,.10);border-radius:18px;
-    background:
-      radial-gradient(circle at center, rgba(var(--amanecer-rgb),.10), transparent 44%),
-      linear-gradient(180deg, rgba(251,247,241,.03), rgba(251,247,241,.01));
-    overflow:hidden;
-  }
-  .principles-viz::before,.principles-viz::after{
-    content:"";position:absolute;border-radius:50%;border:1px dashed rgba(251,247,241,.12);
-    left:50%;top:50%;transform:translate(-50%,-50%);
-  }
-  .principles-viz::before{width:240px;height:240px}
-  .principles-viz::after{width:150px;height:150px}
-  .principles-center{
-    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-    width:132px;height:132px;border-radius:50%;
-    display:grid;place-items:center;text-align:center;padding:20px;
-    background:rgba(251,247,241,.06);border:1px solid rgba(251,247,241,.14);
-    box-shadow:0 0 30px rgba(var(--amanecer-rgb),.12);
-    font-family:var(--font-display);font-size:1rem;line-height:1.15;
-  }
-  .principle-node{
-    position:absolute;width:140px;padding:12px 14px;border-radius:999px;
-    text-align:center;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
-    background:rgba(251,247,241,.06);border:1px solid rgba(251,247,241,.14);
-  }
-  .p-node-1{top:20px;left:50%;transform:translateX(-50%)}
-  .p-node-2{left:18px;top:50%;transform:translateY(-50%)}
-  .p-node-3{right:18px;top:50%;transform:translateY(-50%)}
-  .p-node-4{bottom:20px;left:50%;transform:translateX(-50%)}
-
-  /* Audience visual */
-  .audiencia-card__icon{
-    width:58px;height:58px;border-radius:18px;display:grid;place-items:center;margin-bottom:18px;
-    background:linear-gradient(180deg, rgba(var(--amanecer-rgb),.14), rgba(var(--amanecer-rgb),.08));
-    color:var(--amanecer);
-  }
-  .audiencia-card__icon svg{width:28px;height:28px}
-  .audiencia-pills{
-    display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;
-  }
-  .audiencia-pill{
-    border:1px solid var(--linea);border-radius:999px;padding:6px 10px;
-    font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;
-    background:rgba(255,255,255,.36);
-  }
-
-  /* Estado visual */
-  .estado-roadmap{
-    display:grid;gap:18px;margin-top:30px;
-  }
-  .estado-step{
-    display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;
-    padding:16px 16px;border:1px solid var(--linea);border-radius:4px;background:rgba(255,255,255,.44);
-  }
-  .estado-step__dot{
-    width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
-    background:rgba(var(--amanecer-rgb),.12);color:var(--amanecer);
-    font-family:var(--font-mono);font-size:.75rem;
-  }
-  .estado-step__title{
-    font-family:var(--font-display);font-size:1rem;line-height:1.2;margin-bottom:4px;
-  }
-  .estado-step__copy{font-size:.92rem;opacity:.8;line-height:1.55}
-  .estado-progress{
-    margin-top:22px;
-  }
-  .estado-progress__bar{
-    height:10px;border-radius:999px;background:rgba(20,32,26,.10);overflow:hidden;margin:10px 0 8px;
-  }
-  .estado-progress__fill{
-    width:62%;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--amanecer),#F2C6AA);
-  }
-  .estado-progress__meta{
-    display:flex;justify-content:space-between;gap:12px;
-    font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;opacity:.58;
-  }
-
-  /* Contact support */
-  .next-steps{
-    display:grid;gap:14px;margin-top:26px;
-  }
-  .next-step{
-    display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;
-    padding:14px 14px;border:1px solid rgba(251,247,241,.12);border-radius:4px;background:rgba(251,247,241,.04);
-  }
-  .next-step__num{
-    width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
-    background:rgba(var(--amanecer-rgb),.18);color:var(--hueso);
-    font-family:var(--font-mono);font-size:.72rem;
-  }
-  .next-step__title{
-    font-family:var(--font-display);font-size:1rem;line-height:1.2;margin-bottom:4px;
-  }
-  .next-step__copy{font-size:.92rem;line-height:1.55;opacity:.84}
-
-  .trust-row{
-    display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;
-  }
-  .trust-pill{
-    border:1px solid rgba(251,247,241,.12);border-radius:999px;padding:8px 12px;
-    font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;
-    background:rgba(251,247,241,.04);
-  }
-
-  /* Floating section rail */
-  .floating-map{
-    position:fixed;right:18px;top:50%;transform:translateY(-50%);
-    z-index:1100;display:flex;flex-direction:column;gap:10px;
-    padding:10px 8px;border-radius:999px;
-    background:rgba(8,29,22,.58);backdrop-filter:blur(12px);
-    border:1px solid rgba(251,247,241,.10);
-    box-shadow:0 18px 40px -26px rgba(0,0,0,.45);
-  }
-  .floating-map__item{position:relative;display:flex}
-  .floating-map__dot{
-    width:10px;height:10px;border-radius:50%;border:1px solid rgba(251,247,241,.45);
-    background:transparent;
-    transition:all .2s ease;
-  }
-  .floating-map__dot.is-active{
-    background:var(--amanecer);border-color:var(--amanecer);
-    box-shadow:0 0 0 6px rgba(var(--amanecer-rgb),.12);
-  }
-  .floating-map__label{
-    position:absolute;right:120%;top:50%;transform:translateY(-50%);
-    white-space:nowrap;padding:7px 10px;border-radius:999px;
-    font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
-    background:rgba(8,29,22,.86);color:var(--hueso);border:1px solid rgba(251,247,241,.08);
-    opacity:0;pointer-events:none;transition:opacity .2s ease, transform .2s ease;
-  }
-  .floating-map__item:hover .floating-map__label{
-    opacity:1;transform:translateY(-50%) translateX(-4px);
-  }
-
-  @media (min-width:900px){
-    .enfoque__grid{grid-template-columns:1fr 1fr}
-  }
-  @media (max-width:980px){
-    .floating-map{display:none}
-  }
-  @media (max-width:720px){
-    .pain-strip{grid-template-columns:1fr}
-  }
-  @media (prefers-reduced-motion:reduce){
-    [data-reveal-soft]{opacity:1 !important;transform:none !important;filter:none !important;transition:none !important}
-    .progress-line,.floating-map,.pain-item,.audiencia-card,.modulo,.form-card{transition:none !important}
-  }
-
-
-  /* ---------- VITAIROS original brand bridge ---------- */
-  :root{
-    --vit-bg:#061611;
-    --vit-bg-soft:#0B1F1B;
-    --vit-surface:#0E3A2F;
-    --vit-text:#E8F6F1;
-    --vit-muted:#A7C7C0;
-    --vit-cyan:#17A673;
-    --vit-blue:#1C66B1;
-    --vit-mint:#6AD7B0;
-    --vit-border:rgba(232,246,241,0.10);
-    --vit-glass:rgba(255,255,255,0.035);
-    --vit-glow-c:rgba(23,166,115,0.38);
-    --vit-glow-b:rgba(28,102,177,0.30);
-  }
-
-  body{
-    background:
-      radial-gradient(circle at 10% 0%, rgba(23,166,115,.03), transparent 24%),
-      radial-gradient(circle at 90% 8%, rgba(28,102,177,.03), transparent 28%),
-      var(--hueso);
-  }
-
-  .nav__brand{
-    position:relative;
-    text-shadow:0 0 18px rgba(23,166,115,.08);
-  }
-  .nav__brand::after{
-    content:"";
-    display:block;
-    width:40px;height:2px;margin-top:8px;border-radius:999px;
-    background:linear-gradient(90deg,var(--vit-cyan),var(--vit-blue));
-    opacity:.9;
-  }
-
-  .hero{
-    position:relative;
-    background:
-      linear-gradient(180deg, rgba(6,22,17,.96), rgba(8,29,22,.92)),
-      radial-gradient(circle at 12% 22%, rgba(23,166,115,.10), transparent 24%),
-      radial-gradient(circle at 86% 18%, rgba(28,102,177,.10), transparent 26%),
-      var(--noche);
-  }
-  .hero::before{
-    content:"";
-    position:absolute;inset:0;
-    background:
-      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-    background-size:40px 40px;
-    opacity:.12;
-    pointer-events:none;
-    mask-image:linear-gradient(180deg, rgba(0,0,0,.95), rgba(0,0,0,.25));
-  }
-  .hero::after{
-    content:"";
-    position:absolute;left:0;right:0;bottom:0;height:180px;
-    background:linear-gradient(180deg, transparent, rgba(6,22,17,.12) 45%, rgba(6,22,17,.34));
-    pointer-events:none;
-  }
-
-  .hero__content{
-    position:relative;z-index:1;
-  }
-
-  .brand-chip-row{
-    display:flex;flex-wrap:wrap;gap:10px;margin:0 0 24px;
-  }
-  .brand-chip{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:9px 12px;border-radius:999px;
-    font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--vit-text);
-    border:1px solid rgba(232,246,241,.12);
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-    box-shadow:0 10px 24px -22px rgba(0,0,0,.45);
-  }
-  .brand-chip::before{
-    content:"";
-    width:7px;height:7px;border-radius:50%;
-    background:linear-gradient(180deg,var(--vit-cyan),var(--vit-blue));
-    box-shadow:0 0 12px rgba(23,166,115,.22);
-  }
-
-  .hero__metrics{
-    display:grid;gap:14px;grid-template-columns:repeat(3,minmax(0,1fr));
-    margin-top:22px;
-  }
-  .hero-metric{
-    position:relative;
-    padding:16px 14px;border-radius:16px;overflow:hidden;
-    border:1px solid rgba(232,246,241,.10);
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-    box-shadow:0 20px 32px -26px rgba(0,0,0,.45);
-    backdrop-filter:blur(10px);
-  }
-  .hero-metric::before{
-    content:"";
-    position:absolute;inset:0 auto auto 0;width:100%;height:2px;
-    background:linear-gradient(90deg,var(--vit-cyan),var(--vit-blue),transparent);
-    opacity:.9;
-  }
-  .hero-metric__num{
-    display:block;
-    font-family:var(--font-display);font-size:1.45rem;line-height:1;
-    color:var(--hueso);margin-bottom:6px;
-    letter-spacing:-.02em;
-  }
-  .hero-metric__label{
-    display:block;
-    font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--vit-muted);
-  }
-  .hero-metric__copy{
-    margin-top:8px;font-size:.9rem;line-height:1.45;opacity:.82;
-  }
-
-  .hero__note{
-    border-color:rgba(232,246,241,.12);
-    background:rgba(255,255,255,.04);
-    box-shadow:0 14px 26px -24px rgba(0,0,0,.4);
-  }
-
-  .btn--primary{
-    background:linear-gradient(135deg, var(--amanecer), #F0B18E 55%, #F7D9C7);
-    color:var(--tinta);
-    box-shadow:0 20px 30px -24px rgba(var(--amanecer-rgb),.65);
-  }
-  .btn--ghost{
-    border-color:rgba(232,246,241,.18);
-    background:rgba(255,255,255,.03);
-  }
-
-  .section__title::after, .hero__title::after{
-    background:linear-gradient(90deg,var(--amanecer),var(--vit-cyan),var(--vit-blue), rgba(28,102,177,0));
-  }
-
-  .problema-highlight{
-    margin:22px 0 10px;
-    padding:18px 18px 18px 20px;
-    border-radius:16px;
-    border:1px solid rgba(20,32,26,.10);
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.52), rgba(255,255,255,.26));
-    box-shadow:0 16px 28px -24px rgba(8,29,22,.26);
-    position:relative;
-  }
-  .problema-highlight::before{
-    content:"";
-    position:absolute;left:0;top:16px;bottom:16px;width:3px;border-radius:999px;
-    background:linear-gradient(180deg,var(--amanecer),var(--vit-cyan),var(--vit-blue));
-  }
-  .problema-highlight__label{
-    font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;opacity:.55;
-    margin-bottom:8px;display:block;
-  }
-  .problema-highlight__quote{
-    font-family:var(--font-display);font-size:1.08rem;line-height:1.35;max-width:34ch;
-  }
-
-  .pain-item{
-    border-radius:16px;
-    background:linear-gradient(180deg, rgba(255,255,255,.64), rgba(255,255,255,.34));
-  }
-  .pain-icon{
-    background:linear-gradient(180deg, rgba(221,122,82,.14), rgba(23,166,115,.08));
-    color:var(--amanecer);
-  }
-
-  .modulo{
-    border-radius:18px;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.58), rgba(255,255,255,.36));
-    box-shadow:0 20px 34px -28px rgba(8,29,22,.24);
-  }
-  .modulo::after{
-    content:"";
-    position:absolute;left:18px;right:18px;top:0;height:2px;
-    background:linear-gradient(90deg,var(--amanecer),var(--vit-cyan),var(--vit-blue),transparent);
-    border-radius:999px;
-    opacity:.85;
-  }
-  .modulo__icon{
-    background:
-      linear-gradient(180deg, rgba(221,122,82,.14), rgba(23,166,115,.08)),
-      rgba(255,255,255,.6);
-    box-shadow:0 10px 24px -18px rgba(8,29,22,.16);
-  }
-  .modulo__hint{
-    border-top:1px dashed rgba(20,32,26,.10);
-  }
-
-  .route-legend{
-    display:flex;flex-wrap:wrap;gap:10px;
-    margin-top:22px;
-  }
-  .route-chip{
-    display:inline-flex;align-items:center;gap:8px;
-    border:1px solid rgba(20,32,26,.10);border-radius:999px;
-    background:rgba(255,255,255,.42);
-    padding:8px 11px;
-    font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;
-  }
-  .route-chip::before{
-    content:"";
-    width:8px;height:8px;border-radius:50%;
-    background:linear-gradient(180deg,var(--vit-cyan),var(--vit-blue));
-  }
-
-  .principles-viz{
-    border-radius:24px;
-    background:
-      radial-gradient(circle at center, rgba(221,122,82,.12), transparent 34%),
-      radial-gradient(circle at 20% 18%, rgba(23,166,115,.08), transparent 20%),
-      radial-gradient(circle at 80% 75%, rgba(28,102,177,.10), transparent 22%),
-      linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
-  }
-  .principles-viz::before,.principles-viz::after{
-    border-style:solid;
-  }
-  .principles-center{
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-    border-color:rgba(232,246,241,.15);
-  }
-  .principle-node{
-    box-shadow:0 10px 24px -22px rgba(0,0,0,.45);
-  }
-
-  .audiencia-card{
-    border-radius:18px;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.68), rgba(255,255,255,.40));
-    box-shadow:0 20px 32px -28px rgba(8,29,22,.22);
-  }
-  .audiencia-card__icon{
-    background:linear-gradient(180deg, rgba(221,122,82,.16), rgba(23,166,115,.09));
-    box-shadow:0 14px 24px -22px rgba(8,29,22,.24);
-  }
-  .audiencia-pill{
-    background:rgba(255,255,255,.58);
-    border-color:rgba(20,32,26,.10);
-  }
-
-  .estado-step{
-    border-radius:16px;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.38));
-  }
-  .estado-step__dot{
-    background:linear-gradient(180deg, rgba(221,122,82,.18), rgba(23,166,115,.10));
-    color:var(--amanecer);
-  }
-  .estado-progress__bar{
-    background:rgba(20,32,26,.08);
-  }
-  .estado-progress__fill{
-    background:linear-gradient(90deg, var(--amanecer), var(--vit-cyan), var(--vit-blue));
-    box-shadow:0 0 24px rgba(23,166,115,.14);
-  }
-
-  .contacto__text .section__title{
-    max-width:12ch;
-  }
-  .next-step{
-    border-radius:16px;
-    border-color:rgba(251,247,241,.10);
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-  }
-  .next-step__num{
-    background:linear-gradient(180deg, rgba(221,122,82,.28), rgba(23,166,115,.18));
-  }
-  .trust-pill{
-    border-color:rgba(232,246,241,.14);
-    background:rgba(255,255,255,.04);
-  }
-
-  .form-card{
-    border-radius:22px;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.96), rgba(251,247,241,.92));
-    box-shadow:0 24px 44px -30px rgba(0,0,0,.42);
-    position:relative;overflow:hidden;
-  }
-  .form-card::before{
-    content:"";
-    position:absolute;left:0;right:0;top:0;height:3px;
-    background:linear-gradient(90deg,var(--amanecer),var(--vit-cyan),var(--vit-blue));
-  }
-  .field input,.field select,.field textarea{
-    border-bottom-color:rgba(20,32,26,.18);
-  }
-  .field input:focus,.field select:focus,.field textarea:focus{
-    border-color:var(--vit-cyan);
-    box-shadow:0 2px 0 0 rgba(23,166,115,.08);
-  }
-
-  .footer{
-    background:
-      linear-gradient(180deg, rgba(6,22,17,.98), rgba(8,29,22,.98)),
-      radial-gradient(circle at 20% 18%, rgba(23,166,115,.08), transparent 22%),
-      radial-gradient(circle at 80% 10%, rgba(28,102,177,.08), transparent 22%);
-  }
-  .footer__top{
-    padding:26px;
-    background:rgba(255,255,255,.02);
-    border:1px solid rgba(255,255,255,.06);
-    box-shadow:0 20px 44px -36px rgba(0,0,0,.55);
-  }
-  .footer__brand{
-    text-shadow:0 0 16px rgba(23,166,115,.10);
-  }
-
-  .floating-map{
-    background:rgba(6,22,17,.72);
-    border-color:rgba(232,246,241,.10);
-  }
-  .floating-map__dot.is-active{
-    background:linear-gradient(180deg,var(--vit-cyan),var(--vit-blue));
-    border-color:transparent;
-    box-shadow:0 0 0 6px rgba(23,166,115,.10);
-  }
-
-  /* richer motion */
-  .brand-chip,
-  .hero-metric,
-  .modulo,
-  .audiencia-card,
-  .estado-step,
-  .next-step,
-  .trust-pill,
-  .form-card{
-    transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease, background-color .28s ease, opacity .28s ease;
-  }
-  .brand-chip:hover,
-  .hero-metric:hover,
-  .modulo:hover,
-  .audiencia-card:hover,
-  .estado-step:hover,
-  .next-step:hover,
-  .trust-pill:hover,
-  .form-card:hover{
-    transform:translateY(-3px);
-  }
-  .hero-metric:hover{
-    box-shadow:0 26px 34px -28px rgba(0,0,0,.54);
-  }
-  .next-step:hover,.estado-step:hover{
-    box-shadow:0 20px 32px -28px rgba(0,0,0,.35);
-  }
-
-  .float-soft{
-    animation:floatSoft 5.6s ease-in-out infinite;
-  }
-  .float-soft.delay-a{animation-delay:.8s}
-  .float-soft.delay-b{animation-delay:1.6s}
-  @keyframes floatSoft{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-6px)}
-  }
-
-  @media (max-width: 860px){
-    .hero__metrics{grid-template-columns:1fr}
-  }
-
-
-  /* ---------- restore editorial italics in explanatory copy ---------- */
-  .hero__subtitle,
-  .section__lead,
-  .problema__text p,
-  .modulo__text,
-  .audiencia-card__text,
-  .pain-copy,
-  .estado-step__copy,
-  .next-step__copy,
-  .hero-metric__copy,
-  .footer__tagline{
-    font-style:italic;
-  }
-
-  .form-success p,
-  .footer__crisis,
-  .footer__legal,
-  .field input,
-  .field select,
-  .field textarea{
-    font-style:normal;
-  }
-
-  .problema-highlight__quote{
-    font-style:italic;
-  }
-
-
-  /* ---------- intro loader VITAIROS-M ---------- */
-  body.vit-loader-active{overflow:hidden;}
-  .vit-intro{
-    position:fixed;inset:0;z-index:25000;
-    display:grid;place-items:center;
-    background:
-      radial-gradient(circle at 50% 36%, rgba(221,122,82,.18), transparent 24%),
-      radial-gradient(circle at 22% 18%, rgba(221,122,82,.08), transparent 20%),
-      radial-gradient(circle at 78% 20%, rgba(245,170,132,.10), transparent 22%),
-      linear-gradient(180deg, #061611 0%, #081D16 52%, #102119 100%);
-    transition:opacity .75s ease, visibility .75s ease;
-  }
-  .vit-intro.is-hidden{
-    opacity:0;visibility:hidden;pointer-events:none;
-  }
-  .vit-intro__wrap{
-    width:min(92vw, 520px);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    text-align:center;
-    gap:18px;
-    padding:24px;
-  }
-  .vit-intro__brain-shell{
-    position:relative;
-    width:min(70vw, 320px);
-    aspect-ratio:1 / 1;
-    display:grid;place-items:center;
-    border-radius:50%;
-    background:
-      radial-gradient(circle at center, rgba(255,255,255,.04), rgba(255,255,255,.01) 55%, transparent 72%),
-      radial-gradient(circle at center, rgba(221,122,82,.10), transparent 62%);
-    box-shadow:
-      inset 0 0 0 1px rgba(251,247,241,.06),
-      0 0 64px rgba(221,122,82,.10);
-    overflow:hidden;
-  }
-  .vit-intro__brain-shell::before,
-  .vit-intro__brain-shell::after{
-    content:"";
-    position:absolute;border-radius:50%;
-    pointer-events:none;
-  }
-  .vit-intro__brain-shell::before{
-    inset:18px;
-    border:1px solid rgba(251,247,241,.07);
-    box-shadow:0 0 32px rgba(221,122,82,.10);
-  }
-  .vit-intro__brain-shell::after{
-    inset:34px;
-    border:1px dashed rgba(221,122,82,.16);
-  }
-
-  .vit-intro__brain{
-    width:70%;
-    max-width:220px;
-    color:#F0A989;
-    filter:drop-shadow(0 0 16px rgba(221,122,82,.24));
-  }
-  .vit-brain-path{
-    fill:none;
-    stroke:url(#vitBrainStroke);
-    stroke-width:2.7;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-    stroke-dasharray:360;
-    stroke-dashoffset:360;
-    animation:vitBrainDraw 1.35s cubic-bezier(.22,.8,.24,1) forwards;
-  }
-  .vit-brain-path.delay-1{animation-delay:.08s}
-  .vit-brain-path.delay-2{animation-delay:.18s}
-  .vit-brain-path.delay-3{animation-delay:.28s}
-  .vit-brain-path.delay-4{animation-delay:.38s}
-  .vit-brain-path.delay-5{animation-delay:.48s}
-  .vit-brain-path.delay-6{animation-delay:.58s}
-  .vit-brain-core{
-    stroke:url(#vitBrainCore);
-    stroke-width:2.4;
-    stroke-dasharray:120;
-    stroke-dashoffset:120;
-    animation:vitBrainDraw .9s cubic-bezier(.22,.8,.24,1) .62s forwards;
-  }
-  .vit-brain-node{
-    fill:#F7D6C5;
-    opacity:0;
-    transform-origin:center;
-    animation:vitNodePulse .9s ease forwards;
-  }
-  .vit-brain-node.n1{animation-delay:.72s}
-  .vit-brain-node.n2{animation-delay:.84s}
-  .vit-brain-node.n3{animation-delay:.96s}
-  .vit-brain-node.n4{animation-delay:1.08s}
-  .vit-brain-node.n5{animation-delay:1.20s}
-  .vit-brain-node.n6{animation-delay:1.32s}
-
-  .vit-intro__brand{
-    opacity:0;
-    transform:translateY(14px);
-    animation:vitIntroTextIn .75s cubic-bezier(.22,.8,.24,1) 1.18s forwards;
-  }
-  .vit-intro__wordmark{
-    margin:0;
-    font-family:var(--font-display);
-    font-size:clamp(1.55rem,4vw,2.25rem);
-    letter-spacing:-.02em;
-    color:var(--hueso);
-    text-shadow:0 0 18px rgba(221,122,82,.12);
-  }
-  .vit-intro__wordmark b{
-    color:#F2B18E;
-    font-weight:700;
-  }
-  .vit-intro__tag{
-    margin-top:8px;
-    font-family:var(--font-mono);
-    font-size:.7rem;
-    letter-spacing:.16em;
-    text-transform:uppercase;
-    color:rgba(251,247,241,.62);
-  }
-  .vit-intro__pulse{
-    width:112px;height:2px;border-radius:999px;overflow:hidden;
-    background:rgba(251,247,241,.08);
-    opacity:0;
-    animation:vitIntroTextIn .55s ease 1.34s forwards;
-  }
-  .vit-intro__pulse::before{
-    content:"";
-    display:block;height:100%;width:38%;
-    background:linear-gradient(90deg, rgba(221,122,82,.10), #DD7A52, #F3C4AB, rgba(243,196,171,.06));
-    box-shadow:0 0 18px rgba(221,122,82,.32);
-    animation:vitPulseBar 1.35s cubic-bezier(.22,.8,.24,1) .9s both;
-  }
-
-  @keyframes vitBrainDraw{
-    to{stroke-dashoffset:0}
-  }
-  @keyframes vitNodePulse{
-    0%{opacity:0;transform:scale(.3)}
-    60%{opacity:1;transform:scale(1.2)}
-    100%{opacity:.95;transform:scale(1)}
-  }
-  @keyframes vitIntroTextIn{
-    to{opacity:1;transform:translateY(0)}
-  }
-  @keyframes vitPulseBar{
-    0%{transform:translateX(-120%)}
-    60%{transform:translateX(180%)}
-    100%{transform:translateX(180%)}
-  }
-
-  @media (prefers-reduced-motion:reduce){
-    body.vit-loader-active{overflow:auto;}
-    .vit-intro{display:none;}
-  }
-
-
-  /* ---------- production mobile polish ---------- */
-  body{overflow-x:hidden;}
-  #problema,#como-funciona,#enfoque,#para-quien,#estado,#contacto{scroll-margin-top:96px;}
-
-  @media (max-width: 640px){
-    .nav .container{
-      padding-top:18px;
-      gap:12px;
-      align-items:flex-start;
-      flex-wrap:wrap;
-    }
-    .nav__link{
-      font-size:.72rem;
-    }
-    .hero__content{
-      padding-top:44px;
-    }
-    .hero__actions{
-      flex-direction:column;
-      align-items:stretch;
-    }
-    .hero__actions .btn,
-    .form-card .btn{
-      width:100%;
-      justify-content:center;
-    }
-    .hero__note{
-      width:100%;
-      justify-content:center;
-      text-align:center;
-    }
-    .vit-intro__brain-shell{
-      width:min(76vw, 270px);
-    }
-    .pain-strip,
-    .hero__metrics,
-    .modulos__grid,
-    .audiencia__grid,
-    .contacto__grid{
-      gap:18px;
-    }
-    .form-card{
-      padding:24px;
-    }
-    .footer__top{
-      padding:20px;
-    }
-  }
-
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "VITAIROS-M — Acompañamiento en salud mental", "url": "https://www.vitairos.com/vitairos-m/", "description": "Plataforma MVP de orientación inicial, agendamiento y continuidad de acompañamiento en salud mental, impulsada por VITAIROS SpA.", "inLanguage": "es-CL", "isPartOf": {"@type": "WebSite", "name": "VITAIROS", "url": "https://www.vitairos.com/"}, "publisher": {"@type": "Organization", "name": "VITAIROS SpA", "url": "https://www.vitairos.com/"}}</script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
-<body class="vit-loader-active">
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="reading-progress" aria-hidden="true"><span id="readingProgress"></span></div>
 
-<div class="vit-intro" id="vitIntro" aria-hidden="true">
-  <div class="vit-intro__wrap">
-    <div class="vit-intro__brain-shell">
-      <svg class="vit-intro__brain" viewBox="0 0 240 180" aria-hidden="true" focusable="false">
-        <defs>
-          <linearGradient id="vitBrainStroke" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#F3C4AB"/>
-            <stop offset="55%" stop-color="#DD7A52"/>
-            <stop offset="100%" stop-color="#F09B72"/>
-          </linearGradient>
-          <linearGradient id="vitBrainCore" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#F5C8B1"/>
-            <stop offset="100%" stop-color="#DD7A52"/>
-          </linearGradient>
-        </defs>
-
-        <!-- outer brain shape, wider and more compact -->
-        <path class="vit-brain-path delay-1" style="stroke-dasharray:220;stroke-dashoffset:220"
-          d="M120 46
-             C111 32 93 28 77 33
-             C61 37 50 50 48 66
-             C36 71 28 83 28 96
-             C28 111 39 123 54 127
-             C59 144 74 154 92 154
-             C107 154 119 147 126 136
-             C131 126 131 110 126 100
-             C132 91 133 75 130 62
-             C127 55 124 50 120 46Z" />
-
-        <path class="vit-brain-path delay-2" style="stroke-dasharray:220;stroke-dashoffset:220"
-          d="M120 46
-             C129 32 147 28 163 33
-             C179 37 190 50 192 66
-             C204 71 212 83 212 96
-             C212 111 201 123 186 127
-             C181 144 166 154 148 154
-             C133 154 121 147 114 136
-             C109 126 109 110 114 100
-             C108 91 107 75 110 62
-             C113 55 116 50 120 46Z" />
-
-        <!-- center split -->
-        <path class="vit-brain-core" fill="none" style="stroke-dasharray:90;stroke-dashoffset:90"
-          d="M120 51
-             C118 63 117 76 118 88
-             C119 100 121 113 120 127" />
-
-        <!-- left folds -->
-        <path class="vit-brain-path delay-3" style="stroke-dasharray:90;stroke-dashoffset:90"
-          d="M69 62 C84 56 99 60 104 74" />
-        <path class="vit-brain-path delay-4" style="stroke-dasharray:95;stroke-dashoffset:95"
-          d="M60 88 C78 83 94 90 100 104" />
-        <path class="vit-brain-path delay-5" style="stroke-dasharray:85;stroke-dashoffset:85"
-          d="M66 116 C80 113 92 119 99 130" />
-
-        <!-- right folds -->
-        <path class="vit-brain-path delay-3" style="stroke-dasharray:90;stroke-dashoffset:90"
-          d="M171 62 C156 56 141 60 136 74" />
-        <path class="vit-brain-path delay-4" style="stroke-dasharray:95;stroke-dashoffset:95"
-          d="M180 88 C162 83 146 90 140 104" />
-        <path class="vit-brain-path delay-5" style="stroke-dasharray:85;stroke-dashoffset:85"
-          d="M174 116 C160 113 148 119 141 130" />
-
-        <!-- lower curves to reinforce brain silhouette -->
-        <path class="vit-brain-path delay-6" style="stroke-dasharray:70;stroke-dashoffset:70"
-          d="M96 141 C104 145 113 146 120 143" />
-        <path class="vit-brain-path delay-6" style="stroke-dasharray:70;stroke-dashoffset:70"
-          d="M144 141 C136 145 127 146 120 143" />
-
-        <!-- highlight nodes -->
-        <circle class="vit-brain-node n1" cx="74" cy="70" r="3.3"/>
-        <circle class="vit-brain-node n2" cx="166" cy="70" r="3.3"/>
-        <circle class="vit-brain-node n3" cx="66" cy="98" r="3.3"/>
-        <circle class="vit-brain-node n4" cx="174" cy="98" r="3.3"/>
-        <circle class="vit-brain-node n5" cx="86" cy="126" r="3.3"/>
-        <circle class="vit-brain-node n6" cx="154" cy="126" r="3.3"/>
-      </svg>
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-shell">
+      <a class="brand" href="#inicio" aria-label="VITAIROS-M, ir al inicio">
+        <img src="assets/vitairos-m-logo-reference.png" width="574" height="166" alt="VITAIROS-M, salud mental digital">
+      </a>
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <a href="#brecha">La brecha</a>
+        <a href="#continuidad">Continuidad</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#seguridad">Seguridad</a>
+        <a class="nav-cta" href="#conversemos">Conversemos</a>
+      </nav>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <div class="vit-intro__brand">
-      <div class="vit-intro__wordmark" aria-hidden="true">VITAIROS<b>-M</b></div>
-      <div class="vit-intro__tag">Salud mental · acompañamiento digital</div>
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <nav aria-label="Navegación móvil">
+        <a href="#brecha"><span>01</span> La brecha</a>
+        <a href="#continuidad"><span>02</span> Continuidad</a>
+        <a href="#experiencia"><span>03</span> Experiencia</a>
+        <a href="#seguridad"><span>04</span> Seguridad</a>
+        <a href="#conversemos"><span>05</span> Conversemos</a>
+      </nav>
+      <a class="mobile-parent" href="../">← Volver a VITAIROS</a>
     </div>
-    <div class="vit-intro__pulse"></div>
-  </div>
-</div>
+  </header>
 
+  <main id="contenido">
+    <section class="hero" id="inicio" aria-labelledby="heroTitle">
+      <div class="hero-network" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="hero-wave hero-wave--one" aria-hidden="true"></div>
+      <div class="hero-wave hero-wave--two" aria-hidden="true"></div>
 
-<header class="nav">
-  <div class="container">
-    
-<div class="nav__brand">
-      <span class="nav__brand-mark-wrap" aria-hidden="true">
-        <svg class="nav__brand-mark" viewBox="0 0 64 64" focusable="false">
-          <defs>
-            <linearGradient id="navBrainG" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#F3C4AB"/>
-              <stop offset="55%" stop-color="#DD7A52"/>
-              <stop offset="100%" stop-color="#F09B72"/>
-            </linearGradient>
-          </defs>
-          <g fill="none" stroke="url(#navBrainG)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M32 14c-3-4-9-5-14-3-5 2-8 6-9 11-4 2-6 6-6 10 0 5 4 10 9 11 2 6 7 10 13 10 5 0 9-2 12-6 2-4 2-8 0-11 2-3 2-8 1-12-1-4-3-7-6-10Z"/>
-            <path d="M32 14c3-4 9-5 14-3 5 2 8 6 9 11 4 2 6 6 6 10 0 5-4 10-9 11-2 6-7 10-13 10-5 0-9-2-12-6-2-4-2-8 0-11-2-3-2-8-1-12 1-4 3-7 6-10Z"/>
-            <path d="M32 18c-1 4-1 8 0 13 1 4 1 8 0 13"/>
-            <path d="M16 24c5-2 10-1 13 4"/>
-            <path d="M13 34c6-2 11 0 14 5"/>
-            <path d="M18 44c4-1 8 0 11 4"/>
-            <path d="M48 24c-5-2-10-1-13 4"/>
-            <path d="M51 34c-6-2-11 0-14 5"/>
-            <path d="M46 44c-4-1-8 0-11 4"/>
-          </g>
-        </svg>
-      </span>
-      <span class="nav__brand-text">VITAIROS<b>-M</b></span>
-    </div>
-
-    <a class="nav__link" href="https://www.vitairos.com" target="_blank" rel="noopener">vitairos.com ↗</a>
-  </div>
-</header>
-
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <div class="container hero__content">
-    <span class="eyebrow">Proyecto HealthTech de VITAIROS SpA · MVP en validación</span>
-    <h1 class="hero__title">Entre pedir ayuda y recibir atención hay un espacio donde muchas personas se pierden.</h1>
-    <p class="hero__subtitle">VITAIROS-M acompaña ese espacio con orientación inicial, agendamiento con profesionales y continuidad de apoyo, disponible las 24 horas.</p>
-    
-    <div class="brand-chip-row" data-reveal-soft>
-      <span class="brand-chip">IA responsable</span>
-      <span class="brand-chip">Derivación segura</span>
-      <span class="brand-chip">Proyecto de VITAIROS SpA</span>
-    </div>
-
-    <div class="hero__actions">
-      <a class="btn btn--primary" href="#contacto">Unirme a la lista de espera</a>
-      <a class="btn btn--ghost" href="#como-funciona">Ver cómo funciona</a>
-    </div>
-    <p class="hero__note">Orientación inicial y derivación segura — no reemplaza la atención profesional.</p>
-    <div class="hero__metrics" data-reveal-soft>
-      <div class="hero-metric float-soft">
-        <span class="hero-metric__num">1</span>
-        <span class="hero-metric__label">Objetivo central</span>
-        <div class="hero-metric__copy">Reducir la brecha entre pedir ayuda y acceder a una red de apoyo.</div>
-      </div>
-      <div class="hero-metric float-soft delay-a">
-        <span class="hero-metric__num">4</span>
-        <span class="hero-metric__label">Módulos del MVP</span>
-        <div class="hero-metric__copy">Orientación, agenda, autocuidado y acceso seguro trabajando como una ruta continua.</div>
-      </div>
-      <div class="hero-metric float-soft delay-b">
-        <span class="hero-metric__num">2</span>
-        <span class="hero-metric__label">Rutas de adopción</span>
-        <div class="hero-metric__copy">Para personas y para instituciones que buscan acompañar mejor a su comunidad.</div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Ilustración: amanecer sobre la cordillera, con el "camino" de los 4 módulos -->
-  <svg class="hero__art" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-    <defs>
-      <linearGradient id="cieloGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#081D16"/>
-        <stop offset="55%" stop-color="#2B2A2C"/>
-        <stop offset="100%" stop-color="#DD7A52"/>
-      </linearGradient>
-      <radialGradient id="solGrad" cx="80%" cy="82%" r="42%">
-        <stop offset="0%" stop-color="#F2C6AA" stop-opacity="0.95"/>
-        <stop offset="55%" stop-color="#DD7A52" stop-opacity="0.35"/>
-        <stop offset="100%" stop-color="#DD7A52" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-
-    <rect width="1200" height="480" fill="url(#cieloGrad)"/>
-    <rect width="1200" height="480" fill="url(#solGrad)"/>
-
-    <!-- cordillera, capa lejana -->
-    <path d="M0,330 L90,290 L170,322 L260,260 L350,300 L440,245 L530,295 L630,235 L720,288 L820,232 L920,282 L1020,250 L1120,292 L1200,262 L1200,480 L0,480 Z" fill="#16332A" opacity="0.85"/>
-    <!-- cordillera, capa cercana -->
-    <path d="M0,400 L110,360 L200,392 L300,345 L390,388 L480,338 L580,382 L680,330 L780,378 L880,326 L980,374 L1080,340 L1180,382 L1200,372 L1200,480 L0,480 Z" fill="#081D16"/>
-
-    <!-- el camino: 4 etapas -->
-    <line x1="70" y1="170" x2="1130" y2="170" stroke="#FBF7F1" stroke-opacity="0.16" stroke-width="2" stroke-dasharray="2 11"/>
-
-    <g>
-      <circle cx="150" cy="170" r="6" fill="#FBF7F1" fill-opacity="0.55"/>
-      <text x="150" y="148" text-anchor="middle" class="svg-label" fill="#FBF7F1" fill-opacity="0.55">01 ORIENTACIÓN</text>
-    </g>
-    <g>
-      <circle cx="430" cy="170" r="6" fill="#FBF7F1" fill-opacity="0.55"/>
-      <text x="430" y="148" text-anchor="middle" class="svg-label" fill="#FBF7F1" fill-opacity="0.55">02 AGENDA</text>
-    </g>
-    <g>
-      <circle cx="710" cy="170" r="6" fill="#FBF7F1" fill-opacity="0.55"/>
-      <text x="710" y="148" text-anchor="middle" class="svg-label" fill="#FBF7F1" fill-opacity="0.55">03 AUTOCUIDADO</text>
-    </g>
-    <g>
-      <circle class="waypoint-halo" cx="990" cy="170" r="9" fill="#F2C6AA" fill-opacity="0.5"/>
-      <circle cx="990" cy="170" r="6" fill="#F2C6AA"/>
-      <text x="990" y="148" text-anchor="middle" class="svg-label" fill="#F2C6AA">04 SIEMPRE DISPONIBLE</text>
-    </g>
-  </svg>
-</section>
-
-<!-- ================= PROBLEMA ================= -->
-<section id="problema" class="section section--hueso">
-  <div class="container">
-    <div class="problema__grid">
-      <div class="problema__text" data-reveal>
-        <span class="eyebrow">El problema</span>
-        <h2 class="section__title">La primera barrera no es el tratamiento. Es no saber qué hacer primero.</h2>
-        <p>Muchas personas que necesitan apoyo en salud mental no saben dónde acudir, no reciben orientación inmediata o deben esperar demasiado tiempo antes de acceder a una atención profesional.</p>
-        <p>Ese espacio entre <em>pedir ayuda</em> y <em>recibirla</em> es crítico: ahí es donde la búsqueda se detiene, las personas se desorientan o llegan tarde a una red de apoyo.</p>
-      
-        
-        <div class="problema-highlight" data-reveal-soft>
-          <span class="problema-highlight__label">La idea central</span>
-          <div class="problema-highlight__quote">El punto crítico no siempre es la falta de tratamiento, sino la falta de claridad sobre el primer paso.</div>
-        </div>
-
-        <div class="pain-strip" data-reveal-soft>
-          <div class="pain-item">
-            <div class="pain-icon">?</div>
-            <div class="pain-label">Desorientación</div>
-            <div class="pain-copy">No saber por dónde empezar suele frenar el primer paso.</div>
+      <div class="container hero-layout">
+        <div class="hero-copy" data-reveal>
+          <div class="status-pill"><span></span> VITAIROS-M · MVP en validación</div>
+          <p class="eyebrow">Salud mental digital</p>
+          <h1 id="heroTitle">La vida no ocurre <span>solo en la sesión.</span></h1>
+          <p class="hero-lead">VITAIROS-M explora una capa digital de continuidad entre la persona y la atención profesional: contexto que acompaña, información consentida y criterio humano en cada paso.</p>
+          <div class="hero-actions">
+            <a class="button button--primary" href="#conversemos">Conversar sobre VITAIROS-M <span aria-hidden="true">↗</span></a>
+            <a class="button button--secondary" href="#continuidad">Explorar la propuesta <span aria-hidden="true">↓</span></a>
           </div>
-          <div class="pain-item">
-            <div class="pain-icon">⏳</div>
-            <div class="pain-label">Espera</div>
-            <div class="pain-copy">Los tiempos largos generan distancia entre necesidad y atención.</div>
+          <p class="scope-note"><span aria-hidden="true">●</span> Propuesta en desarrollo. No reemplaza atención profesional ni servicios de urgencia.</p>
+        </div>
+
+        <figure class="hero-orbit" data-reveal aria-labelledby="heroOrbitCaption">
+          <svg class="hero-orbit__track" viewBox="0 0 600 600" aria-hidden="true">
+            <defs>
+              <linearGradient id="heroTrackGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#00C98E"/>
+                <stop offset=".55" stop-color="#00B9D3"/>
+                <stop offset="1" stop-color="#00A5F4"/>
+              </linearGradient>
+            </defs>
+            <circle class="orbit-track orbit-track--soft" cx="300" cy="300" r="226"/>
+            <circle class="orbit-track orbit-track--active" cx="300" cy="300" r="226"/>
+            <path class="orbit-connector" d="M145 136C224 48 374 49 455 132M468 458C387 546 220 548 139 454"/>
+          </svg>
+          <div class="orbit-glow" aria-hidden="true"></div>
+          <div class="orbit-brand">
+            <img src="assets/vitairos-m-logo-reference.png" width="574" height="166" alt="">
+            <span>Continuidad con contexto</span>
           </div>
-          <div class="pain-item">
-            <div class="pain-icon">✦</div>
-            <div class="pain-label">Pérdida de continuidad</div>
-            <div class="pain-copy">Entre una etapa y otra, muchas personas se quedan sin apoyo.</div>
+          <div class="orbit-node orbit-node--person">
+            <span class="orbit-node__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg></span>
+            <strong>Persona</strong><small>Vida cotidiana</small>
           </div>
-        </div>
-
-
-      <svg class="problema__art" data-reveal data-reveal-soft viewBox="0 0 480 160" aria-hidden="true" focusable="false">
-        <line x1="20" y1="80" x2="190" y2="80" stroke="#14201A" stroke-width="2"/>
-        <circle cx="20" cy="80" r="5" fill="#14201A"/>
-        <text x="20" y="105" class="svg-label" fill="#14201A" opacity="0.7">PEDIR AYUDA</text>
-
-        <circle cx="225" cy="78" r="3" fill="#14201A" opacity="0.32"/>
-        <circle cx="255" cy="92" r="3" fill="#14201A" opacity="0.2"/>
-        <circle cx="285" cy="68" r="3" fill="#14201A" opacity="0.1"/>
-
-        <line x1="310" y1="80" x2="460" y2="80" stroke="#DD7A52" stroke-width="2"/>
-        <circle cx="460" cy="80" r="5" fill="#DD7A52"/>
-        <text x="460" y="105" text-anchor="end" class="svg-label" fill="#DD7A52">RECIBIR ATENCIÓN</text>
-
-        <text x="240" y="35" text-anchor="middle" class="svg-label" fill="#14201A" opacity="0.45">EL ESPACIO CRÍTICO</text>
-      </svg>
-    </div>
-      <div class="principles-viz visual-card" data-reveal-soft>
-        <div class="visual-title">Marco de acompañamiento</div>
-        <div class="principles-center">IA responsable + red profesional</div>
-        <div class="principle-node p-node-1">Orientación inicial</div>
-        <div class="principle-node p-node-2">Continuidad</div>
-        <div class="principle-node p-node-3">Derivación segura</div>
-        <div class="principle-node p-node-4">Apoyo humano</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= COMO FUNCIONA ================= -->
-<section id="como-funciona" class="section section--niebla">
-  <div class="container">
-    <div data-reveal data-reveal-soft>
-      <span class="eyebrow">Cómo funciona</span>
-      <h2 class="section__title">Cuatro pasos para acompañarte</h2>
-      <p class="section__lead">VITAIROS-M es una plataforma digital en etapa MVP que combina inteligencia artificial responsable, agendamiento y derivación segura.</p>
-    <div class="route-legend" data-reveal-soft>
-      <span class="route-chip">Escucha inicial</span>
-      <span class="route-chip">Ruta guiada</span>
-      <span class="route-chip">Continuidad de apoyo</span>
-    </div>
-
-    </div>
-
-    <div class="modulos__grid">
-      <article class="modulo" data-reveal data-reveal-soft>
-        <div class="modulo__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v10H8l-4 4V6Z"/><path d="M8 10h8M8 13h5"/></svg>
-        </div>
-        <div class="modulo__num">01 — Orientación 24/7</div>
-        <h3 class="modulo__title">Un chat siempre disponible</h3>
-        <p class="modulo__text">Te escucha, te ayuda a entender qué te pasa y te muestra el siguiente paso. No diagnostica ni reemplaza a un profesional: orienta y entrega información segura.</p>
-        <div class="modulo__hint">Paso clave del recorrido</div>
-      </article>
-
-      <article class="modulo" data-reveal data-reveal-soft>
-        <div class="modulo__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
-        </div>
-        <div class="modulo__num">02 — Agendamiento</div>
-        <h3 class="modulo__title">Conexión con profesionales</h3>
-        <p class="modulo__text">Cuando corresponde, agenda una hora con un profesional de salud mental directamente desde la plataforma, ayudando a reducir la distancia entre pedir ayuda y acceder a una atención adecuada.</p>
-        <div class="modulo__hint">Paso clave del recorrido</div>
-      </article>
-
-      <article class="modulo" data-reveal data-reveal-soft>
-        <div class="modulo__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20s-6-3.7-6-9a3.5 3.5 0 0 1 6-2.4A3.5 3.5 0 0 1 18 11c0 5.3-6 9-6 9Z"/></svg>
-        </div>
-        <div class="modulo__num">03 — Autocuidado</div>
-        <h3 class="modulo__title">Continuidad entre etapas</h3>
-        <p class="modulo__text">Recibe recomendaciones generales de autocuidado pensadas para acompañar tu proceso, que te acompañan entre una consulta, una derivación o mientras esperas tu hora.</p>
-        <div class="modulo__hint">Paso clave del recorrido</div>
-      </article>
-
-      <article class="modulo" data-reveal data-reveal-soft>
-        <div class="modulo__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="5" y="11" width="14" height="10" rx="2"/></svg>
-        </div>
-        <div class="modulo__num">04 — Acceso seguro</div>
-        <h3 class="modulo__title">Roles para personas y profesionales</h3>
-        <p class="modulo__text">Un inicio de sesión seguro ordena la experiencia de cada usuario y de cada profesional, y deja la plataforma lista para crecer.</p>
-        <div class="modulo__hint">Paso clave del recorrido</div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ================= ENFOQUE ================= -->
-<section id="enfoque" class="section section--noche">
-  <div class="container">
-    <div class="enfoque__grid"><div class="enfoque__inner" data-reveal data-reveal-soft>
-      <span class="eyebrow">Nuestro enfoque</span>
-      <h2 class="section__title">Inteligencia artificial <span class="hl">responsable</span>. Acompañamiento humano real.</h2>
-      <p class="section__lead" style="opacity:.85;">No buscamos reemplazar la atención humana: buscamos facilitar el acceso oportuno a una red profesional. VITAIROS-M reduce la desorientación del primer momento para que llegues antes — y mejor preparado o preparada — a la persona que puede ayudarte.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= PARA QUIEN ES ================= -->
-<section id="para-quien" class="section section--hueso">
-  <div class="container">
-    <div data-reveal>
-      <span class="eyebrow">Para quién es</span>
-      <h2 class="section__title">Dos caminos, un mismo objetivo</h2>
-    </div>
-
-    <div class="audiencia__grid">
-      <div class="audiencia-card" data-reveal data-reveal-soft>
-        <div class="audiencia-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
-        </div>
-        <span class="audiencia-card__tag">B2C — Personas</span>
-        <h3 class="audiencia-card__title">Para ti</h3>
-        <p class="audiencia-card__text">Accede directamente a servicios digitales de orientación y continuidad de apoyo, disponibles cuando los necesitas.</p>
-        <div class="audiencia-pills">
-          <span class="audiencia-pill">Acceso directo</span>
-          <span class="audiencia-pill">24/7</span>
-          <span class="audiencia-pill">Acompañamiento</span>
-        </div>
-      </div>
-      <div class="audiencia-card" data-reveal data-reveal-soft>
-        <div class="audiencia-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 20h18"/><path d="M5 20V8l7-4 7 4v12"/><path d="M9 12h.01M15 12h.01M9 16h.01M15 16h.01"/></svg>
-        </div>
-        <span class="audiencia-card__tag">B2B2C — Instituciones</span>
-        <h3 class="audiencia-card__title">Para tu organización</h3>
-        <p class="audiencia-card__text">Universidades, empresas, centros de salud y programas sociales pueden ofrecer VITAIROS-M a su comunidad como parte de su bienestar.</p>
-        <div class="audiencia-pills">
-          <span class="audiencia-pill">Universidades</span>
-          <span class="audiencia-pill">Empresas</span>
-          <span class="audiencia-pill">Programas sociales</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= DONDE ESTAMOS ================= -->
-<section id="estado" class="section section--niebla">
-  <div class="container">
-    <div class="estado__inner" data-reveal data-reveal-soft>
-      <span class="eyebrow">Dónde estamos</span>
-      <h2 class="section__title">MVP en validación</h2>
-      <p>Hoy contamos con un MVP definido, arquitectura inicial, los cuatro módulos priorizados y una estrategia de prueba con usuarios y profesionales de salud mental. El proyecto es impulsado por VITAIROS SpA y liderado por un equipo vinculado al ecosistema universitario.</p>
-      <p style="margin-top:14px;">El equipo combina experiencia en tecnología, gestión, educación superior y desarrollo de soluciones digitales — la base para llevar VITAIROS-M de la validación a la escala.</p>
-      <div class="estado-roadmap" data-reveal-soft>
-        <div class="visual-title">Lectura rápida del avance</div>
-        <div class="estado-step">
-          <div class="estado-step__dot">1</div>
-          <div><div class="estado-step__title">Problema priorizado</div><div class="estado-step__copy">El espacio entre pedir ayuda y recibir atención ya está claramente definido como foco.</div></div>
-        </div>
-        <div class="estado-step">
-          <div class="estado-step__dot">2</div>
-          <div><div class="estado-step__title">Módulos definidos</div><div class="estado-step__copy">La solución ya está organizada en orientación, agenda, autocuidado y acceso seguro.</div></div>
-        </div>
-        <div class="estado-step">
-          <div class="estado-step__dot">3</div>
-          <div><div class="estado-step__title">Validación en curso</div><div class="estado-step__copy">Se están preparando pruebas con usuarios y profesionales para iterar el MVP.</div></div>
-        </div>
-        <div class="estado-progress">
-          <div class="estado-progress__meta"><span>Estado del proyecto</span><span>MVP en validación</span></div>
-          <div class="estado-progress__bar"><div class="estado-progress__fill"></div></div>
-          <div class="estado-progress__meta"><span>Definición</span><span>Escala futura</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CONTACTO ================= -->
-<section id="contacto" class="section section--noche-2">
-  <div class="container">
-    <div class="contacto__grid">
-      <div class="contacto__text" data-reveal data-reveal-soft>
-        <span class="eyebrow">Súmate</span>
-        <h2 class="section__title">Súmate a esta etapa</h2>
-        <p class="section__lead" style="opacity:.85;">Déjanos tus datos y te avisamos cuando abramos el acceso anticipado a VITAIROS-M — para ti o para tu institución.</p>
+          <div class="orbit-node orbit-node--context">
+            <span class="orbit-node__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5Z"/><path d="M8 9h8M8 12h5"/></svg></span>
+            <strong>Contexto</strong><small>Acompañamiento</small>
+          </div>
+          <div class="orbit-node orbit-node--professional">
+            <span class="orbit-node__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2M9 14l3 3 3-3"/></svg></span>
+            <strong>Profesional</strong><small>Criterio humano</small>
+          </div>
+          <div class="orbit-pulse" aria-hidden="true"></div>
+          <figcaption id="heroOrbitCaption" class="sr-only">La persona, su contexto y el profesional se conectan mediante una capa de continuidad.</figcaption>
+        </figure>
       </div>
 
-      <div data-reveal>
-        <form class="form-card" id="waitlist-form" action="https://formsubmit.co/bastianaguayolisperguer@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="Nueva inscripción lista de espera VITAIROS-M" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="https://www.vitairos.com/vitairos-m?enviado=1" />
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-          <input type="hidden" name="proyecto" value="VITAIROS-M Salud Mental" />
-          <input type="hidden" name="origen" value="Landing vitairos.com/vitairos-m" />
-          <div class="field-row">
-            <div class="field">
-              <label for="nombre">Nombre</label>
-              <input type="text" id="nombre" name="nombre" required />
+      <div class="container hero-principles" aria-label="Principios de VITAIROS-M" data-reveal>
+        <div><span>01</span><strong>Contexto longitudinal</strong><small>Antes, entre y después.</small></div>
+        <div><span>02</span><strong>Control y consentimiento</strong><small>La persona decide qué compartir.</small></div>
+        <div><span>03</span><strong>Continuidad profesional</strong><small>La tecnología acompaña; no sustituye.</small></div>
+      </div>
+    </section>
+
+    <section class="section breach" id="brecha" aria-labelledby="breachTitle">
+      <div class="container">
+        <div class="section-intro section-intro--split" data-reveal>
+          <div>
+            <p class="section-kicker">01 · La brecha</p>
+            <h2 id="breachTitle">Pedir ayuda no debería significar <span>empezar de cero.</span></h2>
+          </div>
+          <p>Una sesión entrega un espacio valioso. Pero la vida continúa fuera de ella: aparecen preguntas, cambios de contexto y momentos que también importan.</p>
+        </div>
+
+        <div class="between-session" data-reveal>
+          <div class="between-session__rail" aria-hidden="true"><span></span></div>
+          <article><span class="moment">Antes</span><h3>Orientarse</h3><p>Entender el siguiente paso sin convertir una conversación digital en diagnóstico o tratamiento.</p></article>
+          <article><span class="moment">Entre</span><h3>Dar contexto</h3><p>Registrar lo relevante de manera gradual, comprensible y bajo control de la persona.</p></article>
+          <article><span class="moment">Después</span><h3>Sostener continuidad</h3><p>Mantener acciones y seguimiento conectados con la atención profesional autorizada.</p></article>
+        </div>
+
+        <blockquote class="breach-quote" data-reveal><span aria-hidden="true">“</span><p>No es otro chatbot. Es continuidad antes, entre y después de la atención.</p></blockquote>
+      </div>
+    </section>
+
+    <section class="section continuity" id="continuidad" aria-labelledby="continuityTitle">
+      <div class="continuity-pattern" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-intro section-intro--center" data-reveal>
+          <p class="section-kicker">02 · La continuidad</p>
+          <h2 id="continuityTitle">Un circuito que devuelve contexto, <span>no control.</span></h2>
+          <p>La persona permanece al centro. La información solo avanza cuando existe propósito, consentimiento y un destino profesional claro.</p>
+        </div>
+
+        <figure class="continuity-loop" data-loop data-reveal aria-labelledby="continuityCaption">
+          <svg class="continuity-loop__path" viewBox="0 0 900 620" aria-hidden="true">
+            <defs>
+              <linearGradient id="loopGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#00C98E"/><stop offset=".52" stop-color="#00B9D3"/><stop offset="1" stop-color="#00A5F4"/>
+              </linearGradient>
+              <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="#00C98E"/></marker>
+              <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="#00A5F4"/></marker>
+            </defs>
+            <path class="loop-path loop-path--base" d="M450 64C670 64 784 172 760 322C738 466 620 548 450 548C280 548 162 466 140 322C116 172 230 64 450 64Z"/>
+            <path class="loop-path loop-path--draw" d="M450 64C670 64 784 172 760 322C738 466 620 548 450 548C280 548 162 466 140 322C116 172 230 64 450 64Z"/>
+            <path class="loop-arrow loop-arrow--green" d="M207 122C258 82 329 64 405 64" marker-end="url(#arrowGreen)"/>
+            <path class="loop-arrow loop-arrow--blue" d="M692 437C635 510 560 543 489 548" marker-end="url(#arrowBlue)"/>
+          </svg>
+          <div class="loop-center"><span>La capa de continuidad</span><img src="assets/vitairos-m-logo-reference.png" width="574" height="166" alt="VITAIROS-M"><p>Información útil, gradual y consentida.</p></div>
+          <article class="loop-node loop-node--person"><span class="loop-node__number">01</span><div class="loop-node__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg></div><h3>Persona</h3><p>Decide y participa.</p></article>
+          <article class="loop-node loop-node--context"><span class="loop-node__number">02</span><div class="loop-node__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5Z"/><path d="M8 9h8M8 12h5"/></svg></div><h3>Contexto</h3><p>Acompaña sin invadir.</p></article>
+          <article class="loop-node loop-node--summary"><span class="loop-node__number">03</span><div class="loop-node__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6Z"/><path d="M14 3v5h5M9 12h6M9 16h6"/></svg></div><h3>Síntesis consentida</h3><p>Solo lo autorizado.</p></article>
+          <article class="loop-node loop-node--professional"><span class="loop-node__number">04</span><div class="loop-node__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2M9 14l3 3 3-3"/></svg></div><h3>Profesional</h3><p>Evalúa con criterio.</p></article>
+          <article class="loop-node loop-node--return"><span class="loop-node__number">05</span><div class="loop-node__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><h3>Retorno autorizado</h3><p>Acciones con propósito.</p></article>
+          <article class="loop-node loop-node--readapt"><span class="loop-node__number">06</span><div class="loop-node__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17h3v3H4ZM10 12h3v8h-3ZM16 5h3v15h-3Z"/><path d="M4 12c3-1 6-3 8-6l2 2 5-5"/></svg></div><h3>Readaptación</h3><p>La vida vuelve a informar.</p></article>
+          <figcaption id="continuityCaption" class="sr-only">Circuito de continuidad entre persona, contexto, síntesis consentida, profesional, retorno autorizado y readaptación.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section experience" id="experiencia" aria-labelledby="experienceTitle">
+      <div class="container">
+        <div class="section-intro section-intro--split" data-reveal>
+          <div><p class="section-kicker">03 · Dos perspectivas</p><h2 id="experienceTitle">Una experiencia. <span>Dos miradas conectadas.</span></h2></div>
+          <p>La visión de VITAIROS-M no separa a la persona del profesional. Diseña un mismo recorrido con permisos, lenguaje y responsabilidades diferentes.</p>
+        </div>
+
+        <div class="perspective" data-tabs data-reveal>
+          <div class="perspective-tabs" role="tablist" aria-label="Perspectivas de VITAIROS-M">
+            <button id="tab-persona" type="button" role="tab" aria-selected="true" aria-controls="panel-persona" tabindex="0"><span>01</span><strong>Persona</strong><small>Comprender, decidir, continuar</small></button>
+            <button id="tab-profesional" type="button" role="tab" aria-selected="false" aria-controls="panel-profesional" tabindex="-1"><span>02</span><strong>Profesional</strong><small>Recibir contexto, acompañar, ajustar</small></button>
+          </div>
+
+          <div class="perspective-stage">
+            <div class="perspective-panel is-active" id="panel-persona" role="tabpanel" aria-labelledby="tab-persona">
+              <div class="perspective-copy">
+                <span class="vision-badge">Visión de producto</span><h3>Continuidad que comienza con control personal.</h3><p>Una experiencia gradual para organizar contexto, recibir orientación general y decidir qué información puede acompañar una atención.</p>
+                <ul class="capability-list">
+                  <li><span>01</span><div><strong>Cuenta y consentimiento</strong><small>Permisos comprensibles y reversibles.</small></div></li>
+                  <li><span>02</span><div><strong>Orientación inicial</strong><small>Información general, sin diagnóstico automático.</small></div></li>
+                  <li><span>03</span><div><strong>Contexto longitudinal</strong><small>Un historial útil que no obliga a comenzar de cero.</small></div></li>
+                  <li><span>04</span><div><strong>Acceso profesional</strong><small>Conexión con personas calificadas cuando corresponda.</small></div></li>
+                </ul>
+              </div>
+              <div class="perspective-visual perspective-visual--person" aria-hidden="true">
+                <div class="device-card"><div class="device-card__top"><span></span><i></i></div><p>Tu continuidad</p><strong>¿Qué cambió desde la última conversación?</strong><div class="context-choice is-active">Quiero registrar contexto</div><div class="context-choice">Prefiero continuar después</div><div class="consent-line"><i></i> Tú decides qué compartir</div></div>
+              </div>
             </div>
-            <div class="field">
-              <label for="correo">Correo electrónico</label>
-              <input type="email" id="correo" name="correo" required />
+
+            <div class="perspective-panel" id="panel-profesional" role="tabpanel" aria-labelledby="tab-profesional" hidden>
+              <div class="perspective-copy">
+                <span class="vision-badge">Visión de producto</span><h3>Contexto relevante, nunca acceso irrestricto.</h3><p>Una vista profesional orientada a preparar la conversación y sostener seguimiento dentro de los límites autorizados por la persona.</p>
+                <ul class="capability-list">
+                  <li><span>01</span><div><strong>Perfil profesional</strong><small>Identidad y ámbito de atención visibles.</small></div></li>
+                  <li><span>02</span><div><strong>Agenda y personas</strong><small>Organización de encuentros y continuidad.</small></div></li>
+                  <li><span>03</span><div><strong>Contexto autorizado</strong><small>Síntesis acotada al propósito acordado.</small></div></li>
+                  <li><span>04</span><div><strong>Seguimiento</strong><small>Acciones e información para la próxima conversación.</small></div></li>
+                </ul>
+              </div>
+              <div class="perspective-visual perspective-visual--professional" aria-hidden="true">
+                <div class="professional-card"><div class="professional-card__header"><span>Contexto autorizado</span><i>Consentido</i></div><div class="professional-card__person"><b>AM</b><div><strong>Próxima conversación</strong><small>Contexto actualizado hace 2 días</small></div></div><div class="professional-card__signal"><span></span><span></span><span></span><span></span><span></span></div><div class="professional-card__summary"><i></i><div><strong>Síntesis disponible</strong><small>Alcance definido por la persona</small></div></div></div>
+              </div>
             </div>
           </div>
-
-          <div class="field">
-            <label for="perfil">Te interesa como</label>
-            <select id="perfil" name="perfil" required>
-              <option value="">Selecciona una opción</option>
-              <option value="persona">Persona buscando apoyo</option>
-              <option value="profesional">Profesional de salud mental</option>
-              <option value="institucion">Institución o empresa</option>
-              <option value="otro">Otro</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="mensaje">Cuéntanos brevemente (opcional)</label>
-            <textarea id="mensaje" name="mensaje" rows="3"></textarea>
-          </div>
-
-          <button type="submit" class="btn btn--primary">Enviar</button>
-        </form>
-
-        <div class="form-success" id="form-success">
-          <h3 class="form-success__title">¡Listo!</h3>
-          <p>Recibimos tu información — te escribiremos pronto a la dirección que dejaste.</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ================= FOOTER ================= -->
-<footer class="footer">
-  <div class="container" style="padding-top:64px;padding-bottom:48px;">
-    <div class="footer__top">
-      <div>
-        <div class="footer__brand">VITAIROS<b>-M</b></div>
-        <p class="footer__tagline">Que pedir ayuda sea más simple, más rápido y más seguro.</p>
+    <section class="section criteria" id="seguridad" aria-labelledby="criteriaTitle">
+      <div class="criteria-network" aria-hidden="true"></div>
+      <div class="container criteria-layout">
+        <div class="criteria-copy" data-reveal>
+          <p class="section-kicker">04 · Seguridad y criterio</p><h2 id="criteriaTitle">La tecnología acompaña. <span>El criterio permanece humano.</span></h2><p>VITAIROS-M se diseña como una capa de apoyo y continuidad. Los límites no son una nota al pie: son parte de la experiencia.</p>
+          <div class="criteria-seal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 20 6v6c0 5-3.4 8.2-8 10-4.6-1.8-8-5-8-10V6Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg><span><strong>Consentimiento por diseño</strong><small>Control comprensible antes de compartir.</small></span></div>
+        </div>
+        <div class="criteria-grid" data-reveal>
+          <article><span>01</span><h3>No diagnostica</h3><p>No convierte respuestas o señales en un diagnóstico clínico.</p></article>
+          <article><span>02</span><h3>No prescribe</h3><p>No indica medicamentos ni sustituye decisiones profesionales.</p></article>
+          <article><span>03</span><h3>No reemplaza</h3><p>No presenta automatización como terapia ni como atención de urgencia.</p></article>
+          <article><span>04</span><h3>No promete resultados</h3><p>No garantiza efectos terapéuticos ni utiliza claims sin evidencia.</p></article>
+        </div>
       </div>
-      <div>
-        <div class="footer__col-title">Si necesitas ayuda ahora</div>
-        <p class="footer__crisis"><strong>Riesgo inmediato o pensamientos de hacerte daño:</strong> llama desde un celular al *4141, línea de prevención del suicidio del Ministerio de Salud.</p>
-        <p class="footer__crisis"><strong>Orientación general en salud:</strong> Salud Responde 600 360 7777, disponible las 24 horas, todos los días.</p>
+    </section>
+
+    <section class="section product-state" id="estado" aria-labelledby="stateTitle">
+      <div class="container">
+        <div class="section-intro section-intro--split" data-reveal>
+          <div><p class="section-kicker">05 · Estado del proyecto</p><h2 id="stateTitle">Claridad sobre lo que existe <span>y lo que viene.</span></h2></div>
+          <p>La confianza también se construye separando la realidad actual de la visión. Esta página presenta una iniciativa en validación, no un servicio clínico disponible.</p>
+        </div>
+        <div class="state-columns" data-reveal>
+          <article class="state-card state-card--now"><div class="state-card__header"><span>Ahora</span><i>Información vigente</i></div><h3>Propuesta en validación</h3><ul><li>Iniciativa de salud mental digital de VITAIROS SpA.</li><li>Narrativa de continuidad entre persona y profesional.</li><li>Canal abierto para conversar, colaborar o participar.</li><li>Compromiso explícito con límites y consentimiento.</li></ul></article>
+          <article class="state-card state-card--building"><div class="state-card__header"><span>En construcción</span><i>Visión de producto</i></div><h3>Experiencia digital de continuidad</h3><ul><li>Orientación inicial y perfiles diferenciados.</li><li>Contexto longitudinal bajo control de la persona.</li><li>Síntesis consentida y retorno autorizado.</li><li>Herramientas de seguimiento para profesionales.</li></ul></article>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <p class="footer__legal">VITAIROS-M entrega orientación inicial y acompañamiento no clínico. No reemplaza atención profesional, servicios de urgencia ni redes oficiales de emergencia.</p>
+    <section class="section ecosystem" id="ecosistema" aria-labelledby="ecosystemTitle">
+      <div class="container">
+        <div class="ecosystem-heading" data-reveal><div><p class="section-kicker">06 · Ecosistema VITAIROS</p><h2 id="ecosystemTitle">Una iniciativa de <span>VITAIROS SpA.</span></h2></div><a href="../">Conocer VITAIROS <span aria-hidden="true">↗</span></a></div>
+        <div class="ecosystem-grid" data-reveal>
+          <a href="../vitairos-industrial-ai/"><span>Industria y minería</span><strong>Industrial AI</strong><small>Información operacional con trazabilidad.</small><i aria-hidden="true">↗</i></a>
+          <a href="../agro-intelligence/"><span>Agricultura</span><strong>Agro Intelligence</strong><small>Datos del territorio para decidir.</small><i aria-hidden="true">↗</i></a>
+          <a href="../conecta/"><span>Educación</span><strong>VITAIROS Conecta</strong><small>Personas y conocimiento conectados.</small><i aria-hidden="true">↗</i></a>
+        </div>
+      </div>
+    </section>
 
-    <div class="footer__bottom">
-      <span>© 2026 VITAIROS SpA — Todos los derechos reservados</span>
-      <a class="nav__link" href="https://www.vitairos.com" target="_blank" rel="noopener">vitairos.com ↗</a>
+    <section class="section contact" id="conversemos" aria-labelledby="contactTitle">
+      <div class="contact-wave contact-wave--one" aria-hidden="true"></div><div class="contact-wave contact-wave--two" aria-hidden="true"></div>
+      <div class="container contact-layout">
+        <div class="contact-copy" data-reveal><p class="section-kicker">07 · Conversemos</p><h2 id="contactTitle">La continuidad también empieza con <span>una conversación.</span></h2><p>Si eres profesional, institución o quieres participar en la validación, cuéntanos tu contexto. Revisaremos cada mensaje antes de responder.</p><ul><li><span>✓</span> Revisión humana</li><li><span>✓</span> Sin promesas clínicas</li><li><span>✓</span> Contexto antes que solución</li></ul></div>
+        <div class="contact-card" data-reveal>
+          <form id="contactForm" action="https://formsubmit.co/bastianaguayolisperguer@gmail.com" method="post">
+            <input type="hidden" name="_subject" value="Conversación sobre VITAIROS-M"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_next" value="https://www.vitairos.com/vitairos-m/?enviado=1#conversemos"><input type="hidden" name="proyecto" value="VITAIROS-M"><input type="hidden" name="origen" value="Landing VITAIROS-M V2"><input type="hidden" name="privacy_version" value="2026-10"><input class="form-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="form-heading"><span>Contacto</span><p>Cuéntanos desde qué perspectiva quieres conversar.</p></div>
+            <div class="field-row"><label for="nombre">Nombre<input id="nombre" name="nombre" type="text" autocomplete="name" required placeholder="Tu nombre"></label><label for="correo">Correo<input id="correo" name="correo" type="email" autocomplete="email" required placeholder="tu@correo.cl"></label></div>
+            <label for="perfil">Me interesa como<select id="perfil" name="perfil" required><option value="">Selecciona una opción</option><option value="persona">Persona interesada</option><option value="profesional">Profesional de salud mental</option><option value="institucion">Institución u organización</option><option value="colaboracion">Colaboración o validación</option></select></label>
+            <label for="mensaje">Contexto <small>(opcional)</small><textarea id="mensaje" name="mensaje" rows="4" maxlength="800" placeholder="¿Qué te gustaría explorar?"></textarea></label>
+            <div class="privacy-consent"><input id="privacyConsent" name="privacy_consent" type="checkbox" value="yes" required><div><label for="privacyConsent">He leído la</label> <button type="button" data-modal-open="privacidad">Política de Privacidad</button> <label for="privacyConsent">y autorizo a VITAIROS SpA a tratar mis datos para responder esta solicitud.</label></div></div>
+            <button class="button button--primary form-submit" type="submit">Enviar para revisión <span aria-hidden="true">→</span></button>
+            <p class="form-note">El formulario es procesado mediante FormSubmit. No utilizaremos estos datos para marketing sin un consentimiento separado.</p>
+          </form>
+          <div class="form-success" id="formSuccess" hidden tabindex="-1"><span aria-hidden="true">✓</span><h3>Recibimos tu contexto.</h3><p>Lo revisaremos antes de responderte. Gracias por conversar con VITAIROS-M.</p><a href="./">Volver al inicio</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand"><img src="assets/vitairos-m-logo-reference.png" width="574" height="166" alt="VITAIROS-M, salud mental digital"><p>Continuidad entre la persona y la atención profesional.</p></div>
+      <div class="footer-help"><p class="footer-label">Si necesitas ayuda ahora</p><p><strong>Riesgo inmediato o pensamientos de hacerte daño:</strong> llama desde un celular al <a href="tel:*4141">*4141</a>, Línea de Prevención del Suicidio del Ministerio de Salud.</p><p><strong>Orientación general en salud:</strong> <a href="tel:6003607777">Salud Responde 600 360 7777</a>, disponible las 24 horas.</p></div>
     </div>
+    <div class="container footer-bottom"><span>© <span id="year">2026</span> VITAIROS SpA</span><nav aria-label="Información legal"><button type="button" data-modal-open="privacidad">Privacidad</button><button type="button" data-modal-open="terminos">Términos</button><a href="../">VITAIROS ↗</a></nav></div>
+  </footer>
+
+  <div class="modal" id="modal-privacidad" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" aria-hidden="true" hidden>
+    <div class="modal__backdrop" data-modal-close="privacidad"></div><div class="modal__dialog" role="document"><button class="modal__close" type="button" data-modal-close="privacidad" aria-label="Cerrar política de privacidad">×</button><p class="section-kicker">Versión 2026-10</p><h2 id="privacyTitle">Política de Privacidad</h2><p>VITAIROS SpA utiliza los datos entregados voluntariamente en este formulario únicamente para revisar el contexto y responder la solicitud relacionada con VITAIROS-M.</p><p>El formulario se procesa mediante FormSubmit. No utilizamos estos datos para marketing sin un consentimiento separado. Para acceder, rectificar o solicitar la eliminación de tus datos, escribe a <a href="mailto:contacto@vitairos.com">contacto@vitairos.com</a>.</p><button class="button button--primary" type="button" data-modal-close="privacidad">Entendido</button></div>
   </div>
-</footer>
 
-<script>
-  // Revelado al hacer scroll
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
-  } else {
-    document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-visible'));
-  }
-
-  // Formulario conectado a FormSubmit.
-  // Los registros llegarán a: bastianaguayolisperguer@gmail.com
-  const form = document.getElementById('waitlist-form');
-  const success = document.getElementById('form-success');
-
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('enviado') === '1') {
-    form.style.display = 'none';
-    success.classList.add('is-visible');
-    success.setAttribute('tabindex', '-1');
-    success.focus();
-  }
-</script>
-
-
-<script>
-(function(){
-  const progress = document.createElement('div');
-  progress.className = 'progress-line';
-  document.body.appendChild(progress);
-
-  function updateProgress(){
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = height > 0 ? (scrollTop / height) * 100 : 0;
-    progress.style.width = pct + '%';
-  }
-  window.addEventListener('scroll', updateProgress, {passive:true});
-  window.addEventListener('resize', updateProgress);
-  updateProgress();
-
-  const railSections = [
-    ['problema','Problema'],
-    ['como-funciona','Cómo funciona'],
-    ['enfoque','Enfoque'],
-    ['para-quien','Para quién'],
-    ['estado','Estado'],
-    ['contacto','Contacto']
-  ];
-  const rail = document.createElement('nav');
-  rail.className = 'floating-map';
-  rail.setAttribute('aria-label', 'Navegación de secciones');
-  rail.innerHTML = railSections.map(([id,label]) =>
-    `<a class="floating-map__item" href="#${id}" aria-label="${label}">
-      <span class="floating-map__dot" data-target="${id}"></span>
-      <span class="floating-map__label">${label}</span>
-    </a>`
-  ).join('');
-  document.body.appendChild(rail);
-
-  function updateActiveDot(){
-    const y = window.scrollY + window.innerHeight * 0.45;
-    let active = railSections[0][0];
-    railSections.forEach(([id])=>{
-      const el = document.getElementById(id);
-      if(el && el.offsetTop <= y) active = id;
-    });
-    document.querySelectorAll('.floating-map__dot').forEach(dot=>{
-      dot.classList.toggle('is-active', dot.dataset.target === active);
-    });
-  }
-  window.addEventListener('scroll', updateActiveDot, {passive:true});
-  window.addEventListener('resize', updateActiveDot);
-  updateActiveDot();
-
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {threshold:0.12, rootMargin:'0px 0px -50px 0px'});
-
-  document.querySelectorAll('[data-reveal-soft]').forEach((el, idx)=>{
-    el.classList.add('delay-' + ((idx % 4) + 1));
-    observer.observe(el);
-  });
-})();
-</script>
-
-
-<script>
-(function(){
-  const hero = document.querySelector('.hero');
-  const art = document.querySelector('.hero__art');
-  const metrics = document.querySelectorAll('.hero-metric');
-  if(hero && art && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    hero.addEventListener('pointermove', (e)=>{
-      const r = hero.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      art.style.transform = `translate3d(${x*18}px, ${y*12}px, 0) scale(1.015)`;
-      metrics.forEach((card, idx)=>{
-        const factor = (idx + 1) * 0.5;
-        card.style.transform = `translate3d(${x*8*factor}px, ${y*6*factor}px, 0)`;
-      });
-    });
-    hero.addEventListener('pointerleave', ()=>{
-      art.style.transform = '';
-      metrics.forEach(card=>{ card.style.transform = ''; });
-    });
-  }
-
-  document.querySelectorAll('.modulo, .audiencia-card, .estado-step, .next-step, .hero-metric').forEach(card=>{
-    card.addEventListener('pointermove', (e)=>{
-      const rect = card.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      card.style.backgroundImage = `
-        radial-gradient(circle at ${x}% ${y}%, rgba(23,166,115,.08), transparent 32%),
-        linear-gradient(180deg, rgba(255,255,255,.68), rgba(255,255,255,.40))
-      `;
-      if(card.classList.contains('hero-metric')){
-        card.style.backgroundImage = `
-          radial-gradient(circle at ${x}% ${y}%, rgba(23,166,115,.10), transparent 34%),
-          linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03))
-        `;
-      }
-    });
-    card.addEventListener('pointerleave', ()=>{
-      card.style.backgroundImage = '';
-    });
-  });
-})();
-</script>
-
-
-<script>
-(function(){
-  const intro = document.getElementById('vitIntro');
-  if(!intro || window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    document.body.classList.remove('vit-loader-active');
-    if(intro) intro.remove();
-    return;
-  }
-
-  document.body.classList.add('vit-loader-active');
-
-  const hideIntro = () => {
-    intro.classList.add('is-hidden');
-    document.body.classList.remove('vit-loader-active');
-    setTimeout(() => {
-      if(intro && intro.parentNode) intro.parentNode.removeChild(intro);
-    }, 900);
-  };
-
-  setTimeout(hideIntro, 3000);
-})();
-</script>
-
+  <div class="modal" id="modal-terminos" role="dialog" aria-modal="true" aria-labelledby="termsTitle" aria-hidden="true" hidden>
+    <div class="modal__backdrop" data-modal-close="terminos"></div><div class="modal__dialog" role="document"><button class="modal__close" type="button" data-modal-close="terminos" aria-label="Cerrar términos">×</button><p class="section-kicker">Información de uso</p><h2 id="termsTitle">Términos de servicio</h2><p>Este sitio presenta una iniciativa en desarrollo de VITAIROS SpA y ofrece un canal de contacto. No presta atención clínica, no sustituye servicios de urgencia y el envío del formulario no crea una relación terapéutica ni contractual.</p><p>El alcance de cualquier colaboración, piloto o servicio se definirá por separado y por escrito.</p><button class="button button--primary" type="button" data-modal-close="terminos">Entendido</button></div>
+  </div>
 </body>
 </html>
