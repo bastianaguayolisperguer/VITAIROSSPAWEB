@@ -68,19 +68,62 @@
 </head>
 <body>
   <div class="site-intro" data-site-intro aria-hidden="true">
-    <div class="site-intro__field">
-      <svg class="site-intro__network" viewBox="0 0 620 320" aria-hidden="true" focusable="false">
-        <g class="site-intro__lines">
-          <path d="M92 202 190 126 305 178 421 98 528 184"/>
-          <path d="M190 126 245 62M305 178 345 258M421 98 472 44M92 202 154 270M528 184 560 258"/>
-        </g>
-        <g class="site-intro__nodes">
-          <circle cx="92" cy="202" r="8"/><circle cx="190" cy="126" r="8"/><circle cx="245" cy="62" r="7"/>
-          <circle cx="305" cy="178" r="9"/><circle cx="345" cy="258" r="7"/><circle cx="421" cy="98" r="8"/>
-          <circle cx="472" cy="44" r="7"/><circle cx="528" cy="184" r="8"/><circle cx="560" cy="258" r="7"/>
+    <div class="site-intro__scene">
+      <svg class="site-intro__continuity site-intro__continuity--desktop" viewBox="0 0 760 360" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="introContinuityGradient" x1="184" y1="210" x2="566" y2="208" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#00c98e"/>
+            <stop offset=".52" stop-color="#00b9d3"/>
+            <stop offset="1" stop-color="#00a5f4"/>
+          </linearGradient>
+        </defs>
+        <g class="site-intro__journey">
+          <path class="site-intro__path" id="introContinuityPath" d="M184 210 C250 132 315 126 378 150 C444 175 482 266 566 208" pathLength="1"/>
+          <g class="site-intro__node site-intro__node--person" transform="translate(184 210)">
+            <circle class="site-intro__node-halo" r="23"/><circle class="site-intro__node-core" r="8"/>
+          </g>
+          <g class="site-intro__node site-intro__node--context" transform="translate(378 150)">
+            <circle class="site-intro__node-halo" r="23"/><circle class="site-intro__node-core" r="8"/>
+          </g>
+          <g class="site-intro__node site-intro__node--professional" transform="translate(566 208)">
+            <circle class="site-intro__node-halo" r="23"/><circle class="site-intro__node-core" r="8"/>
+          </g>
+          <circle class="site-intro__pulse" r="5">
+            <animateMotion begin=".43s" dur=".48s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines=".22 .8 .28 1">
+              <mpath href="#introContinuityPath"/>
+            </animateMotion>
+          </circle>
         </g>
       </svg>
-      <img class="site-intro__logo" src="assets/vitairos-m-logo.png" width="574" height="166" alt="">
+      <svg class="site-intro__continuity site-intro__continuity--mobile" viewBox="0 0 400 360" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="introContinuityGradientMobile" x1="96" y1="220" x2="308" y2="202" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#00c98e"/>
+            <stop offset=".52" stop-color="#00b9d3"/>
+            <stop offset="1" stop-color="#00a5f4"/>
+          </linearGradient>
+        </defs>
+        <g class="site-intro__journey">
+          <path class="site-intro__path" id="introContinuityPathMobile" d="M96 220 C132 164 167 146 200 168 C238 194 267 240 308 202" pathLength="1"/>
+          <g class="site-intro__node site-intro__node--person" transform="translate(96 220)">
+            <circle class="site-intro__node-halo" r="21"/><circle class="site-intro__node-core" r="8"/>
+          </g>
+          <g class="site-intro__node site-intro__node--context" transform="translate(200 168)">
+            <circle class="site-intro__node-halo" r="21"/><circle class="site-intro__node-core" r="8"/>
+          </g>
+          <g class="site-intro__node site-intro__node--professional" transform="translate(308 202)">
+            <circle class="site-intro__node-halo" r="21"/><circle class="site-intro__node-core" r="8"/>
+          </g>
+          <circle class="site-intro__pulse" r="5">
+            <animateMotion begin=".43s" dur=".48s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines=".22 .8 .28 1">
+              <mpath href="#introContinuityPathMobile"/>
+            </animateMotion>
+          </circle>
+        </g>
+      </svg>
+      <div class="site-intro__brand">
+        <img class="site-intro__logo" src="assets/vitairos-m-logo.png" width="574" height="166" alt="">
+      </div>
     </div>
   </div>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>

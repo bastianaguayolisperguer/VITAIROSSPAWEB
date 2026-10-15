@@ -1,0 +1,276 @@
+{
+  "baseURL": "http://127.0.0.1:4174/vitairos-m/",
+  "viewports": [
+    {
+      "viewport": "1440x900",
+      "start": {
+        "pending": true,
+        "introDisplay": "grid",
+        "visibleContinuities": 1,
+        "visibleNodes": 1,
+        "logoSrc": "assets/vitairos-m-logo.png",
+        "logoNatural": [
+          574,
+          166
+        ]
+      },
+      "path": {
+        "dashOffset": 0.0124899,
+        "nodeOpacity": [
+          1,
+          1,
+          1
+        ],
+        "pathData": "M184 210 C250 132 315 126 378 150 C444 175 482 266 566 208"
+      },
+      "logo": {
+        "opacity": 1,
+        "filter": "blur(0px)",
+        "blur": 0
+      },
+      "transition": {
+        "centerDelta": 0.004129907961214302,
+        "widthDelta": 0.19891357421875,
+        "headerLogoOpacity": 0
+      },
+      "finish": {
+        "pending": false,
+        "hidden": true,
+        "seen": "1",
+        "htmlOverflow": "visible",
+        "bodyOverflow": "clip visible",
+        "cls": 0.00022167918515303498,
+        "shiftEntries": [
+          {
+            "value": 0.00022167918515303498,
+            "sources": [
+              "desktop-nav"
+            ]
+          }
+        ],
+        "scrollWidth": 1440,
+        "clientWidth": 1440
+      },
+      "reloadPending": false,
+      "secondNavigationPending": false,
+      "consoleErrors": [],
+      "requestFailures": []
+    },
+    {
+      "viewport": "1024x768",
+      "start": {
+        "pending": true,
+        "introDisplay": "grid",
+        "visibleContinuities": 1,
+        "visibleNodes": 1,
+        "logoSrc": "assets/vitairos-m-logo.png",
+        "logoNatural": [
+          574,
+          166
+        ]
+      },
+      "path": {
+        "dashOffset": 0.0124248,
+        "nodeOpacity": [
+          1,
+          1,
+          1
+        ],
+        "pathData": "M184 210 C250 132 315 126 378 150 C444 175 482 266 566 208"
+      },
+      "logo": {
+        "opacity": 1,
+        "filter": "blur(0px)",
+        "blur": 0
+      },
+      "transition": {
+        "centerDelta": 0.0032455429988224823,
+        "widthDelta": 0.018646240234375,
+        "headerLogoOpacity": 0
+      },
+      "finish": {
+        "pending": false,
+        "hidden": true,
+        "seen": "1",
+        "htmlOverflow": "visible",
+        "bodyOverflow": "clip visible",
+        "cls": 0,
+        "shiftEntries": [],
+        "scrollWidth": 1024,
+        "clientWidth": 1024
+      },
+      "reloadPending": false,
+      "secondNavigationPending": false,
+      "consoleErrors": [],
+      "requestFailures": []
+    },
+    {
+      "viewport": "430x932",
+      "start": {
+        "pending": true,
+        "introDisplay": "grid",
+        "visibleContinuities": 1,
+        "visibleNodes": 1,
+        "logoSrc": "assets/vitairos-m-logo.png",
+        "logoNatural": [
+          574,
+          166
+        ]
+      },
+      "path": {
+        "dashOffset": 0.0124424,
+        "nodeOpacity": [
+          1,
+          1,
+          1
+        ],
+        "pathData": "M96 220 C132 164 167 146 200 168 C238 194 267 240 308 202"
+      },
+      "logo": {
+        "opacity": 1,
+        "filter": "blur(0px)",
+        "blur": 0
+      },
+      "transition": {
+        "centerDelta": 0.0021208696203582084,
+        "widthDelta": 0.1342620849609375,
+        "headerLogoOpacity": 0
+      },
+      "finish": {
+        "pending": false,
+        "hidden": true,
+        "seen": "1",
+        "htmlOverflow": "visible",
+        "bodyOverflow": "clip visible",
+        "cls": 0,
+        "shiftEntries": [],
+        "scrollWidth": 430,
+        "clientWidth": 430
+      },
+      "reloadPending": false,
+      "secondNavigationPending": false,
+      "consoleErrors": [],
+      "requestFailures": []
+    },
+    {
+      "viewport": "390x844",
+      "start": {
+        "pending": true,
+        "introDisplay": "grid",
+        "visibleContinuities": 1,
+        "visibleNodes": 1,
+        "logoSrc": "assets/vitairos-m-logo.png",
+        "logoNatural": [
+          574,
+          166
+        ]
+      },
+      "path": {
+        "dashOffset": 0.0168555,
+        "nodeOpacity": [
+          1,
+          1,
+          1
+        ],
+        "pathData": "M96 220 C132 164 167 146 200 168 C238 194 267 240 308 202"
+      },
+      "logo": {
+        "opacity": 1,
+        "filter": "blur(0px)",
+        "blur": 0
+      },
+      "transition": {
+        "centerDelta": 0.008313122727585468,
+        "widthDelta": 0.1342620849609375,
+        "headerLogoOpacity": 0
+      },
+      "finish": {
+        "pending": false,
+        "hidden": true,
+        "seen": "1",
+        "htmlOverflow": "visible",
+        "bodyOverflow": "clip visible",
+        "cls": 0,
+        "shiftEntries": [],
+        "scrollWidth": 390,
+        "clientWidth": 390
+      },
+      "reloadPending": false,
+      "secondNavigationPending": false,
+      "consoleErrors": [],
+      "requestFailures": []
+    },
+    {
+      "viewport": "360x800",
+      "start": {
+        "pending": true,
+        "introDisplay": "grid",
+        "visibleContinuities": 1,
+        "visibleNodes": 1,
+        "logoSrc": "assets/vitairos-m-logo.png",
+        "logoNatural": [
+          574,
+          166
+        ]
+      },
+      "path": {
+        "dashOffset": 0.00898993,
+        "nodeOpacity": [
+          1,
+          1,
+          1
+        ],
+        "pathData": "M96 220 C132 164 167 146 200 168 C238 194 267 240 308 202"
+      },
+      "logo": {
+        "opacity": 1,
+        "filter": "blur(0px)",
+        "blur": 0
+      },
+      "transition": {
+        "centerDelta": 0.0022393540146696425,
+        "widthDelta": 0.3594970703125,
+        "headerLogoOpacity": 0
+      },
+      "finish": {
+        "pending": false,
+        "hidden": true,
+        "seen": "1",
+        "htmlOverflow": "visible",
+        "bodyOverflow": "clip visible",
+        "cls": 0,
+        "shiftEntries": [],
+        "scrollWidth": 360,
+        "clientWidth": 360
+      },
+      "reloadPending": false,
+      "secondNavigationPending": false,
+      "consoleErrors": [],
+      "requestFailures": []
+    },
+    {
+      "viewport": "390x844-reduced",
+      "reduced": {
+        "pending": false,
+        "display": "none",
+        "hiddenReveals": 0
+      },
+      "consoleErrors": [],
+      "requestFailures": []
+    }
+  ],
+  "screenshots": [
+    "01-intro-start.png",
+    "02-intro-path.png",
+    "03-intro-logo.png",
+    "04-intro-transition.png",
+    "05-hero-after-intro.png",
+    "06-intro-mobile-logo.png",
+    "07-hero-mobile-after-intro.png"
+  ],
+  "motionEvidence": {
+    "status": "unavailable",
+    "reason": "browserContext.newPage: Executable doesn't exist at C:\\Users\\basti\\AppData\\Local\\ms-playwright\\ffmpeg-1011\\ffmpeg-win64.exe\n╔═════════════════════════════════════════════════════════════════╗\n║ Video rendering requires ffmpeg binary.                         ║\n║ Downloading it will not affect any of the system-wide settings. ║\n║ Please run the following command:                               ║\n║                                                                 ║\n║     npx playwright install ffmpeg                               ║\n║                                                                 ║\n║ <3 Playwright Team                                              ║\n╚═════════════════════════════════════════════════════════════════╝"
+  },
+  "failures": []
+}
