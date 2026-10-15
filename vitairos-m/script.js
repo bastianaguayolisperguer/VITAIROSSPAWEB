@@ -2,9 +2,41 @@
   "use strict";
 
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var intro = document.querySelector("[data-site-intro]");
+  var introPending = document.documentElement.classList.contains("intro-pending");
   var header = document.getElementById("siteHeader");
   var progress = document.getElementById("readingProgress");
   var frame = 0;
+
+  function setSvgMotion(container, active) {
+    container.querySelectorAll("svg[data-motion-svg]").forEach(function (svg) {
+      try {
+        if (active && !reducedMotion) svg.unpauseAnimations();
+        else svg.pauseAnimations();
+      } catch (error) {}
+    });
+  }
+
+  function finishIntro() {
+    document.documentElement.classList.remove("intro-pending");
+    document.body.classList.remove("intro-active");
+    if (intro) intro.hidden = true;
+    document.querySelectorAll(".hero, .hero-orbit").forEach(function (item) {
+      var bounds = item.getBoundingClientRect();
+      if (bounds.bottom > 0 && bounds.top < window.innerHeight) {
+        item.classList.add("is-in-view");
+        setSvgMotion(item, true);
+      }
+    });
+  }
+
+  if (introPending && intro && !reducedMotion) {
+    document.body.classList.add("intro-active");
+    try { sessionStorage.setItem("vitairosMIntroSeen", "1"); } catch (error) {}
+    window.setTimeout(finishIntro, 1300);
+  } else {
+    finishIntro();
+  }
 
   function updateChrome() {
     frame = 0;
@@ -131,18 +163,53 @@
   /* Keyboard-friendly perspective tabs */
   document.querySelectorAll("[data-tabs]").forEach(function (tabsRoot) {
     var tabs = Array.prototype.slice.call(tabsRoot.querySelectorAll('[role="tab"]'));
+    var switchTimer = 0;
 
     function activateTab(tab, moveFocus) {
+      var currentTab = tabs.find(function (item) { return item.getAttribute("aria-selected") === "true"; });
+      var currentPanel = currentTab ? document.getElementById(currentTab.getAttribute("aria-controls")) : null;
+      var nextPanel = document.getElementById(tab.getAttribute("aria-controls"));
+
+      if (currentTab === tab) {
+        if (moveFocus) tab.focus();
+        return;
+      }
+
+      window.clearTimeout(switchTimer);
+      tabsRoot.querySelectorAll(".perspective-panel.is-leaving").forEach(function (panel) {
+        panel.hidden = true;
+        panel.classList.remove("is-active", "is-leaving");
+      });
+
       tabs.forEach(function (item) {
         var selected = item === tab;
         item.setAttribute("aria-selected", selected ? "true" : "false");
         item.tabIndex = selected ? 0 : -1;
-        var panel = document.getElementById(item.getAttribute("aria-controls"));
-        if (panel) {
+      });
+
+      if (!nextPanel) return;
+      nextPanel.hidden = false;
+      nextPanel.removeAttribute("aria-hidden");
+
+      if (reducedMotion || !currentPanel) {
+        tabsRoot.querySelectorAll(".perspective-panel").forEach(function (panel) {
+          var selected = panel === nextPanel;
           panel.hidden = !selected;
           panel.classList.toggle("is-active", selected);
-        }
-      });
+          if (!selected) panel.setAttribute("aria-hidden", "true");
+        });
+      } else {
+        currentPanel.setAttribute("aria-hidden", "true");
+        currentPanel.classList.add("is-leaving");
+        nextPanel.classList.add("is-active", "is-entering");
+        void nextPanel.offsetWidth;
+        window.requestAnimationFrame(function () { nextPanel.classList.remove("is-entering"); });
+        switchTimer = window.setTimeout(function () {
+          currentPanel.hidden = true;
+          currentPanel.classList.remove("is-active", "is-leaving");
+        }, 380);
+      }
+
       if (moveFocus) tab.focus();
     }
 
@@ -163,11 +230,16 @@
 
   /* Reveal content and pause ambient motion offscreen */
   var revealItems = document.querySelectorAll("[data-reveal]");
-  var movingItems = document.querySelectorAll(".hero-orbit, [data-loop]");
+  var movingItems = document.querySelectorAll(".hero, .hero-orbit, [data-loop]");
+
+  movingItems.forEach(function (item) { setSvgMotion(item, false); });
 
   if (reducedMotion || !("IntersectionObserver" in window)) {
     revealItems.forEach(function (item) { item.classList.add("is-visible"); });
-    movingItems.forEach(function (item) { item.classList.add("is-in-view"); });
+    movingItems.forEach(function (item) {
+      item.classList.add("is-in-view");
+      setSvgMotion(item, !reducedMotion);
+    });
   } else {
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -181,7 +253,11 @@
     revealItems.forEach(function (item) { revealObserver.observe(item); });
 
     var motionObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) { entry.target.classList.toggle("is-in-view", entry.isIntersecting); });
+      entries.forEach(function (entry) {
+        var active = entry.isIntersecting && !document.documentElement.classList.contains("intro-pending");
+        entry.target.classList.toggle("is-in-view", active);
+        setSvgMotion(entry.target, active);
+      });
     }, { threshold: 0.03, rootMargin: "8% 0px 8% 0px" });
 
     movingItems.forEach(function (item) { motionObserver.observe(item); });

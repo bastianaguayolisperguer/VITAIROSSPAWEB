@@ -29,6 +29,14 @@
   <meta name="twitter:description" content="La vida no ocurre solo en la sesión. Una propuesta de continuidad entre la persona y la atención profesional.">
   <meta name="twitter:image" content="https://www.vitairos.com/vitairos-m/assets/vitairos-m-open-graph-1200x630.png">
 
+  <script>
+    try {
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && sessionStorage.getItem("vitairosMIntroSeen") !== "1") {
+        document.documentElement.classList.add("intro-pending");
+      }
+    } catch (error) {}
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -59,6 +67,22 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+  <div class="site-intro" data-site-intro aria-hidden="true">
+    <div class="site-intro__field">
+      <svg class="site-intro__network" viewBox="0 0 620 320" aria-hidden="true" focusable="false">
+        <g class="site-intro__lines">
+          <path d="M92 202 190 126 305 178 421 98 528 184"/>
+          <path d="M190 126 245 62M305 178 345 258M421 98 472 44M92 202 154 270M528 184 560 258"/>
+        </g>
+        <g class="site-intro__nodes">
+          <circle cx="92" cy="202" r="8"/><circle cx="190" cy="126" r="8"/><circle cx="245" cy="62" r="7"/>
+          <circle cx="305" cy="178" r="9"/><circle cx="345" cy="258" r="7"/><circle cx="421" cy="98" r="8"/>
+          <circle cx="472" cy="44" r="7"/><circle cx="528" cy="184" r="8"/><circle cx="560" cy="258" r="7"/>
+        </g>
+      </svg>
+      <img class="site-intro__logo" src="assets/vitairos-m-logo.png" width="574" height="166" alt="">
+    </div>
+  </div>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <div class="reading-progress" aria-hidden="true"><span id="readingProgress"></span></div>
 
@@ -110,7 +134,7 @@
         </div>
 
         <figure class="hero-orbit" data-reveal aria-labelledby="heroOrbitCaption">
-          <svg class="hero-orbit__track" viewBox="0 0 600 600" aria-hidden="true">
+          <svg class="hero-orbit__track" viewBox="0 0 600 600" aria-hidden="true" data-motion-svg>
             <defs>
               <linearGradient id="heroTrackGradient" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0" stop-color="#00C98E"/>
@@ -121,6 +145,9 @@
             <circle class="orbit-track orbit-track--soft" cx="300" cy="300" r="226"/>
             <circle class="orbit-track orbit-track--active" cx="300" cy="300" r="226"/>
             <path class="orbit-connector" d="M145 136C224 48 374 49 455 132M468 458C387 546 220 548 139 454"/>
+            <circle class="orbit-travel-pulse" r="7">
+              <animateMotion dur="9s" begin=".7s" repeatCount="indefinite" path="M300 74A226 226 0 1 1 299.9 74"/>
+            </circle>
           </svg>
           <div class="orbit-glow" aria-hidden="true"></div>
           <div class="orbit-brand">
@@ -168,7 +195,7 @@
           <article><span class="moment">Después</span><h3>Sostener continuidad</h3><p>Mantener acciones y seguimiento conectados con la atención profesional autorizada.</p></article>
         </div>
 
-        <blockquote class="breach-quote" data-reveal><span aria-hidden="true">“</span><p>Continuidad antes, entre y después de la atención.</p></blockquote>
+        <blockquote class="breach-quote" data-reveal><span class="quote-mark quote-mark--open" aria-hidden="true">“</span><p>Continuidad antes, entre y después de la atención.</p><span class="quote-mark quote-mark--close" aria-hidden="true">”</span></blockquote>
       </div>
     </section>
 
@@ -182,7 +209,7 @@
         </div>
 
         <figure class="continuity-loop" data-loop data-reveal aria-labelledby="continuityCaption">
-          <svg class="continuity-loop__path" viewBox="0 0 900 620" aria-hidden="true">
+          <svg class="continuity-loop__path" viewBox="0 0 900 620" aria-hidden="true" data-motion-svg>
             <defs>
               <linearGradient id="loopGradient" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0" stop-color="#00C98E"/><stop offset=".52" stop-color="#00B9D3"/><stop offset="1" stop-color="#00A5F4"/>
@@ -191,9 +218,12 @@
               <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="#00A5F4"/></marker>
             </defs>
             <path class="loop-path loop-path--base" d="M450 64C670 64 784 172 760 322C738 466 620 548 450 548C280 548 162 466 140 322C116 172 230 64 450 64Z"/>
-            <path class="loop-path loop-path--draw" d="M450 64C670 64 784 172 760 322C738 466 620 548 450 548C280 548 162 466 140 322C116 172 230 64 450 64Z"/>
+            <path id="loopMotionPath" class="loop-path loop-path--draw" d="M450 64C670 64 784 172 760 322C738 466 620 548 450 548C280 548 162 466 140 322C116 172 230 64 450 64Z"/>
             <path class="loop-arrow loop-arrow--green" d="M207 122C258 82 329 64 405 64" marker-end="url(#arrowGreen)"/>
             <path class="loop-arrow loop-arrow--blue" d="M692 437C635 510 560 543 489 548" marker-end="url(#arrowBlue)"/>
+            <circle class="loop-pulse" r="6">
+              <animateMotion dur="7s" begin="2.2s" repeatCount="indefinite"><mpath href="#loopMotionPath"/></animateMotion>
+            </circle>
           </svg>
           <div class="loop-center"><span>Modelo de continuidad</span><img src="assets/vitairos-m-logo.png" width="574" height="166" alt="VITAIROS-M"><p>Información útil, gradual y consentida.</p></div>
           <article class="loop-node loop-node--person"><span class="loop-node__number">01</span><div class="loop-node__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg></div><h3>Persona</h3><p>Decide y participa.</p></article>
