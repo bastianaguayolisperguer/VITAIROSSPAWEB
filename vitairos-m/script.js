@@ -33,7 +33,7 @@
   if (introPending && intro && !reducedMotion) {
     document.body.classList.add("intro-active");
     try { sessionStorage.setItem("vitairosMIntroSeen", "1"); } catch (error) {}
-    window.setTimeout(finishIntro, 1920);
+    window.setTimeout(finishIntro, 2360);
   } else {
     finishIntro();
   }

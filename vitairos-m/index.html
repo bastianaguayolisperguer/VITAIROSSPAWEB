@@ -63,30 +63,45 @@
   }
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=2.2.4-3">
-  <script src="script.js?v=2.2.4-3" defer></script>
+  <link rel="stylesheet" href="styles.css?v=2.2.5">
+  <script src="script.js?v=2.2.5" defer></script>
 </head>
 <body>
   <div class="site-intro" data-site-intro aria-hidden="true">
     <div class="site-intro__scene">
-      <svg class="site-intro__flower" viewBox="0 0 166 166" aria-hidden="true" focusable="false">
+      <svg class="site-intro__story" viewBox="0 0 460 360" aria-hidden="true" focusable="false">
         <defs>
-          <linearGradient id="introGrowthGradient" x1="30" y1="150" x2="132" y2="18" gradientUnits="userSpaceOnUse">
+          <linearGradient id="introGrowthGradient" x1="177" y1="240" x2="285" y2="92" gradientUnits="userSpaceOnUse">
             <stop offset="0" stop-color="#00c98e"/>
             <stop offset=".52" stop-color="#00b9d3"/>
             <stop offset="1" stop-color="#00a5f4"/>
           </linearGradient>
-          <clipPath id="introOfficialMarkCrop">
+          <linearGradient id="introOrbitGradient" x1="76" y1="54" x2="388" y2="302" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#00c98e"/>
+            <stop offset=".5" stop-color="#00b9d3"/>
+            <stop offset="1" stop-color="#00a5f4"/>
+          </linearGradient>
+          <clipPath id="introOfficialMarkCrop" clipPathUnits="userSpaceOnUse">
             <rect width="166" height="166"/>
           </clipPath>
-          <filter id="introWhiteToAlpha" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
-            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -1 -1 -1 0 3"/>
-          </filter>
         </defs>
-        <g class="site-intro__growth" fill="none" stroke="url(#introGrowthGradient)" stroke-linecap="round" stroke-linejoin="round">
-          <path class="site-intro__seed" pathLength="1" d="M30 132C49 133 67 142 78 158C89 142 107 133 127 132"/>
-          <path class="site-intro__stem" pathLength="1" d="M78 158C78 137 77 119 77 100M77 122L45 86L45 52M77 111L105 73L105 42M45 86L29 69M45 71L69 57M77 100L91 84M105 73L126 65M105 58L88 49M69 57L74 24"/>
-          <path class="site-intro__crown" pathLength="1" d="M8 98C0 57 20 20 55 6C95-10 141 12 158 52C164 67 164 83 159 98"/>
+        <g class="site-intro__continuity">
+          <path class="site-intro__orbit" pathLength="1" d="M230 38C327 38 390 96 392 177C394 251 327 315 230 316C132 317 67 254 68 177C69 97 134 38 230 38Z"/>
+          <circle class="site-intro__signal" cx="0" cy="0" r="4.2">
+            <animateMotion begin="1.04s" dur=".78s" fill="freeze" path="M230 38C327 38 390 96 392 177C394 251 327 315 230 316C132 317 67 254 68 177C69 97 134 38 230 38Z"/>
+            <animate attributeName="opacity" begin="1.04s" dur=".78s" values="0;1;1;0" fill="freeze"/>
+          </circle>
+          <g transform="translate(230 38)"><g class="site-intro__step site-intro__step--person"><circle r="18"/><circle class="site-intro__glyph" cy="-4" r="3.3"/><path class="site-intro__glyph" d="M-7 8C-6 2 6 2 7 8"/></g></g>
+          <g transform="translate(359 87)"><g class="site-intro__step site-intro__step--context"><circle r="18"/><path class="site-intro__glyph" d="M-8-7H8V5H1L-4 9V5H-8Z"/></g></g>
+          <g transform="translate(383 220)"><g class="site-intro__step site-intro__step--professional"><circle r="18"/><path class="site-intro__glyph" d="M0-8V8M-8 0H8"/></g></g>
+          <g transform="translate(230 316)"><g class="site-intro__step site-intro__step--adjust"><circle r="18"/><path class="site-intro__glyph" d="M-8-5H8M-8 5H8M-3-8V-2M4 2V8"/></g></g>
+          <g transform="translate(78 227)"><g class="site-intro__step site-intro__step--return"><circle r="18"/><path class="site-intro__glyph" d="M7-5C2-10-7-6-7 1C-7 7 0 10 5 6M6-9L7-5L3-4"/></g></g>
+        </g>
+        <g class="site-intro__growth" transform="translate(147 82)" fill="none" stroke="url(#introGrowthGradient)" stroke-linecap="round" stroke-linejoin="round">
+          <path class="site-intro__life" pathLength="1" d="M30 132C49 133 67 142 78 158C89 142 107 133 127 132"/>
+          <circle class="site-intro__spark" cx="78" cy="156" r="4"/>
+          <path class="site-intro__stem" pathLength="1" d="M78 158C78 137 77 119 77 100"/>
+          <path class="site-intro__branches" pathLength="1" d="M77 122L45 86L45 52M77 111L105 73L105 42M45 86L29 69M45 71L69 57M77 100L91 84M105 73L126 65M105 58L88 49M69 57L74 24M126 65L126 91"/>
           <g class="site-intro__growth-nodes">
             <circle cx="29" cy="69" r="4"/><circle cx="45" cy="52" r="4"/><circle cx="45" cy="86" r="4"/>
             <circle cx="69" cy="57" r="4"/><circle cx="74" cy="24" r="4"/><circle cx="77" cy="100" r="4"/>
@@ -94,11 +109,10 @@
             <circle cx="105" cy="73" r="4"/><circle cx="126" cy="65" r="4"/><circle cx="126" cy="91" r="4"/>
           </g>
         </g>
-        <g clip-path="url(#introOfficialMarkCrop)">
-          <g filter="url(#introWhiteToAlpha)">
-            <image class="site-intro__official-mark" href="assets/vitairos-m-logo.png" width="574" height="166"/>
-          </g>
+        <g class="site-intro__resolved" transform="translate(147 82)" clip-path="url(#introOfficialMarkCrop)">
+          <image class="site-intro__official-mark" href="assets/vitairos-m-isotype-transparent.png" width="166" height="166"/>
         </g>
+        <circle class="site-intro__closure" cx="230" cy="165" r="104" pathLength="1"/>
       </svg>
     </div>
   </div>
@@ -210,12 +224,21 @@
         <div class="between-session" data-reveal>
           <div class="between-session__landscape" aria-hidden="true">
             <svg class="between-session__mountains" viewBox="0 0 1200 240" preserveAspectRatio="none" focusable="false">
-              <path d="M0 206L112 139L190 173L325 73L410 142L520 88L614 156L738 55L836 145L925 93L1040 165L1126 112L1200 156V240H0Z"/>
-              <path d="M0 220L146 172L245 199L380 132L486 184L626 116L742 188L870 125L974 179L1092 140L1200 185V240H0Z"/>
+              <path class="mountain mountain--far" d="M0 185L92 147L174 165L282 99L354 145L475 81L560 139L666 89L764 147L872 67L957 137L1069 91L1200 148V240H0Z"/>
+              <path class="mountain mountain--middle" d="M0 207L122 139L199 180L330 72L417 154L527 101L624 169L741 57L844 154L931 107L1042 174L1128 119L1200 160V240H0Z"/>
+              <path class="mountain mountain--near" d="M0 224L145 177L244 204L379 137L488 190L627 121L744 193L871 131L973 184L1095 146L1200 190V240H0Z"/>
+              <path class="mountain-ridge" d="M281 99L330 72L354 145M666 89L741 57L764 147M872 67L931 107"/>
             </svg>
-            <svg class="between-session__bird" viewBox="0 0 42 18" focusable="false"><path d="M1 14C8 5 14 5 21 12C28 5 34 5 41 14"/></svg>
+            <svg class="between-session__bird" viewBox="0 0 72 34" focusable="false">
+              <g class="between-session__bird-shape">
+                <path class="between-session__wing between-session__wing--left" d="M36 18C30 13 25 8 18 7C11 6 5 9 1 15C8 12 15 13 21 16C26 18 30 22 34 25L36 23Z"/>
+                <path class="between-session__wing between-session__wing--right" d="M36 18C42 13 47 8 54 7C61 6 67 9 71 15C64 12 57 13 51 16C46 18 42 22 38 25L36 23Z"/>
+                <path class="between-session__bird-body" d="M33 14C34 11 38 11 40 14L42 23L39 27L37 33L35 28L32 32L33 26L30 23Z"/>
+                <path class="between-session__bird-detail" d="M6 14L16 13M11 17L22 15M66 14L56 13M61 17L50 15"/>
+              </g>
+            </svg>
           </div>
-          <div class="between-session__rail" aria-hidden="true"><span></span></div>
+          <div class="between-session__rail" aria-hidden="true"><i class="between-session__flow"></i><span></span></div>
           <article><span class="moment">Antes</span><h3>Orientarse</h3><p>Entender el siguiente paso con información clara y un recorrido más comprensible.</p></article>
           <article><span class="moment">Entre</span><h3>Dar contexto</h3><p>Registrar lo relevante de manera gradual, comprensible y bajo control de la persona.</p></article>
           <article><span class="moment">Después</span><h3>Sostener continuidad</h3><p>Mantener acciones y seguimiento conectados con la atención profesional autorizada.</p></article>
@@ -347,17 +370,27 @@
     <section class="section contact" id="conversemos" aria-labelledby="contactTitle">
       <div class="contact-wave contact-wave--one" aria-hidden="true"></div><div class="contact-wave contact-wave--two" aria-hidden="true"></div>
       <div class="container contact-layout">
-        <div class="contact-copy" data-reveal><p class="section-kicker">Conversemos</p><h2 id="contactTitle">La continuidad también empieza con <span>una conversación.</span></h2><p>Si eres profesional, institución o quieres aportar al desarrollo, cuéntanos tu contexto. Revisaremos cada mensaje antes de responder.</p><ul><li><span>✓</span> Revisión humana</li><li><span>✓</span> Sin promesas clínicas</li><li><span>✓</span> Contexto antes que solución</li></ul></div>
+        <div class="contact-copy" data-reveal>
+          <p class="section-kicker">Abramos la conversación</p>
+          <h2 id="contactTitle">La continuidad se diseña <span>escuchando primero.</span></h2>
+          <p>Si esta propuesta conecta con una necesidad que has vivido, acompañado o identificado, cuéntanos desde dónde la miras. Queremos comprender contextos reales antes de definir la próxima etapa.</p>
+          <ul class="contact-audiences" aria-label="Perspectivas que queremos escuchar">
+            <li><span>01</span><div><strong>Personas</strong><small>Tu experiencia ayuda a reconocer dónde se pierde la continuidad.</small></div></li>
+            <li><span>02</span><div><strong>Profesionales</strong><small>Tu criterio permite evaluar qué sería realmente útil y responsable.</small></div></li>
+            <li><span>03</span><div><strong>Instituciones</strong><small>Tu contexto ayuda a entender condiciones, límites y posibilidades.</small></div></li>
+          </ul>
+          <p class="contact-reassurance"><strong>Primero escuchamos.</strong> Después evaluamos, contigo, si tiene sentido seguir conversando.</p>
+        </div>
         <div class="contact-card" data-reveal>
           <form id="contactForm" action="https://formsubmit.co/contacto@vitairos.com" method="post">
-            <input type="hidden" name="_subject" value="Conversación sobre VITAIROS-M"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_next" value="https://www.vitairos.com/vitairos-m/?enviado=1#conversemos"><input type="hidden" name="proyecto" value="VITAIROS-M"><input type="hidden" name="origen" value="Landing VITAIROS-M V2.1"><input type="hidden" name="privacy_version" value="2026-10"><input class="form-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <div class="form-heading"><span>Contacto</span><p>Cuéntanos desde qué perspectiva quieres conversar.</p></div>
+            <input type="hidden" name="_subject" value="Conversación sobre VITAIROS-M"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_next" value="https://www.vitairos.com/vitairos-m/?enviado=1#conversemos"><input type="hidden" name="proyecto" value="VITAIROS-M"><input type="hidden" name="origen" value="Landing VITAIROS-M V2.2.5"><input type="hidden" name="privacy_version" value="2026-10"><input class="form-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="form-heading"><span>Primer contacto · Revisión humana</span><h3>Conversemos desde tu contexto.</h3><p>Déjanos una señal breve para saber qué te gustaría explorar.</p></div>
             <div class="field-row"><label for="nombre">Nombre<input id="nombre" name="nombre" type="text" autocomplete="name" required placeholder="Tu nombre"></label><label for="correo">Correo<input id="correo" name="correo" type="email" autocomplete="email" required placeholder="tu@correo.cl"></label></div>
             <label for="perfil">Me interesa como<select id="perfil" name="perfil" required><option value="">Selecciona una opción</option><option value="persona">Persona interesada</option><option value="profesional">Profesional de salud mental</option><option value="institucion">Institución u organización</option><option value="colaboracion">Colaboración o desarrollo</option></select></label>
-            <label for="mensaje">Contexto <small>(opcional)</small><textarea id="mensaje" name="mensaje" rows="4" maxlength="800" placeholder="¿Qué te gustaría explorar?"></textarea></label>
+            <label for="mensaje">¿Qué te gustaría conversar? <small>(opcional)</small><textarea id="mensaje" name="mensaje" rows="4" maxlength="800" placeholder="Puedes contarnos una necesidad, una pregunta o una posibilidad de colaboración."></textarea></label>
             <div class="privacy-consent"><input id="privacyConsent" name="privacy_consent" type="checkbox" value="yes" required><div><label for="privacyConsent">He leído la</label> <button type="button" data-modal-open="privacidad">Política de Privacidad</button> <label for="privacyConsent">y autorizo a VITAIROS SpA a tratar mis datos para responder esta solicitud.</label></div></div>
-            <button class="button button--primary form-submit" type="submit">Enviar para revisión <span aria-hidden="true">→</span></button>
-            <p class="form-note">El formulario es procesado mediante FormSubmit. No utilizaremos estos datos para marketing sin un consentimiento separado.</p>
+            <button class="button button--primary form-submit" type="submit"><span>Quiero conversar</span><span aria-hidden="true">→</span></button>
+            <p class="form-note"><span aria-hidden="true">⌁</span> Revisaremos tu mensaje antes de responder. FormSubmit procesa el envío y no utilizaremos estos datos para marketing sin un consentimiento separado.</p>
           </form>
           <div class="form-success" id="formSuccess" hidden tabindex="-1"><span aria-hidden="true">✓</span><h3>Recibimos tu contexto.</h3><p>Lo revisaremos antes de responderte. Gracias por conversar con VITAIROS-M.</p><a href="./">Volver al inicio</a></div>
         </div>
