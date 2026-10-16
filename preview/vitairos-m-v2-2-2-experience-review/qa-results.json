@@ -1,0 +1,734 @@
+{
+  "baseURL": "http://127.0.0.1:4174/vitairos-m/",
+  "intro": {
+    "pendingAtNodes": true,
+    "logoOpacity": 1,
+    "afterIntro": {
+      "pending": false,
+      "hidden": true,
+      "seen": "1"
+    },
+    "repeated": false
+  },
+  "reducedMotion": {
+    "pending": false,
+    "introDisplay": "none",
+    "hiddenRevealCount": 0,
+    "loopDash": "0px",
+    "loopPulse": "none",
+    "orbitPulse": "none"
+  },
+  "viewports": [
+    {
+      "viewport": "1920x1080",
+      "clientWidth": 1920,
+      "scrollWidth": 1920,
+      "h1Count": 1,
+      "headingSkips": [],
+      "duplicateIds": [],
+      "missingLabels": [],
+      "missingAriaReferences": [],
+      "brokenImages": [],
+      "logos": [
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        }
+      ],
+      "undersizedTargets": [],
+      "outsideViewport": [],
+      "mobileLoopGaps": [
+        10,
+        229,
+        -67,
+        -197,
+        -493
+      ],
+      "mobileRoute": {
+        "content": "none",
+        "width": null,
+        "height": null,
+        "background": "none"
+      },
+      "quoteMarks": 2,
+      "quoteHeight": 230,
+      "navbarBackground": "rgb(255, 255, 255)",
+      "legalFonts": {
+        "consent": 14,
+        "formNote": 13,
+        "footerLabel": 13,
+        "footerHelp": 14
+      },
+      "sectionHeights": {
+        "breach": 1184.640625,
+        "continuity": 1398.421875,
+        "experience": 1328.84375,
+        "safety": 818.953125,
+        "state": 878.28125,
+        "ecosystem": 560.15625
+      },
+      "form": {
+        "action": "https://formsubmit.co/contacto@vitairos.com",
+        "required": true,
+        "checked": false,
+        "privacyVersion": "2026-10"
+      },
+      "seo": {
+        "title": "VITAIROS-M | Continuidad en salud mental digital",
+        "description": true,
+        "canonical": "https://www.vitairos.com/vitairos-m/",
+        "openGraph": true,
+        "twitter": true,
+        "jsonLd": true
+      },
+      "consoleErrors": 0,
+      "requestFailures": 0
+    },
+    {
+      "viewport": "1440x900",
+      "clientWidth": 1440,
+      "scrollWidth": 1440,
+      "h1Count": 1,
+      "headingSkips": [],
+      "duplicateIds": [],
+      "missingLabels": [],
+      "missingAriaReferences": [],
+      "brokenImages": [],
+      "logos": [
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        }
+      ],
+      "undersizedTargets": [],
+      "outsideViewport": [],
+      "mobileLoopGaps": [
+        22,
+        229,
+        -79,
+        -185,
+        -493
+      ],
+      "mobileRoute": {
+        "content": "none",
+        "width": null,
+        "height": null,
+        "background": "none"
+      },
+      "quoteMarks": 2,
+      "quoteHeight": 230,
+      "navbarBackground": "rgb(255, 255, 255)",
+      "legalFonts": {
+        "consent": 14,
+        "formNote": 13,
+        "footerLabel": 13,
+        "footerHelp": 14
+      },
+      "sectionHeights": {
+        "breach": 1120.34375,
+        "continuity": 1362.90625,
+        "experience": 1279.65625,
+        "safety": 786.6875,
+        "state": 855.84375,
+        "ecosystem": 550.65625
+      },
+      "form": {
+        "action": "https://formsubmit.co/contacto@vitairos.com",
+        "required": true,
+        "checked": false,
+        "privacyVersion": "2026-10"
+      },
+      "seo": {
+        "title": "VITAIROS-M | Continuidad en salud mental digital",
+        "description": true,
+        "canonical": "https://www.vitairos.com/vitairos-m/",
+        "openGraph": true,
+        "twitter": true,
+        "jsonLd": true
+      },
+      "consoleErrors": 0,
+      "requestFailures": 0
+    },
+    {
+      "viewport": "1366x768",
+      "clientWidth": 1366,
+      "scrollWidth": 1366,
+      "h1Count": 1,
+      "headingSkips": [],
+      "duplicateIds": [],
+      "missingLabels": [],
+      "missingAriaReferences": [],
+      "brokenImages": [],
+      "logos": [
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        }
+      ],
+      "undersizedTargets": [],
+      "outsideViewport": [],
+      "mobileLoopGaps": [
+        22,
+        229,
+        -79,
+        -185,
+        -493
+      ],
+      "mobileRoute": {
+        "content": "none",
+        "width": null,
+        "height": null,
+        "background": "none"
+      },
+      "quoteMarks": 2,
+      "quoteHeight": 230,
+      "navbarBackground": "rgb(255, 255, 255)",
+      "legalFonts": {
+        "consent": 14,
+        "formNote": 13,
+        "footerLabel": 13,
+        "footerHelp": 14
+      },
+      "sectionHeights": {
+        "breach": 1095.984375,
+        "continuity": 1335.671875,
+        "experience": 1250.46875,
+        "safety": 757.09375,
+        "state": 833.609375,
+        "ecosystem": 536
+      },
+      "form": {
+        "action": "https://formsubmit.co/contacto@vitairos.com",
+        "required": true,
+        "checked": false,
+        "privacyVersion": "2026-10"
+      },
+      "seo": {
+        "title": "VITAIROS-M | Continuidad en salud mental digital",
+        "description": true,
+        "canonical": "https://www.vitairos.com/vitairos-m/",
+        "openGraph": true,
+        "twitter": true,
+        "jsonLd": true
+      },
+      "consoleErrors": 0,
+      "requestFailures": 0
+    },
+    {
+      "viewport": "1024x768",
+      "clientWidth": 1024,
+      "scrollWidth": 1024,
+      "h1Count": 1,
+      "headingSkips": [],
+      "duplicateIds": [],
+      "missingLabels": [],
+      "missingAriaReferences": [],
+      "brokenImages": [],
+      "logos": [
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        }
+      ],
+      "undersizedTargets": [],
+      "outsideViewport": [],
+      "mobileLoopGaps": [
+        -142,
+        18,
+        -142,
+        18,
+        -142
+      ],
+      "mobileRoute": {
+        "content": "none",
+        "width": null,
+        "height": null,
+        "background": "none"
+      },
+      "quoteMarks": 2,
+      "quoteHeight": 230,
+      "navbarBackground": "rgb(255, 255, 255)",
+      "legalFonts": {
+        "consent": 14,
+        "formNote": 13,
+        "footerLabel": 13,
+        "footerHelp": 14
+      },
+      "sectionHeights": {
+        "breach": 1078.875,
+        "continuity": 1128.515625,
+        "experience": 1725.84375,
+        "safety": 949.703125,
+        "state": 861.953125,
+        "ecosystem": 469.25
+      },
+      "form": {
+        "action": "https://formsubmit.co/contacto@vitairos.com",
+        "required": true,
+        "checked": false,
+        "privacyVersion": "2026-10"
+      },
+      "seo": {
+        "title": "VITAIROS-M | Continuidad en salud mental digital",
+        "description": true,
+        "canonical": "https://www.vitairos.com/vitairos-m/",
+        "openGraph": true,
+        "twitter": true,
+        "jsonLd": true
+      },
+      "consoleErrors": 0,
+      "requestFailures": 0
+    },
+    {
+      "viewport": "768x1024",
+      "clientWidth": 768,
+      "scrollWidth": 768,
+      "h1Count": 1,
+      "headingSkips": [],
+      "duplicateIds": [],
+      "missingLabels": [],
+      "missingAriaReferences": [],
+      "brokenImages": [],
+      "logos": [
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        }
+      ],
+      "undersizedTargets": [],
+      "outsideViewport": [],
+      "mobileLoopGaps": [
+        -142,
+        18,
+        -142,
+        18,
+        -142
+      ],
+      "mobileRoute": {
+        "content": "none",
+        "width": null,
+        "height": null,
+        "background": "none"
+      },
+      "quoteMarks": 2,
+      "quoteHeight": 230,
+      "navbarBackground": "rgb(255, 255, 255)",
+      "legalFonts": {
+        "consent": 14,
+        "formNote": 13,
+        "footerLabel": 13,
+        "footerHelp": 14
+      },
+      "sectionHeights": {
+        "breach": 1059.375,
+        "continuity": 1078.265625,
+        "experience": 1642.453125,
+        "safety": 914.828125,
+        "state": 865.609375,
+        "ecosystem": 465.8125
+      },
+      "form": {
+        "action": "https://formsubmit.co/contacto@vitairos.com",
+        "required": true,
+        "checked": false,
+        "privacyVersion": "2026-10"
+      },
+      "seo": {
+        "title": "VITAIROS-M | Continuidad en salud mental digital",
+        "description": true,
+        "canonical": "https://www.vitairos.com/vitairos-m/",
+        "openGraph": true,
+        "twitter": true,
+        "jsonLd": true
+      },
+      "consoleErrors": 0,
+      "requestFailures": 0
+    },
+    {
+      "viewport": "430x932",
+      "clientWidth": 430,
+      "scrollWidth": 430,
+      "h1Count": 1,
+      "headingSkips": [],
+      "duplicateIds": [],
+      "missingLabels": [],
+      "missingAriaReferences": [],
+      "brokenImages": [],
+      "logos": [
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        }
+      ],
+      "undersizedTargets": [],
+      "outsideViewport": [],
+      "mobileLoopGaps": [
+        18,
+        18,
+        18,
+        18,
+        18
+      ],
+      "mobileRoute": {
+        "content": "\"\"",
+        "width": 4,
+        "height": 801,
+        "background": "linear-gradient(rgb(0, 201, 142) 0%, rgb(0, 185, 211) 52%, rgb(0, 165, 244) 100%)"
+      },
+      "quoteMarks": 2,
+      "quoteHeight": 190,
+      "navbarBackground": "rgb(255, 255, 255)",
+      "legalFonts": {
+        "consent": 14,
+        "formNote": 13,
+        "footerLabel": 13,
+        "footerHelp": 14
+      },
+      "sectionHeights": {
+        "breach": 1271.875,
+        "continuity": 1612.921875,
+        "experience": 1790.546875,
+        "safety": 1308.59375,
+        "state": 1388.21875,
+        "ecosystem": 964.90625
+      },
+      "form": {
+        "action": "https://formsubmit.co/contacto@vitairos.com",
+        "required": true,
+        "checked": false,
+        "privacyVersion": "2026-10"
+      },
+      "seo": {
+        "title": "VITAIROS-M | Continuidad en salud mental digital",
+        "description": true,
+        "canonical": "https://www.vitairos.com/vitairos-m/",
+        "openGraph": true,
+        "twitter": true,
+        "jsonLd": true
+      },
+      "consoleErrors": 0,
+      "requestFailures": 0
+    },
+    {
+      "viewport": "390x844",
+      "clientWidth": 390,
+      "scrollWidth": 390,
+      "h1Count": 1,
+      "headingSkips": [],
+      "duplicateIds": [],
+      "missingLabels": [],
+      "missingAriaReferences": [],
+      "brokenImages": [],
+      "logos": [
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        }
+      ],
+      "undersizedTargets": [],
+      "outsideViewport": [],
+      "mobileLoopGaps": [
+        18,
+        18,
+        18,
+        18,
+        18
+      ],
+      "mobileRoute": {
+        "content": "\"\"",
+        "width": 4,
+        "height": 801,
+        "background": "linear-gradient(rgb(0, 201, 142) 0%, rgb(0, 185, 211) 52%, rgb(0, 165, 244) 100%)"
+      },
+      "quoteMarks": 2,
+      "quoteHeight": 190,
+      "navbarBackground": "rgb(255, 255, 255)",
+      "legalFonts": {
+        "consent": 14,
+        "formNote": 13,
+        "footerLabel": 13,
+        "footerHelp": 14
+      },
+      "sectionHeights": {
+        "breach": 1311.109375,
+        "continuity": 1599.375,
+        "experience": 1777,
+        "safety": 1290.53125,
+        "state": 1473.0625,
+        "ecosystem": 955.875
+      },
+      "form": {
+        "action": "https://formsubmit.co/contacto@vitairos.com",
+        "required": true,
+        "checked": false,
+        "privacyVersion": "2026-10"
+      },
+      "seo": {
+        "title": "VITAIROS-M | Continuidad en salud mental digital",
+        "description": true,
+        "canonical": "https://www.vitairos.com/vitairos-m/",
+        "openGraph": true,
+        "twitter": true,
+        "jsonLd": true
+      },
+      "consoleErrors": 0,
+      "requestFailures": 0
+    },
+    {
+      "viewport": "360x800",
+      "clientWidth": 360,
+      "scrollWidth": 360,
+      "h1Count": 1,
+      "headingSkips": [],
+      "duplicateIds": [],
+      "missingLabels": [],
+      "missingAriaReferences": [],
+      "brokenImages": [],
+      "logos": [
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        },
+        {
+          "src": "assets/vitairos-m-logo.png",
+          "width": 574,
+          "height": 166
+        }
+      ],
+      "undersizedTargets": [],
+      "outsideViewport": [],
+      "mobileLoopGaps": [
+        18,
+        18,
+        18,
+        18,
+        18
+      ],
+      "mobileRoute": {
+        "content": "\"\"",
+        "width": 4,
+        "height": 801,
+        "background": "linear-gradient(rgb(0, 201, 142) 0%, rgb(0, 185, 211) 52%, rgb(0, 165, 244) 100%)"
+      },
+      "quoteMarks": 2,
+      "quoteHeight": 190,
+      "navbarBackground": "rgb(255, 255, 255)",
+      "legalFonts": {
+        "consent": 14,
+        "formNote": 13,
+        "footerLabel": 13,
+        "footerHelp": 14
+      },
+      "sectionHeights": {
+        "breach": 1353.8125,
+        "continuity": 1615.6875,
+        "experience": 1819.703125,
+        "safety": 1277.09375,
+        "state": 1462.984375,
+        "ecosystem": 949.15625
+      },
+      "form": {
+        "action": "https://formsubmit.co/contacto@vitairos.com",
+        "required": true,
+        "checked": false,
+        "privacyVersion": "2026-10"
+      },
+      "seo": {
+        "title": "VITAIROS-M | Continuidad en salud mental digital",
+        "description": true,
+        "canonical": "https://www.vitairos.com/vitairos-m/",
+        "openGraph": true,
+        "twitter": true,
+        "jsonLd": true
+      },
+      "consoleErrors": 0,
+      "requestFailures": 0
+    }
+  ],
+  "screenshots": [
+    "01-intro-nodes.png",
+    "02-intro-logo.png",
+    "03-hero-desktop.png",
+    "04-hero-mobile.png",
+    "05-brecha.png",
+    "06-cita.png",
+    "07-continuity-before.png",
+    "08-continuity-complete.png",
+    "09-persona.png",
+    "10-profesional.png",
+    "11-seguridad.png",
+    "12-estado.png",
+    "13-ecosistema.png",
+    "14-contacto.png",
+    "15-full-desktop.png",
+    "16-full-mobile.png"
+  ],
+  "motionEvidence": {
+    "status": "unavailable",
+    "reason": "browserContext.newPage: Executable doesn't exist at C:\\Users\\basti\\AppData\\Local\\ms-playwright\\ffmpeg-1011\\ffmpeg-win64.exe\n╔═════════════════════════════════════════════════════════════════╗\n║ Video rendering requires ffmpeg binary.                         ║\n║ Downloading it will not affect any of the system-wide settings. ║\n║ Please run the following command:                               ║\n║                                                                 ║\n║     npx playwright install ffmpeg                               ║\n║                                                                 ║\n║ <3 Playwright Team                                              ║\n╚═════════════════════════════════════════════════════════════════╝"
+  },
+  "failures": []
+}
