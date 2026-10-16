@@ -116,6 +116,11 @@
   /* Accessible legal dialogs */
   var modalReturnFocus = null;
   var activeModal = null;
+  var demandPanel = document.querySelector("[data-demand-panel]");
+  var demandTriggers = Array.prototype.slice.call(document.querySelectorAll("[data-lead-select]"));
+  var demandViews = Array.prototype.slice.call(document.querySelectorAll("[data-lead-view]"));
+  var activeDemandTrigger = null;
+  var demandCloseTimer = 0;
 
   function closeModal(name) {
     var modal = document.getElementById("modal-" + name);
@@ -157,7 +162,11 @@
       closeModal(activeModal.id.replace("modal-", ""));
       return;
     }
-    if (menuButton && menuButton.getAttribute("aria-expanded") === "true") closeMenu(true);
+    if (menuButton && menuButton.getAttribute("aria-expanded") === "true") {
+      closeMenu(true);
+      return;
+    }
+    if (demandPanel && !demandPanel.hidden) closeDemand(true);
   });
 
   /* Keyboard-friendly perspective tabs */
@@ -269,14 +278,115 @@
     }, 1400);
   }
 
-  /* Confirmed form state after FormSubmit redirect */
-  var contactForm = document.getElementById("contactForm");
-  var formSuccess = document.getElementById("formSuccess");
+  /* Participation paths, lead routing and FormSubmit state */
   var params = new URLSearchParams(window.location.search);
-  if (params.get("enviado") === "1" && contactForm && formSuccess) {
-    contactForm.hidden = true;
-    formSuccess.hidden = false;
-    window.setTimeout(function () { formSuccess.focus(); }, 60);
+  var validLeadTypes = ["person", "professional", "institution"];
+
+  function openDemand(type, moveFocus) {
+    if (!demandPanel || validLeadTypes.indexOf(type) === -1) return;
+    window.clearTimeout(demandCloseTimer);
+    activeDemandTrigger = demandTriggers.find(function (trigger) {
+      return trigger.getAttribute("data-lead-select") === type;
+    }) || activeDemandTrigger;
+    demandTriggers.forEach(function (trigger) {
+      var selected = trigger.getAttribute("data-lead-select") === type;
+      trigger.classList.toggle("is-selected", selected);
+      trigger.setAttribute("aria-expanded", selected ? "true" : "false");
+    });
+    demandViews.forEach(function (view) {
+      view.hidden = view.getAttribute("data-lead-view") !== type;
+    });
+    demandPanel.setAttribute("data-active-lead", type);
+    demandPanel.hidden = false;
+    window.requestAnimationFrame(function () {
+      demandPanel.classList.add("is-open");
+      if (!moveFocus) return;
+      var activeView = demandPanel.querySelector('[data-lead-view="' + type + '"]');
+      var heading = activeView ? activeView.querySelector("h3[tabindex='-1']") : null;
+      if (heading) heading.focus({ preventScroll: true });
+      demandPanel.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+    });
+  }
+
+  function closeDemand(restoreFocus) {
+    if (!demandPanel || demandPanel.hidden) return;
+    demandPanel.classList.remove("is-open");
+    demandTriggers.forEach(function (trigger) {
+      trigger.classList.remove("is-selected");
+      trigger.setAttribute("aria-expanded", "false");
+    });
+    demandCloseTimer = window.setTimeout(function () {
+      demandPanel.hidden = true;
+      demandPanel.setAttribute("data-active-lead", "");
+      demandViews.forEach(function (view) { view.hidden = true; });
+    }, reducedMotion ? 0 : 320);
+    if (restoreFocus !== false && activeDemandTrigger) activeDemandTrigger.focus({ preventScroll: true });
+  }
+
+  demandTriggers.forEach(function (trigger, index) {
+    trigger.addEventListener("click", function () {
+      openDemand(trigger.getAttribute("data-lead-select"), true);
+    });
+    trigger.addEventListener("keydown", function (event) {
+      var next = index;
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") next = (index + 1) % demandTriggers.length;
+      else if (event.key === "ArrowLeft" || event.key === "ArrowUp") next = (index - 1 + demandTriggers.length) % demandTriggers.length;
+      else if (event.key === "Home") next = 0;
+      else if (event.key === "End") next = demandTriggers.length - 1;
+      else return;
+      event.preventDefault();
+      demandTriggers[next].focus();
+    });
+  });
+
+  document.querySelectorAll("[data-demand-close]").forEach(function (button) {
+    button.addEventListener("click", function () { closeDemand(true); });
+  });
+
+  function setTrackingField(form, name, value) {
+    var field = form.querySelector('input[name="' + name + '"]');
+    if (!field) {
+      field = document.createElement("input");
+      field.type = "hidden";
+      field.name = name;
+      form.appendChild(field);
+    }
+    field.value = value || "";
+  }
+
+  document.querySelectorAll("[data-tracking-form]").forEach(function (form) {
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(function (name) {
+      setTrackingField(form, name, params.get(name) || "");
+    });
+    setTrackingField(form, "referrer", document.referrer || "direct");
+    setTrackingField(form, "landing_path", window.location.pathname);
+
+    form.addEventListener("invalid", function () {
+      var error = form.querySelector("[data-form-error]");
+      if (error) error.hidden = false;
+    }, true);
+    ["input", "change"].forEach(function (eventName) {
+      form.addEventListener(eventName, function () {
+        var error = form.querySelector("[data-form-error]");
+        if (error && form.checkValidity()) error.hidden = true;
+      });
+    });
+  });
+
+  var confirmedLead = params.get("lead");
+  if (params.get("enviado") === "1" && validLeadTypes.indexOf(confirmedLead) !== -1) {
+    var confirmedView = document.querySelector('[data-lead-view="' + confirmedLead + '"]');
+    var confirmedForm = confirmedView ? confirmedView.querySelector("[data-demand-form]") : null;
+    var confirmedSuccess = confirmedView ? confirmedView.querySelector('[data-demand-success="' + confirmedLead + '"]') : null;
+    if (confirmedForm && confirmedSuccess) {
+      confirmedForm.hidden = true;
+      confirmedSuccess.hidden = false;
+      openDemand(confirmedLead, false);
+      window.setTimeout(function () {
+        confirmedSuccess.focus({ preventScroll: true });
+        document.getElementById("participa").scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+      }, 80);
+    }
   }
 
   var year = document.getElementById("year");
