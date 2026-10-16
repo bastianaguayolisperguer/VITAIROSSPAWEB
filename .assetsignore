@@ -1,3 +1,11 @@
 # Repository metadata is not a public website asset.
 .git
 .git/**
+
+# Internal release evidence is tracked in Git, but is not a public website asset.
+docs
+docs/**
+tests
+tests/**
+preview
+preview/**
