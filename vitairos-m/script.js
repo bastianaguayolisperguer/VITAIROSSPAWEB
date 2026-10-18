@@ -361,6 +361,56 @@
     setTrackingField(form, "referrer", document.referrer || "direct");
     setTrackingField(form, "landing_path", window.location.pathname);
 
+    if (form.getAttribute("data-lead-type") === "professional") {
+      form.addEventListener("submit", function (event) {
+        if (!form.checkValidity()) return;
+        event.preventDefault();
+
+        var error = form.querySelector("[data-form-error]");
+        var submitButton = form.querySelector('[type="submit"]');
+        var endpoint = form.action.replace("https://formsubmit.co/", "https://formsubmit.co/ajax/");
+        var payload = {};
+        new FormData(form).forEach(function (value, name) { payload[name] = value; });
+        delete payload._next;
+
+        if (error) error.hidden = true;
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.setAttribute("aria-busy", "true");
+        }
+
+        fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(payload)
+        }).then(function (response) {
+          return response.json().then(function (data) {
+            if (!response.ok || (data.success !== true && data.success !== "true")) {
+              throw new Error(data.message || "FormSubmit rejected the request");
+            }
+            return data;
+          });
+        }).then(function () {
+          var view = form.closest("[data-lead-view]");
+          var success = view ? view.querySelector('[data-demand-success="professional"]') : null;
+          if (!success) throw new Error("Professional success state not found");
+          form.hidden = true;
+          success.hidden = false;
+          success.focus({ preventScroll: true });
+        }).catch(function () {
+          if (error) {
+            error.textContent = "No pudimos completar el envío. Inténtalo nuevamente en unos minutos.";
+            error.hidden = false;
+          }
+        }).then(function () {
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.removeAttribute("aria-busy");
+          }
+        });
+      });
+    }
+
     form.addEventListener("invalid", function () {
       var error = form.querySelector("[data-form-error]");
       if (error) error.hidden = false;
