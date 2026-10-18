@@ -15,10 +15,17 @@ async function pageReady(browser) {
 async function interceptPayload(page) {
   await page.evaluate(() => {
     window.__diagnosticPayload = null;
-    document.getElementById('diagnosticForm').addEventListener('submit', (event) => {
-      event.preventDefault();
-      window.__diagnosticPayload = Object.fromEntries(new FormData(event.currentTarget).entries());
-    }, { once: true });
+    window.__diagnosticRequest = null;
+    const originalFetch = window.fetch.bind(window);
+    window.fetch = async (input, init = {}) => {
+      const url = typeof input === 'string' ? input : input.url;
+      if (url.startsWith('https://formsubmit.co/ajax/')) {
+        window.__diagnosticRequest = { url, method: init.method, headers: init.headers };
+        window.__diagnosticPayload = JSON.parse(init.body);
+        return new Response(JSON.stringify({ success: 'true', message: 'The form was submitted successfully.' }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+      }
+      return originalFetch(input, init);
+    };
   });
 }
 
@@ -84,7 +91,9 @@ async function fillContact(page, suffix) {
   if (!privacyOpen.open || privacyOpen.hidden !== 'false' || privacyOpen.focused !== 'privacidad' || !focusWrappedBackward || !focusWrappedForward || privacyClosed.hidden !== 'true' || !privacyClosed.restored) failures.push('Política de Privacidad no conserva apertura, focus trap, Escape o focus restore');
   await commercial.locator('#privacyConsent').check();
   await commercial.locator('#diagnosticForm button[type="submit"]').click();
-  const commercialPayload = await commercial.evaluate(() => window.__diagnosticPayload);
+  await commercial.waitForFunction(() => window.__diagnosticPayload && document.getElementById('diagnosticForm').hidden);
+  const commercialResult = await commercial.evaluate(() => ({ payload: window.__diagnosticPayload, request: window.__diagnosticRequest, formHidden: document.getElementById('diagnosticForm').hidden, thanksVisible: getComputedStyle(document.getElementById('gracias')).display !== 'none' }));
+  const commercialPayload = commercialResult.payload;
   const commercialExpected = {
     lead_type: 'commercial', oportunidad: 'Un proceso manual', etapa: 'Explorando', nombre: 'QA Commercial',
     empresa: 'VITAIROS QA Commercial', email: 'qa.commercial@example.com', telefono: '+56 9 1111 2222',
@@ -92,6 +101,7 @@ async function fillContact(page, suffix) {
   };
   for (const [key, value] of Object.entries(commercialExpected)) if (commercialPayload?.[key] !== value) failures.push(`Commercial payload ${key}: ${commercialPayload?.[key]}`);
   if (!commercialPayload?.contexto?.includes('oportunidad comercial')) failures.push('Commercial payload contexto ausente');
+  if (commercialPayload?._next || commercialResult.request?.method !== 'POST' || !commercialResult.request?.url.startsWith('https://formsubmit.co/ajax/') || !commercialResult.formHidden || !commercialResult.thanksVisible) failures.push('Commercial no usa FormSubmit AJAX o no muestra confirmación interna');
   await commercial.close();
 
   const careers = await pageReady(browser);
@@ -109,7 +119,9 @@ async function fillContact(page, suffix) {
   if (careersConsentDefault || careersBlocked.payload || careersBlocked.visibleStep !== '4' || careersBlocked.focused !== 'privacyConsent' || careersBlocked.valid) failures.push('Careers no bloquea y enfoca el consentimiento pendiente');
   await careers.locator('#privacyConsent').check();
   await careers.locator('#diagnosticForm button[type="submit"]').click();
-  const careersPayload = await careers.evaluate(() => window.__diagnosticPayload);
+  await careers.waitForFunction(() => window.__diagnosticPayload && document.getElementById('diagnosticForm').hidden);
+  const careersResult = await careers.evaluate(() => ({ payload: window.__diagnosticPayload, request: window.__diagnosticRequest, formHidden: document.getElementById('diagnosticForm').hidden, thanksVisible: getComputedStyle(document.getElementById('gracias')).display !== 'none' }));
+  const careersPayload = careersResult.payload;
   const careersExpected = {
     lead_type: 'careers', oportunidad: 'Trabaja con nosotros', nombre: 'QA Careers',
     empresa: 'VITAIROS QA Careers', email: 'qa.careers@example.com', telefono: '+56 9 1111 2222',
@@ -118,6 +130,7 @@ async function fillContact(page, suffix) {
   for (const [key, value] of Object.entries(careersExpected)) if (careersPayload?.[key] !== value) failures.push(`Careers payload ${key}: ${careersPayload?.[key]}`);
   if ('etapa' in (careersPayload || {})) failures.push('Careers payload incluye etapa comercial');
   if (!careersPayload?.contexto?.includes('interés laboral')) failures.push('Careers payload contexto ausente');
+  if (careersPayload?._next || careersResult.request?.method !== 'POST' || !careersResult.request?.url.startsWith('https://formsubmit.co/ajax/') || !careersResult.formHidden || !careersResult.thanksVisible) failures.push('Careers no usa FormSubmit AJAX o no muestra confirmación interna');
   await careers.close();
 
   const errorsPage = await pageReady(browser);
@@ -176,7 +189,7 @@ async function fillContact(page, suffix) {
   }
 
   await browser.close();
-  const result = { consentContract, commercialBlocked, commercialPayload, privacyOpen, privacyClosed, focusWrappedBackward, focusWrappedForward, careersBlocked, careersPayload, careerStep, invalidState, successState, audit, routeStatuses, failures };
+  const result = { consentContract, commercialBlocked, commercialResult, privacyOpen, privacyClosed, focusWrappedBackward, focusWrappedForward, careersBlocked, careersResult, careerStep, invalidState, successState, audit, routeStatuses, failures };
   console.log(JSON.stringify(result, null, 2));
   process.exitCode = failures.length ? 1 : 0;
 })().catch((error) => { console.error(error); process.exit(1); });

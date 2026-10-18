@@ -239,7 +239,22 @@
     form.querySelectorAll('input[name="oportunidad"]').forEach(function(input){input.addEventListener('change',syncIntent);});form.querySelectorAll('[data-next-step]').forEach(function(button){button.addEventListener('click',function(){if(!validateCurrent())return;syncIntent();showStep(isCareerPath()&&current===2?4:current+1,true);});});form.querySelectorAll('[data-previous-step]').forEach(function(button){button.addEventListener('click',function(){showStep(isCareerPath()&&current===4?2:current-1,true);});});
     function updateContextFeedback(){if(contextInput&&contextFeedback){contextFeedback.textContent=contextInput.value.length+' / '+contextInput.maxLength;contextFeedback.classList.toggle('has-content',contextInput.value.length>0);}}if(contextInput){contextInput.addEventListener('input',updateContextFeedback);updateContextFeedback();}
     document.querySelectorAll('[data-diagnostic-careers]').forEach(function(link){link.addEventListener('click',function(){var careerOption=form.querySelector('input[name="oportunidad"][value="Trabaja con nosotros"]');if(careerOption){careerOption.checked=true;syncIntent();showStep(1,false);}});});
-    var started=false;form.addEventListener('focusin',function(){if(started)return;started=true;document.dispatchEvent(new CustomEvent('vitairos:analytics',{detail:{event:'diagnostic_start'}}));});form.addEventListener('submit',function(){document.dispatchEvent(new CustomEvent('vitairos:analytics',{detail:{event:'diagnostic_submit'}}));});showStep(1,false);
+    var started=false;form.addEventListener('focusin',function(){if(started)return;started=true;document.dispatchEvent(new CustomEvent('vitairos:analytics',{detail:{event:'diagnostic_start'}}));});form.addEventListener('submit',function(event){
+      if(!form.checkValidity())return;
+      event.preventDefault();
+      document.dispatchEvent(new CustomEvent('vitairos:analytics',{detail:{event:'diagnostic_submit'}}));
+      syncIntent();
+      var submitButton=form.querySelector('button[type="submit"]'),status=document.getElementById('diagnosticFormStatus'),thanks=document.getElementById('gracias');
+      var endpoint=form.action.replace('https://formsubmit.co/','https://formsubmit.co/ajax/'),payload={};
+      new FormData(form).forEach(function(value,name){payload[name]=value;});delete payload._next;
+      if(status){status.hidden=true;status.textContent='';}
+      if(submitButton){submitButton.disabled=true;submitButton.setAttribute('aria-busy','true');}
+      fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)}).then(function(response){return response.json().then(function(data){if(!response.ok||(data.success!==true&&data.success!=='true'))throw new Error(data.message||'FormSubmit rejected the request');return data;});}).then(function(){
+        form.hidden=true;if(thanks){thanks.style.display='block';thanks.focus({preventScroll:true});}
+      }).catch(function(){
+        if(status){status.textContent='No pudimos completar el envío. Inténtalo nuevamente en unos minutos.';status.hidden=false;}
+      }).then(function(){if(submitButton){submitButton.disabled=false;submitButton.removeAttribute('aria-busy');}});
+    });showStep(1,false);
     var params=new URLSearchParams(window.location.search);if(params.get('sent')==='1'){form.hidden=true;var thanks=document.getElementById('gracias');if(thanks){thanks.style.display='block';setTimeout(function(){thanks.focus();},50);}}
   })();
 
