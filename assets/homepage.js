@@ -120,10 +120,11 @@
     var geo=subdivide(verts.slice(),faces.slice());geo=subdivide(geo.verts,geo.faces);verts=geo.verts;faces=geo.faces;
     var edgeMap={},edges=[];
     faces.forEach(function(face){ [[face[0],face[1]],[face[1],face[2]],[face[0],face[2]]].forEach(function(edge){ var key=Math.min(edge[0],edge[1])+'_'+Math.max(edge[0],edge[1]);if(!edgeMap[key]){edgeMap[key]=true;edges.push(edge);} }); });
+    var operationalRoutes=[[4,8],[8,1],[1,9],[9,5],[5,2],[2,10],[10,6],[6,3],[3,7],[7,1],[0,4],[0,9]];
 
     var projectLinks=Array.prototype.slice.call(sphereWrap.querySelectorAll('.orbit-project'));
     var projectVertices=[4,8,1,9];
-    var angleY=0,angleX=.24,targetX=.24,targetY=0,pointerInside=false,activeProject=-1;
+    var angleY=0,angleX=.24,targetX=.24,targetY=0,pointerInside=false,activeProject=-1,signalClock=0;
     var cssW=520,cssH=520,raf=0,isDocumentVisible=true,isStoryVisible=true,resizeFrame=0;
     function resize(){
       var ratio=Math.min(window.devicePixelRatio||1,1.5);var rect=canvas.getBoundingClientRect();cssW=Math.max(220,Math.round(rect.width));cssH=Math.max(220,Math.round(rect.height));canvas.width=Math.round(cssW*ratio);canvas.height=Math.round(cssH*ratio);canvas.style.width=cssW+'px';canvas.style.height=cssH+'px';
@@ -135,10 +136,12 @@
       var rotated=verts.map(function(vertex){return rotY(rotX(vertex,angleX),angleY);});
       var projected=rotated.map(function(vertex){var perspective=1+vertex[2]*.07;return [cx+vertex[0]*radius*perspective,cy-vertex[1]*radius*perspective];});
       var ordered=edges.map(function(edge){return {edge:edge,z:(rotated[edge[0]][2]+rotated[edge[1]][2])/2};}).sort(function(a,b){return a.z-b.z;});
+      signalClock=(signalClock+.0035)%1;
 
       projectLinks.forEach(function(link,index){var vertex=projectVertices[index],depth=(rotated[vertex][2]+1)/2;link.style.left=projected[vertex][0]+'px';link.style.top=projected[vertex][1]+'px';link.style.setProperty('--node-scale',(.78+depth*.28).toFixed(3));link.style.setProperty('--node-opacity',(.42+depth*.58).toFixed(3));link.style.zIndex=String(5+Math.round(depth*10));link.classList.toggle('is-behind',rotated[vertex][2]<-.2);});
       ordered.forEach(function(item){var a=item.edge[0],b=item.edge[1],depth=(item.z+1)/2;if(depth<.08)return;var connected=activeProject>=0&&(a===projectVertices[activeProject]||b===projectVertices[activeProject]);ctx.beginPath();ctx.moveTo(projected[a][0],projected[a][1]);ctx.lineTo(projected[b][0],projected[b][1]);ctx.strokeStyle=connected?'rgba(106,215,176,.9)':(item.z>0?'rgba(23,166,115,'+(.07+depth*.34)+')':'rgba(28,102,177,'+(.03+depth*.17)+')');ctx.lineWidth=connected?1.8:.8;ctx.stroke();});
-      rotated.forEach(function(vertex,index){if(vertex[2]<-.08)return;var depth=(vertex[2]+1)/2,x=projected[index][0],y=projected[index][1],special=projectVertices.indexOf(index)>=0,size=special?3.8+depth*3:1+depth*1.5;var glow=ctx.createRadialGradient(x,y,0,x,y,size*4);glow.addColorStop(0,'rgba(106,215,176,'+(depth*.8)+')');glow.addColorStop(1,'rgba(106,215,176,0)');ctx.beginPath();ctx.arc(x,y,size*4,0,Math.PI*2);ctx.fillStyle=glow;ctx.fill();ctx.beginPath();ctx.arc(x,y,size,0,Math.PI*2);ctx.fillStyle=special?'rgba(106,215,176,'+depth+')':'rgba(23,166,115,'+(depth*.72)+')';ctx.fill();});
+      operationalRoutes.forEach(function(route,index){var a=route[0],b=route[1],depth=((rotated[a][2]+rotated[b][2])/2+1)/2;if(depth<.12)return;ctx.beginPath();ctx.moveTo(projected[a][0],projected[a][1]);ctx.lineTo(projected[b][0],projected[b][1]);ctx.strokeStyle='rgba(106,215,176,'+(.09+depth*.34)+')';ctx.lineWidth=1.25;ctx.stroke();var progress=(signalClock+index/operationalRoutes.length)%1;var x=projected[a][0]+(projected[b][0]-projected[a][0])*progress,y=projected[a][1]+(projected[b][1]-projected[a][1])*progress;ctx.beginPath();ctx.arc(x,y,1.5+depth*1.5,0,Math.PI*2);ctx.fillStyle='rgba(191,244,224,'+(.28+depth*.7)+')';ctx.shadowColor='rgba(106,215,176,.9)';ctx.shadowBlur=10;ctx.fill();ctx.shadowBlur=0;});
+      rotated.forEach(function(vertex,index){if(vertex[2]<-.08)return;var depth=(vertex[2]+1)/2,x=projected[index][0],y=projected[index][1],special=projectVertices.indexOf(index)>=0,hierarchy=index<12||index%29===0,size=special?4.2+depth*3.2:(hierarchy?2.2+depth*2:0.8+depth*1.15);var glow=ctx.createRadialGradient(x,y,0,x,y,size*4);glow.addColorStop(0,'rgba(106,215,176,'+(depth*(hierarchy ? .85 : .52))+')');glow.addColorStop(1,'rgba(106,215,176,0)');ctx.beginPath();ctx.arc(x,y,size*4,0,Math.PI*2);ctx.fillStyle=glow;ctx.fill();ctx.beginPath();ctx.arc(x,y,size,0,Math.PI*2);ctx.fillStyle=special?'rgba(191,244,224,'+depth+')':(hierarchy?'rgba(106,215,176,'+(depth*.9)+')':'rgba(23,166,115,'+(depth*.55)+')');ctx.fill();});
       sphereWrap.classList.add('canvas-ready');sphereWrap.classList.remove('show-fallback');
     }
     function loop(){if(!(isDocumentVisible&&isStoryVisible)){raf=0;return;}draw();raf=requestAnimationFrame(loop);}
@@ -168,17 +171,27 @@
 
   /* Value stage */
   var valueData={
-    process:{glyph:'→',signal:'Intervención / 01',title:'Simplificar antes de automatizar.',description:'Mapeamos la fricción, reducimos pasos y automatizamos solo lo que debe repetirse.',result:'Resultado posible · simplificación / automatización'},
-    information:{glyph:'≡',signal:'Intervención / 02',title:'Dar estructura al contexto.',description:'Conectamos datos y documentos para que la información conserve origen, contexto y trazabilidad.',result:'Resultado posible · estructura / contexto / trazabilidad'},
-    decisions:{glyph:'◇',signal:'Intervención / 03',title:'Hacer utilizable la información.',description:'Diseñamos una capa de apoyo que acerca la información relevante a la decisión, sin reemplazar el criterio humano.',result:'Resultado posible · mejor soporte para decidir'},
-    product:{glyph:'＋',signal:'Intervención / 04',title:'Integrar inteligencia en la experiencia.',description:'Incorporamos IA dentro de un producto digital con un propósito, un flujo y controles definidos.',result:'Resultado posible · IA integrada en una experiencia útil'}
+    process:{glyph:'FLUJO',signal:'Problema / Proceso',title:'Ordenar un flujo fragmentado.',description:'Mapeamos la fricción, reducimos pasos y automatizamos solo lo que debe repetirse.',result:'Resultado · un proceso conectado y más fácil de operar',core:'Proceso conectado',output:'Operación fluida',nodes:['Entrada','Revisión','Espera','Repetición']},
+    information:{glyph:'DATOS',signal:'Problema / Información',title:'Convertir información dispersa en información utilizable.',description:'Conectamos datos y documentos, preservamos su contexto y les damos una estructura que el proceso puede aprovechar.',result:'Resultado · información estructurada, contextual y disponible',core:'Información estructurada',output:'Dato utilizable',nodes:['Documento','Señal','Fragmento','Registro']},
+    decisions:{glyph:'CRITERIO',signal:'Problema / Decisiones',title:'Acercar claridad a una decisión.',description:'Organizamos las señales relevantes para apoyar decisiones humanas u operativas, sin delegar el criterio a una IA autónoma.',result:'Resultado · mejor soporte para decidir y actuar',core:'Señales organizadas',output:'Apoyo a decisión',nodes:['Contexto','Dato','Indicador','Restricción']},
+    product:{glyph:'PRODUCTO',signal:'Problema / Producto',title:'Integrar inteligencia con una función concreta.',description:'Combinamos IA, datos, automatización y software dentro de un producto digital con propósito y controles definidos.',result:'Resultado · inteligencia integrada en un producto funcional',core:'Función inteligente',output:'Producto operando',nodes:['IA','Datos','Automatización','Software']}
   };
   var valueExperience=document.querySelector('.value-experience');
   function activateValue(key){
     if(!valueExperience||!valueData[key])return;valueExperience.dataset.valueActive=key;valueExperience.querySelectorAll('.value-option').forEach(function(button){var active=button.dataset.value===key;button.classList.toggle('is-active',active);button.setAttribute('aria-pressed',String(active));});
-    document.getElementById('valueGlyph').textContent=valueData[key].glyph;document.getElementById('valueSignal').textContent=valueData[key].signal;document.getElementById('valueTitle').textContent=valueData[key].title;document.getElementById('valueDescription').textContent=valueData[key].description;document.getElementById('valueResult').textContent=valueData[key].result;
+    var data=valueData[key],visual=document.getElementById('valueVisual');
+    document.getElementById('valueGlyph').textContent=data.glyph;document.getElementById('valueSignal').textContent=data.signal;document.getElementById('valueTitle').textContent=data.title;document.getElementById('valueDescription').textContent=data.description;document.getElementById('valueResult').textContent=data.result;document.getElementById('valueCoreLabel').textContent=data.core;document.getElementById('valueOutputLabel').textContent=data.output;['A','B','C','D'].forEach(function(letter,index){document.getElementById('valueNode'+letter).textContent=data.nodes[index];});
+    if(visual&&!prefersReducedMotion){visual.classList.remove('is-switching');void visual.offsetWidth;visual.classList.add('is-switching');}
   }
   if(valueExperience)valueExperience.querySelectorAll('.value-option').forEach(function(button){['mouseenter','focus','click'].forEach(function(type){button.addEventListener(type,function(){activateValue(button.dataset.value);});});});
+
+  /* Technology integration: isolated components connect into one operating system */
+  (function(){
+    var story=document.querySelector('[data-integration-story]');if(!story)return;
+    function connect(){story.classList.add('is-connected');}
+    if(prefersReducedMotion||!('IntersectionObserver' in window)){connect();return;}
+    var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){connect();observer.disconnect();}});},{threshold:.34});observer.observe(story);
+  })();
 
   /* Method network grows with scroll */
   (function(){
@@ -189,17 +202,24 @@
 
   /* Ecosystem as one reactive instrument */
   var ecosystemData={
-    m:{sector:'Salud digital',name:'VITAIROS-M',labels:['Persona','Contexto','Profesional','Continuidad'],copy:'Continuidad entre la persona y la atención profesional.'},
-    industrial:{sector:'Industria y minería',name:'Industrial AI',labels:['Documentos','Operación','Datos','Trazabilidad'],copy:'Información operacional conectada con trazabilidad.'},
-    agro:{sector:'Agricultura',name:'Agro Intelligence',labels:['Territorio','Datos','Operación','Decisión'],copy:'Datos del territorio convertidos en soporte para decidir.'},
-    conecta:{sector:'Educación',name:'VITAIROS Conecta',labels:['Personas','Aprendizaje','Conexión','Oportunidad'],copy:'Personas y conocimiento conectados con oportunidades.'}
+    m:{sector:'Salud mental digital',name:'VITAIROS-M',labels:['Persona','Contexto','Profesional','Continuidad'],copy:'Continuidad entre la persona y la atención profesional.'},
+    industrial:{sector:'Industria y minería',name:'Industrial AI',labels:['Documento','Estructura','Dato útil','Proceso'],copy:'IA aplicada a información y procesos operativos.'},
+    agro:{sector:'Agricultura',name:'Agro Intelligence',labels:['Campo','Datos','Integración','Decisión'],copy:'Datos e inteligencia aplicada para apoyar decisiones productivas.'},
+    conecta:{sector:'Educación y adopción digital',name:'VITAIROS Conecta',labels:['Persona','Conocimiento','Práctica','Adopción'],copy:'Formación para una adopción responsable y segura de tecnología e IA.'}
   };
   var ecosystem=document.getElementById('ecosystemExperience');
   function activateEcosystem(key){
     if(!ecosystem||!ecosystemData[key])return;var data=ecosystemData[key];ecosystem.dataset.activeProject=key;ecosystem.querySelectorAll('.ecosystem-item').forEach(function(item){var active=item.dataset.ecosystemItem===key;item.classList.toggle('is-active',active);item.querySelector('button').setAttribute('aria-expanded',String(active));});
-    document.getElementById('ecosystemPreviewSector').textContent=data.sector;document.getElementById('ecosystemPreviewName').textContent=data.name;document.getElementById('ecosystemPreviewCopy').textContent=data.copy;['A','B','C','D'].forEach(function(letter,index){document.getElementById('ecosystemLabel'+letter).textContent=data.labels[index];});
+    document.getElementById('ecosystemPreviewSector').textContent=data.sector;document.getElementById('ecosystemPreviewName').textContent=data.name;document.getElementById('ecosystemPreviewCopy').textContent=data.copy;['A','B','C','D'].forEach(function(letter,index){document.getElementById('ecosystemLabel'+letter).textContent=data.labels[index];});if(!prefersReducedMotion){ecosystem.classList.remove('is-transitioning');void ecosystem.offsetWidth;ecosystem.classList.add('is-transitioning');}
   }
   if(ecosystem)ecosystem.querySelectorAll('.ecosystem-item').forEach(function(item){var button=item.querySelector('button');['mouseenter','focusin'].forEach(function(type){item.addEventListener(type,function(){activateEcosystem(item.dataset.ecosystemItem);});});button.addEventListener('click',function(){activateEcosystem(item.dataset.ecosystemItem);if(window.innerWidth<=820)document.getElementById('ecosystemPreview').scrollIntoView({behavior:prefersReducedMotion?'auto':'smooth',block:'nearest'});});});
+
+  /* Principles: one restrained pulse advances through the four criteria */
+  (function(){
+    var list=document.querySelector('[data-principles]'),progress=document.querySelector('[data-principles-progress]');if(!list||!progress)return;var items=Array.prototype.slice.call(list.children),frame=0;
+    function update(){frame=0;var rect=list.getBoundingClientRect();var amount=Math.max(0,Math.min(1,(window.innerHeight*.78-rect.top)/Math.max(rect.height*.82,1)));var activeCount=prefersReducedMotion?items.length:(amount<=.01?0:Math.min(items.length,Math.ceil(amount*items.length)));progress.style.setProperty('--principles-progress',String(prefersReducedMotion?1:amount));items.forEach(function(item,index){item.classList.toggle('is-scroll-active',index<activeCount);});}
+    function schedule(){if(!frame)frame=requestAnimationFrame(update);}window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule,{passive:true});update();
+  })();
 
   /* Ambient continuity: low-energy motion that sleeps outside the viewport */
   (function(){

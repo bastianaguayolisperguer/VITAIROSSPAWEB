@@ -1,0 +1,578 @@
+{
+  "baseUrl": "http://127.0.0.1:4173/?preview=v3.3",
+  "breakpoints": [
+    {
+      "size": "1920x1080",
+      "layout": {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "documentWidth": 1920,
+        "bodyWidth": 1920,
+        "horizontalOverflow": 0,
+        "boxes": [
+          {
+            "selector": "#inicio",
+            "exists": true,
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "selector": "#soluciones",
+            "exists": true,
+            "width": 1280,
+            "height": 683.59375
+          },
+          {
+            "selector": "#integracion",
+            "exists": true,
+            "width": 1280,
+            "height": 609.53125
+          },
+          {
+            "selector": "#metodo",
+            "exists": true,
+            "width": 1920,
+            "height": 1063.0625
+          },
+          {
+            "selector": "#ecosistema",
+            "exists": true,
+            "width": 1920,
+            "height": 1340.5625
+          },
+          {
+            "selector": "#actualidad",
+            "exists": true,
+            "width": 1920,
+            "height": 1072.421875
+          },
+          {
+            "selector": "#nosotros",
+            "exists": true,
+            "width": 1920,
+            "height": 1076.0625
+          },
+          {
+            "selector": "#diagnostico",
+            "exists": true,
+            "width": 1920,
+            "height": 1014
+          }
+        ],
+        "h1Count": 1,
+        "duplicateIds": []
+      },
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    },
+    {
+      "size": "1440x900",
+      "layout": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "horizontalOverflow": 0,
+        "boxes": [
+          {
+            "selector": "#inicio",
+            "exists": true,
+            "width": 1440,
+            "height": 900
+          },
+          {
+            "selector": "#soluciones",
+            "exists": true,
+            "width": 1280,
+            "height": 682
+          },
+          {
+            "selector": "#integracion",
+            "exists": true,
+            "width": 1280,
+            "height": 608.71875
+          },
+          {
+            "selector": "#metodo",
+            "exists": true,
+            "width": 1440,
+            "height": 1063.0625
+          },
+          {
+            "selector": "#ecosistema",
+            "exists": true,
+            "width": 1440,
+            "height": 1325.359375
+          },
+          {
+            "selector": "#actualidad",
+            "exists": true,
+            "width": 1440,
+            "height": 1045.21875
+          },
+          {
+            "selector": "#nosotros",
+            "exists": true,
+            "width": 1440,
+            "height": 1042.453125
+          },
+          {
+            "selector": "#diagnostico",
+            "exists": true,
+            "width": 1440,
+            "height": 988.390625
+          }
+        ],
+        "h1Count": 1,
+        "duplicateIds": []
+      },
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    },
+    {
+      "size": "1366x768",
+      "layout": {
+        "viewport": [
+          1366,
+          768
+        ],
+        "documentWidth": 1366,
+        "bodyWidth": 1366,
+        "horizontalOverflow": 0,
+        "boxes": [
+          {
+            "selector": "#inicio",
+            "exists": true,
+            "width": 1366,
+            "height": 841.53125
+          },
+          {
+            "selector": "#soluciones",
+            "exists": true,
+            "width": 1270,
+            "height": 682
+          },
+          {
+            "selector": "#integracion",
+            "exists": true,
+            "width": 1270,
+            "height": 623.515625
+          },
+          {
+            "selector": "#metodo",
+            "exists": true,
+            "width": 1366,
+            "height": 1057.34375
+          },
+          {
+            "selector": "#ecosistema",
+            "exists": true,
+            "width": 1366,
+            "height": 1314.390625
+          },
+          {
+            "selector": "#actualidad",
+            "exists": true,
+            "width": 1366,
+            "height": 1033.1875
+          },
+          {
+            "selector": "#nosotros",
+            "exists": true,
+            "width": 1366,
+            "height": 1027.6875
+          },
+          {
+            "selector": "#diagnostico",
+            "exists": true,
+            "width": 1366,
+            "height": 980.25
+          }
+        ],
+        "h1Count": 1,
+        "duplicateIds": []
+      },
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    },
+    {
+      "size": "1024x768",
+      "layout": {
+        "viewport": [
+          1024,
+          768
+        ],
+        "documentWidth": 1024,
+        "bodyWidth": 1024,
+        "horizontalOverflow": 0,
+        "boxes": [
+          {
+            "selector": "#inicio",
+            "exists": true,
+            "width": 1024,
+            "height": 770.140625
+          },
+          {
+            "selector": "#soluciones",
+            "exists": true,
+            "width": 968,
+            "height": 662
+          },
+          {
+            "selector": "#integracion",
+            "exists": true,
+            "width": 968,
+            "height": 572.484375
+          },
+          {
+            "selector": "#metodo",
+            "exists": true,
+            "width": 1024,
+            "height": 1164.015625
+          },
+          {
+            "selector": "#ecosistema",
+            "exists": true,
+            "width": 1024,
+            "height": 1232.46875
+          },
+          {
+            "selector": "#actualidad",
+            "exists": true,
+            "width": 1024,
+            "height": 977.484375
+          },
+          {
+            "selector": "#nosotros",
+            "exists": true,
+            "width": 1024,
+            "height": 953.890625
+          },
+          {
+            "selector": "#diagnostico",
+            "exists": true,
+            "width": 1024,
+            "height": 942.625
+          }
+        ],
+        "h1Count": 1,
+        "duplicateIds": []
+      },
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    },
+    {
+      "size": "768x1024",
+      "layout": {
+        "viewport": [
+          768,
+          1024
+        ],
+        "documentWidth": 768,
+        "bodyWidth": 768,
+        "horizontalOverflow": 0,
+        "boxes": [
+          {
+            "selector": "#inicio",
+            "exists": true,
+            "width": 768,
+            "height": 1166.953125
+          },
+          {
+            "selector": "#soluciones",
+            "exists": true,
+            "width": 728,
+            "height": 880.5625
+          },
+          {
+            "selector": "#integracion",
+            "exists": true,
+            "width": 728,
+            "height": 985.46875
+          },
+          {
+            "selector": "#metodo",
+            "exists": true,
+            "width": 768,
+            "height": 1503.40625
+          },
+          {
+            "selector": "#ecosistema",
+            "exists": true,
+            "width": 768,
+            "height": 1644.5
+          },
+          {
+            "selector": "#actualidad",
+            "exists": true,
+            "width": 768,
+            "height": 1443.921875
+          },
+          {
+            "selector": "#nosotros",
+            "exists": true,
+            "width": 768,
+            "height": 1312.484375
+          },
+          {
+            "selector": "#diagnostico",
+            "exists": true,
+            "width": 768,
+            "height": 1261.484375
+          }
+        ],
+        "h1Count": 1,
+        "duplicateIds": []
+      },
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    },
+    {
+      "size": "430x932",
+      "layout": {
+        "viewport": [
+          430,
+          932
+        ],
+        "documentWidth": 430,
+        "bodyWidth": 430,
+        "horizontalOverflow": 0,
+        "boxes": [
+          {
+            "selector": "#inicio",
+            "exists": true,
+            "width": 430,
+            "height": 969.046875
+          },
+          {
+            "selector": "#soluciones",
+            "exists": true,
+            "width": 398,
+            "height": 985.34375
+          },
+          {
+            "selector": "#integracion",
+            "exists": true,
+            "width": 398,
+            "height": 1039.40625
+          },
+          {
+            "selector": "#metodo",
+            "exists": true,
+            "width": 430,
+            "height": 1486.1875
+          },
+          {
+            "selector": "#ecosistema",
+            "exists": true,
+            "width": 430,
+            "height": 1490.109375
+          },
+          {
+            "selector": "#actualidad",
+            "exists": true,
+            "width": 430,
+            "height": 1464.59375
+          },
+          {
+            "selector": "#nosotros",
+            "exists": true,
+            "width": 430,
+            "height": 1363.109375
+          },
+          {
+            "selector": "#diagnostico",
+            "exists": true,
+            "width": 430,
+            "height": 1389.015625
+          }
+        ],
+        "h1Count": 1,
+        "duplicateIds": []
+      },
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    },
+    {
+      "size": "390x844",
+      "layout": {
+        "viewport": [
+          390,
+          844
+        ],
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "boxes": [
+          {
+            "selector": "#inicio",
+            "exists": true,
+            "width": 390,
+            "height": 930.265625
+          },
+          {
+            "selector": "#soluciones",
+            "exists": true,
+            "width": 358,
+            "height": 1002.734375
+          },
+          {
+            "selector": "#integracion",
+            "exists": true,
+            "width": 358,
+            "height": 994.953125
+          },
+          {
+            "selector": "#metodo",
+            "exists": true,
+            "width": 390,
+            "height": 1487.640625
+          },
+          {
+            "selector": "#ecosistema",
+            "exists": true,
+            "width": 390,
+            "height": 1475.484375
+          },
+          {
+            "selector": "#actualidad",
+            "exists": true,
+            "width": 390,
+            "height": 1532.40625
+          },
+          {
+            "selector": "#nosotros",
+            "exists": true,
+            "width": 390,
+            "height": 1397.640625
+          },
+          {
+            "selector": "#diagnostico",
+            "exists": true,
+            "width": 390,
+            "height": 1415.359375
+          }
+        ],
+        "h1Count": 1,
+        "duplicateIds": []
+      },
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    },
+    {
+      "size": "360x800",
+      "layout": {
+        "viewport": [
+          360,
+          800
+        ],
+        "documentWidth": 360,
+        "bodyWidth": 360,
+        "horizontalOverflow": 0,
+        "boxes": [
+          {
+            "selector": "#inicio",
+            "exists": true,
+            "width": 360,
+            "height": 925.4375
+          },
+          {
+            "selector": "#soluciones",
+            "exists": true,
+            "width": 328,
+            "height": 1020.125
+          },
+          {
+            "selector": "#integracion",
+            "exists": true,
+            "width": 328,
+            "height": 961.625
+          },
+          {
+            "selector": "#metodo",
+            "exists": true,
+            "width": 360,
+            "height": 1473.40625
+          },
+          {
+            "selector": "#ecosistema",
+            "exists": true,
+            "width": 360,
+            "height": 1508.859375
+          },
+          {
+            "selector": "#actualidad",
+            "exists": true,
+            "width": 360,
+            "height": 1525.109375
+          },
+          {
+            "selector": "#nosotros",
+            "exists": true,
+            "width": 360,
+            "height": 1409.84375
+          },
+          {
+            "selector": "#diagnostico",
+            "exists": true,
+            "width": 360,
+            "height": 1477.40625
+          }
+        ],
+        "h1Count": 1,
+        "duplicateIds": []
+      },
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    }
+  ],
+  "interaction": {
+    "integrationConnected": true,
+    "methodStep1": 1,
+    "methodStep2": 2,
+    "methodStep3": 3,
+    "methodStep4": 4,
+    "ecosystem": [
+      {
+        "key": "m",
+        "active": "m",
+        "copy": "Continuidad entre la persona y la atención profesional."
+      },
+      {
+        "key": "industrial",
+        "active": "industrial",
+        "copy": "IA aplicada a información y procesos operativos."
+      },
+      {
+        "key": "agro",
+        "active": "agro",
+        "copy": "Datos e inteligencia aplicada para apoyar decisiones productivas."
+      },
+      {
+        "key": "conecta",
+        "active": "conecta",
+        "copy": "Formación para una adopción responsable y segura de tecnología e IA."
+      }
+    ]
+  },
+  "reducedMotion": {
+    "mediaMatches": true,
+    "sphereFallback": true,
+    "integrationConnected": true,
+    "semanticFragmentsVisible": true,
+    "bodyTextVisible": true
+  },
+  "failures": []
+}
