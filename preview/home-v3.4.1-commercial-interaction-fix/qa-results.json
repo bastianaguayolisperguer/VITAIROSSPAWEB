@@ -1,0 +1,367 @@
+{
+  "baseUrl": "http://127.0.0.1:4173/?preview=v3.4.1",
+  "branch": "home-v3.4.1-commercial-interaction-fix",
+  "baseSha": "5eb135c27181f3e6d8f092541975590816629a97",
+  "breakpoints": [
+    {
+      "size": "1920x1080",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "documentWidth": 1920,
+      "horizontalOverflow": 0,
+      "integration": {
+        "componentCount": 5,
+        "applicationCount": 4,
+        "capabilityOverlaps": [],
+        "applicationOverlaps": [],
+        "outOfBounds": [],
+        "clippedText": [],
+        "modelHeight": 559.5
+      },
+      "ecosystem": {
+        "stateCount": 4,
+        "states": [
+          {
+            "key": "m",
+            "stepOverlaps": [],
+            "outOfBounds": [],
+            "clippedLabels": [],
+            "labels": [
+              "Persona",
+              "Contexto",
+              "Profesional",
+              "Continuidad"
+            ],
+            "headline": "Continuidad entre la persona y la atención profesional.",
+            "copy": "Una capa de continuidad entre la persona y la atención profesional."
+          },
+          {
+            "key": "industrial",
+            "stepOverlaps": [],
+            "outOfBounds": [],
+            "clippedLabels": [],
+            "labels": [
+              "Información operativa",
+              "Estructura",
+              "Indicadores",
+              "Proceso"
+            ],
+            "headline": "Información operativa convertida en datos utilizables.",
+            "copy": "Estructuramos información operativa para incorporarla a indicadores y procesos."
+          },
+          {
+            "key": "agro",
+            "stepOverlaps": [],
+            "outOfBounds": [],
+            "clippedLabels": [],
+            "labels": [
+              "Campo",
+              "Datos",
+              "Información",
+              "Decisión"
+            ],
+            "headline": "Datos del campo convertidos en información para decidir.",
+            "copy": "IA y datos aplicados donde existe una decisión productiva concreta."
+          },
+          {
+            "key": "conecta",
+            "stepOverlaps": [],
+            "outOfBounds": [],
+            "clippedLabels": [],
+            "labels": [
+              "Persona",
+              "Aprendizaje",
+              "Práctica",
+              "Adopción"
+            ],
+            "headline": "Conocimiento convertido en adopción digital responsable.",
+            "copy": "Aprendizaje y práctica para una adopción responsable de tecnología e IA."
+          }
+        ],
+        "panelHeight": 680
+      },
+      "minimumLabelFont": 9,
+      "duplicateIds": [],
+      "integrationKeysPresent": true
+    },
+    {
+      "size": "1440x900",
+      "viewport": [
+        1440,
+        900
+      ],
+      "documentWidth": 1440,
+      "horizontalOverflow": 0,
+      "integration": {
+        "componentCount": 5,
+        "applicationCount": 4,
+        "capabilityOverlaps": [],
+        "applicationOverlaps": [],
+        "outOfBounds": [],
+        "clippedText": [],
+        "modelHeight": 541.5
+      },
+      "ecosystem": {
+        "stateCount": 4,
+        "states": [
+          {
+            "key": "m",
+            "stepOverlaps": [],
+            "outOfBounds": [],
+            "clippedLabels": [],
+            "labels": [
+              "Persona",
+              "Contexto",
+              "Profesional",
+              "Continuidad"
+            ],
+            "headline": "Continuidad entre la persona y la atención profesional.",
+            "copy": "Una capa de continuidad entre la persona y la atención profesional."
+          },
+          {
+            "key": "industrial",
+            "stepOverlaps": [],
+            "outOfBounds": [],
+            "clippedLabels": [],
+            "labels": [
+              "Información operativa",
+              "Estructura",
+              "Indicadores",
+              "Proceso"
+            ],
+            "headline": "Información operativa convertida en datos utilizables.",
+            "copy": "Estructuramos información operativa para incorporarla a indicadores y procesos."
+          },
+          {
+            "key": "agro",
+            "stepOverlaps": [],
+            "outOfBounds": [],
+            "clippedLabels": [],
+            "labels": [
+              "Campo",
+              "Datos",
+              "Información",
+              "Decisión"
+            ],
+            "headline": "Datos del campo convertidos en información para decidir.",
+            "copy": "IA y datos aplicados donde existe una decisión productiva concreta."
+          },
+          {
+            "key": "conecta",
+            "stepOverlaps": [],
+            "outOfBounds": [],
+            "clippedLabels": [],
+            "labels": [
+              "Persona",
+              "Aprendizaje",
+              "Práctica",
+              "Adopción"
+            ],
+            "headline": "Conocimiento convertido en adopción digital responsable.",
+            "copy": "Aprendizaje y práctica para una adopción responsable de tecnología e IA."
+          }
+        ],
+        "panelHeight": 680
+      },
+      "minimumLabelFont": 9,
+      "duplicateIds": [],
+      "integrationKeysPresent": true
+    },
+    {
+      "size": "1366x768",
+      "viewport": [
+        1366,
+        768
+      ],
+      "documentWidth": 1366,
+      "horizontalOverflow": 0,
+      "integration": {
+        "componentCount": 5,
+        "applicationCount": 4,
+        "capabilityOverlaps": [],
+        "applicationOverlaps": [],
+        "outOfBounds": [],
+        "clippedText": [],
+        "modelHeight": 541.5
+      },
+      "ecosystem": {
+        "stateCount": 4,
+        "states": [
+          {
+            "key": "m",
+            "stepOverlaps": [],
+            "outOfBounds": [],
+            "clippedLabels": [],
+            "labels": [
+              "Persona",
+              "Contexto",
+              "Profesional",
+              "Continuidad"
+            ],
+            "headline": "Continuidad entre la persona y la atención profesional.",
+            "copy": "Una capa de continuidad entre la persona y la atención profesional."
+          },
+          {
+            "key": "industrial",
+            "stepOverlaps": [],
+            "outOfBounds": [],
+            "clippedLabels": [],
+            "labels": [
+              "Información operativa",
+              "Estructura",
+              "Indicadores",
+              "Proceso"
+            ],
+            "headline": "Información operativa convertida en datos utilizables.",
+            "copy": "Estructuramos información operativa para incorporarla a indicadores y procesos."
+          },
+          {
+            "key": "agro",
+            "stepOverlaps": [],
+            "outOfBounds": [],
+            "clippedLabels": [],
+            "labels": [
+              "Campo",
+              "Datos",
+              "Información",
+              "Decisión"
+            ],
+            "headline": "Datos del campo convertidos en información para decidir.",
+            "copy": "IA y datos aplicados donde existe una decisión productiva concreta."
+          },
+          {
+            "key": "conecta",
+            "stepOverlaps": [],
+            "outOfBounds": [],
+            "clippedLabels": [],
+            "labels": [
+              "Persona",
+              "Aprendizaje",
+              "Práctica",
+              "Adopción"
+            ],
+            "headline": "Conocimiento convertido en adopción digital responsable.",
+            "copy": "Aprendizaje y práctica para una adopción responsable de tecnología e IA."
+          }
+        ],
+        "panelHeight": 680
+      },
+      "minimumLabelFont": 9,
+      "duplicateIds": [],
+      "integrationKeysPresent": true
+    }
+  ],
+  "integration": [
+    {
+      "key": "ia",
+      "output": "decisions",
+      "selected": "true",
+      "activeApplication": "Decisiones",
+      "title": "IA",
+      "copy": "Aplicamos modelos cuando cumplen una función concreta dentro del proceso o producto."
+    },
+    {
+      "key": "software",
+      "output": "product",
+      "selected": "true",
+      "activeApplication": "Producto digital",
+      "title": "Software",
+      "copy": "Construimos la capa digital que incorpora la solución dentro de la operación."
+    },
+    {
+      "key": "data",
+      "output": "information",
+      "selected": "true",
+      "activeApplication": "Información",
+      "title": "Datos",
+      "copy": "Organizamos e integramos información para que pueda utilizarse dentro del flujo."
+    },
+    {
+      "key": "automation",
+      "output": "process",
+      "selected": "true",
+      "activeApplication": "Proceso",
+      "title": "Automatización",
+      "copy": "Conectamos pasos repetitivos cuando existe una lógica clara y controlable."
+    },
+    {
+      "key": "integrations",
+      "output": "product",
+      "selected": "true",
+      "activeApplication": "Producto digital",
+      "title": "Integraciones",
+      "copy": "Conectamos sistemas y fuentes para evitar soluciones aisladas."
+    }
+  ],
+  "ecosystem": [
+    {
+      "key": "m",
+      "headline": "Continuidad entre la persona y la atención profesional.",
+      "copy": "Una capa de continuidad entre la persona y la atención profesional.",
+      "labels": [
+        "Persona",
+        "Contexto",
+        "Profesional",
+        "Continuidad"
+      ],
+      "expanded": "true"
+    },
+    {
+      "key": "industrial",
+      "headline": "Información operativa convertida en datos utilizables.",
+      "copy": "Estructuramos información operativa para incorporarla a indicadores y procesos.",
+      "labels": [
+        "Información operativa",
+        "Estructura",
+        "Indicadores",
+        "Proceso"
+      ],
+      "expanded": "true"
+    },
+    {
+      "key": "agro",
+      "headline": "Datos del campo convertidos en información para decidir.",
+      "copy": "IA y datos aplicados donde existe una decisión productiva concreta.",
+      "labels": [
+        "Campo",
+        "Datos",
+        "Información",
+        "Decisión"
+      ],
+      "expanded": "true"
+    },
+    {
+      "key": "conecta",
+      "headline": "Conocimiento convertido en adopción digital responsable.",
+      "copy": "Aprendizaje y práctica para una adopción responsable de tecnología e IA.",
+      "labels": [
+        "Persona",
+        "Aprendizaje",
+        "Práctica",
+        "Adopción"
+      ],
+      "expanded": "true"
+    }
+  ],
+  "accessibility": {
+    "integrationKeyboard": "software",
+    "integrationFocus": {
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "selected": "true",
+      "focused": true
+    },
+    "integrationPointer": "data",
+    "ecosystemKeyboard": "industrial",
+    "ecosystemFocus": {
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "focused": true
+    },
+    "ecosystemPointer": "agro"
+  },
+  "browserErrors": [],
+  "failures": []
+}

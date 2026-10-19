@@ -200,13 +200,19 @@
     activateValue(valueExperience.dataset.valueActive||'process');
   }
 
-  /* Technology integration: one stable system with immediate component feedback */
+  /* Technology integration: capability -> VITAIROS -> operational application */
   (function(){
     var story=document.querySelector('[data-integration-story]');if(!story)return;var components=Array.prototype.slice.call(story.querySelectorAll('[data-integration-key]'));
-    var integrationData={ia:{title:'IA aplicada',copy:'Aplica modelos a una función definida dentro del flujo.'},software:{title:'Software',copy:'Entrega la función dentro del producto o proceso digital.'},data:{title:'Datos',copy:'Aporta contexto y evidencia desde la operación.'},automation:{title:'Automatización',copy:'Ejecuta tareas repetibles con reglas y control.'},integrations:{title:'Integraciones',copy:'Conecta la solución con los sistemas existentes.'}};
+    var integrationData={
+      ia:{title:'IA',output:'decisions',application:'Decisiones',copy:'Aplicamos modelos cuando cumplen una función concreta dentro del proceso o producto.'},
+      software:{title:'Software',output:'product',application:'Producto digital',copy:'Construimos la capa digital que incorpora la solución dentro de la operación.'},
+      data:{title:'Datos',output:'information',application:'Información',copy:'Organizamos e integramos información para que pueda utilizarse dentro del flujo.'},
+      automation:{title:'Automatización',output:'process',application:'Proceso',copy:'Conectamos pasos repetitivos cuando existe una lógica clara y controlable.'},
+      integrations:{title:'Integraciones',output:'product',application:'Producto digital',copy:'Conectamos sistemas y fuentes para evitar soluciones aisladas.'}
+    };
     function connect(){story.classList.add('is-connected');}
-    function activate(key){if(!integrationData[key])return;story.dataset.integrationActive=key;components.forEach(function(component){var active=component.dataset.integrationKey===key;component.classList.toggle('is-active',active);component.setAttribute('aria-pressed',String(active));});document.getElementById('integrationDetailTitle').textContent=integrationData[key].title;document.getElementById('integrationDetailCopy').textContent=integrationData[key].copy;}
-    components.forEach(function(component){['pointerenter','focus','click'].forEach(function(type){component.addEventListener(type,function(){activate(component.dataset.integrationKey);});});});activate('ia');
+    function activate(key){if(!integrationData[key])return;var data=integrationData[key];story.dataset.integrationActive=key;story.dataset.integrationOutput=data.output;components.forEach(function(component){var active=component.dataset.integrationKey===key;component.classList.toggle('is-active',active);component.setAttribute('aria-selected',String(active));component.tabIndex=active?0:-1;});story.querySelectorAll('[data-integration-output-key]').forEach(function(output){output.classList.toggle('is-active',output.dataset.integrationOutputKey===data.output);});document.getElementById('integrationDetailTitle').textContent=data.title;document.getElementById('integrationDetailCopy').textContent=data.copy;document.getElementById('integrationApplicationLabel').textContent=data.application;if(!prefersReducedMotion){story.classList.remove('is-routing');void story.offsetWidth;story.classList.add('is-routing');}}
+    components.forEach(function(component,index){['pointerenter','focus','click'].forEach(function(type){component.addEventListener(type,function(){activate(component.dataset.integrationKey);});});component.addEventListener('keydown',function(event){var direction=(event.key==='ArrowRight'||event.key==='ArrowDown')?1:(event.key==='ArrowLeft'||event.key==='ArrowUp')?-1:0;if(!direction)return;event.preventDefault();var next=(index+direction+components.length)%components.length;components[next].focus();activate(components[next].dataset.integrationKey);});});activate('ia');
     if(prefersReducedMotion||!('IntersectionObserver' in window)){connect();return;}
     var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){connect();observer.disconnect();}});},{threshold:.34});observer.observe(story);
   })();
@@ -220,19 +226,19 @@
     function schedule(){if(!frame)frame=requestAnimationFrame(update);}window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule,{passive:true});update();
   })();
 
-  /* Ecosystem as one reactive instrument */
+  /* Ecosystem: four distinct transformation narratives in one stable instrument */
   var ecosystemData={
-    m:{sector:'Salud mental digital',name:'VITAIROS-M',labels:['Persona','Contexto','Profesional','Continuidad'],copy:'Continuidad entre la persona y la atención profesional.'},
-    industrial:{sector:'Industria y minería',name:'Industrial AI',labels:['Documento','Estructura','Dato útil','Proceso'],copy:'IA aplicada a información y procesos operativos.'},
-    agro:{sector:'Agricultura',name:'Agro Intelligence',labels:['Campo','Datos','Integración','Decisión'],copy:'Datos e inteligencia aplicada para apoyar decisiones productivas.'},
-    conecta:{sector:'Educación y adopción digital',name:'VITAIROS Conecta',labels:['Persona','Conocimiento','Práctica','Adopción'],copy:'Formación para una adopción responsable y segura de tecnología e IA.'}
+    m:{sector:'Salud mental digital',name:'VITAIROS-M',labels:['Persona','Contexto','Profesional','Continuidad'],headline:'Continuidad entre la persona y la atención profesional.',copy:'Una capa de continuidad entre la persona y la atención profesional.'},
+    industrial:{sector:'Industria y minería',name:'Industrial AI',labels:['Información operativa','Estructura','Indicadores','Proceso'],headline:'Información operativa convertida en datos utilizables.',copy:'Estructuramos información operativa para incorporarla a indicadores y procesos.'},
+    agro:{sector:'Agricultura',name:'Agro Intelligence',labels:['Campo','Datos','Información','Decisión'],headline:'Datos del campo convertidos en información para decidir.',copy:'IA y datos aplicados donde existe una decisión productiva concreta.'},
+    conecta:{sector:'Educación y adopción digital',name:'VITAIROS Conecta',labels:['Persona','Aprendizaje','Práctica','Adopción'],headline:'Conocimiento convertido en adopción digital responsable.',copy:'Aprendizaje y práctica para una adopción responsable de tecnología e IA.'}
   };
   var ecosystem=document.getElementById('ecosystemExperience');
   function activateEcosystem(key){
     if(!ecosystem||!ecosystemData[key])return;var data=ecosystemData[key];ecosystem.dataset.activeProject=key;ecosystem.querySelectorAll('.ecosystem-item').forEach(function(item){var active=item.dataset.ecosystemItem===key;item.classList.toggle('is-active',active);item.querySelector('button').setAttribute('aria-expanded',String(active));});
-    document.getElementById('ecosystemPreviewSector').textContent=data.sector;document.getElementById('ecosystemPreviewName').textContent=data.name;document.getElementById('ecosystemPreviewCopy').textContent=data.copy;['A','B','C','D'].forEach(function(letter,index){document.getElementById('ecosystemLabel'+letter).textContent=data.labels[index];});if(!prefersReducedMotion){ecosystem.classList.remove('is-transitioning');void ecosystem.offsetWidth;ecosystem.classList.add('is-transitioning');}
+    document.getElementById('ecosystemPreviewSector').textContent=data.sector;document.getElementById('ecosystemPreviewName').textContent=data.name;document.getElementById('ecosystemPreviewHeadline').textContent=data.headline;document.getElementById('ecosystemPreviewCopy').textContent=data.copy;['A','B','C','D'].forEach(function(letter,index){document.getElementById('ecosystemLabel'+letter).textContent=data.labels[index];});if(!prefersReducedMotion){ecosystem.classList.remove('is-transitioning');void ecosystem.offsetWidth;ecosystem.classList.add('is-transitioning');}
   }
-  if(ecosystem)ecosystem.querySelectorAll('.ecosystem-item').forEach(function(item){var button=item.querySelector('button');['mouseenter','focusin'].forEach(function(type){item.addEventListener(type,function(){activateEcosystem(item.dataset.ecosystemItem);});});button.addEventListener('click',function(){activateEcosystem(item.dataset.ecosystemItem);if(window.innerWidth<=820)document.getElementById('ecosystemPreview').scrollIntoView({behavior:prefersReducedMotion?'auto':'smooth',block:'nearest'});});});
+  if(ecosystem){var ecosystemItems=Array.prototype.slice.call(ecosystem.querySelectorAll('.ecosystem-item'));ecosystemItems.forEach(function(item,index){var button=item.querySelector('button');['pointerenter','focusin'].forEach(function(type){item.addEventListener(type,function(){activateEcosystem(item.dataset.ecosystemItem);});});button.addEventListener('click',function(){activateEcosystem(item.dataset.ecosystemItem);if(window.innerWidth<=820)document.getElementById('ecosystemPreview').scrollIntoView({behavior:prefersReducedMotion?'auto':'smooth',block:'nearest'});});button.addEventListener('keydown',function(event){var direction=(event.key==='ArrowRight'||event.key==='ArrowDown')?1:(event.key==='ArrowLeft'||event.key==='ArrowUp')?-1:0;if(!direction)return;event.preventDefault();var next=(index+direction+ecosystemItems.length)%ecosystemItems.length;var nextButton=ecosystemItems[next].querySelector('button');nextButton.focus();activateEcosystem(ecosystemItems[next].dataset.ecosystemItem);});});activateEcosystem(ecosystem.dataset.activeProject||'m');}
 
   /* Principles: one restrained pulse advances through the four criteria */
   (function(){
