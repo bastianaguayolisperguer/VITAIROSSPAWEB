@@ -431,3 +431,118 @@ footer{position:relative;border-top:1px solid var(--line);background:#04100d}
 @media (prefers-reduced-motion:reduce){
   .hb-sphere-wrap::before,.hb-sphere-wrap::after,.semantic-signal,.integration-pulse,.ecosystem-flow-signal,.method-motion--diagnosis::after{animation:none!important}.semantic-system.is-switching .semantic-fragment,.semantic-system.is-switching .semantic-core,.semantic-system.is-switching .semantic-output,.ecosystem-experience.is-transitioning .eco-node{animation:none!important}.integration-path{stroke-dashoffset:0!important}.integration-component,.integration-core,.integration-operation{opacity:1!important;transform:translate(-50%,-50%) scale(1)!important;transition:none!important}.integration-operation{transform:none!important}.method-motion i,.method-motion::after,.principles-progress>span{transition:none!important}.method-node .method-motion--pilot::after{opacity:1;transform:scale(1)}.method-node .method-motion--implementation::after{opacity:1;transform:scaleX(1)}.principles-progress>span{transform:scaleX(1)}
 }
+
+/* V3.4 — responsive motion rebuild */
+.hb-sphere-wrap::before{border-style:solid;animation-duration:52s;opacity:.54}
+.hb-sphere-wrap::after{inset:18%;border-color:rgba(106,215,176,.12)}
+
+/* Problems: one stable composition, four restrained states */
+.breach-value{padding-bottom:clamp(96px,8vw,132px)}
+.value-stage{min-height:610px;grid-template-rows:minmax(300px,1fr) auto;padding:clamp(34px,4vw,52px);background:radial-gradient(circle at 64% 36%,rgba(23,166,115,.09),transparent 38%),rgba(255,255,255,.012)}
+.value-stage::before{opacity:.45;background-size:52px 52px}
+.value-stage__diagram.semantic-system{width:min(680px,100%);aspect-ratio:1.875;border-color:rgba(106,215,176,.11);border-radius:14px;background:linear-gradient(145deg,rgba(6,22,17,.5),rgba(14,58,47,.18));box-shadow:inset 0 0 64px rgba(28,102,177,.035);isolation:isolate}
+.value-stage__diagram.semantic-system::before{background-size:52px 52px;opacity:.48;mask-image:linear-gradient(90deg,#000,rgba(0,0,0,.35))}
+.value-stage__diagram.semantic-system::after{display:none}
+.semantic-route{stroke:rgba(106,215,176,.13);stroke-width:1;stroke-dasharray:none;transition:stroke .34s ease,opacity .34s ease,stroke-width .34s ease}
+.semantic-route--active{stroke:rgba(106,215,176,.58);stroke-width:1.7;stroke-dasharray:9 14;animation:problemRouteFlow 8s linear infinite}
+.semantic-route--branch{opacity:0;stroke:rgba(28,102,177,.54);stroke-width:1.35}
+.value-experience[data-value-active=decisions] .semantic-route--branch{opacity:1}
+@keyframes problemRouteFlow{to{stroke-dashoffset:-92}}
+.semantic-fragment{top:50%;min-width:78px;min-height:34px;justify-content:center;padding:8px 9px;border-color:rgba(106,215,176,.2);border-radius:6px;background:rgba(6,22,17,.94);box-shadow:none;transition:top .38s var(--ease),left .38s var(--ease),width .38s var(--ease),height .38s var(--ease),border-radius .38s var(--ease),opacity .22s ease,transform .38s var(--ease),background .28s ease}
+.semantic-fragment i{width:6px;height:6px;box-shadow:0 0 9px rgba(106,215,176,.42)}
+.semantic-fragment b{font-size:6.5px;letter-spacing:.075em}
+.semantic-fragment--a{top:50%;left:9%}.semantic-fragment--b{top:50%;left:24%}.semantic-fragment--c{top:50%;left:39%}.semantic-fragment--d{top:50%;left:53%}
+.semantic-core{top:50%;left:69%;width:100px;padding:12px;border-color:rgba(106,215,176,.3);box-shadow:0 0 0 8px rgba(106,215,176,.02),0 0 38px rgba(23,166,115,.12);transition:border-radius .38s var(--ease),transform .38s var(--ease),box-shadow .38s ease}
+.semantic-core>i{width:7px;height:7px;margin-bottom:7px;box-shadow:0 0 12px var(--pulse)}
+.semantic-core strong{font-size:8.5px}.semantic-core small{font-size:7px}
+.semantic-output{top:50%;right:2%;width:94px;min-height:62px;justify-content:center;padding:10px 7px;border-radius:6px;transition:top .38s var(--ease),border-color .3s ease,background .3s ease}
+.semantic-output strong{font-size:7.5px}.semantic-output small{font-size:5.5px}
+.semantic-signal{top:calc(50% - 2px);left:8%;width:5px;height:5px}
+.value-experience .semantic-signal{animation:problemSignal 3.8s ease-in-out infinite}
+@keyframes problemSignal{0%{left:8%;opacity:0}12%{opacity:1}82%{opacity:1}100%{left:91%;opacity:0}}
+.value-experience[data-value-active=process] .semantic-fragment--a,.value-experience[data-value-active=process] .semantic-fragment--b,.value-experience[data-value-active=process] .semantic-fragment--c{top:50%}
+.value-experience[data-value-active=process] .semantic-fragment--d{top:68%;left:53%;opacity:.5;transform:translate(-50%,-50%) scale(.9)}
+.value-experience[data-value-active=information] .semantic-fragment{width:80px;height:40px;align-items:flex-end;border-radius:4px;background:linear-gradient(145deg,rgba(106,215,176,.075),rgba(6,22,17,.94))}
+.value-experience[data-value-active=information] .semantic-fragment::before{position:absolute;top:9px;right:9px;left:9px;height:1px;background:rgba(106,215,176,.22);box-shadow:0 6px rgba(106,215,176,.12);content:""}
+.value-experience[data-value-active=information] .semantic-fragment--a,.value-experience[data-value-active=information] .semantic-fragment--c{top:37%}.value-experience[data-value-active=information] .semantic-fragment--b,.value-experience[data-value-active=information] .semantic-fragment--d{top:63%}
+.value-experience[data-value-active=decisions] .semantic-fragment--a,.value-experience[data-value-active=decisions] .semantic-fragment--c{top:38%}.value-experience[data-value-active=decisions] .semantic-fragment--b,.value-experience[data-value-active=decisions] .semantic-fragment--d{top:62%}
+.value-experience[data-value-active=decisions] .semantic-core{border-radius:50%;transform:translate(-50%,-50%)}.value-experience[data-value-active=decisions] .semantic-core>*{transform:none}.value-experience[data-value-active=decisions] .semantic-output{border-color:rgba(28,102,177,.5)}
+.value-experience[data-value-active=product] .semantic-fragment{min-width:78px;border-color:rgba(28,102,177,.28);background:rgba(9,27,29,.94)}
+.value-experience[data-value-active=product] .semantic-fragment--a,.value-experience[data-value-active=product] .semantic-fragment--c{top:37%}.value-experience[data-value-active=product] .semantic-fragment--b,.value-experience[data-value-active=product] .semantic-fragment--d{top:63%}
+.value-experience[data-value-active=product] .semantic-core{border-radius:13px;box-shadow:0 0 0 8px rgba(106,215,176,.025),0 0 36px rgba(23,166,115,.14)}
+.semantic-system.is-switching .semantic-fragment,.semantic-system.is-switching .semantic-core,.semantic-system.is-switching .semantic-output{animation:problemSettle .38s var(--ease) both}
+@keyframes problemSettle{from{opacity:.58}to{opacity:1}}
+
+/* Integration: static-first SVG, progressive connection and component feedback */
+.integration-story{grid-template-columns:minmax(330px,.88fr) minmax(520px,1.12fr);gap:clamp(48px,6vw,88px);margin-top:clamp(80px,8vw,118px);padding-top:clamp(64px,7vw,94px)}
+.integration-system{aspect-ratio:1.62;border-radius:16px;background:radial-gradient(circle at 50% 48%,rgba(23,166,115,.11),transparent 28%),linear-gradient(145deg,rgba(14,58,47,.23),rgba(6,22,17,.82));box-shadow:0 28px 72px rgba(0,0,0,.18)}
+.integration-system::before{opacity:.5;background-size:52px 52px}
+.integration-path{stroke:rgba(106,215,176,.44);stroke-width:1.15;transition:stroke-dashoffset .9s var(--ease),stroke .18s ease,stroke-width .18s ease,opacity .18s ease}
+.integration-path--output{stroke:rgba(28,102,177,.68)}
+.integration-component{min-width:52px;min-height:44px;justify-content:center;padding:9px 13px;border-color:rgba(106,215,176,.2);background:rgba(6,22,17,.94);color:var(--mist);font-family:inherit;cursor:pointer;opacity:.58;transform:translate(-50%,-50%);transition:opacity .24s ease,transform .36s var(--ease),border-color .18s ease,background .18s ease,box-shadow .18s ease}
+.integration-story.is-connected .integration-component{opacity:.82}
+.integration-component:hover,.integration-component:focus-visible,.integration-component.is-active{border-color:rgba(106,215,176,.64);background:rgba(14,58,47,.8);box-shadow:0 0 0 3px rgba(106,215,176,.055),0 12px 30px rgba(0,0,0,.18);opacity:1!important;outline:none}
+.integration-component b{font-size:7.5px}
+.integration-story[data-integration-active=ia] .integration-path--ia,.integration-story[data-integration-active=software] .integration-path--software,.integration-story[data-integration-active=data] .integration-path--data,.integration-story[data-integration-active=automation] .integration-path--automation,.integration-story[data-integration-active=integrations] .integration-path--connect{stroke:#8ee8c7;stroke-width:2.3;filter:drop-shadow(0 0 5px rgba(106,215,176,.4))}
+.integration-core{width:124px;box-shadow:0 0 0 9px rgba(106,215,176,.02),0 0 42px rgba(23,166,115,.13)}
+.integration-operation{right:5%;bottom:15%}
+.integration-detail{position:absolute;z-index:4;bottom:5%;left:50%;width:min(270px,43%);margin:0;padding:10px 14px;border-top:1px solid rgba(106,215,176,.18);background:linear-gradient(90deg,transparent,rgba(6,22,17,.84) 10%,rgba(6,22,17,.84) 90%,transparent);text-align:center;transform:translateX(-50%)}
+.integration-detail strong,.integration-detail span{display:block}.integration-detail strong{color:var(--pulse);font-size:8px;letter-spacing:.12em;text-transform:uppercase}.integration-detail span{margin-top:4px;color:#b8d4cc;font-size:9px;line-height:1.35}
+.integration-story.is-connected .integration-pulse{animation-duration:3.5s}
+
+/* Method: one route only */
+.method-intro h2{max-width:14ch}
+.method-network{min-height:360px;padding-top:0}
+.method-network ol{grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,2.5vw,36px)}
+.method-path{display:block;top:0;right:2%;left:2%;width:96%;height:140px}
+.method-path__base{stroke:rgba(106,215,176,.14)}
+.method-path__progress{stroke-width:1.8;stroke-dasharray:none;stroke-dashoffset:0;transform:scaleX(var(--method-progress,.02));transform-box:fill-box;transform-origin:left center;transition:transform .5s var(--ease)}
+.method-node,.method-node:nth-child(n){margin-top:0;padding:0;border:0;opacity:.5;transform:none;transition:opacity .22s ease}
+.method-node.is-active,.method-node.is-current,.method-node:has(.method-node__button:hover),.method-node:has(.method-node__button:focus-visible){opacity:1}
+.method-node__button{display:block;width:100%;min-height:260px;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.method-node__button:focus-visible{border-radius:8px;outline:2px solid var(--pulse);outline-offset:6px}
+.method-node__point{height:116px}.method-node__point i{top:62px;left:0;width:15px;height:15px;border-width:4px}.method-node__point b{margin:45px 0 0 26px}
+.method-node__copy{display:block;padding-right:8px}.method-node__copy h3{margin:10px 0 9px}.method-node__copy p{max-width:27ch}
+.method-node.is-current .method-node__copy{transform:translateY(-2px)}.method-node__copy{transition:transform .22s var(--ease)}
+.method-traveller{position:absolute;z-index:4;top:64px;left:var(--method-position,2%);width:8px;height:8px;border-radius:50%;background:#d7fff1;box-shadow:0 0 16px var(--pulse);transform:translateX(-50%);transition:left .5s var(--ease)}
+.method-release{display:none}
+
+/* Initiatives: content first, one restrained shared visual */
+.ecosystem-experience{min-height:620px;grid-template-columns:minmax(340px,.78fr) minmax(480px,1.22fr)}
+.ecosystem-preview{padding:36px 40px}
+.ecosystem-visual{width:min(560px,94%);aspect-ratio:2.05}
+.ecosystem-route path{stroke:rgba(106,215,176,.24);stroke-width:1;stroke-dasharray:4 12}
+.ecosystem-core{width:72px;box-shadow:0 0 34px rgba(23,166,115,.13)}.ecosystem-core img{width:50px}
+.eco-node{transition:opacity .24s ease}.eco-node--a{top:52%;left:1%}.eco-node--b{top:26%;left:34%}.eco-node--c{top:66%;right:23%}.eco-node--d{top:45%;right:0}
+.ecosystem-experience.is-transitioning .eco-node{animation:none}
+
+/* Tablet: independent composition, reduced density */
+@media (min-width:768px) and (max-width:1199px){
+  .hero-layout{grid-template-columns:minmax(0,1.05fr) minmax(320px,.75fr);gap:24px}.hb-sphere-wrap{width:min(42vw,430px)}
+  .value-experience{grid-template-columns:1fr}.value-selector{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-right:0;border-bottom:1px solid var(--line)}.value-option{min-height:92px;grid-template-columns:28px 1fr;padding:18px 15px}.value-option:hover,.value-option:focus-visible,.value-option.is-active{padding-left:18px}.value-option small{display:none}.value-stage{min-height:570px;padding:40px}.value-stage__diagram.semantic-system{max-width:720px}
+  .integration-story{grid-template-columns:1fr;gap:44px}.integration-copy{display:grid;grid-template-columns:minmax(0,1fr) minmax(270px,.65fr);column-gap:42px}.integration-copy .section-kicker,.integration-copy h2{grid-column:1}.integration-copy>p:not(.section-kicker){grid-column:2}.integration-copy .integration-direct,.integration-copy .integration-result{grid-column:1/-1}.integration-system{width:min(780px,100%);margin:auto}
+  .method-network{min-height:350px}.method-network ol{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.method-node,.method-node:nth-child(n){padding:0;border:0}.method-node__button{min-height:250px}.method-node h3{font-size:clamp(18px,2.2vw,24px)}.method-node p{font-size:12px}.method-path{display:block}
+  .ecosystem-experience{grid-template-columns:300px 1fr;min-height:570px}.ecosystem-item{padding:22px}.ecosystem-preview{min-height:0}.ecosystem-visual{width:min(500px,100%)}
+}
+
+@media (min-width:768px) and (max-width:820px){
+  .hero-layout{grid-template-columns:1fr;padding-top:126px}.hb-sphere-wrap{grid-row:2;width:min(500px,72vw);margin:22px auto 0}.sphere-caption{display:block}
+}
+
+/* Mobile: content first, compact visuals, vertical method */
+@media (max-width:767px){
+  .hero-layout{grid-template-columns:1fr;padding-bottom:66px}.hb-sphere-wrap{grid-row:2;width:min(320px,82vw);margin:24px auto 0;justify-self:center}.hb-sphere-wrap::before{inset:5%}.hb-sphere-wrap::after{inset:21%}.sphere-caption{display:none}.project-node-layer{opacity:.7}
+  .breach-value{padding-top:100px}.value-experience{display:block;border-bottom:1px solid var(--line)}.value-selector{display:flex;overflow-x:auto;grid-template-columns:none;border-right:0;border-bottom:1px solid var(--line);scroll-snap-type:x mandatory;scrollbar-width:thin}.value-option{min-height:94px;flex:0 0 min(220px,72vw);grid-template-columns:30px 1fr;padding:17px 15px;scroll-snap-align:start}.value-option:nth-child(odd){border-right:1px solid var(--line)}.value-option:hover,.value-option:focus-visible,.value-option.is-active{padding-left:15px}.value-option small{grid-column:2;font-size:10px}.value-stage{display:flex;min-height:0;flex-direction:column;gap:28px;padding:30px 20px 34px}.value-stage__copy{order:1}.value-stage__diagram.semantic-system{order:2;width:100%;aspect-ratio:1.35}.value-stage__copy h3{font-size:clamp(25px,7.6vw,31px)}.semantic-route--branch{display:none}.semantic-fragment{min-width:48px;min-height:30px;padding:5px}.semantic-fragment b{max-width:8ch;overflow:hidden;font-size:5.5px;text-overflow:ellipsis}.semantic-fragment--a{left:7%}.semantic-fragment--b{left:24%}.semantic-fragment--c{left:41%}.semantic-fragment--d{left:57%}.semantic-core{left:72%;width:66px;padding:7px}.semantic-core strong{font-size:6.7px}.semantic-core small{font-size:5.7px}.semantic-output{right:0;width:58px;min-height:52px;padding:6px 4px}.semantic-output strong{font-size:6px}.semantic-output small{font-size:4.8px}.value-experience[data-value-active=information] .semantic-fragment{width:50px;height:34px;min-width:50px}.value-experience[data-value-active=product] .semantic-fragment{min-width:48px}
+  .integration-story{grid-template-columns:1fr;gap:34px;margin-top:66px;padding-top:64px}.integration-copy{display:block}.integration-copy h2{font-size:clamp(39px,11vw,48px)}.integration-system{width:100%;aspect-ratio:.9}.integration-system svg{transform:none}.integration-component{min-width:74px;min-height:44px;padding:8px 9px}.integration-component--ia{top:10%;left:19%}.integration-component--software{top:10%;left:80%}.integration-component--data{top:27%;left:19%}.integration-component--automation{top:27%;left:80%}.integration-component--connect{top:44%;left:19%}.integration-core{top:55%;left:50%;width:104px}.integration-operation{right:auto;bottom:20%;left:50%;transform:translateX(-50%)}.integration-story.is-connected .integration-operation{transform:translateX(-50%)}.integration-detail{bottom:3%;width:88%;padding:9px 12px}.integration-pulse{display:none}
+  .method-section{padding-top:82px;padding-bottom:86px}.method-network{min-height:0;padding:10px 0}.method-network::before{position:absolute;top:20px;bottom:20px;left:21px;width:1px;background:rgba(106,215,176,.17);content:""}.method-network ol{display:block}.method-path{display:none}.method-node,.method-node:nth-child(n){display:block;padding:0;border:0}.method-node__button{display:grid;min-height:0;grid-template-columns:52px 1fr;padding:18px 0}.method-node__point{height:auto}.method-node__point i{top:25px;left:14px;width:15px;height:15px}.method-node__point b{margin:8px 0 0 0;color:rgba(232,246,241,.45)}.method-node__copy{padding:0 0 10px 8px}.method-node__copy h3{margin:8px 0;font-size:25px}.method-node__copy p{max-width:31ch;font-size:12.5px}.method-traveller{top:var(--method-position,2%);left:17px;transition:top .5s var(--ease)}
+  .ecosystem-experience{grid-template-columns:1fr;min-height:0}.ecosystem-index{border-right:0}.ecosystem-preview{min-height:330px;padding:24px 18px;border-top:1px solid var(--line)}.ecosystem-visual{width:100%;aspect-ratio:1.55}.ecosystem-core{width:58px}.ecosystem-core img{width:40px}.eco-node{gap:4px}.eco-node small{max-width:78px;padding:5px 6px;font-size:5.4px}.eco-node--a{top:54%;left:0}.eco-node--b{top:25%;left:31%}.eco-node--c{top:66%;right:18%}.eco-node--d{top:43%;right:-1%}.ecosystem-preview>p{font-size:14px}
+  .principles-progress{display:none}
+}
+
+@media (max-width:430px){
+  .hb-sphere-wrap{width:min(300px,80vw)}.value-option{flex-basis:210px}.value-stage{padding-right:16px;padding-left:16px}.semantic-fragment b{max-width:7ch}.integration-system{aspect-ratio:.86}.integration-component{min-width:68px}.integration-component b{font-size:6.5px}.integration-core{width:96px}.integration-detail span{font-size:8px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .semantic-route--active,.semantic-signal,.integration-pulse,.method-traveller{animation:none!important}.semantic-signal,.integration-pulse,.method-traveller{display:none!important}.semantic-fragment,.semantic-core,.semantic-output,.integration-path,.integration-component,.method-node,.method-node__copy,.eco-node{transition:none!important}.integration-path{stroke-dashoffset:0!important}.integration-component{opacity:1!important}.semantic-system.is-switching .semantic-fragment,.semantic-system.is-switching .semantic-core,.semantic-system.is-switching .semantic-output{animation:none!important}
+}
