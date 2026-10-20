@@ -1,0 +1,724 @@
+{
+  "baseUrl": "http://127.0.0.1:4173/?preview=v3.4.2",
+  "branch": "home-v3.4.1-commercial-interaction-fix",
+  "approvedSha": "cbbb413e736e0f9d3b26a90d56d6a8d5bda21254",
+  "logoAsset": "/vitairos-m/assets/vitairos-m-isotype-transparent.png",
+  "viewports": [
+    {
+      "label": "1920x1080",
+      "responseStatus": 200,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "status": "complete",
+      "horizontalOverflow": 0,
+      "missingSections": [],
+      "brokenImages": [],
+      "duplicateIds": [],
+      "clippedLabels": [],
+      "hiddenReveals": [],
+      "logo": {
+        "src": "/vitairos-m/assets/vitairos-m-isotype-transparent.png",
+        "naturalWidth": 166,
+        "naturalHeight": 166,
+        "renderedWidth": 50,
+        "renderedHeight": 56,
+        "objectFit": "contain",
+        "filter": "none",
+        "opacity": "1",
+        "contained": true
+      },
+      "inventory": {
+        "problems": 4,
+        "integrations": 5,
+        "method": 4,
+        "initiatives": 4
+      },
+      "h1Count": 1,
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    },
+    {
+      "label": "1440x900",
+      "responseStatus": 200,
+      "viewport": [
+        1440,
+        900
+      ],
+      "status": "complete",
+      "horizontalOverflow": 0,
+      "missingSections": [],
+      "brokenImages": [],
+      "duplicateIds": [],
+      "clippedLabels": [],
+      "hiddenReveals": [],
+      "logo": {
+        "src": "/vitairos-m/assets/vitairos-m-isotype-transparent.png",
+        "naturalWidth": 166,
+        "naturalHeight": 166,
+        "renderedWidth": 50,
+        "renderedHeight": 56,
+        "objectFit": "contain",
+        "filter": "none",
+        "opacity": "1",
+        "contained": true
+      },
+      "inventory": {
+        "problems": 4,
+        "integrations": 5,
+        "method": 4,
+        "initiatives": 4
+      },
+      "h1Count": 1,
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    },
+    {
+      "label": "1366x768",
+      "responseStatus": 200,
+      "viewport": [
+        1366,
+        768
+      ],
+      "status": "complete",
+      "horizontalOverflow": 0,
+      "missingSections": [],
+      "brokenImages": [],
+      "duplicateIds": [],
+      "clippedLabels": [],
+      "hiddenReveals": [],
+      "logo": {
+        "src": "/vitairos-m/assets/vitairos-m-isotype-transparent.png",
+        "naturalWidth": 166,
+        "naturalHeight": 166,
+        "renderedWidth": 50,
+        "renderedHeight": 56,
+        "objectFit": "contain",
+        "filter": "none",
+        "opacity": "1",
+        "contained": true
+      },
+      "inventory": {
+        "problems": 4,
+        "integrations": 5,
+        "method": 4,
+        "initiatives": 4
+      },
+      "h1Count": 1,
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    },
+    {
+      "label": "1200x800",
+      "responseStatus": 200,
+      "viewport": [
+        1200,
+        800
+      ],
+      "status": "complete",
+      "horizontalOverflow": 0,
+      "missingSections": [],
+      "brokenImages": [],
+      "duplicateIds": [],
+      "clippedLabels": [],
+      "hiddenReveals": [],
+      "logo": {
+        "src": "/vitairos-m/assets/vitairos-m-isotype-transparent.png",
+        "naturalWidth": 166,
+        "naturalHeight": 166,
+        "renderedWidth": 50,
+        "renderedHeight": 56,
+        "objectFit": "contain",
+        "filter": "none",
+        "opacity": "1",
+        "contained": true
+      },
+      "inventory": {
+        "problems": 4,
+        "integrations": 5,
+        "method": 4,
+        "initiatives": 4
+      },
+      "h1Count": 1,
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    },
+    {
+      "label": "1024x768",
+      "responseStatus": 200,
+      "viewport": [
+        1024,
+        768
+      ],
+      "status": "complete",
+      "horizontalOverflow": 0,
+      "missingSections": [],
+      "brokenImages": [],
+      "duplicateIds": [],
+      "clippedLabels": [],
+      "hiddenReveals": [],
+      "logo": {
+        "src": "/vitairos-m/assets/vitairos-m-isotype-transparent.png",
+        "naturalWidth": 166,
+        "naturalHeight": 166,
+        "renderedWidth": 50,
+        "renderedHeight": 56,
+        "objectFit": "contain",
+        "filter": "none",
+        "opacity": "1",
+        "contained": true
+      },
+      "inventory": {
+        "problems": 4,
+        "integrations": 5,
+        "method": 4,
+        "initiatives": 4
+      },
+      "h1Count": 1,
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    },
+    {
+      "label": "768x1024",
+      "responseStatus": 200,
+      "viewport": [
+        768,
+        1024
+      ],
+      "status": "complete",
+      "horizontalOverflow": 0,
+      "missingSections": [],
+      "brokenImages": [],
+      "duplicateIds": [],
+      "clippedLabels": [],
+      "hiddenReveals": [],
+      "logo": {
+        "src": "/vitairos-m/assets/vitairos-m-isotype-transparent.png",
+        "naturalWidth": 166,
+        "naturalHeight": 166,
+        "renderedWidth": 50,
+        "renderedHeight": 56,
+        "objectFit": "contain",
+        "filter": "none",
+        "opacity": "1",
+        "contained": true
+      },
+      "inventory": {
+        "problems": 4,
+        "integrations": 5,
+        "method": 4,
+        "initiatives": 4
+      },
+      "h1Count": 1,
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    },
+    {
+      "label": "430x932",
+      "responseStatus": 200,
+      "viewport": [
+        430,
+        932
+      ],
+      "status": "complete",
+      "horizontalOverflow": 0,
+      "missingSections": [],
+      "brokenImages": [],
+      "duplicateIds": [],
+      "clippedLabels": [],
+      "hiddenReveals": [],
+      "logo": {
+        "src": "/vitairos-m/assets/vitairos-m-isotype-transparent.png",
+        "naturalWidth": 166,
+        "naturalHeight": 166,
+        "renderedWidth": 40,
+        "renderedHeight": 48,
+        "objectFit": "contain",
+        "filter": "none",
+        "opacity": "1",
+        "contained": true
+      },
+      "inventory": {
+        "problems": 4,
+        "integrations": 5,
+        "method": 4,
+        "initiatives": 4
+      },
+      "h1Count": 1,
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    },
+    {
+      "label": "390x844",
+      "responseStatus": 200,
+      "viewport": [
+        390,
+        844
+      ],
+      "status": "complete",
+      "horizontalOverflow": 0,
+      "missingSections": [],
+      "brokenImages": [],
+      "duplicateIds": [],
+      "clippedLabels": [],
+      "hiddenReveals": [],
+      "logo": {
+        "src": "/vitairos-m/assets/vitairos-m-isotype-transparent.png",
+        "naturalWidth": 166,
+        "naturalHeight": 166,
+        "renderedWidth": 40,
+        "renderedHeight": 48,
+        "objectFit": "contain",
+        "filter": "none",
+        "opacity": "1",
+        "contained": true
+      },
+      "inventory": {
+        "problems": 4,
+        "integrations": 5,
+        "method": 4,
+        "initiatives": 4
+      },
+      "h1Count": 1,
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    },
+    {
+      "label": "360x800",
+      "responseStatus": 200,
+      "viewport": [
+        360,
+        800
+      ],
+      "status": "complete",
+      "horizontalOverflow": 0,
+      "missingSections": [],
+      "brokenImages": [],
+      "duplicateIds": [],
+      "clippedLabels": [],
+      "hiddenReveals": [],
+      "logo": {
+        "src": "/vitairos-m/assets/vitairos-m-isotype-transparent.png",
+        "naturalWidth": 166,
+        "naturalHeight": 166,
+        "renderedWidth": 40,
+        "renderedHeight": 48,
+        "objectFit": "contain",
+        "filter": "none",
+        "opacity": "1",
+        "contained": true
+      },
+      "inventory": {
+        "problems": 4,
+        "integrations": 5,
+        "method": 4,
+        "initiatives": 4
+      },
+      "h1Count": 1,
+      "consoleErrors": [],
+      "requestFailures": [],
+      "badResponses": []
+    }
+  ],
+  "interactions": {
+    "problems": [
+      {
+        "key": "process",
+        "state": "process",
+        "selected": "true"
+      },
+      {
+        "key": "information",
+        "state": "information",
+        "selected": "true"
+      },
+      {
+        "key": "decisions",
+        "state": "decisions",
+        "selected": "true"
+      },
+      {
+        "key": "product",
+        "state": "product",
+        "selected": "true"
+      }
+    ],
+    "problemKeyboard": "information",
+    "integration": [
+      {
+        "key": "ia",
+        "state": "ia",
+        "selected": "true"
+      },
+      {
+        "key": "software",
+        "state": "software",
+        "selected": "true"
+      },
+      {
+        "key": "data",
+        "state": "data",
+        "selected": "true"
+      },
+      {
+        "key": "automation",
+        "state": "automation",
+        "selected": "true"
+      },
+      {
+        "key": "integrations",
+        "state": "integrations",
+        "selected": "true"
+      }
+    ],
+    "integrationKeyboard": "software",
+    "method": [
+      {
+        "step": 1,
+        "state": "1"
+      },
+      {
+        "step": 2,
+        "state": "2"
+      },
+      {
+        "step": 3,
+        "state": "3"
+      },
+      {
+        "step": 4,
+        "state": "4"
+      }
+    ],
+    "ecosystem": [
+      {
+        "key": "m",
+        "state": "m",
+        "expanded": "true"
+      },
+      {
+        "key": "industrial",
+        "state": "industrial",
+        "expanded": "true"
+      },
+      {
+        "key": "agro",
+        "state": "agro",
+        "expanded": "true"
+      },
+      {
+        "key": "conecta",
+        "state": "conecta",
+        "expanded": "true"
+      }
+    ],
+    "ecosystemKeyboard": "industrial",
+    "touch": {
+      "problem": "decisions",
+      "integration": "automation",
+      "ecosystem": "conecta"
+    },
+    "focusVisible": {
+      "focused": true,
+      "outline": "solid",
+      "outlineWidth": "2px"
+    }
+  },
+  "reducedMotion": {
+    "mediaMatches": true,
+    "sphereFallback": true,
+    "contentVisible": true,
+    "layoutWidth": 390
+  },
+  "forms": {
+    "corporate": {
+      "action": "https://formsubmit.co/ad98029d0911b7910c2e4691f4fdd8f6",
+      "method": "post",
+      "fields": [
+        {
+          "name": "_subject",
+          "type": "hidden",
+          "required": false,
+          "value": "Nuevo diagnóstico de oportunidad VITAIROS"
+        },
+        {
+          "name": "lead_type",
+          "type": "hidden",
+          "required": false,
+          "value": "commercial"
+        },
+        {
+          "name": "privacy_version",
+          "type": "hidden",
+          "required": false,
+          "value": "2026-10"
+        },
+        {
+          "name": "_captcha",
+          "type": "hidden",
+          "required": false,
+          "value": "false"
+        },
+        {
+          "name": "_template",
+          "type": "hidden",
+          "required": false,
+          "value": "box"
+        },
+        {
+          "name": "_next",
+          "type": "hidden",
+          "required": false,
+          "value": "https://www.vitairos.com/?sent=1#gracias"
+        },
+        {
+          "name": "_honey",
+          "type": "text",
+          "required": false,
+          "value": ""
+        },
+        {
+          "name": "oportunidad",
+          "type": "radio",
+          "required": true,
+          "value": "Un proceso manual"
+        },
+        {
+          "name": "oportunidad",
+          "type": "radio",
+          "required": false,
+          "value": "Información o datos"
+        },
+        {
+          "name": "oportunidad",
+          "type": "radio",
+          "required": false,
+          "value": "Uso de IA en mi organización"
+        },
+        {
+          "name": "oportunidad",
+          "type": "radio",
+          "required": false,
+          "value": "Un producto digital"
+        },
+        {
+          "name": "oportunidad",
+          "type": "radio",
+          "required": false,
+          "value": "Integrar sistemas"
+        },
+        {
+          "name": "oportunidad",
+          "type": "radio",
+          "required": false,
+          "value": "Aún no lo tengo claro"
+        },
+        {
+          "name": "oportunidad",
+          "type": "radio",
+          "required": false,
+          "value": "Trabaja con nosotros"
+        },
+        {
+          "name": "contexto",
+          "type": "textarea",
+          "required": true,
+          "value": ""
+        },
+        {
+          "name": "etapa",
+          "type": "radio",
+          "required": true,
+          "value": "Explorando"
+        },
+        {
+          "name": "etapa",
+          "type": "radio",
+          "required": false,
+          "value": "Tengo un problema identificado"
+        },
+        {
+          "name": "etapa",
+          "type": "radio",
+          "required": false,
+          "value": "Quiero probar un piloto"
+        },
+        {
+          "name": "etapa",
+          "type": "radio",
+          "required": false,
+          "value": "Ya tengo tecnología y necesito integrarla"
+        },
+        {
+          "name": "etapa",
+          "type": "radio",
+          "required": false,
+          "value": "Quiero escalar una solución existente"
+        },
+        {
+          "name": "nombre",
+          "type": "text",
+          "required": true,
+          "value": ""
+        },
+        {
+          "name": "empresa",
+          "type": "text",
+          "required": true,
+          "value": ""
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "required": true,
+          "value": ""
+        },
+        {
+          "name": "telefono",
+          "type": "tel",
+          "required": false,
+          "value": ""
+        },
+        {
+          "name": "privacy_consent",
+          "type": "checkbox",
+          "required": true,
+          "value": "yes"
+        }
+      ],
+      "consentRequired": true,
+      "privacyVersion": "2026-10"
+    },
+    "vitairosM": [
+      {
+        "leadType": "person",
+        "action": "https://formsubmit.co/contacto@vitairos.com",
+        "method": "post",
+        "consentRequired": true,
+        "privacyVersion": "2026-10",
+        "consentPurpose": "early_access",
+        "requiredFields": [
+          "nombre",
+          "correo",
+          "privacy_consent"
+        ],
+        "payloadKeys": [
+          "_subject",
+          "_template",
+          "_captcha",
+          "_next",
+          "proyecto",
+          "origen",
+          "lead_type",
+          "consent_purpose",
+          "privacy_version",
+          "_honey",
+          "nombre",
+          "correo",
+          "region_ciudad",
+          "utm_source",
+          "utm_medium",
+          "utm_campaign",
+          "utm_content",
+          "utm_term",
+          "referrer",
+          "landing_path"
+        ]
+      },
+      {
+        "leadType": "professional",
+        "action": "https://formsubmit.co/ad98029d0911b7910c2e4691f4fdd8f6",
+        "method": "post",
+        "consentRequired": true,
+        "privacyVersion": "2026-10",
+        "consentPurpose": "professional_network",
+        "requiredFields": [
+          "nombre",
+          "correo",
+          "ciudad_region",
+          "profesion",
+          "especialidades",
+          "interes_pruebas_pilotos",
+          "privacy_consent"
+        ],
+        "payloadKeys": [
+          "_subject",
+          "_template",
+          "_next",
+          "_url",
+          "proyecto",
+          "origen",
+          "lead_type",
+          "consent_purpose",
+          "privacy_version",
+          "nombre",
+          "correo",
+          "ciudad_region",
+          "profesion",
+          "especialidades",
+          "anos_experiencia",
+          "interes_pruebas_pilotos",
+          "utm_source",
+          "utm_medium",
+          "utm_campaign",
+          "utm_content",
+          "utm_term",
+          "referrer",
+          "landing_path"
+        ]
+      },
+      {
+        "leadType": "institution",
+        "action": "https://formsubmit.co/contacto@vitairos.com",
+        "method": "post",
+        "consentRequired": true,
+        "privacyVersion": "2026-10",
+        "consentPurpose": "institutional_contact",
+        "requiredFields": [
+          "nombre",
+          "organizacion",
+          "cargo",
+          "correo_corporativo",
+          "interes",
+          "privacy_consent"
+        ],
+        "payloadKeys": [
+          "_subject",
+          "_template",
+          "_captcha",
+          "_next",
+          "proyecto",
+          "origen",
+          "lead_type",
+          "consent_purpose",
+          "privacy_version",
+          "_honey",
+          "nombre",
+          "organizacion",
+          "cargo",
+          "correo_corporativo",
+          "telefono",
+          "tamano_comunidad",
+          "interes",
+          "utm_source",
+          "utm_medium",
+          "utm_campaign",
+          "utm_content",
+          "utm_term",
+          "referrer",
+          "landing_path"
+        ]
+      }
+    ]
+  },
+  "failures": []
+}

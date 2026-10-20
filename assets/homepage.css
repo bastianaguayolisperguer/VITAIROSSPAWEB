@@ -38,33 +38,33 @@ img,svg,canvas{display:block;max-width:100%}
 .button--quiet{background:rgba(255,255,255,.025)}
 
 /* Brand signature: NODES → VITAIROS → NETWORK → SPHERE */
-.intro-loader{position:fixed;z-index:9000;display:none;inset:0;overflow:hidden;place-items:center;pointer-events:none}
+.intro-loader{--intro-duration:1.3s;position:fixed;z-index:9000;display:none;inset:0;overflow:hidden;place-items:center;pointer-events:none}
 html.intro-enabled .intro-loader{display:grid}
 .intro-loader::before,.intro-loader::after{position:absolute;inset:0;content:""}
 .intro-loader::before{z-index:-2;background:radial-gradient(circle at 50% 44%,rgba(23,166,115,.15),transparent 28%),var(--abyss)}
 .intro-loader::after{z-index:-1;background-image:linear-gradient(rgba(106,215,176,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(106,215,176,.025) 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(circle,#000,transparent 72%)}
-.intro-loader.is-running::before{animation:introBackdrop 1.3s linear both}.intro-loader.is-running::after{animation:introGrid 1.3s linear both}
+.intro-loader.is-running::before{animation:introBackdrop var(--intro-duration) linear both}.intro-loader.is-running::after{animation:introGrid var(--intro-duration) linear both}
 .intro-loader.is-hidden{display:none;visibility:hidden;opacity:0}
 .intro-loader__field{position:absolute;inset:0}.intro-loader__continuum{width:100%;height:100%;overflow:visible;opacity:0}
 .intro-continuum__links{fill:none;stroke:url('#introContinuumGradient');stroke-width:1.15;stroke-dasharray:820;stroke-dashoffset:820}
 .intro-continuum__nodes{fill:var(--pulse)}
-.intro-loader.is-running .intro-loader__continuum{animation:introContinuum 1.3s var(--ease) both}
-.intro-loader.is-running .intro-continuum__links{animation:introContinuumLinks 1.3s var(--ease) both}
+.intro-loader.is-running .intro-loader__continuum{animation:introContinuum var(--intro-duration) var(--ease) both}
+.intro-loader.is-running .intro-continuum__links{animation:introContinuumLinks var(--intro-duration) var(--ease) both}
 .intro-loader__brand{position:relative;z-index:2;display:grid;width:clamp(136px,12vw,178px);justify-items:center;transform-origin:center}
-.intro-loader.is-running .intro-loader__brand{animation:introBrandResolve 1.3s var(--ease) both}
+.intro-loader.is-running .intro-loader__brand{animation:none}
 .intro-loader__mark{width:100%;overflow:visible;filter:drop-shadow(0 0 26px rgba(106,215,176,.18))}
 .intro-mark__links{fill:none;stroke:url('#introMarkGradient');stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1850;stroke-dashoffset:1850}
-.intro-loader.is-running .intro-mark__links{animation:introMarkLinks 1.3s var(--ease) both}
+.intro-loader.is-running .intro-mark__links{animation:introMarkLinks var(--intro-duration) var(--ease) both}
 .intro-mark__nodes{fill:var(--pulse)}
 .intro-mark__nodes circle{opacity:0;transform:scale(.25);transform-box:fill-box;transform-origin:center}
 .intro-loader.is-running .intro-mark__nodes circle{animation:introMarkNode .22s var(--ease) forwards}
 .intro-loader.is-running .intro-mark__nodes circle:nth-child(3n+1){animation-delay:.03s}.intro-loader.is-running .intro-mark__nodes circle:nth-child(3n+2){animation-delay:.1s}.intro-loader.is-running .intro-mark__nodes circle:nth-child(3n){animation-delay:.17s}
-.intro-mark__official{opacity:0;transform:scale(.97);transform-box:fill-box;transform-origin:center}
-.intro-loader.is-running .intro-mark__official{animation:introOfficialMark 1.3s var(--ease) both}
+.intro-mark__official{opacity:1;transform:none;transform-box:fill-box;transform-origin:center}
+.intro-loader.is-running .intro-mark__official{animation:none}
 .intro-mark__pulse{fill:none;stroke:var(--pulse);stroke-width:4;opacity:0;transform-box:fill-box;transform-origin:center}
-.intro-loader.is-running .intro-mark__pulse{animation:introPulse 1.3s var(--ease) both}
+.intro-loader.is-running .intro-mark__pulse{animation:introPulse var(--intro-duration) var(--ease) both}
 .intro-loader__identity{display:grid;width:max-content;justify-items:center;margin-top:8px;opacity:0;transform:translateY(8px)}
-.intro-loader.is-running .intro-loader__identity{animation:introIdentity 1.3s var(--ease) both}
+.intro-loader.is-running .intro-loader__identity{animation:introIdentity var(--intro-duration) var(--ease) both}
 .intro-loader__identity strong{font-size:clamp(23px,2.25vw,31px);font-weight:430;letter-spacing:.32em;text-indent:.32em}
 .intro-loader__identity span{margin-top:8px;color:var(--muted);font-size:clamp(7px,.68vw,9px);font-weight:600;letter-spacing:.22em;text-transform:uppercase}
 body.loader-active .hero-copy,body.loader-active header,body.loader-active .hb-sphere-wrap{opacity:1;transform:none}
@@ -217,6 +217,11 @@ footer{position:relative;border-top:1px solid var(--line);background:#04100d}
 .modal-overlay{position:fixed;z-index:3000;display:grid;inset:0;padding:24px;background:rgba(2,10,8,.82);visibility:hidden;opacity:0;place-items:center;backdrop-filter:blur(10px);transition:opacity .25s,visibility 0s linear .25s}.modal-overlay.open{visibility:visible;opacity:1;transition-delay:0s}.modal-box{width:min(620px,100%);max-height:80vh;overflow:auto;padding:30px;border:1px solid var(--line);border-radius:14px;background:var(--forest-deep);box-shadow:0 40px 100px rgba(0,0,0,.45)}.modal-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--line)}.modal-head h2{margin:0;font-size:25px}.modal-head button{width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:none;font-size:24px;cursor:pointer}.modal-body{color:var(--muted);font-size:14px;line-height:1.65}.modal-body a{color:var(--pulse)}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .55s var(--ease) var(--reveal-delay,0ms),transform .55s var(--ease) var(--reveal-delay,0ms)}.reveal.is-visible{opacity:1;transform:none}
 
+/* V3.4.2 — keep below-fold layout out of the critical mobile render path */
+@media (max-width:820px){
+  .method-section,.ecosystem-section,.news-section,.principles-section,.diagnostic-section,footer{content-visibility:auto;contain-intrinsic-size:auto 900px}
+}
+
 /* V3.1 / one continuous dark scene */
 .hero-layout{gap:clamp(34px,5vw,84px)}.hb-sphere-wrap{width:min(40vw,560px)}.hero-aurora{opacity:.82}
 .breach-value{background:linear-gradient(180deg,rgba(6,22,17,0),rgba(14,58,47,.34) 46%,rgba(6,22,17,.06))}
@@ -295,7 +300,7 @@ footer{position:relative;border-top:1px solid var(--line);background:#04100d}
 
 @media (max-width:820px){
   @keyframes introBrandResolve{0%,72%{transform:none;opacity:1}100%{transform:translate(31vw,-4vh) scale(2.15);opacity:0}}
-  .intro-loader__brand{width:132px}.intro-loader__identity strong{font-size:24px}.intro-loader__identity span{font-size:7px;letter-spacing:.16em}
+  .intro-loader{--intro-duration:.72s}.intro-loader__brand{width:132px}.intro-loader__identity strong{font-size:24px}.intro-loader__identity span{font-size:7px;letter-spacing:.16em}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -322,12 +327,13 @@ footer{position:relative;border-top:1px solid var(--line);background:#04100d}
 .ecosystem-signature{position:relative;isolation:isolate;margin-top:clamp(48px,5vw,72px);padding:34px 0 6px;border-top:1px solid rgba(232,246,241,.11)}
 .ecosystem-signature__network{position:absolute;z-index:-1;inset:22px 0 0;overflow:hidden;opacity:.42;pointer-events:none;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
 .ecosystem-signature__network svg{width:100%;height:100%}.ecosystem-signature__network path{fill:none;stroke:rgba(106,215,176,.15);stroke-width:1;stroke-dasharray:2 12;stroke-linecap:round;vector-effect:non-scaling-stroke;transition:stroke .24s ease,opacity .24s ease,filter .24s ease}.ecosystem-signature__network circle{fill:rgba(106,215,176,.38);transition:fill .24s ease,filter .24s ease,transform .24s var(--ease);transform-box:fill-box;transform-origin:center}
-.ecosystem-signature__label{margin:0 0 18px;color:rgba(232,246,241,.43);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.ecosystem-signature__label{margin:0 0 18px;color:rgba(232,246,241,.58);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
 .ecosystem-signature__projects{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .ecosystem-signature__project{position:relative;display:grid;min-height:88px;grid-template-columns:56px minmax(0,1fr);align-items:center;gap:13px;padding:12px 14px;border:1px solid rgba(232,246,241,.095);border-radius:10px;background:rgba(255,255,255,.012);opacity:.7;transition:opacity .24s ease,border-color .24s ease,background-color .24s ease,box-shadow .24s ease,transform .24s var(--ease)}
 .ecosystem-signature__project:hover,.ecosystem-signature__project:focus-visible{border-color:rgba(106,215,176,.29);background:rgba(106,215,176,.045);box-shadow:0 18px 46px rgba(0,0,0,.16),inset 0 1px rgba(255,255,255,.025);opacity:1;transform:translateY(-2px) scale(1.012)}
 .ecosystem-signature__mark{display:grid;width:50px;height:56px;place-items:center;filter:saturate(.34) brightness(.76);opacity:.78;transition:filter .24s ease,opacity .24s ease,transform .24s var(--ease)}
 .ecosystem-signature__mark img,.ecosystem-signature__mark svg{width:100%;height:100%;object-fit:contain}.ecosystem-signature__project:hover .ecosystem-signature__mark,.ecosystem-signature__project:focus-visible .ecosystem-signature__mark{filter:none;opacity:1;transform:scale(1.035)}
+.ecosystem-signature__project[data-signature-project=m] .ecosystem-signature__mark{filter:none;opacity:1}
 .ecosystem-signature__copy{min-width:0}.ecosystem-signature__copy strong,.ecosystem-signature__copy small{display:block}.ecosystem-signature__copy strong{color:rgba(232,246,241,.82);font-size:12px;font-weight:590;line-height:1.25;letter-spacing:.015em}.ecosystem-signature__copy small{margin-top:6px;color:var(--pulse);font-size:8px;font-weight:650;letter-spacing:.1em;text-transform:uppercase;opacity:0;transform:translateY(4px);transition:opacity .24s ease,transform .24s var(--ease)}
 .ecosystem-signature__project:hover .ecosystem-signature__copy small,.ecosystem-signature__project:focus-visible .ecosystem-signature__copy small{opacity:.8;transform:none}
 .ecosystem-signature[data-active-project=m] .signature-link--m,.ecosystem-signature[data-active-project=industrial] .signature-link--industrial,.ecosystem-signature[data-active-project=agro] .signature-link--agro,.ecosystem-signature[data-active-project=conecta] .signature-link--conecta{stroke:rgba(106,215,176,.62);filter:drop-shadow(0 0 5px rgba(106,215,176,.38))}

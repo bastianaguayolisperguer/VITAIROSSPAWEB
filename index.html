@@ -64,7 +64,8 @@
   }
   </script>
   <link rel="preload" href="/brand-kit/vitairos-conecta/assets/tipografia/Outfit-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="/assets/homepage.css?v=3.4.1">
+  <link rel="preload" href="/conecta/assets/vitairos-isotipo-320.png" as="image" type="image/png" fetchpriority="high">
+  <link rel="stylesheet" href="/assets/homepage.css?v=3.4.2">
   <script>
     (function(){
       try{
@@ -106,7 +107,7 @@
         <g class="intro-mark__nodes">
           <circle cx="34" cy="73" r="13"></circle><circle cx="140" cy="108" r="10"></circle><circle cx="88" cy="184" r="12"></circle><circle cx="182" cy="176" r="10"></circle><circle cx="142" cy="288" r="12"></circle><circle cx="197" cy="375" r="10"></circle><circle cx="256" cy="287" r="15"></circle><circle cx="256" cy="472" r="12"></circle><circle cx="314" cy="375" r="10"></circle><circle cx="370" cy="288" r="12"></circle><circle cx="328" cy="176" r="10"></circle><circle cx="424" cy="184" r="12"></circle><circle cx="372" cy="108" r="10"></circle><circle cx="478" cy="73" r="13"></circle>
         </g>
-        <image class="intro-mark__official" href="/conecta/assets/vitairos-isotipo-512.png" x="0" y="0" width="512" height="512"></image>
+        <image class="intro-mark__official" href="/conecta/assets/vitairos-isotipo-320.png" x="0" y="0" width="512" height="512" fetchpriority="high"></image>
         <circle class="intro-mark__pulse" cx="256" cy="287" r="80"></circle>
       </svg>
       <div class="intro-loader__identity"><strong>VITAIROS</strong><span>IA aplicada · Ingeniería digital</span></div>
@@ -168,9 +169,9 @@
         <div id="soluciones" class="value-experience" data-value-active="process">
           <div class="value-selector" role="tablist" aria-label="Contextos donde VITAIROS puede intervenir">
             <button class="value-option is-active" type="button" role="tab" data-value="process" aria-selected="true" aria-controls="valueStage"><span>01</span><strong>Proceso</strong><small>Trabajo manual, repetitivo o difícil de escalar.</small></button>
-            <button class="value-option" type="button" role="tab" data-value="information" aria-selected="false" aria-controls="valueStage"><span>02</span><strong>Información</strong><small>Datos y documentos dispersos o difíciles de aprovechar.</small></button>
-            <button class="value-option" type="button" role="tab" data-value="decisions" aria-selected="false" aria-controls="valueStage"><span>03</span><strong>Decisiones</strong><small>Información disponible que todavía cuesta convertir en acción.</small></button>
-            <button class="value-option" type="button" role="tab" data-value="product" aria-selected="false" aria-controls="valueStage"><span>04</span><strong>Producto</strong><small>Productos digitales donde la inteligencia puede aportar una función concreta.</small></button>
+            <button class="value-option" type="button" role="tab" data-value="information" aria-selected="false" aria-controls="valueStage" tabindex="-1"><span>02</span><strong>Información</strong><small>Datos y documentos dispersos o difíciles de aprovechar.</small></button>
+            <button class="value-option" type="button" role="tab" data-value="decisions" aria-selected="false" aria-controls="valueStage" tabindex="-1"><span>03</span><strong>Decisiones</strong><small>Información disponible que todavía cuesta convertir en acción.</small></button>
+            <button class="value-option" type="button" role="tab" data-value="product" aria-selected="false" aria-controls="valueStage" tabindex="-1"><span>04</span><strong>Producto</strong><small>Productos digitales donde la inteligencia puede aportar una función concreta.</small></button>
           </div>
           <div class="value-stage" id="valueStage" role="tabpanel" aria-live="polite">
             <div class="value-stage__diagram semantic-system" id="valueVisual" aria-hidden="true">
@@ -255,7 +256,7 @@
                 <span class="initiative-step initiative-step--d"><i><b>04</b></i><small id="ecosystemLabelD">Continuidad</small></span>
               </div>
               <span class="initiative-pulse"></span>
-              <div class="initiative-signature"><img src="/conecta/assets/vitairos-isotipo-128.png" alt=""><span>VITAIROS · aplicación con propósito</span></div>
+              <div class="initiative-signature"><img src="/conecta/assets/vitairos-isotipo-128.png" alt="" loading="lazy" decoding="async"><span>VITAIROS · aplicación con propósito</span></div>
             </div>
           </div>
         </div>
@@ -281,10 +282,10 @@
         <div class="ecosystem-signature__network" aria-hidden="true"><svg viewBox="0 0 1200 150" preserveAspectRatio="none"><path class="signature-link signature-link--m" d="M92 76 C180 24 248 24 322 76"></path><path class="signature-link signature-link--industrial" d="M322 76 C410 128 488 128 594 76"></path><path class="signature-link signature-link--agro" d="M594 76 C698 22 780 22 868 76"></path><path class="signature-link signature-link--conecta" d="M868 76 C968 126 1060 126 1140 76"></path><g><circle class="signature-node signature-node--m" cx="92" cy="76" r="4"></circle><circle class="signature-node signature-node--industrial" cx="322" cy="76" r="4"></circle><circle cx="594" cy="76" r="4"></circle><circle class="signature-node signature-node--agro" cx="868" cy="76" r="4"></circle><circle class="signature-node signature-node--conecta" cx="1140" cy="76" r="4"></circle></g></svg></div>
         <p class="ecosystem-signature__label" id="ecosystemSignatureLabel">Explora el ecosistema</p>
         <nav class="ecosystem-signature__projects" aria-label="Proyectos VITAIROS">
-          <a class="ecosystem-signature__project" href="/vitairos-m/" data-signature-project="m" data-analytics-event="project_click" data-project="vitairos-m"><span class="ecosystem-signature__mark"><img src="/assets/projects/vitairos-m.svg" alt=""></span><span class="ecosystem-signature__copy"><strong>VITAIROS-M</strong><small>Salud mental digital</small></span></a>
+          <a class="ecosystem-signature__project" href="/vitairos-m/" data-signature-project="m" data-analytics-event="project_click" data-project="vitairos-m"><span class="ecosystem-signature__mark"><img src="/vitairos-m/assets/vitairos-m-isotype-transparent.png" alt="" loading="lazy" decoding="async"></span><span class="ecosystem-signature__copy"><strong>VITAIROS-M</strong><small>Salud mental digital</small></span></a>
           <a class="ecosystem-signature__project" href="/vitairos-industrial-ai/" data-signature-project="industrial" data-analytics-event="project_click" data-project="industrial-ai"><span class="ecosystem-signature__mark"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="signatureMarkMineral" x1="8" y1="8" x2="58" y2="58"><stop stop-color="#F5DEB2"></stop><stop offset=".48" stop-color="#DD7A52"></stop><stop offset="1" stop-color="#AAB6B7"></stop></linearGradient></defs><path d="M8 49 23 17l10 13 8-10 15 29H8Z" fill="none" stroke="url(#signatureMarkMineral)" stroke-width="3" stroke-linejoin="round"></path><path d="M19 49h25M25 34h15M32 26v21" stroke="#F5DEB2" stroke-width="2" stroke-linecap="round" opacity=".78"></path><circle cx="32" cy="26" r="3.3" fill="#DD7A52"></circle></svg></span><span class="ecosystem-signature__copy"><strong>VITAIROS Industrial AI</strong><small>Industria y minería</small></span></a>
-          <a class="ecosystem-signature__project" href="/agro-intelligence/" data-signature-project="agro" data-analytics-event="project_click" data-project="agro-intelligence"><span class="ecosystem-signature__mark"><img src="/agro-intelligence/vitairos-logo.webp" alt=""></span><span class="ecosystem-signature__copy"><strong>VITAIROS Agro Intelligence</strong><small>Agricultura</small></span></a>
-          <a class="ecosystem-signature__project" href="/conecta/" data-signature-project="conecta" data-analytics-event="project_click" data-project="conecta"><span class="ecosystem-signature__mark"><img src="/conecta/assets/vitairos-isotipo-256.png" alt=""></span><span class="ecosystem-signature__copy"><strong>VITAIROS Conecta</strong><small>Educación</small></span></a>
+          <a class="ecosystem-signature__project" href="/agro-intelligence/" data-signature-project="agro" data-analytics-event="project_click" data-project="agro-intelligence"><span class="ecosystem-signature__mark"><img src="/agro-intelligence/vitairos-logo.webp" alt="" loading="lazy" decoding="async"></span><span class="ecosystem-signature__copy"><strong>VITAIROS Agro Intelligence</strong><small>Agricultura</small></span></a>
+          <a class="ecosystem-signature__project" href="/conecta/" data-signature-project="conecta" data-analytics-event="project_click" data-project="conecta"><span class="ecosystem-signature__mark"><img src="/conecta/assets/vitairos-isotipo-256.png" alt="" loading="lazy" decoding="async"></span><span class="ecosystem-signature__copy"><strong>VITAIROS Conecta</strong><small>Educación</small></span></a>
         </nav>
       </div>
       </div>
@@ -312,7 +313,7 @@
   </main>
 
   <footer><div class="container footer-grid">
-    <div class="footer-identity"><a href="#inicio" class="brand"><span class="brand-logo"><img src="/conecta/assets/vitairos-isotipo-128.png" alt=""></span><span class="brand-wordmark"><strong>VITAIROS</strong><small>IA aplicada · Ingeniería digital</small></span></a><p>Hacemos que la IA funcione dentro de procesos reales.</p></div>
+    <div class="footer-identity"><a href="#inicio" class="brand"><span class="brand-logo"><img src="/conecta/assets/vitairos-isotipo-128.png" alt="" loading="lazy" decoding="async"></span><span class="brand-wordmark"><strong>VITAIROS</strong><small>IA aplicada · Ingeniería digital</small></span></a><p>Hacemos que la IA funcione dentro de procesos reales.</p></div>
     <nav aria-label="Navegación del pie"><a href="#soluciones">Soluciones</a><a href="#metodo">Método</a><a href="#ecosistema">Ecosistema</a><a href="#diagnostico">Contacto</a></nav>
     <div class="footer-contact"><a href="mailto:contacto@vitairos.com">contacto@vitairos.com</a><span>Chile · Latinoamérica</span><div><a href="https://www.linkedin.com/company/vitairos/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.instagram.com/vitairos_com" target="_blank" rel="noopener noreferrer">Instagram</a></div></div>
     <div class="footer-meta"><p>© <span id="year"></span> VITAIROS SpA</p><div><button type="button" data-modal-open="privacidad">Privacidad</button><button type="button" data-modal-open="terminos">Términos</button><a id="trabaja" href="#diagnostico" data-diagnostic-careers>Trabaja con nosotros</a></div></div>
@@ -320,6 +321,6 @@
 
   <div class="modal-overlay" id="modal-privacidad" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" aria-hidden="true"><div class="modal-box"><div class="modal-head"><h2 id="privacyTitle">Política de privacidad</h2><button type="button" data-modal-close="privacidad" aria-label="Cerrar">×</button></div><div class="modal-body"><p><strong>Responsable:</strong> VITAIROS SpA.</p><p><strong>Datos tratados:</strong> mediante este formulario podemos tratar tu nombre, organización o empresa, correo electrónico, teléfono opcional y la información que incorpores voluntariamente en el diagnóstico.</p><p><strong>Finalidad:</strong> revisar, gestionar y responder tu solicitud, oportunidad comercial, postulación o interés de colaboración.</p><p><strong>Proveedor del formulario:</strong> el envío es procesado mediante FormSubmit.</p><p><strong>Uso:</strong> estos datos no se utilizan automáticamente para marketing ni para suscribirte a comunicaciones comerciales.</p><p><strong>Conservación:</strong> los datos se conservarán durante el tiempo necesario para gestionar la solicitud y atender las obligaciones que resulten aplicables.</p><p><strong>Derechos y contacto:</strong> puedes escribir a <a href="mailto:contacto@vitairos.com">contacto@vitairos.com</a> para realizar consultas o ejercer los derechos que correspondan respecto de tus datos personales.</p></div></div></div>
   <div class="modal-overlay" id="modal-terminos" role="dialog" aria-modal="true" aria-labelledby="termsTitle" aria-hidden="true"><div class="modal-box"><div class="modal-head"><h2 id="termsTitle">Términos de servicio</h2><button type="button" data-modal-close="terminos" aria-label="Cerrar">×</button></div><div class="modal-body"><p>Este sitio presenta las capacidades e iniciativas de VITAIROS SpA y ofrece un canal de contacto. El envío de un diagnóstico no crea una relación contractual.</p><p>El alcance, entregables, plazos y condiciones de cualquier servicio se definen en una propuesta o contrato específico, regido por las leyes de la República de Chile.</p></div></div></div>
-  <script src="/assets/homepage.js?v=3.4.1" defer></script>
+  <script src="/assets/homepage.js?v=3.4.2" defer></script>
 </body>
 </html>
