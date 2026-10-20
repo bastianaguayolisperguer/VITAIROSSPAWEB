@@ -3,7 +3,9 @@ import { resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
 const html = readFileSync(resolve(root, 'index.html'), 'utf8');
-const css = readFileSync(resolve(root, 'assets/homepage.css'), 'utf8');
+const criticalCss = readFileSync(resolve(root, 'assets/homepage-critical.css'), 'utf8');
+const deferredCss = readFileSync(resolve(root, 'assets/homepage-deferred.css'), 'utf8');
+const css = `${criticalCss}\n${deferredCss}`;
 const js = readFileSync(resolve(root, 'assets/homepage.js'), 'utf8');
 const news = JSON.parse(readFileSync(resolve(root, 'data/news.json'), 'utf8'));
 const failures = [];
@@ -22,11 +24,12 @@ const expectedSections = ['inicio', 'brecha', 'soluciones', 'metodo', 'ecosistem
 expect(html.includes('<main id="main-content">'), 'Falta el landmark main.');
 expect((html.match(/<h1\b/g) || []).length === 1, 'Debe existir un único h1.');
 expect(duplicates.length === 0, `IDs duplicados: ${duplicates.join(', ')}`);
-expect(html.includes('/assets/homepage.css') && html.includes('/assets/homepage.js'), 'Los assets modulares no están enlazados.');
+expect(html.includes('/assets/homepage-critical.css') && html.includes('/assets/homepage-deferred.css') && html.includes('/assets/homepage.js'), 'Los assets critical/deferred no están enlazados.');
+expect(html.includes('id="homepageDeferredStyles"') && html.includes('media="print"') && html.includes('<noscript><link rel="stylesheet" href="/assets/homepage-deferred.css'), 'Falta la carga diferida por intención o su fallback noscript.');
 expect(!html.includes('fonts.googleapis.com'), 'La tipografía todavía depende de Google Fonts.');
 expect((html.match(/class="orbit-project(?:\s|")/g) || []).length === 4, 'La esfera debe contener cuatro nodos de proyecto.');
 expect((html.match(/data-ecosystem-item=/g) || []).length === 4, 'El ecosistema debe contener cuatro iniciativas.');
-expect((html.match(/class="method-node"/g) || []).length === 4, 'La metodología debe contener exactamente cuatro etapas.');
+expect((html.match(/class="method-node(?:\s|")/g) || []).length === 4, 'La metodología debe contener exactamente cuatro etapas.');
 expect((html.match(/class="diagnostic-step/g) || []).length === 4, 'El diagnóstico debe contener cuatro pasos.');
 expect((html.match(/name="oportunidad"/g) || []).length === 7, 'El paso 1 debe contener seis oportunidades y la opción laboral.');
 expect((html.match(/name="etapa"/g) || []).length === 5, 'El paso 3 debe conservar cinco estados.');
@@ -46,16 +49,18 @@ expect(jsonLd?.['@graph']?.some((item) => item['@type'] === 'Organization'), 'Fa
 expect(!jsonLd?.['@graph']?.some((item) => item['@type'] === 'FAQPage'), 'Existe FAQPage sin FAQ visible.');
 expect(Array.isArray(news) && news.length > 0 && news.every((item) => item.verified === true && item.link), 'news.json contiene entradas sin verificación o fuente.');
 expect(css.includes('@font-face') && css.includes('project-node-layer') && css.includes('VITAIROS HOME V3'), 'Faltan tipografía local, esfera o sistema visual V3.');
-expect(css.includes('V3.1 / one continuous dark scene') && css.includes('.method-network.is-complete+.method-release'), 'Falta la continuidad cromática o la expansión de metodología V3.1.');
-expect(css.includes('V3.2 / pre-production closing refinements') && css.includes('.choice-careers') && css.includes('grid-template-rows:minmax(270px,1fr) auto'), 'Faltan refinamientos V3.2 de formulario o evidencia.');
+expect(css.includes('.method-network.is-complete+.method-release'), 'Falta la expansión de metodología aprobada.');
+expect(css.includes('.choice-careers') && css.includes('grid-template-rows:minmax(270px,1fr) auto'), 'Faltan refinamientos de formulario o evidencia.');
 expect(css.includes('@media (max-width:1099px)') && js.includes("matchMedia('(min-width: 1100px)')"), 'El breakpoint desktop de 1100 px no está alineado.');
 expect(css.includes('@media (prefers-reduced-motion:reduce)'), 'Falta la salvaguarda CSS de movimiento reducido.');
-expect(js.includes('prefersReducedMotion') && js.includes('vitairos_intro_seen') && js.includes('revealVisibleItems'), 'Faltan salvaguardas de movimiento, intro o reveals.');
+expect(js.includes('prefersReducedMotion') && js.includes('vitairos_intro_seen') && js.includes('whenVisible'), 'Faltan salvaguardas de movimiento, intro o inicialización diferida.');
 expect(js.includes("fetch('/data/news.json'") && js.includes('.slice(0,2)'), 'Actualidad no está limitada a dos historias verificadas.');
 expect(js.includes('activateValue') && js.includes('activateEcosystem') && js.includes('showStep'), 'Faltan interacciones principales de la V3.');
 expect(js.includes('isCareerPath') && js.includes("current===2?4"), 'La rama ligera de Trabaja con nosotros no está implementada.');
-expect(js.includes("labels:['Documentos','Operación','Datos','Trazabilidad']") && js.includes("labels:['Personas','Aprendizaje','Conexión','Oportunidad']"), 'Las microvisualizaciones del ecosistema no conservan su semántica propia.');
+expect(js.includes("labels:['Información operativa','Estructura','Indicadores','Proceso']") && js.includes("labels:['Persona','Aprendizaje','Práctica','Adopción']"), 'Las microvisualizaciones del ecosistema no conservan su semántica propia.');
 expect(statSync(resolve(root, 'index.html')).size < 60000, 'El HTML supera 60 KB.');
+expect(statSync(resolve(root, 'assets/homepage-critical.css')).size < 110000, 'El CSS estructural crítico supera 110 KB.');
+expect(statSync(resolve(root, 'assets/homepage-deferred.css')).size < 60000, 'El CSS decorativo diferido supera 60 KB.');
 
 if (failures.length) {
   console.error('Homepage V3.2 smoke test failures:');

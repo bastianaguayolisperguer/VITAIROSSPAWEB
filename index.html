@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="es">
+<html class="no-js" lang="es">
 <head>
   <meta charset="utf-8">
   <title>Inteligencia Artificial para Empresas en Chile | VITAIROS</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script>document.documentElement.classList.remove('no-js')</script>
   <meta name="description" content="Empresa chilena de IA aplicada para organizaciones: diagnóstico, pilotos e integración de inteligencia artificial con procesos, datos y sistemas.">
   <meta property="og:title" content="Inteligencia Artificial para Empresas en Chile | VITAIROS">
   <meta property="og:description" content="Diagnóstico, pilotos e integración de IA aplicada con procesos, datos y sistemas.">
@@ -64,7 +65,32 @@
   }
   </script>
   <link rel="preload" href="/brand-kit/vitairos-conecta/assets/tipografia/Outfit-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="/assets/homepage.css">
+  <link rel="preload" href="/conecta/assets/vitairos-isotipo-320.png" as="image" type="image/png" fetchpriority="high">
+  <link rel="stylesheet" href="/assets/homepage-critical.css?v=3.4.2-p2b5">
+  <link id="homepageDeferredStyles" rel="stylesheet" href="/assets/homepage-deferred.css?v=3.4.2-p2b5" media="print">
+  <noscript><link rel="stylesheet" href="/assets/homepage-deferred.css?v=3.4.2-p2b5"></noscript>
+  <script>
+    (function(){
+      var deferred=document.getElementById('homepageDeferredStyles');
+      var applied=false;
+      var observer;
+      var scrollKeys={ArrowDown:1,PageDown:1,End:1,' ':1};
+      function cleanup(){window.removeEventListener('wheel',applyDeferred,true);window.removeEventListener('touchstart',applyDeferred,true);window.removeEventListener('pointerdown',applyDeferred,true);document.removeEventListener('keydown',onKeydown,true);if(observer)observer.disconnect();}
+      function applyDeferred(){if(applied)return;applied=true;deferred.media='all';deferred.dataset.applied='true';cleanup();}
+      function onKeydown(event){if(scrollKeys[event.key])applyDeferred();}
+      window.addEventListener('wheel',applyDeferred,{passive:true,capture:true});
+      window.addEventListener('touchstart',applyDeferred,{passive:true,capture:true});
+      window.addEventListener('pointerdown',applyDeferred,{passive:true,capture:true});
+      document.addEventListener('keydown',onKeydown,true);
+      if(location.hash)applyDeferred();
+      document.addEventListener('DOMContentLoaded',function(){
+        if(window.scrollY>0){applyDeferred();return;}
+        var firstDeferred=document.getElementById('brecha');
+        if(firstDeferred&&'IntersectionObserver' in window){observer=new IntersectionObserver(function(entries){if(entries.some(function(entry){return entry.isIntersecting&&entry.intersectionRatio>0;}))applyDeferred();},{threshold:.001});observer.observe(firstDeferred);}
+      },{once:true});
+      window.__applyHomepageDeferredStyles=applyDeferred;
+    })();
+  </script>
   <script>
     (function(){
       try{
@@ -74,6 +100,7 @@
       }catch(error){
         if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-enabled');
       }
+      window.setTimeout(function(){document.documentElement.classList.remove('intro-enabled');},2200);
     })();
   </script>
 </head>
@@ -106,7 +133,7 @@
         <g class="intro-mark__nodes">
           <circle cx="34" cy="73" r="13"></circle><circle cx="140" cy="108" r="10"></circle><circle cx="88" cy="184" r="12"></circle><circle cx="182" cy="176" r="10"></circle><circle cx="142" cy="288" r="12"></circle><circle cx="197" cy="375" r="10"></circle><circle cx="256" cy="287" r="15"></circle><circle cx="256" cy="472" r="12"></circle><circle cx="314" cy="375" r="10"></circle><circle cx="370" cy="288" r="12"></circle><circle cx="328" cy="176" r="10"></circle><circle cx="424" cy="184" r="12"></circle><circle cx="372" cy="108" r="10"></circle><circle cx="478" cy="73" r="13"></circle>
         </g>
-        <image class="intro-mark__official" href="/conecta/assets/vitairos-isotipo-512.png" x="0" y="0" width="512" height="512"></image>
+        <image class="intro-mark__official" href="/conecta/assets/vitairos-isotipo-320.png" x="0" y="0" width="512" height="512" fetchpriority="high"></image>
         <circle class="intro-mark__pulse" cx="256" cy="287" r="80"></circle>
       </svg>
       <div class="intro-loader__identity"><strong>VITAIROS</strong><span>IA aplicada · Ingeniería digital</span></div>
@@ -135,9 +162,9 @@
       <div class="scene-grid" aria-hidden="true"></div><div class="hero-aurora" aria-hidden="true"></div><div class="hero-network" aria-hidden="true"></div>
       <div class="container hero-layout">
         <div class="hero-copy">
-          <p class="eyebrow"><span></span> Inteligencia artificial aplicada</p>
+          <p class="eyebrow"><span></span> Empresa chilena de inteligencia artificial aplicada e ingeniería digital</p>
           <h1 id="heroTitle">Hacemos que la IA funcione <span>dentro de tu organización.</span></h1>
-          <p class="hero-lead">Identificamos dónde la IA puede generar valor, la probamos en pequeño y la integramos con tus procesos, datos y sistemas.</p>
+          <p class="hero-lead">Identificamos dónde la inteligencia artificial puede generar valor, la probamos con alcance acotado y la integramos con tus procesos, datos y sistemas.</p>
           <div class="hero-actions"><a href="#diagnostico" class="button button--primary" data-analytics-event="hero_cta">Evaluar una oportunidad <span aria-hidden="true">↗</span></a><a href="#soluciones" class="button button--quiet">Explorar VITAIROS <span aria-hidden="true">↓</span></a></div>
           <p class="hero-method"><span>Problema</span><i></i><span>Prueba</span><i></i><span>Integración</span><i></i><strong>Valor</strong></p>
         </div>
@@ -145,13 +172,13 @@
           <div class="hb-sphere-glow" aria-hidden="true"></div>
           <svg class="hb-sphere-fallback" id="vitairosGeoFallback" viewBox="0 0 400 400" aria-hidden="true">
             <defs><linearGradient id="sphereGradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6AD7B0"></stop><stop offset=".52" stop-color="#17A673"></stop><stop offset="1" stop-color="#1C66B1"></stop></linearGradient></defs>
-            <g fill="none" stroke="url(#sphereGradient)" opacity=".46"><circle cx="200" cy="200" r="132"></circle><ellipse cx="200" cy="200" rx="132" ry="58"></ellipse><ellipse cx="200" cy="200" rx="132" ry="58" transform="rotate(60 200 200)"></ellipse><ellipse cx="200" cy="200" rx="132" ry="58" transform="rotate(120 200 200)"></ellipse></g>
-            <g fill="url(#sphereGradient)"><circle cx="114" cy="100" r="7"></circle><circle cx="282" cy="116" r="6"></circle><circle cx="174" cy="224" r="8"></circle><circle cx="244" cy="277" r="7"></circle></g>
+            <g fill="none" stroke="url(#sphereGradient)" opacity=".46"><circle cx="200" cy="200" r="132"></circle><ellipse cx="200" cy="200" rx="132" ry="58"></ellipse><ellipse cx="200" cy="200" rx="132" ry="58" transform="rotate(60 200 200)"></ellipse><ellipse cx="200" cy="200" rx="132" ry="58" transform="rotate(120 200 200)"></ellipse><path d="M114 100C154 132 166 182 174 224S212 260 244 277M282 116C248 145 231 178 200 200S154 211 132 250"></path></g>
+            <g fill="url(#sphereGradient)"><circle cx="114" cy="100" r="7"></circle><circle cx="282" cy="116" r="6"></circle><circle cx="174" cy="224" r="8"></circle><circle cx="244" cy="277" r="7"></circle><circle cx="200" cy="200" r="10"></circle></g>
           </svg>
           <canvas id="vitairos-geo" width="560" height="560" aria-label="Red VITAIROS en movimiento"></canvas>
-          <p class="sphere-caption"><span>VITAIROS / RED 01</span><strong>Una capacidad central.<br>Cuatro contextos reales.</strong></p>
+          <p class="sphere-caption"><span>VITAIROS / RED OPERATIVA</span><strong>Señales conectadas.<br>Información en circulación.</strong></p>
           <nav class="project-orbits project-node-layer" aria-label="Proyectos conectados a la red VITAIROS">
-            <a class="orbit-project orbit-project--m" href="/vitairos-m/" data-project-index="0" data-category="Salud digital" aria-label="VITAIROS-M, salud digital"><span class="orbit-project__dot"></span><span class="orbit-project__label"><strong>VITAIROS-M</strong><small>Salud digital</small></span></a>
+            <a class="orbit-project orbit-project--m" href="/vitairos-m/" data-project-index="0" data-category="Salud mental digital" aria-label="VITAIROS-M, salud mental digital"><span class="orbit-project__dot"></span><span class="orbit-project__label"><strong>VITAIROS-M</strong><small>Salud mental digital</small></span></a>
             <a class="orbit-project orbit-project--industrial" href="/vitairos-industrial-ai/" data-project-index="1" data-category="Industria" aria-label="Industrial AI, industria"><span class="orbit-project__dot"></span><span class="orbit-project__label"><strong>Industrial AI</strong><small>Industria</small></span></a>
             <a class="orbit-project orbit-project--agro" href="/agro-intelligence/" data-project-index="2" data-category="Agricultura" aria-label="Agro Intelligence, agricultura"><span class="orbit-project__dot"></span><span class="orbit-project__label"><strong>Agro Intelligence</strong><small>Agricultura</small></span></a>
             <a class="orbit-project orbit-project--conecta" href="/conecta/" data-project-index="3" data-category="Educación" aria-label="VITAIROS Conecta, educación"><span class="orbit-project__dot"></span><span class="orbit-project__label"><strong>Conecta</strong><small>Educación</small></span></a>
@@ -166,30 +193,59 @@
       <div class="container">
         <div class="section-intro section-intro--split"><div><p class="section-kicker">La brecha</p><h2 id="breachTitle">La IA no genera valor solo por estar disponible.</h2></div><p>Genera valor cuando funciona dentro de tus procesos. <strong>Partimos por la fricción. Después elegimos la tecnología.</strong></p></div>
         <div id="soluciones" class="value-experience" data-value-active="process">
-          <div class="value-selector" aria-label="Contextos donde VITAIROS puede intervenir">
-            <button class="value-option is-active" type="button" data-value="process" aria-pressed="true"><span>01</span><strong>Proceso</strong><small>Trabajo manual, repetitivo o difícil de escalar.</small></button>
-            <button class="value-option" type="button" data-value="information" aria-pressed="false"><span>02</span><strong>Información</strong><small>Datos o documentos dispersos.</small></button>
-            <button class="value-option" type="button" data-value="decisions" aria-pressed="false"><span>03</span><strong>Decisiones</strong><small>Información disponible, difícil de utilizar.</small></button>
-            <button class="value-option" type="button" data-value="product" aria-pressed="false"><span>04</span><strong>Producto</strong><small>Experiencias digitales que necesitan inteligencia.</small></button>
+          <div class="value-selector" role="tablist" aria-label="Contextos donde VITAIROS puede intervenir">
+            <button class="value-option is-active" type="button" role="tab" data-value="process" aria-selected="true" aria-controls="valueStage"><span>01</span><strong>Proceso</strong><small>Trabajo manual, repetitivo o difícil de escalar.</small></button>
+            <button class="value-option" type="button" role="tab" data-value="information" aria-selected="false" aria-controls="valueStage" tabindex="-1"><span>02</span><strong>Información</strong><small>Datos y documentos dispersos o difíciles de aprovechar.</small></button>
+            <button class="value-option" type="button" role="tab" data-value="decisions" aria-selected="false" aria-controls="valueStage" tabindex="-1"><span>03</span><strong>Decisiones</strong><small>Información disponible que todavía cuesta convertir en acción.</small></button>
+            <button class="value-option" type="button" role="tab" data-value="product" aria-selected="false" aria-controls="valueStage" tabindex="-1"><span>04</span><strong>Producto</strong><small>Productos digitales donde la inteligencia puede aportar una función concreta.</small></button>
           </div>
-          <div class="value-stage" aria-live="polite">
-            <div class="value-stage__diagram" aria-hidden="true"><span class="diagram-node diagram-node--a"></span><span class="diagram-node diagram-node--b"></span><span class="diagram-node diagram-node--c"></span><span class="diagram-node diagram-node--d"></span><i class="diagram-line diagram-line--a"></i><i class="diagram-line diagram-line--b"></i><i class="diagram-line diagram-line--c"></i><strong id="valueGlyph">→</strong></div>
-            <div class="value-stage__copy"><span id="valueSignal">Intervención / 01</span><h3 id="valueTitle">Simplificar antes de automatizar.</h3><p id="valueDescription">Mapeamos la fricción, reducimos pasos y automatizamos solo lo que debe repetirse.</p><strong id="valueResult">Resultado posible · simplificación / automatización</strong></div>
+          <div class="value-stage" id="valueStage" role="tabpanel" aria-live="polite">
+            <div class="value-stage__diagram semantic-system" id="valueVisual" aria-hidden="true">
+              <svg class="semantic-routes" viewBox="0 0 600 320" preserveAspectRatio="none"><path class="semantic-route semantic-route--base" d="M48 160 H552"></path><path class="semantic-route semantic-route--active" d="M48 160 H552"></path><path class="semantic-route semantic-route--branch semantic-route--branch-a" d="M410 160 C468 160 486 104 552 96"></path><path class="semantic-route semantic-route--branch semantic-route--branch-b" d="M410 160 C468 160 486 216 552 224"></path></svg>
+              <span class="semantic-fragment semantic-fragment--a"><i></i><b id="valueNodeA">Entrada</b></span><span class="semantic-fragment semantic-fragment--b"><i></i><b id="valueNodeB">Revisión</b></span><span class="semantic-fragment semantic-fragment--c"><i></i><b id="valueNodeC">Espera</b></span><span class="semantic-fragment semantic-fragment--d"><i></i><b id="valueNodeD">Repetición</b></span>
+              <span class="semantic-core"><i></i><strong id="valueGlyph">FLUJO</strong><small id="valueCoreLabel">Proceso conectado</small></span>
+              <span class="semantic-output"><i></i><small>Resultado</small><strong id="valueOutputLabel">Operación fluida</strong></span>
+              <span class="semantic-signal"></span>
+            </div>
+            <div class="value-stage__copy"><span id="valueSignal">Problema / Proceso</span><h3 id="valueTitle">Ordenar un flujo fragmentado.</h3><p id="valueDescription">Mapeamos la fricción, reducimos pasos y automatizamos solo lo que debe repetirse.</p><strong id="valueResult">Resultado · un proceso conectado y más fácil de operar</strong></div>
           </div>
         </div>
-        <div class="capability-note"><p>No vendemos herramientas aisladas. <strong>Diseñamos cómo deben trabajar juntas.</strong></p><ul aria-label="Capacidades de implementación"><li>IA aplicada</li><li>Software</li><li>Automatización</li><li>Datos</li><li>Integraciones</li></ul></div>
+        <div class="integration-story" id="integracion" data-integration-story data-integration-active="ia" data-integration-output="decisions">
+          <div class="integration-copy"><p class="section-kicker">Integración tecnológica</p><h2>Integrar IA donde realmente aporta valor.</h2><p>Incorporamos IA dentro de productos y flujos de trabajo con un propósito definido, controles claros y conexión con la operación real.</p><p class="integration-direct">No sumamos tecnología por sumar. <strong>Integramos IA, software, automatización y datos para que funcionen dentro de tu operación.</strong></p><p class="integration-result"><span>Resultado</span> IA integrada en un proceso o producto que cumple una función concreta.</p></div>
+          <div class="integration-model" role="group" aria-label="Modelo de integración VITAIROS">
+            <div class="integration-model__head"><span>01 · Capacidades</span><p>Selecciona una capacidad para ver su recorrido.</p></div>
+            <div class="integration-capabilities" role="tablist" aria-label="Capacidades tecnológicas">
+              <button class="integration-capability is-active" type="button" role="tab" data-integration-key="ia" aria-selected="true" aria-controls="integrationDetail"><i>01</i><b>IA</b></button>
+              <button class="integration-capability" type="button" role="tab" data-integration-key="software" aria-selected="false" aria-controls="integrationDetail" tabindex="-1"><i>02</i><b>Software</b></button>
+              <button class="integration-capability" type="button" role="tab" data-integration-key="data" aria-selected="false" aria-controls="integrationDetail" tabindex="-1"><i>03</i><b>Datos</b></button>
+              <button class="integration-capability" type="button" role="tab" data-integration-key="automation" aria-selected="false" aria-controls="integrationDetail" tabindex="-1"><i>04</i><b>Automatización</b></button>
+              <button class="integration-capability" type="button" role="tab" data-integration-key="integrations" aria-selected="false" aria-controls="integrationDetail" tabindex="-1"><i>05</i><b>Integraciones</b></button>
+            </div>
+            <div class="integration-convergence" aria-hidden="true"><svg viewBox="0 0 1000 100" preserveAspectRatio="none"><path class="integration-route integration-route--ia" d="M100 0 C100 62 500 32 500 100"></path><path class="integration-route integration-route--software" d="M300 0 C300 56 500 40 500 100"></path><path class="integration-route integration-route--data" d="M500 0 V100"></path><path class="integration-route integration-route--automation" d="M700 0 C700 56 500 40 500 100"></path><path class="integration-route integration-route--integrations" d="M900 0 C900 62 500 32 500 100"></path><circle class="integration-route-signal" cx="500" cy="88" r="5"></circle></svg></div>
+            <div class="integration-hub"><span>02 · Integración VITAIROS</span><div><strong>VITAIROS</strong><b>Diseño + integración</b></div><p>Seleccionamos y conectamos las capacidades necesarias según el problema.</p></div>
+            <div class="integration-distribution" aria-hidden="true"><svg viewBox="0 0 1000 92" preserveAspectRatio="none"><path class="integration-output-route integration-output-route--process" d="M500 0 C500 42 125 34 125 92"></path><path class="integration-output-route integration-output-route--information" d="M500 0 C500 42 375 34 375 92"></path><path class="integration-output-route integration-output-route--decisions" d="M500 0 C500 42 625 34 625 92"></path><path class="integration-output-route integration-output-route--product" d="M500 0 C500 42 875 34 875 92"></path><circle class="integration-output-signal" cx="500" cy="8" r="5"></circle></svg></div>
+            <div class="integration-application-head"><span>03 · Aplicación en la operación</span><b id="integrationApplicationLabel">Decisiones</b></div>
+            <div class="integration-applications" aria-label="Aplicaciones posibles">
+              <span class="integration-application" data-integration-output-key="process"><i></i><b>Proceso</b></span>
+              <span class="integration-application" data-integration-output-key="information"><i></i><b>Información</b></span>
+              <span class="integration-application is-active" data-integration-output-key="decisions"><i></i><b>Decisiones</b></span>
+              <span class="integration-application" data-integration-output-key="product"><i></i><b>Producto digital</b></span>
+            </div>
+            <div class="integration-detail" id="integrationDetail" role="tabpanel" aria-live="polite"><span>Ruta activa</span><strong id="integrationDetailTitle">IA</strong><p id="integrationDetailCopy">Aplicamos modelos cuando cumplen una función concreta dentro del proceso o producto.</p></div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="metodo" class="section method-section" aria-labelledby="methodTitle">
       <div class="method-field" aria-hidden="true"></div>
       <div class="container"><div class="method-shell">
-        <div class="section-intro section-intro--split method-intro"><div><p class="section-kicker">Cómo trabajamos</p><h2 id="methodTitle">De oportunidad a capacidad operativa.</h2></div><p class="method-manifesto">Entrar pequeño.<br>Probar rápido.<br><strong>Escalar con evidencia.</strong></p></div>
-        <div class="method-network" id="methodNetwork"><svg class="method-path" viewBox="0 0 1000 180" preserveAspectRatio="none" aria-hidden="true"><path class="method-path__base" d="M12 26 C105 26 218 110 338 112 S545 42 664 48 S865 138 988 144"></path><path id="methodPathProgress" class="method-path__progress" pathLength="1" d="M12 26 C105 26 218 110 338 112 S545 42 664 48 S865 138 988 144"></path></svg><ol>
-          <li class="method-node" data-method-step="1"><span class="method-node__point"><i></i><b>01</b></span><div><small>Entender</small><h3>Diagnóstico</h3><p>Entendemos proceso, fricción, datos disponibles y resultado esperado.</p></div></li>
-          <li class="method-node" data-method-step="2"><span class="method-node__point"><i></i><b>02</b></span><div><small>Probar</small><h3>Piloto</h3><p>Probamos valor, viabilidad, control y adopción con alcance acotado.</p></div></li>
-          <li class="method-node" data-method-step="3"><span class="method-node__point"><i></i><b>03</b></span><div><small>Integrar</small><h3>Implementación</h3><p>Integramos la solución con datos, sistemas y operación.</p></div></li>
-          <li class="method-node" data-method-step="4"><span class="method-node__point"><i></i><b>04</b></span><div><small>Ampliar</small><h3>Escalamiento</h3><p>Ampliamos alcance solo cuando la evidencia justifica el siguiente paso.</p></div></li>
+        <div class="section-intro section-intro--split method-intro"><div><p class="section-kicker">Cómo trabajamos</p><h2 id="methodTitle">Del problema a una solución que funciona en tu operación.</h2></div><p class="method-manifesto">Entrar pequeño.<br>Probar rápido.<br><strong>Escalar con evidencia.</strong></p></div>
+        <div class="method-network" id="methodNetwork" data-current-step="1"><svg class="method-path" viewBox="0 0 1000 140" preserveAspectRatio="none" aria-hidden="true"><path class="method-path__base" d="M20 70 H980"></path><path id="methodPathProgress" class="method-path__progress" pathLength="1" d="M20 70 H980"></path></svg><span class="method-traveller" aria-hidden="true"></span><ol>
+          <li class="method-node is-current" data-method-step="1"><button class="method-node__button" type="button" aria-pressed="true"><span class="method-node__point"><i></i><b>01</b></span><span class="method-node__copy"><small>Entender</small><h3>Diagnóstico</h3><p>Entendemos el proceso, las fricciones, los datos disponibles y el resultado esperado.</p></span></button></li>
+          <li class="method-node" data-method-step="2"><button class="method-node__button" type="button" aria-pressed="false"><span class="method-node__point"><i></i><b>02</b></span><span class="method-node__copy"><small>Probar</small><h3>Piloto</h3><p>Probamos valor, viabilidad y adopción con un alcance acotado.</p></span></button></li>
+          <li class="method-node" data-method-step="3"><button class="method-node__button" type="button" aria-pressed="false"><span class="method-node__point"><i></i><b>03</b></span><span class="method-node__copy"><small>Integrar</small><h3>Implementación</h3><p>Integramos la solución con tus datos, sistemas y operación.</p></span></button></li>
+          <li class="method-node" data-method-step="4"><button class="method-node__button" type="button" aria-pressed="false"><span class="method-node__point"><i></i><b>04</b></span><span class="method-node__copy"><small>Ampliar</small><h3>Escalamiento</h3><p>Ampliamos el alcance cuando el piloto demuestra valor y justifica el siguiente paso.</p></span></button></li>
         </ol></div>
         <div class="method-release" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       </div></div>
@@ -197,18 +253,37 @@
 
     <section id="ecosistema" class="section ecosystem-section" aria-labelledby="ecosystemTitle">
       <div class="container">
-        <div class="section-intro section-intro--split"><div><p class="section-kicker">Ecosistema VITAIROS</p><h2 id="ecosystemTitle">Una capacidad tecnológica. <span>Distintos problemas reales.</span></h2></div><p>VITAIROS aplica una misma capacidad central en diferentes contextos.</p></div>
+        <div class="section-intro section-intro--split"><div><p class="section-kicker">Ecosistema VITAIROS</p><h2 id="ecosystemTitle">Una misma base tecnológica. <span>Distintos desafíos.</span></h2></div><p>Combinamos IA aplicada, software, automatización, datos e integración para resolver problemas concretos en distintos sectores.</p></div>
         <div class="ecosystem-experience" id="ecosystemExperience" data-active-project="m">
-          <div class="ecosystem-index">
-            <article class="ecosystem-item is-active" data-ecosystem-item="m"><button type="button" aria-expanded="true" aria-controls="ecosystemPreview"><span>01 · Salud digital</span><strong>VITAIROS-M</strong><i aria-hidden="true">↗</i></button><p>Continuidad entre la persona y la atención profesional.</p><a href="/vitairos-m/" data-analytics-event="project_click" data-project="vitairos-m">Conocer VITAIROS-M</a></article>
-            <article class="ecosystem-item" data-ecosystem-item="industrial"><button type="button" aria-expanded="false" aria-controls="ecosystemPreview"><span>02 · Industria y minería</span><strong>Industrial AI</strong><i aria-hidden="true">↗</i></button><p>Información operacional conectada con trazabilidad.</p><a href="/vitairos-industrial-ai/" data-analytics-event="project_click" data-project="industrial-ai">Conocer Industrial AI</a></article>
-            <article class="ecosystem-item" data-ecosystem-item="agro"><button type="button" aria-expanded="false" aria-controls="ecosystemPreview"><span>03 · Agricultura</span><strong>Agro Intelligence</strong><i aria-hidden="true">↗</i></button><p>Datos del territorio convertidos en soporte para decidir.</p><a href="/agro-intelligence/" data-analytics-event="project_click" data-project="agro-intelligence">Conocer Agro Intelligence</a></article>
-            <article class="ecosystem-item" data-ecosystem-item="conecta"><button type="button" aria-expanded="false" aria-controls="ecosystemPreview"><span>04 · Educación</span><strong>VITAIROS Conecta</strong><i aria-hidden="true">↗</i></button><p>Personas y conocimiento conectados con oportunidades.</p><a href="/conecta/" data-analytics-event="project_click" data-project="conecta">Conocer VITAIROS Conecta</a></article>
+          <div class="ecosystem-index" role="group" aria-label="Iniciativas VITAIROS">
+            <article class="ecosystem-item is-active" data-ecosystem-item="m"><button type="button" aria-expanded="true" aria-controls="ecosystemPreview"><span>01 · Salud mental digital</span><strong>VITAIROS-M</strong><i aria-hidden="true">↗</i></button><p>Continuidad entre la persona y la atención profesional.</p><a href="/vitairos-m/" data-analytics-event="project_click" data-project="vitairos-m">Conocer VITAIROS-M</a></article>
+            <article class="ecosystem-item" data-ecosystem-item="industrial"><button type="button" aria-expanded="false" aria-controls="ecosystemPreview"><span>02 · Industria y minería</span><strong>Industrial AI</strong><i aria-hidden="true">↗</i></button><p>Información operativa convertida en datos utilizables.</p><a href="/vitairos-industrial-ai/" data-analytics-event="project_click" data-project="industrial-ai">Conocer Industrial AI</a></article>
+            <article class="ecosystem-item" data-ecosystem-item="agro"><button type="button" aria-expanded="false" aria-controls="ecosystemPreview"><span>03 · Agricultura</span><strong>Agro Intelligence</strong><i aria-hidden="true">↗</i></button><p>Datos del campo convertidos en información para decidir.</p><a href="/agro-intelligence/" data-analytics-event="project_click" data-project="agro-intelligence">Conocer Agro Intelligence</a></article>
+            <article class="ecosystem-item" data-ecosystem-item="conecta"><button type="button" aria-expanded="false" aria-controls="ecosystemPreview"><span>04 · Educación y adopción digital</span><strong>VITAIROS Conecta</strong><i aria-hidden="true">↗</i></button><p>Conocimiento convertido en adopción digital responsable.</p><a href="/conecta/" data-analytics-event="project_click" data-project="conecta">Conocer VITAIROS Conecta</a></article>
           </div>
           <div class="ecosystem-preview" id="ecosystemPreview" aria-live="polite">
-            <div class="ecosystem-preview__meta"><span id="ecosystemPreviewSector">Salud digital</span><strong id="ecosystemPreviewName">VITAIROS-M</strong></div>
-            <div class="ecosystem-visual" aria-hidden="true"><div class="eco-orbit eco-orbit--one"></div><div class="eco-orbit eco-orbit--two"></div><span class="eco-node eco-node--a"><i></i><small id="ecosystemLabelA">Persona</small></span><span class="eco-node eco-node--b"><i></i><small id="ecosystemLabelB">Contexto</small></span><span class="eco-node eco-node--c"><i></i><small id="ecosystemLabelC">Profesional</small></span><span class="eco-node eco-node--d"><i></i><small id="ecosystemLabelD">Continuidad</small></span><img src="/conecta/assets/vitairos-isotipo-128.png" alt=""></div>
-            <p id="ecosystemPreviewCopy">Continuidad entre la persona y la atención profesional.</p>
+            <div class="ecosystem-preview__meta"><span id="ecosystemPreviewSector">Salud mental digital</span><strong id="ecosystemPreviewName">VITAIROS-M</strong></div>
+            <div class="initiative-narrative"><span>Transformación</span><h3 id="ecosystemPreviewHeadline">Continuidad entre la persona y la atención profesional.</h3><p id="ecosystemPreviewCopy">Una capa de continuidad entre la persona y la atención profesional.</p></div>
+            <div class="initiative-canvas" aria-hidden="true">
+              <svg class="initiative-motifs" viewBox="0 0 720 250" preserveAspectRatio="none">
+                <defs><linearGradient id="initiativeFlowGradient" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#6ad7b0"></stop><stop offset=".62" stop-color="#17a673"></stop><stop offset="1" stop-color="#1c66b1"></stop></linearGradient></defs>
+                <g class="initiative-motif initiative-motif--m"><path d="M44 180 C132 92 206 92 292 152 S472 216 676 80"></path><path d="M74 204 C202 126 282 218 410 120 S574 54 686 58"></path><circle cx="104" cy="142" r="40"></circle><circle cx="606" cy="90" r="54"></circle></g>
+                <g class="initiative-motif initiative-motif--industrial"><path d="M44 198 H676"></path><path d="M70 168 H650 M96 138 H624 M124 108 H596 M154 78 H566"></path><path d="M92 202 V94 M244 202 V66 M396 202 V116 M548 202 V48"></path></g>
+                <g class="initiative-motif initiative-motif--agro"><path d="M36 212 C154 118 246 246 364 146 S570 62 692 114"></path><path d="M40 230 C158 136 252 262 370 166 S572 84 696 134"></path><path d="M92 208 C198 152 272 232 392 142 S578 82 664 106"></path></g>
+                <g class="initiative-motif initiative-motif--conecta"><path d="M60 192 C158 192 180 56 292 56 S414 194 526 194 608 92 680 92"></path><circle cx="290" cy="56" r="32"></circle><circle cx="526" cy="194" r="40"></circle><path d="M290 24 V88 M258 56 H322 M486 194 H566"></path></g>
+              </svg>
+              <div class="initiative-flow">
+                <span class="initiative-step initiative-step--a"><i><b>01</b></i><small id="ecosystemLabelA">Persona</small></span>
+                <span class="initiative-arrow" aria-hidden="true">→</span>
+                <span class="initiative-step initiative-step--b"><i><b>02</b></i><small id="ecosystemLabelB">Contexto</small></span>
+                <span class="initiative-arrow" aria-hidden="true">→</span>
+                <span class="initiative-step initiative-step--c"><i><b>03</b></i><small id="ecosystemLabelC">Profesional</small></span>
+                <span class="initiative-arrow" aria-hidden="true">→</span>
+                <span class="initiative-step initiative-step--d"><i><b>04</b></i><small id="ecosystemLabelD">Continuidad</small></span>
+              </div>
+              <span class="initiative-pulse"></span>
+              <div class="initiative-signature"><img src="/conecta/assets/vitairos-isotipo-128.png" alt="" loading="lazy" decoding="async"><span>VITAIROS · aplicación con propósito</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -217,7 +292,7 @@
     <section id="actualidad" class="section news-section" data-news-section hidden aria-labelledby="newsTitle">
       <div class="ambient-network ambient-network--evidence" data-ambient-network aria-hidden="true"><svg viewBox="0 0 1440 520" preserveAspectRatio="none"><g class="ambient-network__grid"><path d="M0 96H1440M0 260H1440M0 424H1440M230 0V520M720 0V520M1210 0V520"></path></g><g class="ambient-network__links"><path d="M38 392 238 272 468 330 710 188 934 246 1192 122 1404 208"></path><path d="M116 106 334 164 590 78 824 154 1088 62 1348 116"></path></g><g class="ambient-network__nodes"><circle cx="238" cy="272" r="4"></circle><circle cx="468" cy="330" r="3"></circle><circle cx="710" cy="188" r="5"></circle><circle cx="934" cy="246" r="3"></circle><circle cx="1192" cy="122" r="4"></circle><circle cx="334" cy="164" r="3"></circle><circle cx="824" cy="154" r="4"></circle><circle cx="1088" cy="62" r="3"></circle></g></svg></div>
       <div class="container">
-      <div class="section-intro section-intro--split"><div><p class="section-kicker">Evidencia</p><h2 id="newsTitle">VITAIROS en movimiento.</h2></div><div class="news-intro"><p>Iniciativas y participaciones que hacen visible una compañía en construcción.</p><a href="https://www.linkedin.com/company/vitairos/" target="_blank" rel="noopener noreferrer">Ver actualidad <span aria-hidden="true">→</span></a></div></div>
+      <div class="section-intro section-intro--split"><div><p class="section-kicker">Evidencia</p><h2 id="newsTitle">VITAIROS en movimiento.</h2></div><div class="news-intro"><p>Proyectos, iniciativas y participaciones que muestran cómo VITAIROS aplica tecnología en distintos contextos.</p><a href="https://www.linkedin.com/company/vitairos/" target="_blank" rel="noopener noreferrer">Ver actualidad <span aria-hidden="true">→</span></a></div></div>
       <div class="news-grid" id="newsGrid" aria-live="polite"></div>
       </div>
     </section>
@@ -226,16 +301,17 @@
       <div class="ambient-network ambient-network--principles" data-ambient-network aria-hidden="true"><svg viewBox="0 0 1440 620" preserveAspectRatio="none"><g class="ambient-network__grid"><path d="M0 118H1440M0 310H1440M0 502H1440M180 0V620M610 0V620M1040 0V620M1370 0V620"></path></g><g class="ambient-network__links"><path d="M44 448 228 354 452 408 674 266 888 326 1120 208 1394 286"></path><path d="M118 164 354 230 590 126 832 194 1050 90 1326 146"></path></g><g class="ambient-network__nodes"><circle cx="228" cy="354" r="4"></circle><circle cx="452" cy="408" r="3"></circle><circle cx="674" cy="266" r="5"></circle><circle cx="888" cy="326" r="3"></circle><circle cx="1120" cy="208" r="4"></circle><circle cx="354" cy="230" r="3"></circle><circle cx="832" cy="194" r="4"></circle><circle cx="1050" cy="90" r="3"></circle></g></svg></div>
       <div class="container">
       <div class="section-intro section-intro--split"><div><p class="section-kicker">Por qué VITAIROS</p><h2 id="principlesTitle">Criterio antes que escala.</h2></div><p>No partimos con una herramienta. Construimos el siguiente paso que el problema realmente necesita.</p></div>
-      <ol class="principles-grid"><li tabindex="0"><span>01</span><div><h3>Problema antes que tecnología</h3><p>No partimos eligiendo herramientas.</p></div></li><li tabindex="0"><span>02</span><div><h3>Piloto antes que gran despliegue</h3><p>Probamos valor y riesgo antes de escalar.</p></div></li><li tabindex="0"><span>03</span><div><h3>Integración antes que aislamiento</h3><p>La IA debe convivir con datos, sistemas y equipos.</p></div></li><li tabindex="0"><span>04</span><div><h3>Control antes que automatización ciega</h3><p>Trazabilidad y supervisión cuando el contexto lo requiere.</p></div></li></ol>
+      <div class="principles-progress" data-principles-progress aria-hidden="true"><span></span><i></i><i></i><i></i><i></i></div>
+      <ol class="principles-grid" data-principles><li tabindex="0"><span>01</span><div><h3>Problema primero</h3><p>Partimos por lo que la organización necesita resolver.</p></div></li><li tabindex="0"><span>02</span><div><h3>Probar en pequeño</h3><p>Validamos valor y riesgo antes de ampliar.</p></div></li><li tabindex="0"><span>03</span><div><h3>Integrar con la operación</h3><p>La tecnología debe convivir con datos, sistemas y personas.</p></div></li><li tabindex="0"><span>04</span><div><h3>Escalar con evidencia</h3><p>Ampliamos cuando los resultados justifican hacerlo.</p></div></li></ol>
       <div class="about-note"><p>Tecnología útil. <strong>IA con criterio.</strong> Valor real.</p><span>Conocer VITAIROS →</span></div>
       <div class="ecosystem-signature" id="ecosystemSignature" data-active-project="" aria-labelledby="ecosystemSignatureLabel">
         <div class="ecosystem-signature__network" aria-hidden="true"><svg viewBox="0 0 1200 150" preserveAspectRatio="none"><path class="signature-link signature-link--m" d="M92 76 C180 24 248 24 322 76"></path><path class="signature-link signature-link--industrial" d="M322 76 C410 128 488 128 594 76"></path><path class="signature-link signature-link--agro" d="M594 76 C698 22 780 22 868 76"></path><path class="signature-link signature-link--conecta" d="M868 76 C968 126 1060 126 1140 76"></path><g><circle class="signature-node signature-node--m" cx="92" cy="76" r="4"></circle><circle class="signature-node signature-node--industrial" cx="322" cy="76" r="4"></circle><circle cx="594" cy="76" r="4"></circle><circle class="signature-node signature-node--agro" cx="868" cy="76" r="4"></circle><circle class="signature-node signature-node--conecta" cx="1140" cy="76" r="4"></circle></g></svg></div>
         <p class="ecosystem-signature__label" id="ecosystemSignatureLabel">Explora el ecosistema</p>
         <nav class="ecosystem-signature__projects" aria-label="Proyectos VITAIROS">
-          <a class="ecosystem-signature__project" href="/vitairos-m/" data-signature-project="m" data-analytics-event="project_click" data-project="vitairos-m"><span class="ecosystem-signature__mark"><img src="/assets/projects/vitairos-m.svg" alt=""></span><span class="ecosystem-signature__copy"><strong>VITAIROS-M</strong><small>Salud digital</small></span></a>
+          <a class="ecosystem-signature__project" href="/vitairos-m/" data-signature-project="m" data-analytics-event="project_click" data-project="vitairos-m"><span class="ecosystem-signature__mark"><img src="/vitairos-m/assets/vitairos-m-isotype-transparent.png" alt="" loading="lazy" decoding="async"></span><span class="ecosystem-signature__copy"><strong>VITAIROS-M</strong><small>Salud mental digital</small></span></a>
           <a class="ecosystem-signature__project" href="/vitairos-industrial-ai/" data-signature-project="industrial" data-analytics-event="project_click" data-project="industrial-ai"><span class="ecosystem-signature__mark"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="signatureMarkMineral" x1="8" y1="8" x2="58" y2="58"><stop stop-color="#F5DEB2"></stop><stop offset=".48" stop-color="#DD7A52"></stop><stop offset="1" stop-color="#AAB6B7"></stop></linearGradient></defs><path d="M8 49 23 17l10 13 8-10 15 29H8Z" fill="none" stroke="url(#signatureMarkMineral)" stroke-width="3" stroke-linejoin="round"></path><path d="M19 49h25M25 34h15M32 26v21" stroke="#F5DEB2" stroke-width="2" stroke-linecap="round" opacity=".78"></path><circle cx="32" cy="26" r="3.3" fill="#DD7A52"></circle></svg></span><span class="ecosystem-signature__copy"><strong>VITAIROS Industrial AI</strong><small>Industria y minería</small></span></a>
-          <a class="ecosystem-signature__project" href="/agro-intelligence/" data-signature-project="agro" data-analytics-event="project_click" data-project="agro-intelligence"><span class="ecosystem-signature__mark"><img src="/agro-intelligence/vitairos-logo.webp" alt=""></span><span class="ecosystem-signature__copy"><strong>VITAIROS Agro Intelligence</strong><small>Agricultura</small></span></a>
-          <a class="ecosystem-signature__project" href="/conecta/" data-signature-project="conecta" data-analytics-event="project_click" data-project="conecta"><span class="ecosystem-signature__mark"><img src="/conecta/assets/vitairos-isotipo-256.png" alt=""></span><span class="ecosystem-signature__copy"><strong>VITAIROS Conecta</strong><small>Educación</small></span></a>
+          <a class="ecosystem-signature__project" href="/agro-intelligence/" data-signature-project="agro" data-analytics-event="project_click" data-project="agro-intelligence"><span class="ecosystem-signature__mark"><img src="/agro-intelligence/vitairos-logo.webp" alt="" loading="lazy" decoding="async"></span><span class="ecosystem-signature__copy"><strong>VITAIROS Agro Intelligence</strong><small>Agricultura</small></span></a>
+          <a class="ecosystem-signature__project" href="/conecta/" data-signature-project="conecta" data-analytics-event="project_click" data-project="conecta"><span class="ecosystem-signature__mark"><img src="/conecta/assets/vitairos-isotipo-256.png" alt="" loading="lazy" decoding="async"></span><span class="ecosystem-signature__copy"><strong>VITAIROS Conecta</strong><small>Educación</small></span></a>
         </nav>
       </div>
       </div>
@@ -263,7 +339,7 @@
   </main>
 
   <footer><div class="container footer-grid">
-    <div class="footer-identity"><a href="#inicio" class="brand"><span class="brand-logo"><img src="/conecta/assets/vitairos-isotipo-128.png" alt=""></span><span class="brand-wordmark"><strong>VITAIROS</strong><small>IA aplicada · Ingeniería digital</small></span></a><p>Hacemos que la IA funcione dentro de procesos reales.</p></div>
+    <div class="footer-identity"><a href="#inicio" class="brand"><span class="brand-logo"><img src="/conecta/assets/vitairos-isotipo-128.png" alt="" loading="lazy" decoding="async"></span><span class="brand-wordmark"><strong>VITAIROS</strong><small>IA aplicada · Ingeniería digital</small></span></a><p>Hacemos que la IA funcione dentro de procesos reales.</p></div>
     <nav aria-label="Navegación del pie"><a href="#soluciones">Soluciones</a><a href="#metodo">Método</a><a href="#ecosistema">Ecosistema</a><a href="#diagnostico">Contacto</a></nav>
     <div class="footer-contact"><a href="mailto:contacto@vitairos.com">contacto@vitairos.com</a><span>Chile · Latinoamérica</span><div><a href="https://www.linkedin.com/company/vitairos/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.instagram.com/vitairos_com" target="_blank" rel="noopener noreferrer">Instagram</a></div></div>
     <div class="footer-meta"><p>© <span id="year"></span> VITAIROS SpA</p><div><button type="button" data-modal-open="privacidad">Privacidad</button><button type="button" data-modal-open="terminos">Términos</button><a id="trabaja" href="#diagnostico" data-diagnostic-careers>Trabaja con nosotros</a></div></div>
@@ -271,6 +347,6 @@
 
   <div class="modal-overlay" id="modal-privacidad" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" aria-hidden="true"><div class="modal-box"><div class="modal-head"><h2 id="privacyTitle">Política de privacidad</h2><button type="button" data-modal-close="privacidad" aria-label="Cerrar">×</button></div><div class="modal-body"><p><strong>Responsable:</strong> VITAIROS SpA.</p><p><strong>Datos tratados:</strong> mediante este formulario podemos tratar tu nombre, organización o empresa, correo electrónico, teléfono opcional y la información que incorpores voluntariamente en el diagnóstico.</p><p><strong>Finalidad:</strong> revisar, gestionar y responder tu solicitud, oportunidad comercial, postulación o interés de colaboración.</p><p><strong>Proveedor del formulario:</strong> el envío es procesado mediante FormSubmit.</p><p><strong>Uso:</strong> estos datos no se utilizan automáticamente para marketing ni para suscribirte a comunicaciones comerciales.</p><p><strong>Conservación:</strong> los datos se conservarán durante el tiempo necesario para gestionar la solicitud y atender las obligaciones que resulten aplicables.</p><p><strong>Derechos y contacto:</strong> puedes escribir a <a href="mailto:contacto@vitairos.com">contacto@vitairos.com</a> para realizar consultas o ejercer los derechos que correspondan respecto de tus datos personales.</p></div></div></div>
   <div class="modal-overlay" id="modal-terminos" role="dialog" aria-modal="true" aria-labelledby="termsTitle" aria-hidden="true"><div class="modal-box"><div class="modal-head"><h2 id="termsTitle">Términos de servicio</h2><button type="button" data-modal-close="terminos" aria-label="Cerrar">×</button></div><div class="modal-body"><p>Este sitio presenta las capacidades e iniciativas de VITAIROS SpA y ofrece un canal de contacto. El envío de un diagnóstico no crea una relación contractual.</p><p>El alcance, entregables, plazos y condiciones de cualquier servicio se definen en una propuesta o contrato específico, regido por las leyes de la República de Chile.</p></div></div></div>
-  <script src="/assets/homepage.js?v=3.2.2" defer></script>
+  <script src="/assets/homepage.js?v=3.4.2" defer></script>
 </body>
 </html>
