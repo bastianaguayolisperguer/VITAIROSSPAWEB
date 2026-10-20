@@ -4,7 +4,7 @@ const path = require('node:path');
 
 const baseUrl = process.env.VITAIROS_PREVIEW_URL || 'http://127.0.0.1:4173/?preview=v3.4.2';
 const edgePath = 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
-const outputRoot = path.resolve(__dirname, '../preview/home-v3.4.2-production-release');
+const outputRoot = path.resolve(process.env.VITAIROS_QA_OUTPUT || path.join(__dirname, '../preview/home-v3.4.2-production-release'));
 const screenshots = path.join(outputRoot, 'screenshots');
 const viewports = [
   [1920, 1080], [1440, 900], [1366, 768], [1200, 800], [1024, 768],
@@ -36,7 +36,7 @@ async function settle(page) {
   const viewport = page.viewportSize();
   await page.mouse.move(viewport.width - 8, viewport.height - 8);
   await page.evaluate(() => document.activeElement instanceof HTMLElement && document.activeElement.blur());
-  await page.waitForTimeout(120);
+  await page.waitForTimeout(260);
 }
 
 async function sectionShot(page, selector, file) {

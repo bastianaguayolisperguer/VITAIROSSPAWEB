@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="es">
+<html class="no-js" lang="es">
 <head>
   <meta charset="utf-8">
   <title>Inteligencia Artificial para Empresas en Chile | VITAIROS</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script>document.documentElement.classList.remove('no-js')</script>
   <meta name="description" content="Empresa chilena de IA aplicada para organizaciones: diagnóstico, pilotos e integración de inteligencia artificial con procesos, datos y sistemas.">
   <meta property="og:title" content="Inteligencia Artificial para Empresas en Chile | VITAIROS">
   <meta property="og:description" content="Diagnóstico, pilotos e integración de IA aplicada con procesos, datos y sistemas.">
@@ -65,7 +66,31 @@
   </script>
   <link rel="preload" href="/brand-kit/vitairos-conecta/assets/tipografia/Outfit-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="/conecta/assets/vitairos-isotipo-320.png" as="image" type="image/png" fetchpriority="high">
-  <link rel="stylesheet" href="/assets/homepage.css?v=3.4.2">
+  <link rel="stylesheet" href="/assets/homepage-critical.css?v=3.4.2-p2b5">
+  <link id="homepageDeferredStyles" rel="stylesheet" href="/assets/homepage-deferred.css?v=3.4.2-p2b5" media="print">
+  <noscript><link rel="stylesheet" href="/assets/homepage-deferred.css?v=3.4.2-p2b5"></noscript>
+  <script>
+    (function(){
+      var deferred=document.getElementById('homepageDeferredStyles');
+      var applied=false;
+      var observer;
+      var scrollKeys={ArrowDown:1,PageDown:1,End:1,' ':1};
+      function cleanup(){window.removeEventListener('wheel',applyDeferred,true);window.removeEventListener('touchstart',applyDeferred,true);window.removeEventListener('pointerdown',applyDeferred,true);document.removeEventListener('keydown',onKeydown,true);if(observer)observer.disconnect();}
+      function applyDeferred(){if(applied)return;applied=true;deferred.media='all';deferred.dataset.applied='true';cleanup();}
+      function onKeydown(event){if(scrollKeys[event.key])applyDeferred();}
+      window.addEventListener('wheel',applyDeferred,{passive:true,capture:true});
+      window.addEventListener('touchstart',applyDeferred,{passive:true,capture:true});
+      window.addEventListener('pointerdown',applyDeferred,{passive:true,capture:true});
+      document.addEventListener('keydown',onKeydown,true);
+      if(location.hash)applyDeferred();
+      document.addEventListener('DOMContentLoaded',function(){
+        if(window.scrollY>0){applyDeferred();return;}
+        var firstDeferred=document.getElementById('brecha');
+        if(firstDeferred&&'IntersectionObserver' in window){observer=new IntersectionObserver(function(entries){if(entries.some(function(entry){return entry.isIntersecting&&entry.intersectionRatio>0;}))applyDeferred();},{threshold:.001});observer.observe(firstDeferred);}
+      },{once:true});
+      window.__applyHomepageDeferredStyles=applyDeferred;
+    })();
+  </script>
   <script>
     (function(){
       try{
@@ -75,6 +100,7 @@
       }catch(error){
         if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-enabled');
       }
+      window.setTimeout(function(){document.documentElement.classList.remove('intro-enabled');},2200);
     })();
   </script>
 </head>
