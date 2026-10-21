@@ -103,7 +103,7 @@
     if(!canvas || !sphereWrap || prefersReducedMotion){ sphereWrap && sphereWrap.classList.add('fallback-only'); return; }
     function initializeSphere(){
     if(sphereWrap.dataset.canvasInitialized==='true')return;sphereWrap.dataset.canvasInitialized='true';
-    var ctx = canvas.getContext('2d',{alpha:true,desynchronized:true});
+    var ctx = canvas.getContext('2d',{alpha:true});
     if(!ctx){ sphereWrap.classList.add('fallback-only'); return; }
 
     function norm(v){ var l=Math.sqrt(v[0]*v[0]+v[1]*v[1]+v[2]*v[2]); return [v[0]/l,v[1]/l,v[2]/l]; }
