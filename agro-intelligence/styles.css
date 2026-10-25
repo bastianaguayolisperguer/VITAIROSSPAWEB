@@ -39,36 +39,60 @@ p { text-wrap: pretty; }
 .skip-link { position: fixed; z-index: 20000; top: 12px; left: 12px; padding: 10px 15px; color: var(--navy-950); border-radius: 8px; background: var(--white); box-shadow: var(--shadow); transform: translateY(-180%); }
 .skip-link:focus { transform: translateY(0); }
 
-/* Intro — the VITAIROS mark resolves through an opening data fan. */
+/* Intro — the original water and leaf converge to form the VITAIROS Agro mark. */
 html.intro-pending { overflow-y: scroll; overscroll-behavior: none; }
 html.intro-pending body { height: 100vh; overflow: hidden; }
 .agro-intro { position: fixed; z-index: 15000; display: none; inset: 0; place-items: center; overflow: hidden; color: var(--white); background: var(--navy-1000); pointer-events: none; isolation: isolate; }
-.intro-pending .agro-intro { display: grid; animation: introLayerEnd .01s 2.12s linear forwards; }
-.agro-intro::before { position: absolute; z-index: -2; width: min(86vw, 900px); aspect-ratio: 1; border: 1px solid rgba(120, 223, 76, .12); border-radius: 50%; background: radial-gradient(circle, rgba(37, 189, 219, .12), transparent 62%); content: ""; animation: introAtmosphere 2s ease both; }
-.agro-intro::after { position: absolute; z-index: 5; inset: 0; background: var(--navy-1000); content: ""; opacity: 0; animation: introWipe .42s 1.76s ease forwards; }
-.agro-intro__grid { position: absolute; z-index: -1; inset: 0; background-image: linear-gradient(rgba(143, 240, 192, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(143, 240, 192, .045) 1px, transparent 1px); background-size: 54px 54px; mask-image: radial-gradient(circle at center, #000 0, transparent 68%); animation: introGrid 2s ease both; }
-.agro-intro__scene { position: relative; display: grid; width: min(92vw, 740px); min-height: 440px; place-items: center; text-align: center; animation: introScene 1.9s var(--ease) both; }
-.agro-intro__brand { position: relative; z-index: 5; display: flex; align-items: center; gap: 15px; padding: 18px 24px; border: 1px solid rgba(255, 255, 255, .12); border-radius: 18px; background: rgba(3, 19, 28, .72); box-shadow: 0 22px 80px rgba(0, 0, 0, .32), 0 0 48px rgba(37, 189, 219, .12); backdrop-filter: blur(18px); animation: introBrand 1.36s .32s var(--ease) both; }
-.agro-intro__brand img { width: 34px; height: auto; }
-.agro-intro__brand div { display: grid; justify-items: start; }
-.agro-intro__brand strong { font-size: 1.08rem; letter-spacing: .18em; }
-.agro-intro__brand span { color: var(--green); font-size: .67rem; font-weight: 750; letter-spacing: .09em; }
-.agro-intro__scene > p { position: absolute; z-index: 5; bottom: 42px; margin: 0; color: rgba(255, 255, 255, .48); font-size: .67rem; font-weight: 720; letter-spacing: .16em; text-transform: uppercase; animation: introText .7s 1.05s ease both; }
+.intro-pending .agro-intro { display: grid; animation: introExit .44s 2.4s ease forwards, introLayerEnd .01s 2.86s linear forwards; }
+.agro-intro::before { position: absolute; z-index: -2; width: min(72vw, 760px); aspect-ratio: 1; border: 1px solid rgba(143, 240, 192, .08); border-radius: 50%; background: radial-gradient(circle, rgba(37, 189, 219, .115), rgba(120, 223, 76, .025) 32%, transparent 67%); content: ""; opacity: 0; animation: introAtmosphere 2.65s ease both; }
+.agro-intro::after { position: absolute; z-index: -1; inset: 0; background: radial-gradient(circle at 22% 18%, rgba(37, 189, 219, .07), transparent 26%), radial-gradient(circle at 78% 82%, rgba(120, 223, 76, .055), transparent 27%); content: ""; opacity: 0; animation: introAura 2.4s ease both; }
+.agro-intro__atmosphere { position: absolute; inset: 0; background-image: radial-gradient(circle at center, rgba(255, 255, 255, .018) 0 1px, transparent 1.5px); background-size: 38px 38px; mask-image: radial-gradient(circle at center, #000, transparent 70%); opacity: 0; animation: introParticles 2.35s ease both; }
+.agro-intro__scene { position: relative; display: grid; width: 100vw; height: 100vh; min-height: 440px; place-items: center; text-align: center; }
+.intro-convergence { position: relative; z-index: 3; width: clamp(84px, 8vw, 112px); aspect-ratio: 84 / 120; }
+.intro-mark, .intro-mark__part, .intro-mark__part img, .intro-mark__complete { position: absolute; inset: 0; width: 100%; height: 100%; }
+.intro-mark__part, .intro-mark__complete { will-change: transform, opacity; }
+.intro-mark__part img, .intro-mark__complete { object-fit: contain; }
+.intro-mark__part--water { clip-path: polygon(0 0, 71% 0, 70% 34%, 59% 50%, 0 57%); opacity: 0; animation: introWater 1.42s .08s cubic-bezier(.16, .74, .24, 1) forwards; }
+.intro-mark__part--leaf { clip-path: polygon(57% 20%, 100% 20%, 100% 62%, 42% 62%, 47% 48%, 57% 33%); opacity: 0; animation: introLeaf 1.42s .08s cubic-bezier(.16, .74, .24, 1) forwards; }
+.intro-mark__complete { opacity: 0; filter: drop-shadow(0 0 0 rgba(120, 223, 76, 0)); animation: introMarkResolve .52s 1.34s var(--ease) forwards; }
+.intro-energy { position: absolute; z-index: -1; top: 50%; left: 50%; width: 116%; aspect-ratio: 1; border: 1px solid rgba(143, 240, 192, .36); border-radius: 50%; opacity: 0; transform: translate(-50%, -50%) scale(.42); }
+.intro-energy--one { animation: introConvergencePulse .72s 1.26s ease-out forwards; }
+.intro-energy--two { width: 165%; border-color: rgba(37, 189, 219, .18); animation: introConvergencePulse .84s 1.34s ease-out forwards; }
+.intro-flow { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; overflow: visible; opacity: .7; }
+.intro-flow path { fill: none; stroke-linecap: round; stroke-width: .18; stroke-dasharray: 1; stroke-dashoffset: 1; vector-effect: non-scaling-stroke; }
+.intro-flow--water path { stroke: rgba(37, 189, 219, .52); filter: drop-shadow(0 0 8px rgba(37, 189, 219, .28)); animation: introPath 1.34s .05s var(--ease) forwards, introTrailOut .35s 1.28s ease forwards; }
+.intro-flow--leaf path { stroke: rgba(120, 223, 76, .42); filter: drop-shadow(0 0 8px rgba(120, 223, 76, .24)); animation: introPath 1.34s .05s var(--ease) forwards, introTrailOut .35s 1.28s ease forwards; }
+.agro-intro__name { position: absolute; z-index: 4; top: calc(50% + clamp(82px, 8.5vw, 114px)); display: grid; justify-items: center; line-height: 1; opacity: 0; transform: translateY(8px); animation: introName .5s 1.62s var(--ease) forwards; }
+.agro-intro__name strong { color: var(--white); font-size: clamp(.88rem, 1.4vw, 1.06rem); letter-spacing: .22em; text-indent: .22em; }
+.agro-intro__name span { margin-top: 9px; color: var(--green); font-size: clamp(.56rem, .8vw, .68rem); font-weight: 760; letter-spacing: .11em; }
 
 /* The fan is the “pavo real” motif: a restrained data bloom, not decoration alone. */
 .peacock { position: absolute; pointer-events: none; }
 .peacock i { position: absolute; bottom: 0; left: 50%; width: var(--feather-width, 84px); height: var(--feather-height, 240px); border: 1px solid rgba(37, 189, 219, .21); border-radius: 50% 50% 12px 12px; background: linear-gradient(180deg, rgba(37, 189, 219, .04), rgba(120, 223, 76, .015)); box-shadow: inset 0 0 30px rgba(37, 189, 219, .025); transform: translateX(-50%) rotate(calc(var(--feather) * var(--fan-angle, 11deg))) scaleY(.15); transform-origin: 50% 100%; opacity: 0; }
 .peacock i::before { position: absolute; top: 15px; left: 50%; width: 13px; height: 13px; border: 1px solid rgba(143, 240, 192, .65); border-radius: 50%; background: radial-gradient(circle, var(--green) 0 22%, rgba(37, 189, 219, .7) 24% 42%, transparent 46%); box-shadow: 0 0 22px rgba(120, 223, 76, .42); content: ""; transform: translateX(-50%); }
-.peacock--intro { z-index: 1; bottom: 68px; left: 50%; width: 680px; height: 360px; transform: translateX(-50%); }
-.peacock--intro i { --feather-width: 92px; --feather-height: 320px; animation: featherOpen .88s calc(.12s + (var(--feather) + 4) * .045s) var(--ease) forwards; }
-
-@keyframes featherOpen { 0% { opacity: 0; transform: translateX(-50%) rotate(0) scaleY(.12); } 70% { opacity: .9; } 100% { opacity: .58; transform: translateX(-50%) rotate(calc(var(--feather) * var(--fan-angle, 11deg))) scaleY(1); } }
-@keyframes introAtmosphere { 0% { opacity: 0; transform: scale(.62); } 45% { opacity: 1; } 100% { opacity: .2; transform: scale(1.14); } }
-@keyframes introGrid { from { opacity: 0; transform: scale(1.08); } to { opacity: 1; transform: scale(1); } }
-@keyframes introBrand { 0% { opacity: 0; filter: blur(5px); transform: scale(.84); } 70% { opacity: 1; filter: none; transform: scale(1.03); } 100% { opacity: 1; transform: scale(1); } }
-@keyframes introText { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-@keyframes introScene { 75% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(.98); } }
-@keyframes introWipe { to { opacity: 1; } }
+@keyframes introWater {
+  0% { opacity: 0; transform: translate(-48vw, -41vh) rotate(-16deg) scale(.76); }
+  16% { opacity: 1; }
+  46% { opacity: 1; transform: translate(-25vw, -17vh) rotate(-9deg) scale(.88); }
+  76% { opacity: 1; transform: translate(-6vw, -3vh) rotate(-2deg) scale(.97); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes introLeaf {
+  0% { opacity: 0; transform: translate(48vw, 41vh) rotate(14deg) scale(.76); }
+  16% { opacity: 1; }
+  46% { opacity: 1; transform: translate(25vw, 17vh) rotate(8deg) scale(.88); }
+  76% { opacity: 1; transform: translate(6vw, 3vh) rotate(2deg) scale(.97); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes introPath { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes introTrailOut { to { opacity: 0; } }
+@keyframes introConvergencePulse { 0% { opacity: 0; transform: translate(-50%, -50%) scale(.42); } 35% { opacity: .62; } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.34); } }
+@keyframes introMarkResolve { 0% { opacity: 0; transform: scale(.965); } 55% { opacity: 1; filter: drop-shadow(0 0 18px rgba(120, 223, 76, .22)); transform: scale(1.025); } 100% { opacity: 1; filter: drop-shadow(0 0 8px rgba(37, 189, 219, .1)); transform: scale(1); } }
+@keyframes introAtmosphere { 0% { opacity: 0; transform: scale(.56); } 48% { opacity: 1; } 100% { opacity: .22; transform: scale(1.08); } }
+@keyframes introAura { 0% { opacity: 0; } 28%, 82% { opacity: 1; } 100% { opacity: .35; } }
+@keyframes introParticles { 0% { opacity: 0; transform: scale(1.04); } 42%, 82% { opacity: .36; } 100% { opacity: 0; transform: scale(1); } }
+@keyframes introName { to { opacity: 1; transform: none; } }
+@keyframes introExit { to { opacity: 0; transform: scale(1.012); } }
 @keyframes introLayerEnd { to { visibility: hidden; } }
 
 /* Navigation */
@@ -457,7 +481,7 @@ html.intro-pending body { height: 100vh; overflow: hidden; }
   .capability-board { padding: 18px; }.capability-core { padding: 22px; }.sector-row { grid-template-columns: 1fr 1fr; }.team-line { grid-template-columns: 1fr; }.team-line p { padding-top: 18px; }
   .form-row { grid-template-columns: 1fr; gap: 0; }.form-panel { padding: 24px; }.partner-cta { padding: 25px; align-items: stretch; flex-direction: column; }.partner-cta .button { width: 100%; }
   .footer-grid { grid-template-columns: 1fr; gap: 34px; }.footer-bottom { align-items: flex-start; flex-direction: column; }
-  .peacock--intro { width: 430px; transform: translateX(-50%) scale(.82); }.agro-intro__scene { min-height: 390px; }.agro-intro__brand { padding: 15px 18px; }
+  .intro-convergence { width: 82px; }.agro-intro__scene { min-height: 390px; }.agro-intro__name { top: calc(50% + 88px); }
 }
 
 @media (max-width: 360px) {
@@ -472,7 +496,12 @@ html.intro-pending body { height: 100vh; overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
-  .agro-intro { display: none !important; }
+  .intro-pending .agro-intro { display: grid !important; visibility: visible; opacity: 1; transform: none; animation: none !important; }
+  .agro-intro::before { opacity: .18; transform: scale(.9); animation: none !important; }
+  .agro-intro::after { opacity: .4; animation: none !important; }
+  .agro-intro__atmosphere, .intro-flow, .intro-mark__part, .intro-energy { display: none; }
+  .intro-mark__complete { opacity: 1; filter: drop-shadow(0 0 8px rgba(37, 189, 219, .1)); transform: none; animation: none !important; }
+  .agro-intro__name { opacity: 1; transform: none; animation: none !important; }
   .js [data-reveal] { opacity: 1; transform: none; }
   .product-window--hero { transform: none !important; }
   .peacock--hero i, .peacock--core i { opacity: .32; transform: translateX(-50%) rotate(calc(var(--feather) * var(--fan-angle, 11deg))) scaleY(1); }

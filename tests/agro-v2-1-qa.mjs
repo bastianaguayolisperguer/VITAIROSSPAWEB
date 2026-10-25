@@ -131,14 +131,19 @@ try {
   await introPage.goto(`${baseUrl}/agro-intelligence/`, { waitUntil: 'domcontentloaded' });
   await introPage.waitForTimeout(120);
   check(await introPage.locator('#agroIntro').isVisible(), 'La intro VITAIROS/Agro no se muestra en una primera sesión.');
-  check((await introPage.locator('.peacock--intro i').count()) === 9, 'La intro no contiene el abanico pavo real completo.');
-  await introPage.waitForTimeout(2300);
+  check((await introPage.locator('.intro-mark__part--water').count()) === 1, 'La intro no contiene el componente de agua original.');
+  check((await introPage.locator('.intro-mark__part--leaf').count()) === 1, 'La intro no contiene el componente de hoja original.');
+  check((await introPage.locator('.intro-mark__complete').getAttribute('src')) === './vitairos-logo.webp', 'La intro no resuelve al isotipo original.');
+  await introPage.waitForTimeout(2900);
   check((await introPage.locator('#agroIntro').count()) === 0, 'La intro no se retira al terminar.');
   await introContext.close();
 
   const warmContext = await browser.newContext({ viewport: { width: 800, height: 600 }, reducedMotion: 'reduce' });
   const warmPage = await warmContext.newPage();
   await warmPage.goto(`${baseUrl}/agro-intelligence/`, { waitUntil: 'load' });
+  check(await warmPage.locator('#agroIntro').isVisible(), 'Reduced motion no conserva el branding estático breve.');
+  check((await warmPage.locator('.intro-mark__complete').evaluate((node) => getComputedStyle(node).opacity)) === '1', 'Reduced motion no muestra el isotipo original.');
+  await warmPage.waitForFunction(() => !document.querySelector('#agroIntro'));
   await warmContext.close();
 
   for (const viewport of viewports) {
@@ -152,6 +157,7 @@ try {
     page.on('pageerror', (error) => pageErrors.push(error.message));
     page.on('requestfailed', (request) => failedRequests.push(request.url()));
     const response = await page.goto(`${baseUrl}/agro-intelligence/`, { waitUntil: 'networkidle' });
+    await page.waitForFunction(() => !document.querySelector('#agroIntro'));
     await page.evaluate(() => document.querySelectorAll('[data-reveal]').forEach((node) => node.classList.add('is-visible')));
     await page.waitForTimeout(220);
     const audit = await page.evaluate(() => {

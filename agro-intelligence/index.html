@@ -32,7 +32,7 @@
   <script>
     document.documentElement.classList.add('js');
     try {
-      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && sessionStorage.getItem('vitairosAgroIntroSeen') !== '1') {
+      if (sessionStorage.getItem('vitairosAgroIntroV22Seen') !== '1') {
         document.documentElement.classList.add('intro-pending');
       }
     } catch (error) {}
@@ -75,21 +75,32 @@
   }
   </script>
 
-  <link rel="stylesheet" href="./styles.css?v=20261024-v2.1">
-  <script src="./script.js?v=20261024-v2.1" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20261025-v2.2-intro">
+  <script src="./script.js?v=20261025-v2.2-intro" defer></script>
 </head>
 <body>
   <div class="agro-intro" id="agroIntro" aria-hidden="true">
-    <div class="agro-intro__grid"></div>
+    <div class="agro-intro__atmosphere"></div>
     <div class="agro-intro__scene">
-      <div class="peacock peacock--intro" aria-hidden="true">
-        <i style="--feather:-4"></i><i style="--feather:-3"></i><i style="--feather:-2"></i><i style="--feather:-1"></i><i style="--feather:0"></i><i style="--feather:1"></i><i style="--feather:2"></i><i style="--feather:3"></i><i style="--feather:4"></i>
+      <svg class="intro-flow intro-flow--water" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M-4 4 C 14 8, 20 31, 50 50" pathLength="1"></path>
+      </svg>
+      <svg class="intro-flow intro-flow--leaf" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M104 96 C 84 91, 78 66, 50 50" pathLength="1"></path>
+      </svg>
+      <div class="intro-convergence" aria-hidden="true">
+        <span class="intro-energy intro-energy--one"></span>
+        <span class="intro-energy intro-energy--two"></span>
+        <div class="intro-mark">
+          <span class="intro-mark__part intro-mark__part--water"><img src="./vitairos-logo.webp" width="112" height="160" alt=""></span>
+          <span class="intro-mark__part intro-mark__part--leaf"><img src="./vitairos-logo.webp" width="112" height="160" alt=""></span>
+          <img class="intro-mark__complete" src="./vitairos-logo.webp" width="112" height="160" alt="">
+        </div>
       </div>
-      <div class="agro-intro__brand">
-        <img src="./vitairos-logo.webp" width="112" height="160" alt="">
-        <div><strong>VITAIROS</strong><span>Agro Intelligence</span></div>
+      <div class="agro-intro__name">
+        <strong>VITAIROS</strong>
+        <span>Agro Intelligence</span>
       </div>
-      <p>Campo → datos → inteligencia → decisión</p>
     </div>
   </div>
 

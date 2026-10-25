@@ -25,7 +25,7 @@
     }
   };
 
-  /* Intro: run once per session, skip on reduced motion and allow an immediate tap/click exit. */
+  /* Intro: the original water and leaf converge once per session; reduced motion gets a short static hold. */
   const finishIntro = (immediate = false) => {
     root.classList.remove('intro-pending');
     body.classList.remove('intro-active');
@@ -34,10 +34,11 @@
     window.setTimeout(() => intro.remove(), immediate ? 0 : 120);
   };
 
-  if (intro && root.classList.contains('intro-pending') && !reducedMotion) {
+  if (intro && root.classList.contains('intro-pending')) {
     body.classList.add('intro-active');
-    try { sessionStorage.setItem('vitairosAgroIntroSeen', '1'); } catch (error) {}
-    const introTimer = window.setTimeout(() => finishIntro(false), 2160);
+    intro.classList.toggle('is-reduced', reducedMotion);
+    try { sessionStorage.setItem('vitairosAgroIntroV22Seen', '1'); } catch (error) {}
+    const introTimer = window.setTimeout(() => finishIntro(false), reducedMotion ? 760 : 2860);
     intro.addEventListener('pointerup', () => {
       window.clearTimeout(introTimer);
       finishIntro(true);
