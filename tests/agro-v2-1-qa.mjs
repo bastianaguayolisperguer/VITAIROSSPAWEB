@@ -134,7 +134,7 @@ try {
   check((await introPage.locator('.intro-mark__part--water').count()) === 1, 'La intro no contiene el componente de agua original.');
   check((await introPage.locator('.intro-mark__part--leaf').count()) === 1, 'La intro no contiene el componente de hoja original.');
   check((await introPage.locator('.intro-mark__complete').getAttribute('src')) === './vitairos-logo.webp', 'La intro no resuelve al isotipo original.');
-  await introPage.waitForTimeout(2900);
+  await introPage.waitForTimeout(2500);
   check((await introPage.locator('#agroIntro').count()) === 0, 'La intro no se retira al terminar.');
   await introContext.close();
 

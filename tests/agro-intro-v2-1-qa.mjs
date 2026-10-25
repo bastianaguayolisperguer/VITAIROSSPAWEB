@@ -17,10 +17,10 @@ const devices = [
   { name: 'mobile', width: 390, height: 844 }
 ];
 const frames = [
-  { name: '01-initial', at: 120 },
-  { name: '02-convergence', at: 820 },
-  { name: '03-isotype', at: 1700 },
-  { name: '04-hero-transition', at: 2580 }
+  { name: '01-initial', at: 100 },
+  { name: '02-convergence', at: 660 },
+  { name: '03-isotype', at: 1370 },
+  { name: '04-hero-transition', at: 2075 }
 ];
 
 const server = spawn('python', ['-m', 'http.server', String(port), '--bind', '127.0.0.1'], {
@@ -99,7 +99,7 @@ try {
     await page.addInitScript(() => {
       const nativeSetTimeout = window.setTimeout.bind(window);
       window.setTimeout = (handler, timeout = 0, ...args) => {
-        if (timeout === 2860) return -1;
+        if (timeout === 2300) return -1;
         return nativeSetTimeout(handler, timeout, ...args);
       };
     });
@@ -161,7 +161,7 @@ try {
   await reducedPage.waitForTimeout(100);
   check(await reducedPage.locator('#agroIntro').isVisible(), 'Reduced motion: no se muestra la versión estática breve.');
   check(Number(await reducedPage.locator('.intro-mark__complete').evaluate((node) => getComputedStyle(node).opacity)) === 1, 'Reduced motion: el isotipo original no está visible.');
-  await reducedPage.waitForTimeout(800);
+  await reducedPage.waitForTimeout(620);
   check((await reducedPage.locator('#agroIntro').count()) === 0, 'Reduced motion: la versión breve bloquea demasiado tiempo.');
   await reducedContext.close();
 

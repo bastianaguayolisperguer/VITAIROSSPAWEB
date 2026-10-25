@@ -38,7 +38,7 @@
     body.classList.add('intro-active');
     intro.classList.toggle('is-reduced', reducedMotion);
     try { sessionStorage.setItem('vitairosAgroIntroV22Seen', '1'); } catch (error) {}
-    const introTimer = window.setTimeout(() => finishIntro(false), reducedMotion ? 760 : 2860);
+    const introTimer = window.setTimeout(() => finishIntro(false), reducedMotion ? 560 : 2300);
     intro.addEventListener('pointerup', () => {
       window.clearTimeout(introTimer);
       finishIntro(true);
