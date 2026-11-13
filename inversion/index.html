@@ -3,7 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <script>document.documentElement.classList.remove('no-js')</script>
+  <script>
+  (function () {
+    var root = document.documentElement;
+    root.classList.remove('no-js');
+    try {
+      var seen = sessionStorage.getItem('vitairos_investor_intro_seen') === '1';
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!seen && !reduced) root.classList.add('inv-intro-pending');
+    } catch (error) {
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) root.classList.add('inv-intro-pending');
+    }
+    window.setTimeout(function () { root.classList.remove('inv-intro-pending'); }, 2200);
+  }());
+  </script>
   <title>VITAIROS SpA | One Pager de Inversión</title>
   <meta name="description" content="Tesis de inversión de VITAIROS SpA, empresa chilena Deeptech de inteligencia artificial aplicada para minería, salud, agricultura y educación.">
   <meta name="robots" content="noindex,nofollow,noarchive">
@@ -49,6 +62,25 @@
   </script>
 </head>
 <body>
+  <div class="inv-intro" id="investorIntro" aria-hidden="true">
+    <div class="inv-intro__field">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" role="presentation">
+        <g class="inv-intro__links">
+          <path d="M-80 654C184 582 279 308 548 392S911 713 1182 520s337-315 430-268"></path>
+          <path d="M104 126c222 76 313 269 513 230s295-243 529-181 266 192 398 150"></path>
+          <path d="M280 826c79-224 238-341 425-274s266 192 455 132 261-212 371-241"></path>
+        </g>
+        <g class="inv-intro__nodes">
+          <circle cx="104" cy="126" r="5"></circle><circle cx="548" cy="392" r="5"></circle><circle cx="705" cy="552" r="5"></circle><circle cx="1182" cy="520" r="5"></circle><circle cx="1460" cy="252" r="5"></circle>
+        </g>
+      </svg>
+    </div>
+    <div class="inv-intro__brand">
+      <img src="/conecta/assets/vitairos-isotipo-320.png" alt="" width="136" height="136" fetchpriority="high">
+      <strong>VITAIROS</strong>
+      <div class="inv-intro__sequence"><span>Ingeniería e IA aplicada</span><i aria-hidden="true"></i><span>Presentación de inversión</span></div>
+    </div>
+  </div>
   <a class="inv-skip" href="#contenido">Saltar al contenido</a>
   <div class="inv-progress" aria-hidden="true"><span id="readingProgress"></span></div>
 
@@ -87,9 +119,9 @@
         <div class="inv-hero__copy" data-reveal>
           <p class="inv-eyebrow"><span></span> Capital Connect · Tesis presemilla</p>
           <h1 id="heroTitle">Inteligencia artificial aplicada para <em>transformar industrias.</em></h1>
-          <p class="inv-hero__lead">VITAIROS transforma desafíos empresariales e institucionales en soluciones de inteligencia artificial aplicada, integrando tecnología, contexto operativo e ingeniería de software.</p>
+          <p class="inv-hero__lead">VITAIROS convierte desafíos empresariales e institucionales en soluciones de inteligencia artificial aplicada, combinando ingeniería de software, contexto sectorial y capacidad de integración.</p>
           <div class="inv-hero__actions">
-            <a class="inv-button inv-button--primary" href="mailto:ba.lisperguer@vitairos.com?subject=Capital%20Connect%20%7C%20VITAIROS">Conversar con el founder <span aria-hidden="true">↗</span></a>
+            <a class="inv-button inv-button--primary" href="mailto:ba.lisperguer@vitairos.com?subject=Capital%20Connect%20%7C%20VITAIROS">Conversar con el Founder <span aria-hidden="true">↗</span></a>
             <a class="inv-button inv-button--quiet" href="#tesis">Explorar la tesis <span aria-hidden="true">↓</span></a>
           </div>
           <ul class="inv-hero__meta" aria-label="Datos de VITAIROS">
@@ -134,14 +166,14 @@
           <aside class="inv-memo" aria-label="Resumen de la ronda">
             <div class="inv-memo__top"><span>Investment memo / 02</span><i>Lectura · 2 min</i></div>
             <div class="inv-memo__amount"><small>Ronda objetivo propuesta</small><strong>US$50.000</strong><span>Presemilla</span></div>
-            <div class="inv-memo__focus"><span>Foco comercial inicial</span><strong>VITAIROS Industrial AI</strong><p>Primera vía B2B dentro de una compañía de IA aplicada multindustria.</p></div>
+            <div class="inv-memo__focus"><span>Foco comercial inicial</span><strong>VITAIROS Industrial AI</strong><p>Primera vía B2B dentro de una compañía de IA aplicada con capacidad multisectorial.</p></div>
             <dl class="inv-memo__signals">
               <div><dt>Portafolio</dt><dd>4 verticales</dd></div>
-              <div><dt>Industrial AI</dt><dd>TRL 4 declarado</dd></div>
-              <div><dt>Ecosistema</dt><dd>Programas 2026</dd></div>
+              <div><dt>Industrial AI</dt><dd>Prototipo controlado</dd></div>
+              <div><dt>Ecosistema</dt><dd>Vinculación 2026</dd></div>
               <div><dt>Capacidad</dt><dd>Ingeniería + IA</dd></div>
             </dl>
-            <p class="inv-memo__scope">Ronda propuesta. El TRL 4 corresponde exclusivamente al prototipo Industrial AI.</p>
+            <p class="inv-memo__scope">Ronda objetivo propuesta. La evidencia y madurez se presentan por iniciativa, sin extrapolarlas al portafolio completo.</p>
           </aside>
         </div>
       </div>
@@ -152,35 +184,35 @@
       <div class="inv-container">
         <header class="inv-section-head inv-section-head--split" data-reveal>
           <div><p class="inv-kicker">01 · Tesis de inversión</p><h2 id="thesisTitle">Una compañía de IA aplicada, <span>no un producto aislado.</span></h2></div>
-          <p>VITAIROS desarrolla capacidades tecnológicas reutilizables para resolver problemas concretos en sectores donde el contexto, la integración y la trazabilidad importan.</p>
+          <p>Una capacidad tecnológica. Múltiples mercados. Una empresa preparada para escalar.</p>
         </header>
 
         <div class="inv-thesis__statement" data-reveal>
-          <p>La oportunidad está en convertir conocimiento técnico en sistemas que funcionen dentro de organizaciones reales: conectados a sus datos, procesos y decisiones.</p>
+          <p>VITAIROS combina ingeniería de software, inteligencia artificial aplicada y conocimiento sectorial. La estrategia transforma proyectos especializados en capacidades reutilizables, con una evolución comercial hacia licenciamiento, agentes especializados y Model as a Service.</p>
           <div class="inv-thesis__line" aria-hidden="true"><span></span><i></i><span></span><i></i><span></span></div>
         </div>
 
         <div class="inv-thesis__grid">
           <article class="inv-capability inv-capability--current" data-reveal>
-            <span class="inv-capability__label">Capacidades desarrolladas</span>
-            <h3>Ingeniería para convertir IA en operación.</h3>
+            <span class="inv-capability__label">Capacidad actual</span>
+            <h3>Ingeniería para convertir necesidades reales en soluciones medibles.</h3>
             <ul>
               <li>Ingeniería y desarrollo de software</li>
-              <li>APIs e integración de sistemas</li>
-              <li>Automatización y pilotos aplicados</li>
-              <li>Prototipos con inteligencia artificial</li>
+              <li>Integración mediante APIs, datos y automatización</li>
+              <li>Prototipos y pilotos de inteligencia artificial</li>
+              <li>Conocimiento aplicado en cuatro sectores</li>
             </ul>
           </article>
           <article class="inv-capability inv-capability--future" data-reveal>
-            <span class="inv-capability__label">Arquitecturas en evolución</span>
-            <h3>Activos que pueden reutilizarse entre industrias.</h3>
+            <span class="inv-capability__label">Estrategia de escala</span>
+            <h3>Convertir aprendizaje de proyectos en activos reutilizables.</h3>
             <ul>
               <li>Agentes especializados</li>
               <li>Arquitecturas MaaS</li>
               <li>Soluciones basadas en RAG</li>
-              <li>Servicios y licencias escalables</li>
+              <li>Servicios, licencias y suscripciones</li>
             </ul>
-            <p class="inv-capability__note">Estas líneas se encuentran en distintos niveles de desarrollo y no representan todavía ingresos recurrentes.</p>
+            <p class="inv-capability__note">Esta evolución es una estrategia de crecimiento. No implica que toda la arquitectura compartida esté terminada ni que exista ingreso recurrente vigente.</p>
           </article>
         </div>
       </div>
@@ -200,20 +232,16 @@
             <div class="inv-project__mark" aria-hidden="true"><svg viewBox="0 0 120 120"><path d="M13 95 40 27l21 25 15-20 31 63H13Z"></path><path d="M29 95h58M42 66h36M60 45v48"></path><circle cx="60" cy="45" r="5"></circle></svg></div>
             <h3>VITAIROS Industrial AI</h3>
             <p>Integración de datos, automatización e inteligencia artificial para operaciones industriales.</p>
-            <ul class="inv-project__evidence">
-              <li><strong>TRL 4</strong><span>declarado</span></li>
-              <li><strong>38/38</strong><span>pruebas técnicas satisfactorias</span></li>
-              <li><strong>89,42%</strong><span>exactitud normalizada</span></li>
-            </ul>
-            <p class="inv-project__note">Validación en ambiente controlado con datos sintéticos. Las métricas no equivalen a desempeño productivo ni a validación comercial.</p>
+            <div class="inv-project__signal"><strong>Prototipo controlado</strong><span>TRL 4 declarado · evidencia técnica documentada · oportunidades de piloto y propuestas comerciales</span></div>
+            <p class="inv-project__note">Las pruebas técnicas se realizaron con documentos sintéticos. No equivalen a desempeño productivo ni a contratos cerrados.</p>
           </article>
 
           <article class="inv-project" data-reveal>
             <div class="inv-project__head"><span>02 / Salud</span><strong>En desarrollo</strong></div>
             <div class="inv-project__mini-mark"><img src="/vitairos-m/assets/vitairos-m-isotype-transparent.png" alt="" loading="lazy" decoding="async"></div>
             <h3>VITAIROS-M</h3>
-            <p>Plataforma HealthTech en desarrollo orientada a la continuidad entre la persona y la atención profesional.</p>
-            <div class="inv-project__fact">Antecedentes técnicos y apoyo de incubación UNAB.</div>
+            <p>Plataforma HealthTech orientada a la continuidad entre la persona y la atención profesional.</p>
+            <div class="inv-project__fact">Prototipo y pruebas técnicas · participación en Incubación UNAB 2026.</div>
           </article>
 
           <article class="inv-project" data-reveal>
@@ -236,36 +264,32 @@
           </article>
 
           <aside class="inv-trajectory" aria-labelledby="trajectoryTitle" data-reveal>
-            <div class="inv-trajectory__head"><span>Trayectoria · no es una quinta solución</span><strong>Vinculación 2026</strong></div>
-            <h3 id="trajectoryTitle">Ecosistema, experiencia y <span>vinculación tecnológica.</span></h3>
-            <p>VITAIROS combina desarrollo propio, experiencia sectorial y participación documentada en redes de innovación.</p>
+            <div class="inv-trajectory__head"><span>Trayectoria empresarial</span><strong>Vinculación 2026</strong></div>
+            <h3 id="trajectoryTitle">Capacidad técnica conectada con <span>ecosistemas de innovación.</span></h3>
+            <p>VITAIROS combina servicios tecnológicos, desarrollo propio y participación documentada en programas e instancias técnicas.</p>
             <div class="inv-trajectory__grid">
               <article>
                 <a href="https://www.ibm.com/partnerplus/become-a-partner" target="_blank" rel="noopener noreferrer"><strong>IBM Partner Plus <span aria-hidden="true">↗</span></strong></a>
-                <p>Nivel Registered declarado, ruta Build → AI Agent. Agent Connect permanece en lista de espera.</p>
-                <small>Incorporación al programa; no implica asociación exclusiva ni certificación técnica.</small>
+                <p>Incorporación aprobada al programa en nivel Registered.</p>
               </article>
               <article>
                 <a href="https://www.duoc.cl/?noticia_post_type=titulado-de-duoc-uc-se-integra-a-mesa-tecnica-del-centro-nacional-talasa-para-impulsar-el-desarrollo-de-la-inteligencia-artificial-en-chile" target="_blank" rel="noopener noreferrer"><strong>Centro Nacional Talasa <span aria-hidden="true">↗</span></strong></a>
                 <p>Participación de VITAIROS en la Mesa Técnica Permanente, representada por su Founder & CEO.</p>
-                <small>No corresponde a contrato, cliente, inversión ni convenio comercial.</small>
               </article>
               <article>
                 <a href="https://www.duoc.cl/?noticia_post_type=titulado-de-duoc-uc-se-integra-a-mesa-tecnica-del-centro-nacional-talasa-para-impulsar-el-desarrollo-de-la-inteligencia-artificial-en-chile" target="_blank" rel="noopener noreferrer"><strong>Duoc UC <span aria-hidden="true">↗</span></strong></a>
-                <p>Vinculación con formación tecnológica, prácticas profesionales y participación estudiantil en iniciativas VITAIROS.</p>
-                <small>La actividad docente del founder se distingue de la relación institucional de la empresa.</small>
+                <p>Vinculación tecnológica, prácticas profesionales y participación estudiantil en iniciativas de la empresa.</p>
               </article>
               <article>
                 <strong>Duoc UC Sede Quillota</strong>
-                <p>Iniciativa de piloto institucional de Agro Intelligence en preparación avanzada, informada por el founder.</p>
-                <small>Alcance y formalización pendientes. No se presenta como convenio firmado, piloto ejecutado ni contrato.</small>
+                <p>Iniciativa de piloto institucional de Agro Intelligence en preparación avanzada.</p>
               </article>
               <article class="inv-trajectory__wide">
-                <strong>UPSCALE 2026</strong>
-                <p><a href="https://centrodeinnovacion.uc.cl/noticias/upscale-mining-2026-doce-startups-proponen-soluciones-de-alto-impacto-para-la-industria-minera/" target="_blank" rel="noopener noreferrer">Mining · participación y Demo Day ↗</a><span></span><a href="https://centrodeinnovacion.uc.cl/upscale/" target="_blank" rel="noopener noreferrer">Agrotech · participación en el ecosistema ↗</a></p>
-                <small>Programas del Centro de Innovación UC. No se afirman etapas posteriores no acreditadas.</small>
+                <strong>UPSCALE Mining y Agrotech 2026</strong>
+                <p><a href="https://centrodeinnovacion.uc.cl/noticias/upscale-mining-2026-doce-startups-proponen-soluciones-de-alto-impacto-para-la-industria-minera/" target="_blank" rel="noopener noreferrer">Mining · programa y Demo Day ↗</a><span></span><a href="https://centrodeinnovacion.uc.cl/upscale/" target="_blank" rel="noopener noreferrer">Agrotech · mentorías y Demo Day ↗</a></p>
               </article>
             </div>
+            <p class="inv-trajectory__note">Las participaciones y vínculos institucionales describen su naturaleza comprobable. No se presentan como contratos comerciales, certificaciones ni convenios exclusivos. La iniciativa con Duoc UC Sede Quillota aún no está formalizada ni ejecutada.</p>
           </aside>
         </div>
       </div>
@@ -274,21 +298,51 @@
     <section class="inv-section inv-evidence" id="evidencia" aria-labelledby="evidenceTitle">
       <div class="inv-container">
         <header class="inv-section-head inv-section-head--split" data-reveal>
-          <div><p class="inv-kicker">03 · Evidencia y avances</p><h2 id="evidenceTitle">Capacidad demostrada. <span>Potencial para escalar.</span></h2></div>
-          <p>Evidencia técnica, una arquitectura empresarial multisectorial y una ruta comercial orientada a convertir capacidad en crecimiento.</p>
+          <div><p class="inv-kicker">03 · Evidencia y avances</p><h2 id="evidenceTitle">Capacidad desarrollada y <span>oportunidades de crecimiento.</span></h2></div>
+          <p>La evidencia combina desarrollo técnico, vinculación institucional y oportunidades comerciales en distintas etapas. Cada avance conserva su alcance real.</p>
         </header>
 
-        <div class="inv-evidence__layout">
-          <div class="inv-evidence__metrics" data-reveal>
-            <div><strong>38/38</strong><span>Pruebas técnicas satisfactorias en Industrial AI</span></div>
-            <div><strong>89,42%</strong><span>Exactitud normalizada sobre datos sintéticos</span></div>
-            <div><strong>TRL 4</strong><span>Nivel declarado con validación controlada</span></div>
-          </div>
-          <ol class="inv-timeline">
-            <li data-reveal><span>Base</span><div><strong>Ingeniería aplicada</strong><p>Software, APIs, automatización y prototipos de IA construidos para operar con datos, procesos y controles reales.</p></div></li>
-            <li data-reveal><span>Activos</span><div><strong>Cuatro verticales independientes</strong><p>Un portafolio que reutiliza capacidades tecnológicas sin confundir la madurez, el mercado ni la evidencia de cada solución.</p></div></li>
-            <li data-reveal><span>Escala</span><div><strong>De la validación a la oferta repetible</strong><p>El siguiente hito es convertir pilotos y oportunidades en una propuesta comercial medible. Las cotizaciones actuales no se presentan como ventas.</p></div></li>
-          </ol>
+        <div class="inv-evidence__dimensions">
+          <article data-reveal>
+            <span>01 · Desarrollo tecnológico</span>
+            <h3>Prototipos y pruebas con alcance definido</h3>
+            <ul>
+              <li><strong>Industrial AI</strong> · TRL 4 declarado y prototipo en ambiente controlado.</li>
+              <li><strong>38/38</strong> pruebas técnicas satisfactorias.</li>
+              <li><strong>89,42%</strong> de exactitud normalizada sobre documentos sintéticos.</li>
+              <li><strong>VITAIROS-M</strong> · prototipo y pruebas técnicas en salud digital.</li>
+            </ul>
+          </article>
+          <article data-reveal>
+            <span>02 · Programas y vinculación</span>
+            <h3>Participación en redes de innovación</h3>
+            <ul>
+              <li>IBM Partner Plus · nivel Registered.</li>
+              <li>UPSCALE Mining y UPSCALE Agrotech 2026.</li>
+              <li>Mesa Técnica Permanente del Centro Nacional Talasa.</li>
+              <li>Vinculación tecnológica con Duoc UC.</li>
+            </ul>
+          </article>
+          <article data-reveal>
+            <span>03 · Oportunidades comerciales</span>
+            <h3>Validaciones y propuestas por convertir</h3>
+            <ul>
+              <li>Propuestas comerciales y oportunidades de piloto para Industrial AI.</li>
+              <li>Piloto de Agro Intelligence con Duoc UC Sede Quillota en preparación avanzada.</li>
+              <li>Servicios tecnológicos como vía comercial disponible.</li>
+            </ul>
+            <p>Las propuestas y conversaciones no se presentan como ventas ni contratos cerrados.</p>
+          </article>
+          <article data-reveal>
+            <span>04 · Capacidad multisectorial</span>
+            <h3>Una base técnica aplicada a cuatro mercados</h3>
+            <ul>
+              <li>Industria y minería · información operativa e integración.</li>
+              <li>Salud · continuidad y soluciones digitales.</li>
+              <li>Agricultura · datos, trazabilidad y automatización.</li>
+              <li>Educación · adopción tecnológica y uso responsable de IA.</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
@@ -297,7 +351,7 @@
       <div class="inv-container">
         <header class="inv-section-head inv-section-head--split" data-reveal>
           <div><p class="inv-kicker">04 · Economía empresarial</p><h2 id="businessTitle">De ingeniería especializada a <span>ingresos recurrentes de IA.</span></h2></div>
-          <p>El valor empresarial de VITAIROS proviene de combinar conocimiento técnico, experiencia sectorial y potencial de reutilización tecnológica. Los mecanismos están en distintas etapas y no todos generan ingresos a la fecha.</p>
+          <p>VITAIROS combina conocimiento técnico, experiencia sectorial y potencial de reutilización tecnológica. Los mecanismos se encuentran en distintas etapas y no todos generan ingresos a la fecha.</p>
         </header>
         <div class="inv-business__grid">
           <article class="inv-business__item--current" data-reveal><span>01 · Oferta comercial disponible</span><h3>Ingeniería de software, desarrollo y consultoría</h3><p>Proyectos definidos por alcance, entregables y especialidad técnica.</p></article>
@@ -305,6 +359,8 @@
           <article class="inv-business__item--projected" data-reveal><span>03 · Monetización proyectada</span><h3>MaaS, suscripciones y licenciamiento</h3><p>Ingresos recurrentes previstos cuando existan productos, niveles de servicio y costos operativos medibles.</p></article>
           <article class="inv-business__item--vertical" data-reveal><span>04 · Desarrollo por vertical</span><h3>Productos sectoriales e implementaciones institucionales</h3><p>Pilotos e implementaciones en industria, salud, agricultura y educación, según la madurez y evidencia de cada solución.</p></article>
         </div>
+        <div class="inv-business__path" data-reveal aria-label="Evolución comercial propuesta"><span>Servicios especializados</span><i>→</i><span>Capacidades reutilizables</span><i>→</i><span>Productos sectoriales</span><i>→</i><strong>Ingresos repetibles</strong></div>
+        <p class="inv-business__path-note" data-reveal>Esta transición orienta la estrategia comercial; su validación dependerá de pilotos, costos medidos y contratos efectivos.</p>
       </div>
     </section>
 
@@ -312,51 +368,47 @@
       <div class="inv-container">
         <header class="inv-section-head inv-section-head--split" data-reveal>
           <div><p class="inv-kicker">05 · Unit economics por modelo</p><h2 id="economicsTitle">Una matriz para medir <span>cada unidad comercial.</span></h2></div>
-          <p>Capital Connect exige unit economics. La documentación disponible permite definir unidades, costos y fórmulas, pero todavía no permite calcular márgenes defendibles.</p>
+          <p>La metodología ya define qué medir por modelo. Los márgenes se calcularán cuando horas, infraestructura, soporte e ingresos netos cuenten con registros suficientes.</p>
         </header>
 
-        <div class="inv-unit-matrix" role="table" aria-label="Matriz de unit economics por modelo" data-reveal>
-          <article class="inv-unit-row" role="row">
-            <header class="inv-unit-row__model" role="rowheader"><span>Modelo 01</span><h3>Ingeniería y consultoría</h3></header>
-            <dl class="inv-unit-row__details">
-              <div role="cell"><dt>Unidad comercial</dt><dd>Proyecto, sprint o bolsa de horas</dd></div>
-              <div role="cell"><dt>Mecanismo de ingreso</dt><dd>Tarifa fija por alcance o facturación por hora</dd></div>
-              <div role="cell"><dt>Principales costos directos</dt><dd>Horas por perfil, subcontratación, herramientas e infraestructura atribuible</dd></div>
-              <div role="cell"><dt>Fórmula de contribución</dt><dd>(Ingreso neto − costos directos de entrega) / ingreso neto</dd></div>
-              <div role="cell"><dt>Disponibilidad de datos</dt><dd><span class="inv-status inv-status--partial">Datos parciales</span></dd></div>
+        <div class="inv-unit-matrix" aria-label="Matriz ejecutiva de unit economics por modelo">
+          <article class="inv-unit-card inv-unit-card--priority" data-reveal>
+            <header><span>Modelo 01 · mayor cercanía comercial</span><h3>Ingeniería y consultoría</h3></header>
+            <dl>
+              <div><dt>Unidad e ingreso</dt><dd>Proyecto, sprint o bolsa de horas · tarifa fija o por hora.</dd></div>
+              <div><dt>Costos directos</dt><dd>Horas por perfil, terceros, herramientas e infraestructura atribuible.</dd></div>
+              <div><dt>Contribución</dt><dd>(Ingreso neto − costos directos de entrega) / ingreso neto.</dd></div>
+              <div><dt>Evidencia y medición</dt><dd>Servicios y propuestas documentadas; costos efectivos por proyecto en consolidación.</dd></div>
             </dl>
           </article>
 
-          <article class="inv-unit-row" role="row">
-            <header class="inv-unit-row__model" role="rowheader"><span>Modelo 02</span><h3>RAG, agentes y APIs</h3></header>
-            <dl class="inv-unit-row__details">
-              <div role="cell"><dt>Unidad comercial</dt><dd>Implementación o piloto empresarial</dd></div>
-              <div role="cell"><dt>Mecanismo de ingreso</dt><dd>Cargo de implementación y soporte acordado</dd></div>
-              <div role="cell"><dt>Principales costos directos</dt><dd>Ingeniería, integración, consumo de modelos y APIs, nube, QA y soporte</dd></div>
-              <div role="cell"><dt>Fórmula de contribución</dt><dd>(Ingreso neto − ingeniería − consumo − integración − soporte) / ingreso neto</dd></div>
-              <div role="cell"><dt>Disponibilidad de datos</dt><dd><span class="inv-status inv-status--partial">Datos parciales</span></dd></div>
+          <article class="inv-unit-card inv-unit-card--priority" data-reveal>
+            <header><span>Modelo 02 · implementaciones</span><h3>RAG, agentes y APIs</h3></header>
+            <dl>
+              <div><dt>Unidad e ingreso</dt><dd>Implementación o piloto · cargo inicial y soporte acordado.</dd></div>
+              <div><dt>Costos directos</dt><dd>Ingeniería, integración, consumo de modelos, nube, QA y soporte.</dd></div>
+              <div><dt>Contribución</dt><dd>(Ingreso neto − ingeniería − consumo − integración − soporte) / ingreso neto.</dd></div>
+              <div><dt>Evidencia y medición</dt><dd>Capacidad técnica y propuestas; base histórica aún insuficiente para publicar margen.</dd></div>
             </dl>
           </article>
 
-          <article class="inv-unit-row" role="row">
-            <header class="inv-unit-row__model" role="rowheader"><span>Modelo 03</span><h3>MaaS, suscripción y licencia</h3></header>
-            <dl class="inv-unit-row__details">
-              <div role="cell"><dt>Unidad comercial</dt><dd>Tenant, instancia o licencia por mes</dd></div>
-              <div role="cell"><dt>Mecanismo de ingreso</dt><dd>Suscripción, licencia o consumo</dd></div>
-              <div role="cell"><dt>Principales costos directos</dt><dd>Nube, modelos y APIs, monitoreo, soporte y licencias de terceros</dd></div>
-              <div role="cell"><dt>Fórmula de contribución</dt><dd>(Ingreso recurrente neto − costos recurrentes directos) / ingreso recurrente neto</dd></div>
-              <div role="cell"><dt>Disponibilidad de datos</dt><dd><span class="inv-status inv-status--projected">Proyectado · sin datos confirmados</span></dd></div>
+          <article class="inv-unit-card" data-reveal>
+            <header><span>Modelo 03 · estrategia de crecimiento</span><h3>MaaS, suscripción y licencia</h3></header>
+            <dl>
+              <div><dt>Unidad e ingreso</dt><dd>Tenant, instancia o licencia mensual · suscripción, licencia o consumo.</dd></div>
+              <div><dt>Costos directos</dt><dd>Nube, modelos y APIs, monitoreo, soporte y licencias de terceros.</dd></div>
+              <div><dt>Contribución</dt><dd>(Ingreso recurrente neto − costos recurrentes directos) / ingreso recurrente neto.</dd></div>
+              <div><dt>Evidencia y medición</dt><dd>Modelo proyectado; se medirá cuando existan implementaciones recurrentes activas.</dd></div>
             </dl>
           </article>
 
-          <article class="inv-unit-row" role="row">
-            <header class="inv-unit-row__model" role="rowheader"><span>Modelo 04</span><h3>Productos sectoriales</h3></header>
-            <dl class="inv-unit-row__details">
-              <div role="cell"><dt>Unidad comercial</dt><dd>Piloto o implementación institucional</dd></div>
-              <div role="cell"><dt>Mecanismo de ingreso</dt><dd>Cargo por piloto, implementación y eventual licencia</dd></div>
-              <div role="cell"><dt>Principales costos directos</dt><dd>Diseño sectorial, configuración, integración, capacitación, infraestructura y soporte</dd></div>
-              <div role="cell"><dt>Fórmula de contribución</dt><dd>(Ingreso neto de la unidad − costos directos de la unidad) / ingreso neto</dd></div>
-              <div role="cell"><dt>Disponibilidad de datos</dt><dd><span class="inv-status inv-status--pending">Pendiente por iniciativa</span></dd></div>
+          <article class="inv-unit-card" data-reveal>
+            <header><span>Modelo 04 · verticales</span><h3>Productos sectoriales</h3></header>
+            <dl>
+              <div><dt>Unidad e ingreso</dt><dd>Piloto o implementación · cargo inicial y eventual licencia.</dd></div>
+              <div><dt>Costos directos</dt><dd>Diseño sectorial, configuración, integración, capacitación, infraestructura y soporte.</dd></div>
+              <div><dt>Contribución</dt><dd>(Ingreso neto de la unidad − costos directos de la unidad) / ingreso neto.</dd></div>
+              <div><dt>Evidencia y medición</dt><dd>Oportunidades por vertical; costos y resultados se consolidarán tras cada ejecución.</dd></div>
             </dl>
           </article>
         </div>
@@ -367,16 +419,9 @@
             <strong>Piloto Industrial AI · 6 semanas · $1.600.000 CLP + IVA</strong>
             <p>Propuesta comercial documentada. No se presenta como contrato ejecutado, venta cerrada ni economía total de VITAIROS.</p>
           </aside>
-          <aside class="inv-data-gap" aria-label="Datos requeridos para completar la unidad económica">
-            <span>Datos requeridos antes de publicar márgenes</span>
-            <ul>
-              <li>Horas y costo empresa por rol</li>
-              <li>Nube, modelos, APIs y licencias</li>
-              <li>Integración, QA, soporte y capacitación</li>
-              <li>Subcontratos, viajes y costos atribuibles</li>
-              <li>Ingreso neto facturado o cobrado, separado de impuestos</li>
-              <li>Ingreso recurrente mensual vigente, solo con confirmación del fundador</li>
-            </ul>
+          <aside class="inv-data-gap" aria-label="Metodología de medición económica">
+            <span>Metodología de medición</span>
+            <p>La contribución se calculará por unidad con ingreso neto, horas y costo por perfil, infraestructura, licencias, integración y soporte efectivamente atribuibles. Las métricas de adquisición, recurrencia, retención y margen se incorporarán cuando exista evidencia suficiente.</p>
           </aside>
         </div>
       </div>
@@ -386,17 +431,17 @@
       <div class="inv-container inv-funds__layout">
         <div class="inv-funds__copy" data-reveal>
           <p class="inv-kicker">06 · Uso preliminar de fondos</p>
-          <h2 id="fundsTitle">US$50.000 para convertir evidencia técnica en <span>una primera oferta repetible.</span></h2>
-          <p>Distribución propuesta para una ronda presemilla. No representa presupuesto ejecutado, valorización societaria, participación ni condiciones de inversión.</p>
+          <h2 id="fundsTitle">US$50.000 para convertir capacidad técnica en <span>hitos empresariales medibles.</span></h2>
+          <p>Distribución objetivo para una ronda presemilla. Cada línea financia decisiones concretas; no representa resultados garantizados ni condiciones definitivas de inversión.</p>
           <div class="inv-funds__total"><span>Ronda objetivo propuesta</span><strong>US$50.000</strong></div>
         </div>
         <div class="inv-allocation" data-reveal>
           <div class="inv-allocation__chart" role="img" aria-label="40 por ciento producto, 30 por ciento pilotos y desarrollo comercial, 20 por ciento capacidades tecnológicas, 10 por ciento seguridad y escalamiento"><span>100%</span><small>propuesta</small></div>
           <ol>
-            <li><i style="--share:40%"></i><span><strong>40%</strong> Producto y primera oferta comercial</span></li>
-            <li><i style="--share:30%"></i><span><strong>30%</strong> Pilotos y desarrollo comercial</span></li>
-            <li><i style="--share:20%"></i><span><strong>20%</strong> Capacidades tecnológicas reutilizables</span></li>
-            <li><i style="--share:10%"></i><span><strong>10%</strong> Seguridad, cumplimiento y preparación de escalamiento</span></li>
+            <li><i style="--share:40%"></i><span><strong>40% · Producto</strong><b>Consolidar soluciones con posibilidades de comercialización.</b></span></li>
+            <li><i style="--share:30%"></i><span><strong>30% · Pilotos</strong><b>Validar con compradores o instituciones y medir resultados.</b></span></li>
+            <li><i style="--share:20%"></i><span><strong>20% · Tecnología</strong><b>Avanzar en componentes reutilizables, integraciones y arquitectura escalable.</b></span></li>
+            <li><i style="--share:10%"></i><span><strong>10% · Seguridad</strong><b>Fortalecer confiabilidad, privacidad y preparación empresarial.</b></span></li>
           </ol>
         </div>
       </div>
@@ -412,20 +457,20 @@
           <p class="inv-kicker">07 · Founder</p>
           <h2 id="founderTitle">Bastián Felipe<br><span>Lisperguer Aguayo.</span></h2>
           <p class="inv-founder__role">Founder & CEO · VITAIROS SpA</p>
-          <p>Lidera la construcción de VITAIROS como empresa chilena de inteligencia artificial aplicada, articulando capacidades tecnológicas y proyectos en industria, salud, agricultura y educación.</p>
-          <dl><div><dt>Empresa</dt><dd>VITAIROS SpA</dd></div><div><dt>País</dt><dd>Chile</dd></div><div><dt>Contacto</dt><dd><a href="mailto:ba.lisperguer@vitairos.com">ba.lisperguer@vitairos.com</a></dd></div></dl>
+          <p>Bastián Felipe Lisperguer Aguayo lidera VITAIROS SpA combinando experiencia en informática biomédica, desarrollo e ingeniería de software, sistemas hospitalarios, docencia tecnológica e inteligencia artificial aplicada. Su trayectoria conecta la ingeniería con necesidades reales de organizaciones e industrias.</p>
+          <dl><div><dt>Capacidad</dt><dd>Desarrollo y gestión de soluciones digitales</dd></div><div><dt>Enfoque</dt><dd>Capacidad técnica + experiencia práctica + visión empresarial</dd></div><div><dt>Contacto</dt><dd><a href="mailto:ba.lisperguer@vitairos.com">ba.lisperguer@vitairos.com</a></dd></div></dl>
         </div>
       </div>
     </section>
 
     <section class="inv-section inv-contact" id="contacto" aria-labelledby="contactTitle">
       <div class="inv-container inv-contact__panel" data-reveal>
-        <div><p class="inv-kicker">08 · Próximo paso</p><h2 id="contactTitle">Conversemos sobre la siguiente etapa de VITAIROS.</h2><p>Una conversación directa para revisar la tesis, la evidencia disponible y las hipótesis que todavía deben validarse.</p></div>
+        <div><p class="inv-kicker">08 · Próximo paso</p><h2 id="contactTitle">Construyamos la próxima etapa de inteligencia artificial aplicada.</h2><p>Conversemos sobre nuestra tesis de inversión, capacidades tecnológicas y oportunidades de crecimiento.</p></div>
         <div class="inv-contact__actions">
-          <a class="inv-button inv-button--primary" href="mailto:ba.lisperguer@vitairos.com?subject=Capital%20Connect%20%7C%20VITAIROS&body=Hola%20Basti%C3%A1n%2C%0A%0AMe%20gustar%C3%ADa%20conversar%20sobre%20la%20tesis%20de%20inversi%C3%B3n%20de%20VITAIROS.%0A">Contactar a Bastián <span aria-hidden="true">↗</span></a>
-          <a class="inv-button inv-button--secondary" href="/inversion/vitairos-onepager-inversion.pdf" download>Descargar One Pager PDF <span aria-hidden="true">↓</span></a>
+          <a class="inv-button inv-button--primary" href="mailto:ba.lisperguer@vitairos.com?subject=Capital%20Connect%20%7C%20VITAIROS&body=Hola%20Basti%C3%A1n%2C%0A%0AMe%20gustar%C3%ADa%20conversar%20sobre%20la%20tesis%20de%20inversi%C3%B3n%20de%20VITAIROS.%0A">Conversar con el Founder <span aria-hidden="true">↗</span></a>
+          <a class="inv-button inv-button--secondary" href="/inversion/vitairos-onepager-inversion.pdf" download>Descargar One Pager ejecutivo <span aria-hidden="true">↓</span></a>
         </div>
-        <p class="inv-contact__notice">Documento ejecutivo A4 · una página · versión local para revisión.</p>
+        <p class="inv-contact__notice">One Pager ejecutivo · PDF corporativo descargable.</p>
       </div>
     </section>
   </main>

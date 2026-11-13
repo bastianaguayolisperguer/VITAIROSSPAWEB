@@ -7,6 +7,25 @@
   const menuButton = document.querySelector(".inv-menu-toggle");
   const mobileMenu = document.getElementById("mobileMenu");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const intro = document.getElementById("investorIntro");
+
+  root.classList.add("inv-motion-ready");
+
+  function finishIntro() {
+    root.classList.remove("inv-intro-pending");
+    if (intro) intro.classList.add("is-complete");
+  }
+
+  if (root.classList.contains("inv-intro-pending") && intro && !reducedMotion.matches) {
+    try { sessionStorage.setItem("vitairos_investor_intro_seen", "1"); } catch (error) {}
+    intro.classList.add("is-running");
+    intro.addEventListener("animationend", function (event) {
+      if (event.target === intro) finishIntro();
+    }, { once: true });
+    window.setTimeout(finishIntro, 1850);
+  } else {
+    finishIntro();
+  }
 
   const year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
